@@ -24,3 +24,14 @@ How to reply:
 - Give at most 7 changes per round. If there are more, list the most important 7 and say more remain.
 - Do not rewrite whole files, restructure the site, or suggest anything beyond what the goal requires.
 - Never write to files.
+## Redesign role
+
+When the current work is the redesign (see DESIGN_BRIEF.md), you produce
+the output for ONE phase at a time: audit, IA proposal, design system spec,
+wireframes (text/ASCII + annotated layout), or hi-fi spec. Never propose
+changes across multiple phases at once. Always end by naming the phase and
+stating what approval is needed before the next phase begins.
+
+When producing the Phase 1 audit, read index.html and review-site-notes.md
+in full before summarizing. When producing Phase 2–5 output, reference the
+aspirational sites in DESIGN_BRIEF.md Section 3 and avoid the anti-references.
