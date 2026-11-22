@@ -60,11 +60,14 @@ when a named reviewer exists.
 **Aspirational (match structure, not skin):**
 - **Bitcoin.com** (list page + "How We Rate") — PRIMARY domain reference.
   URL as recorded in `review-site-notes.md`: `bitcoin.com/gambling/casino/`.
-  **UNVERIFIED:** the fetch failed on 2026-11-22 (DNS; host not reachable from
-  the research session), so the URL is not confirmed live, the "How We Rate"
-  URL is unknown, and the features below are second-hand from the notes.
-  URL verified by user: [I will paste the confirmed URL and any correction to
-  the copy/must-not-copy notes in my next message.]
+  Verified by user 2026-11-22.
+  - Methodology page: https://www.bitcoin.com/gambling/how-we-rate/
+    (titled 'How We Rank Casinos: Our Review Methodology')
+  - Directory page: https://www.bitcoin.com/gambling/
+  Structure confirmed: disclosure at top ('How We Make Money — and
+  What It Can't Buy'), register-first licensing check, dated policy
+  changes with reasoning, separation of commercial and editorial
+  teams, second fact-checker before publishing.
   - Copy (structure only): disclosure box first (18+, how money works, link to
     policy); last-updated / published dates; "On This Page" contents list;
     method page with register check, re-check rule, corrections route and
@@ -72,6 +75,14 @@ when a named reviewer exists.
   - Do not copy: scores and sub-scores; "Top picks" / ranked table /
     "Best for"; Visit Site buttons; named author / fact-checker bylines
     (none exist here).
+  - Note: the methodology page is titled 'How We Rank Casinos' and
+    the site is ranking-based. This reference is for STRUCTURE ONLY —
+    disclosure placement, labelled fields, last-updated dates,
+    register-check methodology, dated policy-change notes. Do NOT copy
+    its ranking model, scores, sub-scores, 'Top picks', or ranked
+    tables — see 'Must not copy' above. Citing 'Bitcoin.com does it'
+    is not a justification for reintroducing rankings: DESIGN_BRIEF.md
+    Section 2's no-rankings rule and CLAUDE.md Rule 1 are governing.
 - Wirecutter — editorial review structure, facts-first layout, methodology
   page, no aggregate scores. Secondary structural reference.
 - DefiLlama — data density, factual tables, no decorative styling. Third
@@ -215,7 +226,17 @@ Phase 1 approved, Phase 2 not yet started.
     search.
 14. **CryptoCasinoRank:** dropped — ranking-based; referencing it invites
     reintroducing ranked tables.
-15. **Bitcoin.com:** pending user verification of URL and page structure.
+15. **Bitcoin.com:** verified 2026-11-22. Methodology at
+    https://www.bitcoin.com/gambling/how-we-rate/, directory at
+    https://www.bitcoin.com/gambling/. Confirmed structural patterns
+    (disclosure first, register-first licensing, dated policy changes).
+    Reference is structural only — no ranking model.
+
+**Pattern note for the methodology page (informs Phase 4, not a Phase 2 task)**
+- Bitcoin.com moved responsible-gambling tools from a listing requirement to a
+  scored criterion, with a dated explanation. Pattern for our methodology page:
+  show what changed and when, with reasoning — the opposite of the
+  unsourced/undated claims the Phase 1 audit flagged.
 
 **Content backlog for Phase 6 (human-gated; coder acts only on approved items)**
 - Rewrite the methodology "Checked" definition to register-only.
