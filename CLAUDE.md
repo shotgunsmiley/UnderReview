@@ -20,7 +20,7 @@ This is a **single static HTML page with no build step and no backend**. There i
 ├── index.html             THE SITE. All markup, styles, data and scripts live here.
 ├── CLAUDE.md              This file.
 ├── review-site-notes.md   Research notes on other review sites and premium templates. Not part of the site.
-└── .claude/agents/        architect.md and editor.md, the review/edit subagents used for upgrade loops.
+└── .claude/agents/        architect.md, editor.md, researcher.md and coder.md: the subagents used for upgrade loops (architect plans, editor reviews and requests research, researcher looks up facts with sources, coder applies the approved edits). They cannot call each other; the main session passes messages between them.
 ```
 
 Only `index.html` is the product. Treat everything else as notes or tooling and do not edit it as part of site work. (Older backups, screenshots and scratch tools mentioned in earlier versions of this file are not in the repo.)
@@ -32,10 +32,13 @@ Only `index.html` is the product. Treat everything else as notes or tooling and 
 | `#overview` | Hero: headline, buttons, 3D prism canvas (`#hero-canvas`), 18+ line, four-stat card badged "UNVERIFIED ESTIMATES" |
 | `#hub-directory` | Index grid linking to the ten guides (with category filter pills) |
 | `#casino-directory-30` | The casino directory: title, one two-column notice box (unranked notice, what the directory is, unverified status, links and money / 18+), collapsible "Key Considerations" box, sticky controls (search on its own row, batch select, live count, Reset, Cards / Compact list switch, category pills), results grid (`#casino-directory-grid`). The id still says "30" for historical reasons; do not rename it, nav links depend on it. |
+| `#casino-compare` | Side-by-side comparison of 2 or 3 entries ticked with the "Compare" checkbox on directory cards. Same fields, in the order picked, no scores or winner. A floating tray (`#compare-tray`, with a persistent live region `#compare-live`) shows the selection count. |
 | `#hub-02-provably-fair` | Pillar 02 with a live SHA-256 roll verifier (Web Crypto); contains `#interactive-labs` |
 | (inside the same flow) | Pillars 03 to 09: `#hub-03-payments`, `#hub-04-smart-contracts`, `#hub-05-responsible`, `#hub-06-security`, `#hub-07-scams`, `#hub-08-ai`, `#hub-09-market-data` |
 | `#glossary-archive` | Pillar 10: searchable glossary, timeline, report card |
-| Modals | `#platform-review-modal` (casino detail, with related entries and an 18+ line), `#report-modal` (executive summary). Both are `role="dialog"` with focus handling. |
+| `#how-we-review` | Methodology: what each entry can show, stated vs checked vs unverified vs unknown, re-check schedule (marked "not yet set"), what "unranked" means, links and money, corrections route (marked "not set up yet") |
+| `#faq` | Six plain-English questions (what unranked means, no-KYC, provably fair, how to check a licence on a register, why fields say Unknown, legality) |
+| Modals | `#platform-review-modal` (casino detail: status line, 11 standard fields with Checked / Stated / Unverified tags, Last verified, Sources, related entries and an 18+ line), `#report-modal` (executive summary). Both are `role="dialog"` with focus handling. |
 | `<footer>` | Disclaimer, 18+ line with helpline links, and links to every section |
 | `#back-to-top` | Floating button shown after scrolling |
 
@@ -46,7 +49,9 @@ Only `index.html` is the product. Treat everything else as notes or tooling and 
 - `categoryMeta`: the six directory categories (key, title, subtitle).
 - `web3CasinosCatalog`: the array of all 60 casino entries (see below).
 - `renderCasinoDirectory()`: filters the catalog by search text, category and batch, then builds the card HTML. Each category shows 6 entries until "Show all" is clicked (`expandedCats`, `CARDS_PER_CATEGORY`); while a search, category filter or batch is active it shows every match. It also sets the live count label (it can read "Showing 34 of 60" because of the 6-per-category cap).
-- `openPlatformModal()`: fills the detail modal from one catalog entry and lists other entries in the same category (catalog order, labelled unranked).
+- `REVIEW_FIELDS`, `fieldValue()`, `fieldStatus()`, `esc()`, `isPartlyChecked()`, `hasCheckedField()`: shared helpers for the standard review fields. Missing data shows "Unknown (not yet checked)". Always escape catalog text with `esc()` when building HTML strings for the compare table.
+- `openPlatformModal()`: fills the detail modal from one catalog entry (11 standard fields, status line, Last verified, Sources) and lists other entries in the same category (catalog order, labelled unranked). Source links are only created for http(s) URLs.
+- `renderCompare()`, `toggleCompare()`: the comparison view (max 3 entries).
 - `closeModal()` plus a Tab trap and Escape handler: modal focus handling and scroll lock.
 - Other blocks: mobile menu, scroll-spy nav highlighting, back-to-top, card hover glow, scroll reveal, hero prism canvas (still when reduced motion is on), hub filter, SHA-256 verifier, hygiene checklist, market-data chart (`chartDatasets`), glossary search.
 
@@ -72,9 +77,30 @@ All casino data is the JavaScript array `web3CasinosCatalog` inside `index.html`
 }
 ```
 
+Optional fields, added only for entries that have been checked against sources that were actually read (all strings except `checked`, `stated` and `sources`). Omitted fields display as "Unknown (not yet checked)":
+
+```js
+{
+  operator: '…',              // operating company, as written in the terms
+  licenseNumber: '…',         // licence number and register entry
+  coins: '…',                 // coins and networks the casino publishes
+  withdrawals: '…',           // turnover before withdrawal, minimums, limits, fees
+  bonusTerms: '…',
+  restrictedCountries: '…',
+  rgTools: '…',               // responsible-gambling tools
+  support: '…',               // support channels
+  checked: ['license', …],    // fields confirmed on an official regulator register page
+  stated: ['kyc', …],         // fields taken from the casino's own pages
+  sources: [{ label: '… (page snapshot YYYY-MM-DD)', url: 'https://…' }],
+  lastVerified: 'YYYY-MM-DD'  // the date the sources were actually read
+}
+```
+
+Rules for these fields: only a regulator's own register page counts as `checked`; casino pages count as `stated`. An entry with `sources` plus `lastVerified` shows "Partly checked" if it has a `checked` field, otherwise "Casino-stated only". `custody`, `license`, `kyc`, `techStack`, `summary`, `strengths` and `tradeoffs` can be replaced when a source contradicts them (state the old and new text in the change). Put the page snapshot date in each source label when the tool reports one.
+
 Valid `archKey` values: `tokenomics-yield`, `lightning-instant`, `sportsbook-hybrid`, `game-libraries`, `vip-feature-editions`, `non-custodial-web3`.
 
-The existing entries carry **no source links, no verification dates, and no affiliate URLs**. Their licence, KYC and feature claims were written without citations. Every card and the modal say "Unverified · no check date recorded". Do not treat any existing claim as verified, and do not repeat one as fact in new copy without checking it.
+Most entries carry **no source links, no verification dates, and no affiliate URLs**. Their licence, KYC and feature claims were written without citations, and their cards say "Status: Unverified · no check date recorded". Four entries have been checked against sources (Stake, BC.Game, Cloudbet, Vbet; ids `b1-stake`, `b1-bcgame`, `b1-cloudbet`, `b1-vbet`, read 2026-11-22). Do not treat any other claim as verified, and do not repeat one as fact in new copy without checking it. Their sister entries (`b2-23-bcgame-bcd`, `b2-28-cloudbet-turnover`) were not updated and may contradict the checked entries.
 
 ## How to add a new casino review
 
@@ -90,7 +116,7 @@ The existing entries carry **no source links, no verification dates, and no affi
 ## Rules
 
 1. **Never invent facts, ratings, bonuses or licenses.** Only state what you have verified from a source you actually read. If data is missing, mark it `unverified`. Do not add star ratings, scores, rankings, "top pick" badges or featured/promoted slots; the directory is unranked by design.
-2. **Affiliate links must be labeled as affiliate links.** There are currently no outbound casino links, and the directory notice box says so. If any are added, label each one clearly as an affiliate link next to the link, add `rel="sponsored noopener noreferrer"`, update that notice, and keep affiliate status from influencing order or wording of reviews.
+2. **Affiliate links must be labeled as affiliate links.** There are currently no affiliate links. The only outbound links are "Sources" links in the casino detail modal, pointing to regulator register pages or to a casino's own terms and help pages. They are plain reference links (`rel="noopener noreferrer"`), and the directory notice and the methodology section say so. If any affiliate link is added, label each one clearly as an affiliate link next to the link, add `rel="sponsored noopener noreferrer"`, update that notice, and keep affiliate status from influencing order or wording of reviews.
 3. **Every page shows an 18+ / responsible gambling notice.** Every page, including any page added in the future, must show it visibly, not only in a hub section. Current state: it appears in the hero, the directory notice box, the casino detail modal, the Pillar 05 badge and the footer (with helpline links). Keep the helpline links in Pillar 05 and the footer intact, and include the notice on any new page from the start.
 4. **Keep the existing design and code style.** Do not rebuild or restructure things unless asked. Keep the single-file, Tailwind-CDN, vanilla-JS approach. Reuse existing classes and patterns (`glass-card`, `plain-english`, `font-mono` labels, `reveal-up`) instead of introducing new ones. Make the smallest change that does the job. Keep accessibility: 16px body copy, visible focus, 44px tap targets, reduced-motion support, works at 320px wide.
 5. When changing code, send the whole updated `index.html` back to the user rather than snippets. They work from a phone and cannot apply partial edits.
@@ -101,4 +127,7 @@ The existing entries carry **no source links, no verification dates, and no affi
 - Nine catalog entries repeat brands that already appear elsewhere (#20 to #22, and the feature-focus entries #23, #24, #27 to #30), so the 60 entries cover about 51 distinct brands.
 - Licence, KYC and feature claims across the catalog are unsourced.
 - Market-data figures in the hero and Pillar 09 (68%, $114B, the 2024 to 2030 series) are unsourced estimates and are labelled as such.
-- There is no methodology page, named authors, "last checked" dates, corrections/contact route or funding statement, because none of that information exists yet. Do not invent it; see `review-site-notes.md` for what other review sites publish.
+- There are no named authors, no fixed re-check schedule, no corrections/contact route and no funding statement, because none of that information exists yet. The methodology section says so. Do not invent any of it; see `review-site-notes.md` for what other review sites publish.
+- Facts still unread (the tools could not read these pages): BC.Game on the Anjouan register and its current terms body; the Malta Gaming Authority register (so Vbet's former "Malta sandbox" claim is replaced, not proven false); coin and network lists for Stake and Vbet; the rest of Cloudbet's cryptocurrencies page and its withdrawal help pages.
+- `b2-28-cloudbet-turnover` still says "Curaçao License (Since 2013)" and `b1-cloudbet` strengths still list "Multi-year operating history"; both are unsourced original text.
+- On the Curaçao Gaming Authority register, Stake and Cloudbet showed status "Assessment in progress" (not Active) when read on 2026-11-22; statuses may have changed.

@@ -56,6 +56,7 @@
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
       outline: 2px solid #22D3EE; outline-offset: 2px;
     }
+    [data-jump-target]:focus { outline: none; }
 
     body {
       background-color: #050507;
@@ -177,7 +178,7 @@
 
     /* Tap targets */
     .arch-filter-btn, .dir-filter-btn, .chart-btn, .reg-btn, .view-toggle-btn,
-    .open-platform-btn, .expand-cat-btn, #casino-reset-btn, #casino-cohort-select { min-height: 44px; }
+    .open-platform-btn, .expand-cat-btn, .compare-toggle, .compare-remove-btn, #compare-go-btn, #compare-clear-btn, #casino-reset-btn, #casino-cohort-select { min-height: 44px; }
 
     /* Compact list view for the directory */
     #casino-directory-grid.is-compact .dir-cards { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
@@ -233,8 +234,10 @@
         <a href="#overview" class="nav-link hover:text-white transition-colors">Overview</a>
         <a href="#hub-directory" class="nav-link hover:text-white transition-colors">Guides</a>
         <a href="#casino-directory-30" class="nav-link hover:text-white transition-colors">Directory</a>
+        <a href="#how-we-review" class="nav-link hidden lg:inline-block hover:text-white transition-colors">How we review</a>
         <a href="#interactive-labs" class="nav-link hover:text-white transition-colors">Labs</a>
         <a href="#glossary-archive" class="nav-link hover:text-white transition-colors">Glossary</a>
+        <a href="#faq" class="nav-link hidden lg:inline-block hover:text-white transition-colors">FAQ</a>
       </div>
 
       <!-- Actions -->
@@ -255,8 +258,11 @@
       <a href="#overview" class="py-3 px-3 rounded-lg hover:bg-white/5">Overview</a>
       <a href="#hub-directory" class="py-3 px-3 rounded-lg hover:bg-white/5">Guides</a>
       <a href="#casino-directory-30" class="py-3 px-3 rounded-lg bg-cyan-500/10 text-cyan-200 font-semibold">Directory</a>
+      <a href="#casino-compare" class="py-3 px-3 rounded-lg hover:bg-white/5">Compare</a>
+      <a href="#how-we-review" class="py-3 px-3 rounded-lg hover:bg-white/5">How we review</a>
       <a href="#interactive-labs" class="py-3 px-3 rounded-lg hover:bg-white/5">Labs</a>
       <a href="#glossary-archive" class="py-3 px-3 rounded-lg hover:bg-white/5">Glossary</a>
+      <a href="#faq" class="py-3 px-3 rounded-lg hover:bg-white/5">FAQ</a>
     </div>
   </header>
 
@@ -444,8 +450,8 @@
       <div class="plain-english rounded-2xl p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
         <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">Unranked neutrality notice</strong>Platforms and feature editions are organized into descriptive categories for neutral educational comparison, not ranked, scored, or ordered by quality. Where an entry in the second batch focuses on a specific feature of a platform already in the first set (#23–#30), that relationship is explicitly labeled.</p>
         <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">What this directory is</strong>A plain-English description of each platform's custody model, licensing, verification (KYC) and payments, grouped by category. <strong class="text-white">What it is not:</strong> a ranking, a recommendation, a safety rating, or confirmation that a platform is legal where you live.</p>
-        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: unverified</strong>The licence, KYC and feature details below were written without cited sources and have no "last checked" date yet. Treat every entry as unverified and confirm it on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit".</p>
-        <p class="text-sm text-slate-200"><strong class="block text-emerald-300 font-mono uppercase text-xs mb-1">Links &amp; money · 18+ only</strong>This directory contains no affiliate links and no links to casino sites. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
+        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: mostly unverified</strong>Most licence, KYC and feature details below were written without cited sources and have no "last checked" date. A few entries are marked "Partly checked" or "Casino-stated only": some of their fields have linked sources and a date, and every other field stays unverified. Confirm details on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit". <a href="#how-we-review" class="underline hover:text-white">How we review</a></p>
+        <p class="text-sm text-slate-200"><strong class="block text-emerald-300 font-mono uppercase text-xs mb-1">Links &amp; money · 18+ only</strong>This directory contains no affiliate links. Some entries list "Sources" links to a regulator's public register or to the casino's own terms or help pages. These are plain reference links, not affiliate links, and earn nothing. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
       </div>
     </div>
 
@@ -541,6 +547,24 @@
     <!-- Grouped Unranked Categories & Platform Cards Container -->
     <div id="casino-directory-grid" class="space-y-10">
       <!-- Populated dynamically by JS across unranked categories -->
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SIDE-BY-SIDE COMPARISON (UNRANKED)                                     -->
+  <!-- ===================================================================== -->
+  <section id="casino-compare" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-5">
+    <div class="reveal-up max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Directory Tool // Side by Side</span>
+      <h2 id="casino-compare-title" tabindex="-1" class="text-3xl sm:text-4xl font-bold text-white mt-2">Compare Entries</h2>
+      <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">Tick the "Compare" box on 2 or 3 directory cards. The same fields appear for each entry, in the order you picked them. There are no scores, no winner and no "best for" labels. "Unknown (not yet checked)" means we have no data for that field, not that the answer is "none".</p>
+    </div>
+    <div id="casino-compare-body" class="glass-card rounded-3xl p-5 sm:p-6">
+      <p class="text-sm text-slate-300">Tick "Compare" on 2 or 3 directory cards to see their fields side by side.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      <a href="#casino-directory-30" class="inline-flex items-center min-h-[44px] px-4 rounded-xl text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/15">Back to the directory</a>
+      <p class="text-xs font-mono text-emerald-300">18+ only. Gambling involves risk of loss. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
     </div>
   </section>
 
@@ -1203,6 +1227,92 @@
   </section>
 
   <!-- ===================================================================== -->
+  <!-- METHODOLOGY: HOW WE REVIEW                                             -->
+  <!-- ===================================================================== -->
+  <section id="how-we-review" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+    <div class="reveal-up max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Methodology // Plain English</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">How We Review</h2>
+      <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">This page explains what each directory entry can show and how to read it. It describes only what the site displays today: fields, sources and dates.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+        <h3 class="text-xl font-bold text-white">What each entry can show</h3>
+        <p class="text-sm text-slate-300">A field is only filled in when a source has been read. Fields without a source are marked Unverified or Unknown.</p>
+        <ul class="space-y-3 text-slate-300">
+          <li><strong class="text-white">Licence and number</strong>, compared with the regulator's own public register where that register could be read. <span class="text-slate-400">So what: a licence seal on a website is not proof; the register is.</span></li>
+          <li><strong class="text-white">Operating company</strong> named in the casino's terms. <span class="text-slate-400">So what: this is the business you would have a dispute with.</span></li>
+          <li><strong class="text-white">Custody</strong>: who holds your funds while you play. <span class="text-slate-400">So what: with a custodial balance, the casino controls the withdrawal.</span></li>
+          <li><strong class="text-white">Coins and networks</strong> the casino lists. <span class="text-slate-400">So what: sending a coin on an unsupported network can lose it, and network fees are separate from any casino fee.</span></li>
+          <li><strong class="text-white">KYC trigger wording</strong> in the terms. <span class="text-slate-400">So what: "no-KYC" sign-up can still mean ID checks later.</span></li>
+          <li><strong class="text-white">Withdrawal and turnover rules</strong>, bonus terms and restricted countries. <span class="text-slate-400">So what: these rules decide whether and when you can cash out.</span></li>
+          <li><strong class="text-white">Responsible-gambling tools and support channels</strong> the casino lists.</li>
+        </ul>
+      </div>
+      <div class="space-y-6">
+        <div class="plain-english rounded-2xl p-5 space-y-3">
+          <h3 class="text-lg font-bold text-white">Stated vs checked</h3>
+          <p class="text-sm text-slate-200"><strong class="text-emerald-300">Checked</strong>: confirmed on an independent primary source, such as the regulator's register. The source is linked. A register page may show a status such as "Assessment in progress". We show the status as written, and a page may have changed since it was read.</p>
+          <p class="text-sm text-slate-200"><strong class="text-cyan-300">Stated by the casino</strong>: taken from the casino's own terms or help pages. The source is linked. This is what the casino says, not independent proof.</p>
+          <p class="text-sm text-slate-200"><strong class="text-amber-300">Unverified</strong>: written without a recorded source. Treat it as a lead to check, not a fact.</p>
+          <p class="text-sm text-slate-200"><strong class="text-white">Unknown (not yet checked)</strong>: we have no data. It never means "none" or "no limit".</p>
+        </div>
+        <div class="glass-card rounded-3xl p-6 space-y-3">
+          <h3 class="text-lg font-bold text-white">Re-checks, ranking and corrections</h3>
+          <p class="text-sm text-slate-300"><strong class="text-white">Re-check schedule: not yet set.</strong> There is no fixed re-check cycle yet. An entry's "Last verified" field shows the date its sources were read. Source labels give the page snapshot date where one is known.</p>
+          <p class="text-sm text-slate-300"><strong class="text-white">What unranked means:</strong> no scores, stars, "best for" labels, top picks or featured slots. Entries are grouped by category and listed in catalog order, which is not a quality order. The compare table shows entries in the order you pick them.</p>
+          <p class="text-sm text-slate-300"><strong class="text-white">Links and money:</strong> the directory contains no affiliate links. Some entries list "Sources" links to a regulator's public register or to the casino's own terms or help pages. These are plain reference links, not affiliate links, and earn nothing. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries.</p>
+          <p class="text-sm text-slate-300"><strong class="text-white">Corrections:</strong> a public contact route for corrections has not been set up yet, and this section will say so until one exists.</p>
+          <p class="text-xs font-mono text-emerald-300">18+ only. Gambling involves risk of loss. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- FAQ                                                                    -->
+  <!-- ===================================================================== -->
+  <section id="faq" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-5">
+    <div class="reveal-up max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Questions // Plain English</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Frequently Asked Questions</h2>
+    </div>
+    <div class="space-y-3 max-w-3xl">
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">What does "unranked" mean here?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">No entry is scored, starred, ranked, featured or labelled "best for". Entries are grouped by what they do and listed in catalog order, which says nothing about quality. Being listed is not a recommendation or a safety rating. See <a href="#how-we-review" class="underline hover:text-white">How we review</a>.</p></div>
+      </details>
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">Does "no-KYC" mean a casino will never ask for ID?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">Not necessarily. "No-KYC" usually describes sign-up. A casino's terms can still allow identity or source-of-funds checks later, for example before a withdrawal or after an automated risk flag. Read the verification section of the terms before you deposit. Our KYC field shows wording from the casino's terms only where a source is linked; otherwise it is labelled Unverified or Unknown.</p></div>
+      </details>
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">What does "provably fair" mean?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">The casino commits to a secret server seed by publishing its hash before you bet. Afterwards it reveals the seed, so you can recompute the result from the server seed, your client seed and the nonce. That proves the result was not changed after the bet. It does not prove the house edge, the licence, or that you will be paid. Try it in the <a href="#hub-02-provably-fair" class="underline hover:text-white">provably fair lab</a>.</p></div>
+      </details>
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">How do I check a casino's licence on a regulator's register?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">(1) Find the licence number and the licensed company name in the casino's footer or terms. (2) Go to the regulator's official website yourself; do not rely on the seal link in the casino's footer. (3) Search the public register by licence number or company name. (4) Check that the company, the website domain and the licence status match. If you cannot find a match, treat the licence claim as unverified.</p></div>
+      </details>
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">Why do so many fields say "Unknown (not yet checked)"?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">We only fill in a field from a source we have actually read. Missing data is shown as unknown rather than guessed. Unknown never means "none" or "no limit".</p></div>
+      </details>
+      <details class="glass-card rounded-2xl">
+        <summary class="cursor-pointer flex items-center justify-between gap-3 p-5 text-base font-semibold text-white">Is a casino in this directory legal where I live?
+          <svg class="chev w-4 h-4 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></summary>
+        <div class="px-5 pb-5 border-t border-white/10 pt-4"><p class="text-sm text-slate-300">This site cannot tell you that. Laws differ by country and region. Check your local law and the casino's restricted-countries list. This site is educational, not legal advice.</p></div>
+      </details>
+    </div>
+    <p class="text-xs font-mono text-emerald-300">18+ only. Gambling involves risk of loss. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
+  </section>
+
+  <!-- ===================================================================== -->
   <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (30 PLATFORMS)     -->
   <!-- ===================================================================== -->
   <!-- Platform Deep-Dive Review Modal (Accessible Message Box) -->
@@ -1221,22 +1331,76 @@
         </button>
       </div>
 
-      <!-- Technical Spec Matrix -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+      <!-- Standard review fields: same labels for every entry -->
+      <p id="modal-status" class="text-xs font-mono text-amber-300">STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator's site and the regulator's public register.</p>
+      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
-          <span class="font-mono text-slate-400 block">CUSTODY MODEL</span>
-          <strong id="modal-custody" class="text-white text-sm mt-1 block">—</strong>
+          <dt class="text-xs font-mono uppercase text-slate-400">Operator (company)</dt>
+          <dd id="modal-operator" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="operator" class="text-xs font-mono mt-1"></dd>
         </div>
         <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
-          <span class="font-mono text-slate-400 block">LICENSING / OVERSIGHT</span>
-          <strong id="modal-license" class="text-white text-sm mt-1 block">—</strong>
+          <dt class="text-xs font-mono uppercase text-slate-400">Licence / oversight</dt>
+          <dd id="modal-license" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="license" class="text-xs font-mono mt-1"></dd>
         </div>
         <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
-          <span class="font-mono text-slate-400 block">KYC / VERIFICATION</span>
-          <strong id="modal-kyc" class="text-white text-sm mt-1 block">—</strong>
+          <dt class="text-xs font-mono uppercase text-slate-400">Licence number &amp; register entry</dt>
+          <dd id="modal-license-number" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="licenseNumber" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Custody (who holds funds)</dt>
+          <dd id="modal-custody" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="custody" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Coins &amp; networks</dt>
+          <dd id="modal-coins" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="coins" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">KYC / verification triggers</dt>
+          <dd id="modal-kyc" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="kyc" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Withdrawal &amp; turnover rules</dt>
+          <dd id="modal-withdrawals" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="withdrawals" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Bonus terms</dt>
+          <dd id="modal-bonus" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="bonusTerms" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Restricted countries</dt>
+          <dd id="modal-restricted" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="restrictedCountries" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Responsible-gambling tools</dt>
+          <dd id="modal-rg-tools" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="rgTools" class="text-xs font-mono mt-1"></dd>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <dt class="text-xs font-mono uppercase text-slate-400">Support channels</dt>
+          <dd id="modal-support" class="text-base text-white mt-1 break-words">—</dd>
+          <dd data-status-for="support" class="text-xs font-mono mt-1"></dd>
+        </div>
+      </dl>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
+          <span class="text-xs font-mono uppercase text-slate-400 block">Last verified</span>
+          <p id="modal-last-verified" class="text-sm text-slate-200 mt-1">Not recorded yet</p>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
+          <span class="text-xs font-mono uppercase text-slate-400 block">Sources</span>
+          <div id="modal-sources" class="text-sm text-slate-200 mt-1">Not recorded yet</div>
         </div>
       </div>
-      <p class="text-xs font-mono text-amber-300">STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator's site and the regulator's public register.</p>
+      <p class="text-xs font-mono text-slate-400">"Unknown (not yet checked)" means we have no data, not "none" or "no limit". <a href="#how-we-review" data-close-modal class="underline hover:text-white">How we review</a></p>
 
       <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
         <span class="text-xs font-mono text-cyan-300 uppercase">Payment &amp; Tech Stack</span>
@@ -1315,10 +1479,20 @@
         <a href="#hub-09-market-data" class="hover:text-cyan-300 transition-colors">09 Market Data</a>
         <a href="#glossary-archive" class="hover:text-cyan-300 transition-colors">10 Glossary</a>
         <a href="#casino-directory-30" class="hover:text-cyan-300 transition-colors">Directory</a>
+        <a href="#casino-compare" class="hover:text-cyan-300 transition-colors">Compare</a>
+        <a href="#how-we-review" class="hover:text-cyan-300 transition-colors">How we review</a>
+        <a href="#faq" class="hover:text-cyan-300 transition-colors">FAQ</a>
         <a href="#overview" class="hover:text-cyan-300 transition-colors">↑ Back to top</a>
       </div>
     </div>
   </footer>
+
+  <p id="compare-live" class="sr-only" role="status" aria-live="polite"></p>
+  <div id="compare-tray" class="hidden fixed left-4 right-20 sm:left-auto bottom-5 z-40 liquid-glass rounded-2xl p-3 flex-wrap items-center gap-2">
+    <span id="compare-tray-status" class="text-sm font-mono text-slate-200">0 of 3 selected</span>
+    <a href="#casino-compare" id="compare-go-btn" class="inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 hover:brightness-110">Compare</a>
+    <button type="button" id="compare-clear-btn" class="px-4 py-2.5 rounded-xl text-sm bg-white/10 hover:bg-white/20 text-slate-200 border border-white/10">Clear</button>
+  </div>
 
   <button id="back-to-top" aria-label="Back to top" class="hidden fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full liquid-glass text-cyan-300 hover:text-white items-center justify-center transition-all">
     <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
@@ -1365,11 +1539,11 @@
       toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
 
       let lastFocusedEl = null;
-      function closeModal(modal) {
+      function closeModal(modal, opts = {}) {
         if (modal.classList.contains('hidden')) return;
         modal.classList.add('hidden');
         document.body.style.overflow = '';
-        if (lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus();
+        if (!opts.skipFocusRestore && lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus({ preventScroll: true });
         lastFocusedEl = null;
       }
       const reportModal = document.getElementById('report-modal');
@@ -1438,12 +1612,24 @@
           archKey: 'tokenomics-yield',
           archLabel: 'Tokenomics, Yield & Buyback Models',
           custody: 'Custodial Multi-Chain Platform Wallet',
-          license: 'Anjouan / Curaçao Offshore Framework',
-          kyc: 'Soft Threshold / AML Risk Triggers',
+          license: 'Anjouan (as stated by the casino; not confirmed on the regulator\'s register)',
+          kyc: 'Older terms copy (may not be current): KYC documents can be requested at any time and service or payment can be restricted until identity is verified; verification can also be required for suspicious or fraudulent transactions',
           techStack: 'Native $BC Token, Broad Multi-Crypto Support, In-House Provably Fair Originals',
           summary: 'Known for a large game catalog and wide cryptocurrency support alongside its native $BC token.',
           strengths: 'Broad token coverage and ecosystem token mechanics.',
-          tradeoffs: 'Custodial platform balances and offshore licensing oversight.'
+          tradeoffs: 'Custodial platform balances and offshore licensing oversight.',
+          operator: 'Twocent Technology Limited, Belize (company no. 000041939; registered address Sea Urchin Street, San Pedro, Ambergris Caye, Belize), as stated on the BC.Game licences page.',
+          licenseNumber: 'ALSI-202410011-FI1, as stated by the casino on its licences page ("licensed and regulated by the Government of the Autonomous Island of Anjouan, Union of Comoros"). Not confirmed on the Anjouan register: the register pages could not be read.',
+          rgTools: 'Self-exclusion locks the account for a minimum of 6 months; a 7-day cooling-off period is also available (terms page, snapshot 2026-08-11).',
+          support: 'Live Support; Telegram, Discord and WhatsApp links on the home page; compliance@bcgame.com is listed on the licences page.',
+          stated: ['operator', 'license', 'licenseNumber', 'kyc', 'rgTools', 'support'],
+          sources: [
+            { label: 'BC.Game licences page (page snapshot 2026-11-19)', url: 'https://bc.game/licenses' },
+            { label: 'BC.Game terms page, self-exclusion wording (page snapshot 2026-08-11)', url: 'https://bc.game/terms' },
+            { label: 'BC.Game older general terms copy on the whitepaper site, KYC wording (page snapshot 2026-11-16)', url: 'https://whitepaper.bc.game/bc-white-paper/appendix/general-terms-and-conditions' },
+            { label: 'BC.Game home page (page snapshot 2026-11-22)', url: 'https://bc.game/' }
+          ],
+          lastVerified: '2026-11-22'
         },
         {
           id: 'b1-stake',
@@ -1453,12 +1639,25 @@
           archKey: 'game-libraries',
           archLabel: 'High-Volume & Multi-Provider Game Libraries',
           custody: 'Custodial Vault & Multi-Crypto Wallet',
-          license: 'Curaçao Gaming Authority (+ Local Regulated Arms)',
-          kyc: 'Mandatory KYC Verification Tiers',
+          license: 'Curaçao Gaming Authority (register status: Assessment in progress)',
+          kyc: 'Terms: KYC documents can be requested at any time; service, payments or withdrawals can be restricted until identity is verified',
           techStack: 'Proprietary "Stake Originals", Provably Fair Verification, Multi-Crypto Cashier',
           summary: 'Major crypto-native incumbent featuring proprietary "Stake Originals" and built-in provably fair verification.',
           strengths: 'Established originals suite and accessible seed-hash verification tools.',
-          tradeoffs: 'Enforces multi-tier KYC and regional restrictions.'
+          tradeoffs: 'Terms allow KYC documents to be requested at any time, and access is restricted in many countries (see Restricted countries).',
+          operator: 'Medium Rare N.V., Curaçao (company no. 145353; registered address Seru Loraweg 17 B, Curaçao), as stated in the Stake terms and site footer. Payment agent companies named: Medium Rare Limited and MRS Tech Limited.',
+          licenseNumber: 'OGL/2024/1451/0918. Curaçao Gaming Authority register page: holder Medium Rare N.V., type B2C, status "Assessment in progress", issued 9 Jun 2025, approved domain stake.com only. Company, number and domain match the casino\'s claim.',
+          withdrawals: 'Terms section 8: Stake may refuse a withdrawal until identity is verified and the minimum wager requirement for each deposit is met. 8.10: you need to wager 100% of the value of your deposit to request a crypto withdrawal. The minimum withdrawal amount is shown on the website when you withdraw (no figure in the terms). Stake may charge a fee on withdrawals at its discretion. Withdrawals go through the same method as the deposit unless Stake decides otherwise. Daily, weekly and monthly limits: not found.',
+          restrictedCountries: 'Terms 14.3 list as read: Afghanistan, Alberta, Argentina, Austria, Australia, Belgium, Brazil, Cayman Islands, Colombia, Croatia, Cuba, Curaçao, Czech Republic, Cyprus, DR Congo, Denmark, France, Germany, Greece, Iran, Iraq, Ireland, Israel, Italy, Liberia, Libya, Lithuania, Malta, Mexico, Netherlands, North Korea, Ontario, Peru, Poland, Portugal, Serbia, Slovakia, South Africa, South Sudan, Spain, Sudan, Syria, Sweden, United Kingdom, United States, Zimbabwe.',
+          support: 'Email support@stake.com, listed in the site footer.',
+          checked: ['license', 'licenseNumber'],
+          stated: ['operator', 'kyc', 'withdrawals', 'restrictedCountries', 'support'],
+          sources: [
+            { label: 'Curaçao Gaming Authority register: Stake licence page (page snapshot 2026-11-20)', url: 'https://cga.cw/register/verify/OGL/2024/1451/0918' },
+            { label: 'Stake terms and conditions (page snapshot 2026-11-19)', url: 'https://stake.com/policies/terms' },
+            { label: 'Stake home page footer (page snapshot 2026-11-21)', url: 'https://stake.com/' }
+          ],
+          lastVerified: '2026-11-22'
         },
         {
           id: 'b1-rollbit',
@@ -1498,12 +1697,25 @@
           archKey: 'sportsbook-hybrid',
           archLabel: 'Sportsbook & Hybrid Betting Platforms',
           custody: 'Custodial Multi-Crypto Wallet',
-          license: 'Curaçao License (Since 2013)',
-          kyc: 'Tiered AML / High-Limit Verification',
+          license: 'Curaçao Gaming Authority (register status: Assessment in progress)',
+          kyc: 'Terms 21.1.5: identity verification is required when cumulative deposits reach or exceed USD 2,200; documents can be requested at any time; deposits and withdrawals may be restricted and funds locked until verification is complete',
           techStack: 'BTC, ETH, Stablecoins, Sportsbook & Casino Lobby',
-          summary: 'Long-operating crypto casino and sportsbook holding a Curaçao license since 2013.',
+          summary: 'Crypto casino and sportsbook. The Curaçao licence on the register was issued in 2025; the earlier "since 2013" wording was removed because no source read supports it.',
           strengths: 'Multi-year operating history and established sportsbook/casino rails.',
-          tradeoffs: 'Custodial wallet model and AML checks on larger volume.'
+          tradeoffs: 'Custodial wallet model and AML checks on larger volume.',
+          operator: 'Halcyon Super Holdings B.V., Curaçao (company no. 148526; Abraham Mendez Chumaceiro Boulevard 03, Willemstad), as stated in the Cloudbet terms. The terms also name a subsidiary, Solas Technologies Limited (Cyprus), that handles some payment methods; they say it is not licensed by the Curaçao Gaming Authority and does not offer betting, gaming or wagering services.',
+          licenseNumber: 'OGL/2024/328/0599. Curaçao Gaming Authority register page: holder Halcyon Super Holdings B.V., type B2C, status "Assessment in progress", issued 23 May 2025, approved domain cloudbet.com. Company, number and domain match the casino\'s claim. Cloudbet\'s own terms give the issue date as 27 May 2025.',
+          coins: 'Terms 7.3.1 list: BTC, BCH, ETH, USDT, USDC, USDP, PAXG, DAI, DOGE, LTC, DASH, LINK, DOT, ADA, SOL, ALGO, AVAX, POL, SHIB, BNB, XLM, XRP, stETH, TRON, ZEC, TON, USDe, sUSDe and HBAR, and fiat currency, each depending on jurisdiction. Cloudbet\'s cryptocurrencies page lists networks per coin (for example Bitcoin: Bitcoin and BNB Smart Chain); only part of that page was read, so the full network list is not recorded.',
+          withdrawals: 'Terms 8.8: before you can withdraw you must wager at least the total amount of your deposits (a 100% playthrough); Cloudbet may reduce this requirement at its discretion. Terms 7.5.11: cryptocurrency withdrawals are typically processed within 24 hours of approval, subject to any applicable KYC checks (an estimate, not a guarantee). Terms 7.3.8: costs may be deducted from a withdrawal in some cases. Terms 7.1.11.1: a dormant-account fee of USD 5 per month applies after 12 months. Minimum withdrawal, daily, weekly or monthly limits and withdrawal fees: not found in the terms.',
+          support: 'Email support@cloudbet.com, listed in the terms.',
+          checked: ['license', 'licenseNumber'],
+          stated: ['operator', 'coins', 'kyc', 'withdrawals', 'support'],
+          sources: [
+            { label: 'Curaçao Gaming Authority register: Cloudbet licence page (page snapshot 2026-11-16)', url: 'https://cga.cw/register/verify/OGL/2024/328/0599' },
+            { label: 'Cloudbet terms and conditions (page snapshot 2026-11-15)', url: 'https://www.cloudbet.com/en/help/terms' },
+            { label: 'Cloudbet cryptocurrencies page (page snapshot 2026-11-21)', url: 'https://www.cloudbet.com/en/cryptocurrencies' }
+          ],
+          lastVerified: '2026-11-22'
         },
         {
           id: 'b1-coincasino',
@@ -1752,13 +1964,28 @@
           batchLabel: 'Initial 30 Set',
           archKey: 'vip-feature-editions',
           archLabel: 'VIP, Promotions & Feature-Specific Editions',
-          custody: 'Regulated Segregated Operator Account',
-          license: 'Malta Gaming Authority (MGA Sandbox)',
-          kyc: 'Full Tier-1 Regulated KYC/AML',
-          techStack: 'MGA Crypto Deposit Sandbox, Regulated Gaming Rails',
-          summary: 'One of the rare Malta-licensed operators approved to accept crypto deposits under a sandbox.',
-          strengths: 'MGA sandbox approval and formal European regulatory framework.',
-          tradeoffs: 'Strict compliance and mandatory KYC requirements.'
+          custody: 'Unverified (no custody wording found in the terms read)',
+          license: 'Curaçao Gaming Authority (register status: Granted)',
+          kyc: 'Terms 24.4, 24.10, 30.1: official photo ID and proof of address can be requested; additional proofs can be requested and the account, including withdrawals, can be restricted until they are received; an electronic copy of a passport must be attached before the first payment by electronic payment methods. No source-of-funds wording and no "no KYC" claim found.',
+          techStack: 'Unverified (no payment or technology details were found in the terms read)',
+          summary: 'Entry corrected after a source check. The earlier text described a Malta Gaming Authority crypto-deposit sandbox approval. Vbet\'s own pages and the Curaçao Gaming Authority register show a Curaçao licence instead, and no source read supports the Malta claim.',
+          strengths: 'Unverified. The earlier text rested on a Malta sandbox claim that no source read supports, and it was removed.',
+          tradeoffs: 'The terms say the company may restrict an account, including withdrawals, until requested identity documents are received (24.10). They also state a 6% fee on the withdrawal amount if the 100% deposit-wagering requirement is not met (30.10).',
+          operator: 'Radon B.V., Curaçao (company no. 126922; registered address Emancipatie Boulevard Dominico F. "Don" Martina 29, Curaçao), as stated in the Vbet footer and terms. The name matches the licence holder on the register.',
+          licenseNumber: 'OGL/2024/802/0282. Curaçao Gaming Authority register page: holder Radon B.V., type B2C, status "Granted", issued 1 Jul 2024, approved domains include vbet.com and vbet.kg (the same licence lists many other brands). Vbet\'s footer gives the same number. No Malta Gaming Authority licence appears in any page read; the MGA register search could not be run.',
+          withdrawals: 'Terms 30.10: the deposit amount should be wagered 100% before a withdrawal is requested; if the player does not comply, the withdrawal amount is subject to a 6% fee. Terms 30.1: payments are processed in a time not exceeding 72 hours from the request. Terms 30.8: for withdrawals of 1,000 euros or more per calendar month VBET pays a commission on the transfer; otherwise the commission is paid to the bank by the user. Terms 27.1: fees and limits are shown on the Deposits and Withdrawals page, which was not read. Minimum withdrawal and periodic limits: not found. The terms version read is dated January 2022.',
+          restrictedCountries: 'Terms 2.1 exclude residents of many countries, including the United States, United Kingdom, Malta, Curaçao, Netherlands, Germany, France, Spain, Italy, Australia, Cyprus, Ontario (Canada), Russia, Turkey and Japan, and others; the full list is on the terms page.',
+          rgTools: 'Self-exclusion from 6 months to 5 years; time-out of 24 hours, one week, one month or two months. Deposit and loss limits are not mentioned on the page read.',
+          support: 'info@vbet.com and Live Support, listed on the Vbet help pages.',
+          checked: ['license', 'licenseNumber'],
+          stated: ['operator', 'kyc', 'withdrawals', 'restrictedCountries', 'rgTools', 'support'],
+          sources: [
+            { label: 'Curaçao Gaming Authority register: Vbet licence page (page snapshot 2026-11-22)', url: 'https://cga.cw/register/verify/OGL/2024/802/0282' },
+            { label: 'Vbet home page footer (page snapshot 2026-08-26)', url: 'https://vbet.com/' },
+            { label: 'Vbet general terms and conditions (page snapshot 2026-11-22)', url: 'https://vbet.com/en/help/1482/general-terms-and-conditions' },
+            { label: 'Vbet responsible gaming page (page snapshot 2026-11-22)', url: 'https://vbet.com/en/help/1473/responsible-gaming' }
+          ],
+          lastVerified: '2026-11-22'
         },
         {
           id: 'b1-betplay',
@@ -2328,6 +2555,91 @@
       let activeArchFilter = 'all';
       const expandedCats = new Set();
       const CARDS_PER_CATEGORY = 6;
+      const UNKNOWN = 'Unknown (not yet checked)';
+      const REVIEW_FIELDS = [
+        ['operator', 'Operator (company)', 'modal-operator'],
+        ['license', 'Licence / oversight', 'modal-license'],
+        ['licenseNumber', 'Licence number & register entry', 'modal-license-number'],
+        ['custody', 'Custody (who holds funds)', 'modal-custody'],
+        ['coins', 'Coins & networks', 'modal-coins'],
+        ['kyc', 'KYC / verification triggers', 'modal-kyc'],
+        ['withdrawals', 'Withdrawal & turnover rules', 'modal-withdrawals'],
+        ['bonusTerms', 'Bonus terms', 'modal-bonus'],
+        ['restrictedCountries', 'Restricted countries', 'modal-restricted'],
+        ['rgTools', 'Responsible-gambling tools', 'modal-rg-tools'],
+        ['support', 'Support channels', 'modal-support'],
+      ];
+      function fieldValue(p, key) { const v = p[key]; return (typeof v === 'string' && v.trim()) ? v : UNKNOWN; }
+      function fieldStatus(p, key) {
+        if (Array.isArray(p.checked) && p.checked.includes(key)) return { text: 'Checked · see Sources', cls: 'text-emerald-300' };
+        if (Array.isArray(p.stated) && p.stated.includes(key)) return { text: 'Stated by the casino · see Sources', cls: 'text-cyan-300' };
+        if (fieldValue(p, key) === UNKNOWN) return { text: '', cls: '' };
+        return { text: 'Unverified · no source recorded', cls: 'text-amber-300' };
+      }
+      function esc(v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+      function isPartlyChecked(p) { return Array.isArray(p.sources) && p.sources.length > 0 && typeof p.lastVerified === 'string' && p.lastVerified.trim() !== ''; }
+      function hasCheckedField(p) { return Array.isArray(p.checked) && p.checked.length > 0; }
+      const compareIds = [];
+      const MAX_COMPARE = 3;
+      const compareTray = document.getElementById('compare-tray');
+      const compareTrayStatus = document.getElementById('compare-tray-status');
+      const compareLive = document.getElementById('compare-live');
+      const compareBody = document.getElementById('casino-compare-body');
+      function renderCompare(msg) {
+        const n = compareIds.length;
+        compareTray.classList.toggle('hidden', n === 0);
+        compareTray.classList.toggle('flex', n > 0);
+        const statusText = msg || `${n} of ${MAX_COMPARE} selected`;
+        compareTrayStatus.textContent = statusText;
+        compareLive.textContent = statusText;
+        if (n < 2) {
+          compareBody.innerHTML = `<p class="text-sm text-slate-300">${n === 1 ? 'One entry selected. Tick "Compare" on one or two more cards.' : 'Tick "Compare" on 2 or 3 directory cards to see their fields side by side.'}</p>`;
+          return;
+        }
+        const items = compareIds.map(id => web3CasinosCatalog.find(p => p.id === id)).filter(Boolean);
+        const cell = (p, key) => { const st = fieldStatus(p, key); return esc(fieldValue(p, key)) + (st.text ? ` <span class="block text-xs font-mono ${st.cls}">${esc(st.text)}</span>` : ''); };
+        const rows = [
+          ['Category', p => esc(p.archLabel)],
+          ...REVIEW_FIELDS.map(([key, label]) => [label, p => cell(p, key)]),
+          ['Last verified', p => esc(p.lastVerified || 'Not recorded yet')],
+          ['Sources', p => (Array.isArray(p.sources) && p.sources.length) ? `${p.sources.length} recorded (see the entry's details)` : 'Not recorded yet'],
+        ];
+        compareBody.innerHTML = `
+          <div class="overflow-x-auto rounded-2xl border border-white/10" tabindex="0" role="region" aria-label="Comparison table, scrolls sideways">
+            <table class="w-full min-w-[36rem] text-left">
+              <caption class="sr-only">Selected entries side by side, in the order selected. Unranked.</caption>
+              <thead><tr class="bg-white/[0.04]"><th scope="col" class="p-3 text-xs font-mono uppercase text-slate-400 w-40">Field</th>${items.map(p => `<th scope="col" class="p-3 align-top"><span class="block text-base font-bold text-white">${esc(p.name)}</span><button type="button" data-compare-remove="${esc(p.id)}" class="compare-remove-btn mt-2 px-3 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300">Remove<span class="sr-only"> ${esc(p.name)}</span></button></th>`).join('')}</tr></thead>
+              <tbody>${rows.map(([label, get]) => `<tr class="border-t border-white/10"><th scope="row" class="p-3 align-top text-xs font-mono uppercase text-slate-400">${esc(label)}</th>${items.map(p => `<td class="p-3 align-top text-slate-200">${get(p)}</td>`).join('')}</tr>`).join('')}</tbody>
+            </table>
+          </div>`;
+      }
+      function toggleCompare(id, on) {
+        const i = compareIds.indexOf(id);
+        if (on && i === -1) {
+          if (compareIds.length >= MAX_COMPARE) { renderCompare(`You can compare up to ${MAX_COMPARE}. Untick one first.`); return false; }
+          compareIds.push(id);
+        } else if (!on && i !== -1) {
+          compareIds.splice(i, 1);
+        }
+        casinoGrid.querySelectorAll(`.compare-checkbox[data-compare-id="${id}"]`).forEach(cb => { cb.checked = compareIds.includes(id); });
+        renderCompare();
+        return true;
+      }
+      casinoGrid.addEventListener('change', (e) => {
+        const cb = e.target.closest('.compare-checkbox');
+        if (cb && !toggleCompare(cb.dataset.compareId, cb.checked)) cb.checked = false;
+      });
+      compareBody.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-compare-remove]');
+        if (!btn) return;
+        toggleCompare(btn.dataset.compareRemove, false);
+        document.getElementById('casino-compare-title').focus();
+      });
+      document.getElementById('compare-clear-btn').addEventListener('click', () => {
+        compareIds.length = 0;
+        casinoGrid.querySelectorAll('.compare-checkbox').forEach(cb => { cb.checked = false; });
+        renderCompare();
+      });
 
       const modalRelated = document.getElementById('modal-related');
       const closePlatformBtn = document.getElementById('close-platform-modal-btn');
@@ -2335,9 +2647,46 @@
       function openPlatformModal(platform) {
         document.getElementById('modal-arch-badge').textContent = `${platform.archLabel} • ${platform.batchLabel}`;
         document.getElementById('modal-platform-name').textContent = platform.name;
-        document.getElementById('modal-custody').textContent = platform.custody;
-        document.getElementById('modal-license').textContent = platform.license;
-        document.getElementById('modal-kyc').textContent = platform.kyc;
+        REVIEW_FIELDS.forEach(([key, , elId]) => {
+          document.getElementById(elId).textContent = fieldValue(platform, key);
+          const st = fieldStatus(platform, key);
+          const tag = platformModal.querySelector(`[data-status-for="${key}"]`);
+          tag.textContent = st.text;
+          tag.className = 'text-xs font-mono mt-1 ' + st.cls;
+        });
+        const hasSources = Array.isArray(platform.sources) && platform.sources.length > 0;
+        const partly = isPartlyChecked(platform);
+        const statusEl = document.getElementById('modal-status');
+        const indep = partly && hasCheckedField(platform);
+        statusEl.textContent = indep
+          ? 'STATUS: PARTLY CHECKED • Fields tagged "Checked" were confirmed on a regulator register; fields tagged "Stated by the casino" come from the casino\'s own pages. Sources are listed below. Every other field is unverified or unknown.'
+          : partly
+            ? 'STATUS: CASINO-STATED ONLY • Fields tagged "Stated by the casino" come from the casino\'s own pages (listed below). No field has been confirmed on a regulator register. Every other field is unverified or unknown.'
+            : 'STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator\'s site and the regulator\'s public register.';
+        statusEl.className = 'text-xs font-mono ' + (partly ? 'text-cyan-300' : 'text-amber-300');
+        document.getElementById('modal-last-verified').textContent = platform.lastVerified || 'Not recorded yet';
+        const srcEl = document.getElementById('modal-sources');
+        srcEl.textContent = '';
+        if (hasSources) {
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-1';
+          platform.sources.forEach(s => {
+            const li = document.createElement('li');
+            if (typeof s.url === 'string' && /^https?:\/\//i.test(s.url)) {
+              const a = document.createElement('a');
+              a.href = s.url; a.textContent = s.label || s.url;
+              a.target = '_blank'; a.rel = 'noopener noreferrer';
+              a.className = 'underline text-cyan-300 hover:text-white break-words';
+              li.appendChild(a);
+            } else {
+              li.textContent = s.label || '';
+            }
+            ul.appendChild(li);
+          });
+          srcEl.appendChild(ul);
+        } else {
+          srcEl.textContent = 'Not recorded yet';
+        }
         document.getElementById('modal-tech-stack').textContent = platform.techStack;
         document.getElementById('modal-review-body').textContent = platform.summary;
         document.getElementById('modal-strengths').textContent = platform.strengths;
@@ -2361,6 +2710,19 @@
       });
       closePlatformBtn.addEventListener('click', () => closeModal(platformModal));
       platformModal.addEventListener('click', (e) => {
+        const link = e.target.closest('a[data-close-modal][href^="#"]');
+        if (link) {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            closeModal(platformModal, { skipFocusRestore: true });
+            history.pushState(null, '', link.getAttribute('href'));
+            if (!target.hasAttribute('tabindex')) { target.setAttribute('tabindex', '-1'); target.setAttribute('data-jump-target', ''); }
+            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+            target.focus({ preventScroll: true });
+            return;
+          }
+        }
         if (e.target === platformModal || e.target.closest('[data-close-modal]')) closeModal(platformModal);
       });
 
@@ -2421,8 +2783,12 @@
                   <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">KYC</dt><dd class="text-base text-slate-100">${item.kyc}</dd></div>
                 </dl>
                 <p class="dir-card-summary text-sm text-slate-300 leading-relaxed">${item.summary}</p>
-                <p class="text-xs font-mono text-amber-300">Status: Unverified · no check date recorded</p>
-                <div class="mt-auto pt-3 border-t border-white/10">
+                <p class="text-xs font-mono ${isPartlyChecked(item) ? (hasCheckedField(item) ? 'text-emerald-300' : 'text-cyan-300') : 'text-amber-300'}">${isPartlyChecked(item) ? (hasCheckedField(item) ? `Partly checked · last verified ${esc(item.lastVerified)}` : `Casino-stated only · sources read ${esc(item.lastVerified)}`) : 'Status: Unverified · no check date recorded'}</p>
+                <div class="mt-auto pt-3 border-t border-white/10 flex flex-col gap-2">
+                  <label class="compare-toggle inline-flex items-center gap-3 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-slate-200 cursor-pointer">
+                    <input type="checkbox" class="compare-checkbox w-5 h-5 accent-cyan-400" data-compare-id="${item.id}" ${compareIds.includes(item.id) ? 'checked' : ''} />
+                    <span>Compare<span class="sr-only"> ${item.name}</span></span>
+                  </label>
                   <button type="button" data-platform-id="${item.id}" aria-label="View details: ${item.name}" class="open-platform-btn w-full px-4 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all">
                     View details
                   </button>
@@ -2535,6 +2901,7 @@
       });
 
       renderCasinoDirectory();
+      renderCompare();
 
       /* -----------------------------------------------------------
        * 2. Mouse-Tracking Spotlight Glow on Glass Cards
