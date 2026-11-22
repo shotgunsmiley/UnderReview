@@ -12,9 +12,8 @@
 - **Audience:** Crypto-native users evaluating on-chain casinos. They care about
   provably-fair mechanics, audit status, tokenomics, withdrawal speed, and KYC
   policy. They are skeptical of affiliate spam and generic "top 10" listicles.
-- **Business model:** **Non-affiliate at launch.** No affiliate links exist.
-  No ads planned. Disclosure states this plainly. Update the same day a
-  monetized link is added.
+- **Business model:** non-affiliate at launch. No ads, no ad slots. Disclosure
+  text: "No affiliate relationships exist at time of writing."
 - **Trust constraint:** Gambling-adjacent site. Design must signal legitimacy.
   No dark patterns, no fake urgency, no manipulative CTAs. No aggregate
   scores, stars, or rankings (see CLAUDE.md Rule 1). Clarity and disclosure
@@ -33,39 +32,50 @@ score. No stars.** Verification status replaces rating.
 |-----------|---------------------------|
 | Home / directory | "Which casinos are worth opening a review for?" |
 | Casino review (long-form + "At a Glance" facts panel) | "Is this casino legitimate and worth my deposit?" |
-| Comparison table (unranked; user picks sort) | "How do these shortlisted casinos differ on facts?" |
-| Methodology / "How we verify" | "Can I trust these statuses?" |
+| Comparison table (unranked, same fields in the order picked) | "Which of these should I shortlist?" |
+| Methodology / "how we review" | "Can I trust what you show me?" |
 | Glossary (provably fair, RTP, house edge) | "What does this term mean before I act?" |
-| Affiliate & responsible gambling disclosure | "What's the catch, and am I playing safely?" |
+| Affiliate disclosure + responsible gambling | "What's the catch, and am I playing safely?" |
 
-**Status vocabulary (replaces scores throughout):**
-- Per-dimension: **Verified / Unverified / Under review**
-- Dimensions: Provably fair · Audit link · KYC policy · Withdrawal time · License
+**Status vocabulary (all pages):** Checked / Stated / Unverified / Unknown.
+Checked = confirmed on an official regulator register; Stated = taken from the
+casino's own pages; Unverified = claim not confirmed; Unknown = not yet looked
+at. No aggregate scores, stars or rankings.
 
-**Comparison table columns (unranked, user-sorted, default alphabetical):**
-Name · Chain · Provably-fair status · Audit link · KYC · Withdrawal time · Last verified
-
-**Review page "At a Glance" panel (replaces verdict box):**
-Chain · License · Provably-fair status + audit link · KYC policy ·
-Withdrawal time · Last verified date. Facts only, sourced, dated.
-No editorial opinion until sourced verdicts exist. When they do, add a
-clearly-dated **"Editorial note"** section *below* the facts.
-
-**News / blog:** **Deferred.** No author, no cadence, no content. Do not
-design templates in v1. Add in a future Phase 2b.
+**Review page "At a Glance" panel (replaces the verdict box):** facts only,
+sourced, dated, each with its status tag. No editorial opinion until sourced
+verdicts exist. When they do, add a clearly-dated **"Editorial note"** section
+*below* the facts.
 
 **Bylines:** No named authors → no byline strip. Replace with
 **"Last verified: {date}"** + link to methodology. Add a named byline only
 when a named reviewer exists.
+
+**News/blog deferred** until author and cadence exist. No template in v1.
 
 ---
 
 ## 3. References & Anti-References
 
 **Aspirational (match structure, not skin):**
-- Wirecutter — review structure, facts panels, methodology page
-- DefiLlama — clean data density, factual tables
-- <!-- FILL IN: 2–3 URLs from review-site-notes.md -->
+- **Bitcoin.com** (list page + "How We Rate") — PRIMARY domain reference.
+  URL as recorded in `review-site-notes.md`: `bitcoin.com/gambling/casino/`.
+  **UNVERIFIED:** the fetch failed on 2026-11-22 (DNS; host not reachable from
+  the research session), so the URL is not confirmed live, the "How We Rate"
+  URL is unknown, and the features below are second-hand from the notes.
+  URL verified by user: [I will paste the confirmed URL and any correction to
+  the copy/must-not-copy notes in my next message.]
+  - Copy (structure only): disclosure box first (18+, how money works, link to
+    policy); last-updated / published dates; "On This Page" contents list;
+    method page with register check, re-check rule, corrections route and
+    dated policy changes.
+  - Do not copy: scores and sub-scores; "Top picks" / ranked table /
+    "Best for"; Visit Site buttons; named author / fact-checker bylines
+    (none exist here).
+- Wirecutter — editorial review structure, facts-first layout, methodology
+  page, no aggregate scores. Secondary structural reference.
+- DefiLlama — data density, factual tables, no decorative styling. Third
+  reference.
 
 **Anti-references (explicitly avoid):**
 - Generic casino affiliate sites: neon gradients, spinning banners,
@@ -88,38 +98,42 @@ anti-references.
   Data viz gets its own palette.
 - **Spacing:** 8px base unit.
 - **Dark mode:** default (crypto audience), must pass WCAG AA contrast.
-- **Tokens:** **CSS custom properties in `:root`** (in `styles.css` or a
-  `<style>` block). **No runtime Tailwind CDN. No continuous canvas loop.**
-- **Components to define:** review card, "At a Glance" facts panel,
-  **status badge (verified/unverified/review)**, comparison row,
-  disclosure banner.
+- **Components to define:** review card, "At a Glance" facts panel, comparison
+  row, status badge (checked / stated / unverified / unknown), disclosure
+  banner.
 - **Terminology:** "rating badge" → **status badge**; "how we rate" →
-  **"how we verify"**; "rating methodology" → **verification methodology**.
+  **"how we review"**; "rating methodology" → **review methodology**.
+- **Stack:** plain CSS with custom properties in `:root` (`styles.css` or a
+  `<style>` block). No runtime Tailwind CDN. No continuous canvas loop.
+- **URL / file convention:** each casino review is `/review/{casino}/index.html`
+  (directory per casino), served as `/review/{casino}/` on static hosts
+  (GitHub Pages, Netlify, Vercel, Cloudflare Pages) with no rewrites and no
+  build step.
+- **Analytics:** none for v1. LCP / CLS measured locally with Lighthouse before
+  Phase 6 ships.
+- **Accessibility baseline:** 16px body copy, visible focus, 44px tap targets,
+  reduced-motion support, works at 320px wide.
 
 ---
 
 ## 5. Phases (gate each one — do not proceed until approved)
 
-- [ ] **Phase 1 — Audit:** Read `index.html` and `review-site-notes.md` in full.
-  Output: page list, content type map, and **discrepancy findings** — including
-  catalog counts ("10 guides" vs actual) and missing anchors
-  (e.g. `#hub-01-regulation`). Report only. **Do not fix.** WAIT FOR APPROVAL.
-- [ ] **Phase 2 — IA Proposal:** Sitemap, nav, per-template page specs.
-  Output: written spec. WAIT FOR APPROVAL.
-- [ ] **Phase 3 — Design System:** Tokens (CSS custom properties), type scale,
-  component specs. Output: style guide + token block. WAIT FOR APPROVAL.
-- [ ] **Phase 4 — Wireframes:** One annotated text/ASCII wireframe per
+- [x] **Phase 1 — Audit:** Inventory index.html, review-site-notes.md, and
+  current pages. Output: page list + content type map. Report catalog and link
+  discrepancies (counts, missing anchors such as `#hub-01-regulation`); do not
+  fix them.
+- [ ] **Phase 2 — IA Proposal:** Sitemap, nav, page templates. Output: written
+  spec. WAIT FOR APPROVAL.
+- [ ] **Phase 3 — Design System:** Tokens, components, type scale. Output: style
+  guide + CSS custom properties. WAIT FOR APPROVAL.
+- [ ] **Phase 4 — Wireframes:** One low-fidelity annotated wireframe per
   template. WAIT FOR APPROVAL.
-- [ ] **Phase 5 — Visual Design:** High-fidelity spec per template.
-  WAIT FOR APPROVAL.
-- [ ] **Phase 6 — Build:** Implement each template as its **own `.html`
-  file**. Reviews use **path URLs** (`/review/{casino}`), not hash routes.
-  All colors/spacing/type from Phase 3 CSS custom properties — no hardcoded
-  hex or magic spacing. **Catalog corrections: implement only human-approved
-  changes decided between phases. Do not invent content or silently fix
-  counts/links.**
-- [ ] **Phase 7 — QA:** Accessibility, responsive, performance against
-  Section 6.
+- [ ] **Phase 5 — Visual Design:** High-fidelity per template. WAIT FOR APPROVAL.
+- [ ] **Phase 6 — Build:** Implement each template as its own .html file
+  (separate .html files; reviews at `/review/{casino}/index.html`, served as
+  `/review/{casino}/`, not hash routes; no build step). All colors, spacing, and type come from CSS custom properties
+  defined in Phase 3. Apply only human-approved catalog/link corrections.
+- [ ] **Phase 7 — QA:** Accessibility, responsive, performance.
 
 Never jump from Phase 1 straight to Phase 6. Human review required at every gate.
 
@@ -129,8 +143,9 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 
 - [ ] LCP < 2.5s mobile, CLS < 0.1
 - [ ] WCAG 2.1 AA contrast + keyboard nav on all templates
-- [ ] Every review page shows above the fold: **verification status per
-      dimension**, methodology link, last-verified date, disclosure line
+- [ ] Every review page shows above the fold: verification status (per-field
+      Checked / Stated / Unverified / Unknown), methodology link,
+      last-verified date, affiliate / money disclosure, 18+ notice
 - [ ] Comparison tables readable at 375px width; **unranked**; sortable
 - [ ] No aggregate score, star, or ranking anywhere in UI or markup
 - [ ] All CTAs labeled with destination/offer, never "Click here"
@@ -146,9 +161,9 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 - [ ] Do NOT mimic casino UI (slot animations, chip icons, dice-roll
       displays) in the review interface — editorial layer stays visually
       distinct from reviewed products.
-- [ ] **Verification methodology** visible and consistent across all reviews.
+- [ ] **Review methodology** visible and consistent across all reviews.
 - [ ] Per-dimension statuses are sourced; unsourced dimensions show
-      "Unverified," never a guess.
+      "Unverified" or "Unknown" (per the Section 2 definitions), never a guess.
 
 ---
 
@@ -160,3 +175,53 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 - Letting the coder silently fix catalog accuracy — that is editorial truth
   and requires a human gate.
 - Falling back to the retired dark/purple/glass look.
+
+Follow the phases. When in doubt, re-read this file.
+
+---
+
+## 9. Decisions Log
+
+Phase 1 approved, Phase 2 not yet started.
+
+**Resolved**
+1. **Affiliate / ads:** no to both. Non-affiliate at launch, no ad slots.
+   Disclosure: "No affiliate relationships exist at time of writing."
+2. **Rule 4:** edited in place in `CLAUDE.md` (redesign supersedes the
+   pre-redesign look once a template ships from Phase 5 approval).
+3. **Architecture:** separate `.html` files, one per template. Reviews use path
+   URLs (`/review/{casino}`), not hash routes.
+4. **Tailwind CDN:** dropped. Plain CSS with custom properties. No continuous
+   canvas loop.
+5. **News/blog:** deferred until author and cadence exist. No template in v1.
+6. **"10 guides" counts / `#hub-01-regulation`:** report in Phase 1, do not fix.
+   The human decides per item between Phase 1 and Phase 6; the coder
+   implements approved corrections in Phase 6 only.
+7. **Catalog accuracy:** same gate as 6.
+8. **Section 3 competitor URLs:** left as a placeholder. The human will fill
+   them in before Phase 1.
+9. **"Checked" narrowed to register-only (Q3).** Content decision, gated into
+   Phase 6; not a Phase 2 IA decision. Methodology text: "Checked" means we
+   read the regulator's public register and confirmed the license, not that
+   the casino's site says so.
+10. **Hosting and URLs (Q4).** `/review/{casino}/index.html`, plain HTML + CSS
+    custom properties, no build step, no analytics in v1 (Lighthouse locally).
+11. **Section 3 references (Q1).** Bitcoin.com primary, Wirecutter secondary,
+    DefiLlama third. See entries 13 to 15.
+12. **`#report-modal` ("5 Defining Shifts") cut in Phase 2** (decision to cut,
+    not defer-and-keep): unsourced, undated, no 18+ line, no fit to a
+    Section 2 type.
+13. **Crypto Casino Scan:** dropped — no verifiable URL; not findable by web
+    search.
+14. **CryptoCasinoRank:** dropped — ranking-based; referencing it invites
+    reintroducing ranked tables.
+15. **Bitcoin.com:** pending user verification of URL and page structure.
+
+**Content backlog for Phase 6 (human-gated; coder acts only on approved items)**
+- Rewrite the methodology "Checked" definition to register-only.
+- Re-classify the 56 unsourced catalog entries: "Stated" if the casino states
+  it and we have not verified it, "Unknown" if nobody sourced it. Same gate as
+  the catalog count and link corrections.
+- Phase 2 IA must support the honest state: the review template shows all four
+  statuses, including "Unknown" as a visible tag (the audit found Unknown
+  currently never renders). Phase 2 does not do the re-classification.

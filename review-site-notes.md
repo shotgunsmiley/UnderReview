@@ -62,6 +62,7 @@ Sources: public listings and demos of directory/listing templates (MyListing on 
 
 - Unranked directory: no stars, scores, "top pick" badges or leaderboards, even though many templates have star ratings and promoted/featured slots.
 - No invented facts or "verified" badges; keep the unverified status labels.
+- *Superseded by Phase 1 audit and DESIGN_BRIEF.md Section 9: the redesign drops the single-file Tailwind-CDN approach and anchor-id navigation (separate `.html` files, plain CSS custom properties, path URLs). Kept below as history.*
 - Keep: `#casino-directory-30` and other anchor ids, the single-file Tailwind-CDN + vanilla-JS approach, the 60-entry catalog, the 18+ notices and helpline links.
 
 ---

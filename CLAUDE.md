@@ -6,6 +6,8 @@ AETHER//09: an independent, unranked research and review website for web3 / cryp
 
 ## How it is built (what actually exists)
 
+> **Pre-redesign only.** This section describes how the live site works today: one static page, Tailwind CDN, anchor-link navigation. It stays accurate until the redesign ships. The redesign rules below ("Redesign in progress") replace it for new work: separate `.html` files, path URLs, plain CSS with custom properties, no runtime Tailwind.
+
 This is a **single static HTML page with no build step and no backend**. There is no package.json, framework, bundler, database, or CMS. The folder is a git repository (GitHub: shotgunsmiley/web3-casino-reviews); work happens on a development branch and reaches `main` through a pull request.
 
 - **Markup and styling:** Tailwind CSS via the CDN script (`https://cdn.tailwindcss.com`), configured inline in a `tailwind.config` block in `<head>` (custom colors `void`, `obsidian`, `prism`, `cyber`, `emeraldNeon`; fonts Inter, Plus Jakarta Sans, JetBrains Mono). A `<style>` block adds custom classes: `.liquid-glass`, `.glass-card`, `.plain-english`, `.editorial-gradient`, `.reveal-up`, `.arch-filter-btn`, `.nav-link`, `.view-toggle-btn`, `.pill-row`, scrollbar styles, focus-visible rings, a 16px body-copy rule, 44px tap targets, the compact-list view rules and `prefers-reduced-motion` rules.
@@ -23,7 +25,7 @@ This is a **single static HTML page with no build step and no backend**. There i
 └── .claude/agents/        architect.md, editor.md, researcher.md and coder.md: the subagents used for upgrade loops (architect plans, editor reviews and requests research, researcher looks up facts with sources, coder applies the approved edits). They cannot call each other; the main session passes messages between them.
 ```
 
-Only `index.html` is the product. Treat everything else as notes or tooling and do not edit it as part of site work. (Older backups, screenshots and scratch tools mentioned in earlier versions of this file are not in the repo.)
+Only `index.html` is the product (pre-redesign only). Treat everything else as notes or tooling and do not edit it as part of site work. (Older backups, screenshots and scratch tools mentioned in earlier versions of this file are not in the repo.)
 
 ### Inside index.html (top to bottom)
 
@@ -113,13 +115,16 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 7. Do not add a new category or batch option unless asked. If one is needed, a category requires a `categoryMeta` entry and a filter button (`data-arch-filter`), and a batch requires a new `<option>` in `#casino-cohort-select`.
 8. Check that the page still works: no duplicate element ids, no console errors, the new card appears, its modal opens (focus moves in, Esc closes it), and search and filters still find it.
 
+Catalog's future home in the multi-file build (separate .html, data file, or JSON) is a Phase 2 decision. Do not carry the inline web3CasinosCatalog into Phase 6 without an explicit Phase 2 decision.
+
 ## Rules
 
 1. **Never invent facts, ratings, bonuses or licenses.** Only state what you have verified from a source you actually read. If data is missing, mark it `unverified`. Do not add star ratings, scores, rankings, "top pick" badges or featured/promoted slots; the directory is unranked by design.
 2. **Affiliate links must be labeled as affiliate links.** There are currently no affiliate links. The only outbound links are "Sources" links in the casino detail modal, pointing to regulator register pages or to a casino's own terms and help pages. They are plain reference links (`rel="noopener noreferrer"`), and the directory notice and the methodology section say so. If any affiliate link is added, label each one clearly as an affiliate link next to the link, add `rel="sponsored noopener noreferrer"`, update that notice, and keep affiliate status from influencing order or wording of reviews.
 3. **Every page shows an 18+ / responsible gambling notice.** Every page, including any page added in the future, must show it visibly, not only in a hub section. Current state: it appears in the hero, the directory notice box, the casino detail modal, the Pillar 05 badge and the footer (with helpline links). Keep the helpline links in Pillar 05 and the footer intact, and include the notice on any new page from the start.
-4. **Keep the existing design and code style.** Do not rebuild or restructure things unless asked. Keep the single-file, Tailwind-CDN, vanilla-JS approach. Reuse existing classes and patterns (`glass-card`, `plain-english`, `font-mono` labels, `reveal-up`) instead of introducing new ones. Make the smallest change that does the job. Keep accessibility: 16px body copy, visible focus, 44px tap targets, reduced-motion support, works at 320px wide.
-5. When changing code, send the whole updated `index.html` back to the user rather than snippets. They work from a phone and cannot apply partial edits.
+4. **Preserve the existing design until the redesign replaces it.** Once a template ships from Phase 5 approval, that template's new design is authoritative. Do not revert to the pre-redesign look (dark/purple/glass/gradient, dice-roll display) — it is an anti-reference in DESIGN_BRIEF.md Section 3.
+4b. **Accessibility baseline:** 16px body copy, visible focus, 44px tap targets, reduced-motion support, works at 320px wide. Applies to every template, pre- and post-redesign.
+5. (Pre-redesign only.) When changing code, send the whole updated `index.html` back to the user rather than snippets. They work from a phone and cannot apply partial edits.
 
 ## Known open issues (do not "fix" without being asked)
 
@@ -131,49 +136,49 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 - Facts still unread (the tools could not read these pages): BC.Game on the Anjouan register and its current terms body; the Malta Gaming Authority register (so Vbet's former "Malta sandbox" claim is replaced, not proven false); coin and network lists for Stake and Vbet; the rest of Cloudbet's cryptocurrencies page and its withdrawal help pages.
 - `b2-28-cloudbet-turnover` still says "Curaçao License (Since 2013)" and `b1-cloudbet` strengths still list "Multi-year operating history"; both are unsourced original text.
 - On the Curaçao Gaming Authority register, Stake and Cloudbet showed status "Assessment in progress" (not Active) when read on 2026-11-22; statuses may have changed.
----
 
 ---
 
 ## ⚠️ Redesign in progress
 
-This repo is undergoing a full redesign. Before doing ANY layout, styling,
+This repo is undergoing a full redesign. Before doing ANY layout, styling, 
 component, or page work:
 
 1. Read `DESIGN_BRIEF.md` in full.
 2. Confirm which phase we are in (checklist in Section 5 of the brief).
 3. Work on the current phase only. Stop at the gate for human approval.
 
-### Amendments to existing rules
+### Rules in force (design scope)
 
-- **Rule 1 (confirmed, reinforced):** No aggregate scores, stars, or rankings.
-  Redesign replaces rating terminology with **verification status**
-  (Verified / Unverified / Under review per dimension). See DESIGN_BRIEF.md
-  Sections 2, 4, 6.
-- **Rule 4 (amended):** Preserve existing design *until the redesign replaces
-  it*. Once a template ships from Phase 5 approval, that template's new design
-  is authoritative. Do not revert to the pre-redesign look (dark/purple/glass/
-  gradient, dice-roll display) — it is an anti-reference.
+- **No aggregate scores, stars, or rankings.** Use **verification status** 
+  (Checked / Stated / Unverified / Unknown per field) instead. 
+  See DESIGN_BRIEF.md Sections 2, 4, 6.
+- **Redesign supersedes the pre-redesign look.** Once a template ships 
+  from Phase 5 approval, that template's new design is authoritative. 
+  Do not revert to the dark/purple/glass/gradient/dice-roll aesthetic — 
+  it is an anti-reference.
 
 ### Hard rules
 
-- **Do not skip phases.** If asked to "just make it look good," refuse and
-  point back to the phase checklist.
-- **Do not invent visual direction.** Use references in Section 3 of the brief;
-  avoid anti-references.
-- **Editorial layer ≠ casino UI.** Never mimic slot animations, chip icons, or
-  casino branding.
-- **Tokens before styles.** Phase 3+ uses CSS custom properties only. No
-  hardcoded hex. No runtime Tailwind CDN. No continuous canvas loop.
-- **No scores, no stars, no rankings, ever.** Use verification status.
-- **Disclosure is non-negotiable.** Non-affiliate wording until a real
-  monetized link exists. Above the fold on review and comparison pages.
-- **No ad slots.** No ads planned; do not reserve space for them.
-- **Catalog accuracy is editorial truth.** Phase 1 reports discrepancies
-  (counts, missing anchors like `#hub-01-regulation`). Coder implements only
-  human-approved corrections in Phase 6. Never invent content or silently
-  "fix" counts/links.
+- **Process rule:** If a message contains a 'show me X before applying' step alongside 'apply Y' steps, pause at the 'show me' step. Explicit per-step instructions override umbrella phrases like 'one pass.'
+- **Do not skip phases.** If asked to "just make it look good," refuse 
+  and point back to the phase checklist.
+- **Do not invent visual direction.** Use references in Section 3 of the 
+  brief; avoid anti-references.
+- **Editorial layer ≠ casino UI.** Never mimic slot animations, chip 
+  icons, dice-roll displays, or casino branding in the review interface.
+- **Tokens before styles.** Phase 3+ uses CSS custom properties only. 
+  No hardcoded hex. No runtime Tailwind CDN. No continuous canvas loop.
+- **No ads, no ad slots.** Not planned. Do not reserve space for them.
+- **Disclosure.** "No affiliate relationships exist at time of writing." 
+  Above the fold on review and comparison pages.
+- **Catalog accuracy is editorial truth.** Phase 1 reports discrepancies 
+  (counts, missing anchors like `#hub-01-regulation`). Coder implements 
+  only human-approved corrections in Phase 6. Never invent content or 
+  silently "fix" counts/links.
 - **News/blog deferred.** Do not design or build blog templates in v1.
+- **Separate pages, path URLs.** Reviews use `/review/{casino}`, not 
+  hash routes. Phase 6 builds each template as its own `.html` file.
 
 ### Session start checklist
 
@@ -183,6 +188,7 @@ When a new session begins, before writing code:
 - [ ] Confirm no unresolved conflicts from the previous phase
 
 ### Redesign phase ownership
+
 - **architect** produces output for ONE phase at a time.
 - **editor** reviews against DESIGN_BRIEF.md and approves or rejects per phase.
 - **researcher** gathers competitor/accessibility/disclosure references when asked.
