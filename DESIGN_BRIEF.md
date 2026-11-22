@@ -68,9 +68,8 @@ anti-references.
 
 ## 5. Phases (gate each one — do not proceed until approved)
 
-- [x] **Phase 1 — Audit:** Inventory index.html, review-site-notes.md, and
-  current pages. Output: page list + content type map. (Done; conflicts
-  resolved per Section 9.)
+- [ ] **Phase 1 — Audit:** Inventory index.html, review-site-notes.md, and
+  current pages. Output: page list + content type map.
 - [ ] **Phase 2 — IA Proposal:** Sitemap, nav, page templates. Output: written
   spec. WAIT FOR APPROVAL.
 - [ ] **Phase 3 — Design System:** Tokens, components, type scale. Output: style
@@ -116,29 +115,6 @@ Follow the phases. When in doubt, re-read this file.
 
 ---
 
-## 9. Phase 1 Decisions (log)
+## 9. Status
 
-**Resolved**
-- **Unranked stays.** `CLAUDE.md` Rule 1 overrides the original score /
-  sub-score / ranking requirements. No scores, stars, rankings, "top pick"
-  badges or featured slots.
-- **Verification-status model adopted.** Per-field status (Checked / Stated /
-  Unverified / Unknown) replaces scores. In the Section 2/4/6/7 text:
-  "verdict box" -> verification-status box, "rating badge" ->
-  verification-status badge, "how we rate" -> "how we review",
-  "comparison table / ranking" -> unranked comparison table.
-- Above-the-fold on every review and comparison page: verification status,
-  methodology link, last-verified date, affiliate / money disclosure, 18+ notice.
-
-**Still open (decide before or during Phase 2; do not assume)**
-- Are affiliate links or ads planned? (decides disclosure wording, CTAs, ad slots)
-- Does the redesign override `CLAUDE.md` Rule 4 (keep existing design)?
-- Single `index.html` with sections/modals, or separate pages / hash-routed
-  review URLs?
-- Is Tailwind CDN still required, given the token and LCP criteria?
-- News/blog: in scope now or deferred?
-- Handling of the "10 guides" counts and the missing `#hub-01-regulation`
-  (CLAUDE.md: leave as-is unless asked).
-- Catalog accuracy issues from the Phase 1 audit: fix before the redesign, or
-  carry into Phase 6?
-- Section 3: competitor URLs still to be added from `review-site-notes.md`.
+Phase 1 not yet started.
