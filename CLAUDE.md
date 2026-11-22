@@ -133,37 +133,60 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 - On the Curaçao Gaming Authority register, Stake and Cloudbet showed status "Assessment in progress" (not Active) when read on 2026-11-22; statuses may have changed.
 ---
 
+---
+
 ## ⚠️ Redesign in progress
 
 This repo is undergoing a full redesign. Before doing ANY layout, styling,
 component, or page work:
 
 1. Read `DESIGN_BRIEF.md` in full.
-2. Confirm which phase we are in (check the checklist in Section 5 of the brief).
-3. Only work on the current phase. Stop at the gate for human approval.
+2. Confirm which phase we are in (checklist in Section 5 of the brief).
+3. Work on the current phase only. Stop at the gate for human approval.
+
+### Amendments to existing rules
+
+- **Rule 1 (confirmed, reinforced):** No aggregate scores, stars, or rankings.
+  Redesign replaces rating terminology with **verification status**
+  (Verified / Unverified / Under review per dimension). See DESIGN_BRIEF.md
+  Sections 2, 4, 6.
+- **Rule 4 (amended):** Preserve existing design *until the redesign replaces
+  it*. Once a template ships from Phase 5 approval, that template's new design
+  is authoritative. Do not revert to the pre-redesign look (dark/purple/glass/
+  gradient, dice-roll display) — it is an anti-reference.
 
 ### Hard rules
+
 - **Do not skip phases.** If asked to "just make it look good," refuse and
   point back to the phase checklist.
-- **Do not invent visual direction.** Use the references in Section 3 of the
-  brief. Avoid the anti-references.
-- **Editorial layer ≠ casino UI.** The review interface must never mimic slot
-  animations, chip icons, or casino branding.
-- **Tokens before styles.** In Phase 3+, all colors/spacing/type come from CSS
-  custom properties. No hardcoded hex values in components.
-- **Reserve ad space.** All ad slots must have fixed dimensions to prevent CLS.
-- **Disclosure is non-negotiable.** Affiliate disclosure renders above the fold
-  on every review and comparison page.
+- **Do not invent visual direction.** Use references in Section 3 of the brief;
+  avoid anti-references.
+- **Editorial layer ≠ casino UI.** Never mimic slot animations, chip icons, or
+  casino branding.
+- **Tokens before styles.** Phase 3+ uses CSS custom properties only. No
+  hardcoded hex. No runtime Tailwind CDN. No continuous canvas loop.
+- **No scores, no stars, no rankings, ever.** Use verification status.
+- **Disclosure is non-negotiable.** Non-affiliate wording until a real
+  monetized link exists. Above the fold on review and comparison pages.
+- **No ad slots.** No ads planned; do not reserve space for them.
+- **Catalog accuracy is editorial truth.** Phase 1 reports discrepancies
+  (counts, missing anchors like `#hub-01-regulation`). Coder implements only
+  human-approved corrections in Phase 6. Never invent content or silently
+  "fix" counts/links.
+- **News/blog deferred.** Do not design or build blog templates in v1.
 
 ### Session start checklist
+
 When a new session begins, before writing code:
 - [ ] Re-read `DESIGN_BRIEF.md` (context may have compacted)
 - [ ] State which phase we're in and what the next gate is
-- [ ] Ask for any missing inputs (stack, analytics, competitor URLs, etc.)
+- [ ] Confirm no unresolved conflicts from the previous phase
 
 ### Redesign phase ownership
 - **architect** produces output for ONE phase at a time.
 - **editor** reviews against DESIGN_BRIEF.md and approves or rejects per phase.
 - **researcher** gathers competitor/accessibility/disclosure references when asked.
-- **coder** implements only approved phase instructions, using tokens from Phase 3.
-- The **human** is the gate between every phase.
+- **coder** implements only approved phase instructions; separate `.html` files;
+  path URLs for reviews; Phase 3 tokens only.
+- The **human** is the gate between every phase — and the sole decider on
+  catalog accuracy corrections.
