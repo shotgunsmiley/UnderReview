@@ -6,6 +6,8 @@ AETHER//09: an independent, unranked research and review website for web3 / cryp
 
 ## How it is built (what actually exists)
 
+> **Pre-redesign only.** This section describes how the live site works today: one static page, Tailwind CDN, anchor-link navigation. It stays accurate until the redesign ships. The redesign rules below ("Redesign in progress") replace it for new work: separate `.html` files, path URLs, plain CSS with custom properties, no runtime Tailwind.
+
 This is a **single static HTML page with no build step and no backend**. There is no package.json, framework, bundler, database, or CMS. The folder is a git repository (GitHub: shotgunsmiley/web3-casino-reviews); work happens on a development branch and reaches `main` through a pull request.
 
 - **Markup and styling:** Tailwind CSS via the CDN script (`https://cdn.tailwindcss.com`), configured inline in a `tailwind.config` block in `<head>` (custom colors `void`, `obsidian`, `prism`, `cyber`, `emeraldNeon`; fonts Inter, Plus Jakarta Sans, JetBrains Mono). A `<style>` block adds custom classes: `.liquid-glass`, `.glass-card`, `.plain-english`, `.editorial-gradient`, `.reveal-up`, `.arch-filter-btn`, `.nav-link`, `.view-toggle-btn`, `.pill-row`, scrollbar styles, focus-visible rings, a 16px body-copy rule, 44px tap targets, the compact-list view rules and `prefers-reduced-motion` rules.
@@ -23,7 +25,7 @@ This is a **single static HTML page with no build step and no backend**. There i
 └── .claude/agents/        architect.md, editor.md, researcher.md and coder.md: the subagents used for upgrade loops (architect plans, editor reviews and requests research, researcher looks up facts with sources, coder applies the approved edits). They cannot call each other; the main session passes messages between them.
 ```
 
-Only `index.html` is the product. Treat everything else as notes or tooling and do not edit it as part of site work. (Older backups, screenshots and scratch tools mentioned in earlier versions of this file are not in the repo.)
+Only `index.html` is the product (pre-redesign only). Treat everything else as notes or tooling and do not edit it as part of site work. (Older backups, screenshots and scratch tools mentioned in earlier versions of this file are not in the repo.)
 
 ### Inside index.html (top to bottom)
 
@@ -119,7 +121,8 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 2. **Affiliate links must be labeled as affiliate links.** There are currently no affiliate links. The only outbound links are "Sources" links in the casino detail modal, pointing to regulator register pages or to a casino's own terms and help pages. They are plain reference links (`rel="noopener noreferrer"`), and the directory notice and the methodology section say so. If any affiliate link is added, label each one clearly as an affiliate link next to the link, add `rel="sponsored noopener noreferrer"`, update that notice, and keep affiliate status from influencing order or wording of reviews.
 3. **Every page shows an 18+ / responsible gambling notice.** Every page, including any page added in the future, must show it visibly, not only in a hub section. Current state: it appears in the hero, the directory notice box, the casino detail modal, the Pillar 05 badge and the footer (with helpline links). Keep the helpline links in Pillar 05 and the footer intact, and include the notice on any new page from the start.
 4. **Preserve the existing design until the redesign replaces it.** Once a template ships from Phase 5 approval, that template's new design is authoritative. Do not revert to the pre-redesign look (dark/purple/glass/gradient, dice-roll display) — it is an anti-reference in DESIGN_BRIEF.md Section 3.
-5. When changing code, send the whole updated `index.html` back to the user rather than snippets. They work from a phone and cannot apply partial edits.
+4b. **Accessibility baseline:** 16px body copy, visible focus, 44px tap targets, reduced-motion support, works at 320px wide. Applies to every template, pre- and post-redesign.
+5. (Pre-redesign only.) When changing code, send the whole updated `index.html` back to the user rather than snippets. They work from a phone and cannot apply partial edits.
 
 ## Known open issues (do not "fix" without being asked)
 
@@ -146,7 +149,7 @@ component, or page work:
 ### Rules in force (design scope)
 
 - **No aggregate scores, stars, or rankings.** Use **verification status** 
-  (Verified / Unverified / Under review per dimension) instead. 
+  (Checked / Stated / Unverified / Unknown per field) instead. 
   See DESIGN_BRIEF.md Sections 2, 4, 6.
 - **Redesign supersedes the pre-redesign look.** Once a template ships 
   from Phase 5 approval, that template's new design is authoritative. 
