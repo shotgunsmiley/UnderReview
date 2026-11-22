@@ -56,6 +56,7 @@
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
       outline: 2px solid #22D3EE; outline-offset: 2px;
     }
+    [data-jump-target]:focus { outline: none; }
 
     body {
       background-color: #050507;
@@ -449,7 +450,7 @@
       <div class="plain-english rounded-2xl p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
         <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">Unranked neutrality notice</strong>Platforms and feature editions are organized into descriptive categories for neutral educational comparison, not ranked, scored, or ordered by quality. Where an entry in the second batch focuses on a specific feature of a platform already in the first set (#23–#30), that relationship is explicitly labeled.</p>
         <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">What this directory is</strong>A plain-English description of each platform's custody model, licensing, verification (KYC) and payments, grouped by category. <strong class="text-white">What it is not:</strong> a ranking, a recommendation, a safety rating, or confirmation that a platform is legal where you live.</p>
-        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: unverified</strong>The licence, KYC and feature details below were written without cited sources and have no "last checked" date yet. Treat every entry as unverified and confirm it on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit".</p>
+        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: mostly unverified</strong>Most licence, KYC and feature details below were written without cited sources and have no "last checked" date. A few entries are marked "Partly checked" or "Casino-stated only": some of their fields have linked sources and a date, and every other field stays unverified. Confirm details on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit". <a href="#how-we-review" class="underline hover:text-white">How we review</a></p>
         <p class="text-sm text-slate-200"><strong class="block text-emerald-300 font-mono uppercase text-xs mb-1">Links &amp; money · 18+ only</strong>This directory contains no affiliate links. Some entries list "Sources" links to a regulator's public register or to the casino's own terms or help pages. These are plain reference links, not affiliate links, and earn nothing. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
       </div>
     </div>
@@ -1538,11 +1539,11 @@
       toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
 
       let lastFocusedEl = null;
-      function closeModal(modal) {
+      function closeModal(modal, opts = {}) {
         if (modal.classList.contains('hidden')) return;
         modal.classList.add('hidden');
         document.body.style.overflow = '';
-        if (lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus();
+        if (!opts.skipFocusRestore && lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus({ preventScroll: true });
         lastFocusedEl = null;
       }
       const reportModal = document.getElementById('report-modal');
@@ -2577,6 +2578,7 @@
       }
       function esc(v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
       function isPartlyChecked(p) { return Array.isArray(p.sources) && p.sources.length > 0 && typeof p.lastVerified === 'string' && p.lastVerified.trim() !== ''; }
+      function hasCheckedField(p) { return Array.isArray(p.checked) && p.checked.length > 0; }
       const compareIds = [];
       const MAX_COMPARE = 3;
       const compareTray = document.getElementById('compare-tray');
@@ -2655,9 +2657,12 @@
         const hasSources = Array.isArray(platform.sources) && platform.sources.length > 0;
         const partly = isPartlyChecked(platform);
         const statusEl = document.getElementById('modal-status');
-        statusEl.textContent = partly
-          ? 'STATUS: PARTLY CHECKED • Fields tagged "Checked" or "Stated by the casino" have a source listed below. Every other field is unverified or unknown.'
-          : 'STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator\'s site and the regulator\'s public register.';
+        const indep = partly && hasCheckedField(platform);
+        statusEl.textContent = indep
+          ? 'STATUS: PARTLY CHECKED • Fields tagged "Checked" were confirmed on a regulator register; fields tagged "Stated by the casino" come from the casino\'s own pages. Sources are listed below. Every other field is unverified or unknown.'
+          : partly
+            ? 'STATUS: CASINO-STATED ONLY • Fields tagged "Stated by the casino" come from the casino\'s own pages (listed below). No field has been confirmed on a regulator register. Every other field is unverified or unknown.'
+            : 'STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator\'s site and the regulator\'s public register.';
         statusEl.className = 'text-xs font-mono ' + (partly ? 'text-cyan-300' : 'text-amber-300');
         document.getElementById('modal-last-verified').textContent = platform.lastVerified || 'Not recorded yet';
         const srcEl = document.getElementById('modal-sources');
@@ -2705,6 +2710,19 @@
       });
       closePlatformBtn.addEventListener('click', () => closeModal(platformModal));
       platformModal.addEventListener('click', (e) => {
+        const link = e.target.closest('a[data-close-modal][href^="#"]');
+        if (link) {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            closeModal(platformModal, { skipFocusRestore: true });
+            history.pushState(null, '', link.getAttribute('href'));
+            if (!target.hasAttribute('tabindex')) { target.setAttribute('tabindex', '-1'); target.setAttribute('data-jump-target', ''); }
+            target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+            target.focus({ preventScroll: true });
+            return;
+          }
+        }
         if (e.target === platformModal || e.target.closest('[data-close-modal]')) closeModal(platformModal);
       });
 
@@ -2765,7 +2783,7 @@
                   <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">KYC</dt><dd class="text-base text-slate-100">${item.kyc}</dd></div>
                 </dl>
                 <p class="dir-card-summary text-sm text-slate-300 leading-relaxed">${item.summary}</p>
-                <p class="text-xs font-mono ${isPartlyChecked(item) ? 'text-emerald-300' : 'text-amber-300'}">${isPartlyChecked(item) ? `Partly checked · last verified ${item.lastVerified}` : 'Status: Unverified · no check date recorded'}</p>
+                <p class="text-xs font-mono ${isPartlyChecked(item) ? (hasCheckedField(item) ? 'text-emerald-300' : 'text-cyan-300') : 'text-amber-300'}">${isPartlyChecked(item) ? (hasCheckedField(item) ? `Partly checked · last verified ${esc(item.lastVerified)}` : `Casino-stated only · sources read ${esc(item.lastVerified)}`) : 'Status: Unverified · no check date recorded'}</p>
                 <div class="mt-auto pt-3 border-t border-white/10 flex flex-col gap-2">
                   <label class="compare-toggle inline-flex items-center gap-3 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-slate-200 cursor-pointer">
                     <input type="checkbox" class="compare-checkbox w-5 h-5 accent-cyan-400" data-compare-id="${item.id}" ${compareIds.includes(item.id) ? 'checked' : ''} />
