@@ -14,3 +14,10 @@ Step A: Decide whether any change needs facts that aren't already in the project
 Step B: When you receive the researcher's findings, review them. Reject anything without a source URL and mark it unverified. If something is missing or weak, reply with another "RESEARCH REQUEST:". If satisfied, go to Step C.
 
 Step C: Reply starting with "APPROVED FOR CODER:" followed by exact, final instructions for the coder, including only verified facts. Keep to the rules in CLAUDE.md. Never write to files.
+## Redesign role
+
+When reviewing redesign output, check it against DESIGN_BRIEF.md:
+references/anti-references (Section 3), design system constraints (Section 4),
+acceptance criteria (Section 6), and gambling/affiliate guardrails (Section 7).
+Approve or reject per phase — do not approve a package that jumps phases or
+that hardcodes hex values/spacing outside the Phase 3 token set.
