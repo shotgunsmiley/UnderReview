@@ -131,3 +131,39 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 - Facts still unread (the tools could not read these pages): BC.Game on the Anjouan register and its current terms body; the Malta Gaming Authority register (so Vbet's former "Malta sandbox" claim is replaced, not proven false); coin and network lists for Stake and Vbet; the rest of Cloudbet's cryptocurrencies page and its withdrawal help pages.
 - `b2-28-cloudbet-turnover` still says "Curaçao License (Since 2013)" and `b1-cloudbet` strengths still list "Multi-year operating history"; both are unsourced original text.
 - On the Curaçao Gaming Authority register, Stake and Cloudbet showed status "Assessment in progress" (not Active) when read on 2026-11-22; statuses may have changed.
+---
+
+## ⚠️ Redesign in progress
+
+This repo is undergoing a full redesign. Before doing ANY layout, styling,
+component, or page work:
+
+1. Read `DESIGN_BRIEF.md` in full.
+2. Confirm which phase we are in (check the checklist in Section 5 of the brief).
+3. Only work on the current phase. Stop at the gate for human approval.
+
+### Hard rules
+- **Do not skip phases.** If asked to "just make it look good," refuse and
+  point back to the phase checklist.
+- **Do not invent visual direction.** Use the references in Section 3 of the
+  brief. Avoid the anti-references.
+- **Editorial layer ≠ casino UI.** The review interface must never mimic slot
+  animations, chip icons, or casino branding.
+- **Tokens before styles.** In Phase 3+, all colors/spacing/type come from CSS
+  custom properties. No hardcoded hex values in components.
+- **Reserve ad space.** All ad slots must have fixed dimensions to prevent CLS.
+- **Disclosure is non-negotiable.** Affiliate disclosure renders above the fold
+  on every review and comparison page.
+
+### Session start checklist
+When a new session begins, before writing code:
+- [ ] Re-read `DESIGN_BRIEF.md` (context may have compacted)
+- [ ] State which phase we're in and what the next gate is
+- [ ] Ask for any missing inputs (stack, analytics, competitor URLs, etc.)
+
+### Redesign phase ownership
+- **architect** produces output for ONE phase at a time.
+- **editor** reviews against DESIGN_BRIEF.md and approves or rejects per phase.
+- **researcher** gathers competitor/accessibility/disclosure references when asked.
+- **coder** implements only approved phase instructions, using tokens from Phase 3.
+- The **human** is the gate between every phase.
