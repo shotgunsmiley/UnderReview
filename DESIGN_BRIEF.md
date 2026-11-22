@@ -27,9 +27,9 @@ Every page type must serve one clear user decision.
 
 | Page type | User decision it supports |
 |-----------|---------------------------|
-| Casino review (long-form + verdict box) | "Is this casino legitimate and worth my deposit?" |
-| Comparison table / ranking | "Which of these should I shortlist?" |
-| Methodology / "how we rate" | "Can I trust these ratings?" |
+| Casino review (long-form + verification-status box) | "Is this casino legitimate and worth my deposit?" |
+| Comparison table (unranked, same fields in the order picked) | "Which of these should I shortlist?" |
+| Methodology / "how we review" | "Can I trust what you show me?" |
 | Glossary (provably fair, RTP, house edge) | "What does this term mean before I act?" |
 | News / blog | "What changed that affects my choice?" |
 | Affiliate disclosure + responsible gambling | "What's the catch, and am I playing safely?" |
@@ -61,15 +61,16 @@ anti-references.
   its own palette.
 - **Spacing:** 8px base unit.
 - **Dark mode:** default (crypto audience), must pass WCAG AA contrast.
-- **Components to define:** review card, verdict box, comparison row, rating
-  badge, disclosure banner.
+- **Components to define:** review card, verification-status box, comparison
+  row, verification-status badge, disclosure banner.
 
 ---
 
 ## 5. Phases (gate each one — do not proceed until approved)
 
-- [ ] **Phase 1 — Audit:** Inventory index.html, review-site-notes.md, and
-  current pages. Output: page list + content type map.
+- [x] **Phase 1 — Audit:** Inventory index.html, review-site-notes.md, and
+  current pages. Output: page list + content type map. (Done; conflicts
+  resolved per Section 9.)
 - [ ] **Phase 2 — IA Proposal:** Sitemap, nav, page templates. Output: written
   spec. WAIT FOR APPROVAL.
 - [ ] **Phase 3 — Design System:** Tokens, components, type scale. Output: style
@@ -89,8 +90,9 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 
 - [ ] LCP < 2.5s mobile, CLS < 0.1
 - [ ] WCAG 2.1 AA contrast + keyboard nav on all templates
-- [ ] Every review page shows above the fold: overall score, sub-scores,
-      methodology link, last-updated date, affiliate disclosure
+- [ ] Every review page shows above the fold: verification status (per-field
+      Checked / Stated / Unverified / Unknown), methodology link,
+      last-verified date, affiliate / money disclosure, 18+ notice
 - [ ] Comparison tables readable at 375px width
 - [ ] No layout shift from ad slots (space reserved)
 - [ ] All CTAs labeled with destination/offer, never "Click here"
@@ -103,7 +105,7 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 - [ ] Age / responsible-gambling messaging placed deliberately.
 - [ ] Do NOT mimic casino UI (slot animations, chip icons) in the review
       interface — editorial layer stays visually distinct from reviewed products.
-- [ ] Rating methodology visible and consistent across all reviews.
+- [ ] Review methodology visible and consistent across all reviews.
 
 ---
 
@@ -111,3 +113,32 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 
 Skipping straight to "make it look good." That produces generic output.
 Follow the phases. When in doubt, re-read this file.
+
+---
+
+## 9. Phase 1 Decisions (log)
+
+**Resolved**
+- **Unranked stays.** `CLAUDE.md` Rule 1 overrides the original score /
+  sub-score / ranking requirements. No scores, stars, rankings, "top pick"
+  badges or featured slots.
+- **Verification-status model adopted.** Per-field status (Checked / Stated /
+  Unverified / Unknown) replaces scores. In the Section 2/4/6/7 text:
+  "verdict box" -> verification-status box, "rating badge" ->
+  verification-status badge, "how we rate" -> "how we review",
+  "comparison table / ranking" -> unranked comparison table.
+- Above-the-fold on every review and comparison page: verification status,
+  methodology link, last-verified date, affiliate / money disclosure, 18+ notice.
+
+**Still open (decide before or during Phase 2; do not assume)**
+- Are affiliate links or ads planned? (decides disclosure wording, CTAs, ad slots)
+- Does the redesign override `CLAUDE.md` Rule 4 (keep existing design)?
+- Single `index.html` with sections/modals, or separate pages / hash-routed
+  review URLs?
+- Is Tailwind CDN still required, given the token and LCP criteria?
+- News/blog: in scope now or deferred?
+- Handling of the "10 guides" counts and the missing `#hub-01-regulation`
+  (CLAUDE.md: leave as-is unless asked).
+- Catalog accuracy issues from the Phase 1 audit: fix before the redesign, or
+  carry into Phase 6?
+- Section 3: competitor URLs still to be added from `review-site-notes.md`.
