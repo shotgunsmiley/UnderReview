@@ -47,7 +47,7 @@ at. No aggregate scores, stars or rankings.
 ## 3. References & Anti-References
 
 **Aspirational (match these):**
-- Wirecutter — review structure, verdict boxes
+- Wirecutter — review structure, facts-first layout, methodology page
 - DefiLlama — clean data density
 - (add competitor URLs from review-site-notes.md here)
 
@@ -116,7 +116,8 @@ Never jump from Phase 1 straight to Phase 6. Human review required at every gate
 
 ## 7. Gambling / Affiliate Guardrails
 
-- [ ] Affiliate disclosure visually prominent, never buried.
+- [ ] Disclosure statement visually prominent, never buried. Currently states
+      no affiliate relationships exist; update the day a monetized link is added.
 - [ ] Age / responsible-gambling messaging placed deliberately.
 - [ ] Do NOT mimic casino UI (slot animations, chip icons) in the review
       interface — editorial layer stays visually distinct from reviewed products.

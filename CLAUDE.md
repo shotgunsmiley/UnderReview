@@ -115,6 +115,8 @@ Most entries carry **no source links, no verification dates, and no affiliate UR
 7. Do not add a new category or batch option unless asked. If one is needed, a category requires a `categoryMeta` entry and a filter button (`data-arch-filter`), and a batch requires a new `<option>` in `#casino-cohort-select`.
 8. Check that the page still works: no duplicate element ids, no console errors, the new card appears, its modal opens (focus moves in, Esc closes it), and search and filters still find it.
 
+Catalog's future home in the multi-file build (separate .html, data file, or JSON) is a Phase 2 decision. Do not carry the inline web3CasinosCatalog into Phase 6 without an explicit Phase 2 decision.
+
 ## Rules
 
 1. **Never invent facts, ratings, bonuses or licenses.** Only state what you have verified from a source you actually read. If data is missing, mark it `unverified`. Do not add star ratings, scores, rankings, "top pick" badges or featured/promoted slots; the directory is unranked by design.
@@ -158,6 +160,7 @@ component, or page work:
 
 ### Hard rules
 
+- **Process rule:** If a message contains a 'show me X before applying' step alongside 'apply Y' steps, pause at the 'show me' step. Explicit per-step instructions override umbrella phrases like 'one pass.'
 - **Do not skip phases.** If asked to "just make it look good," refuse 
   and point back to the phase checklist.
 - **Do not invent visual direction.** Use references in Section 3 of the 
