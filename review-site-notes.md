@@ -33,3 +33,33 @@ Research notes only (not part of the site). Based on what the sites and third-pa
 - Say what the site's own claims are based on and when they were last checked (honestly, including "not yet verified").
 - Make the directory easier to scan and navigate, especially on phones; add context sentences where a bare term or number needs one.
 - Label any affiliate link as one (none exist today).
+
+---
+
+# Premium template inspiration (design upgrade)
+
+Sources: public listings and demos of directory/listing templates (MyListing on ThemeForest, Directify's template gallery, Webflow/Framer directory template roundups) and 2026 web-design trend write-ups. I read marketing pages and one demo's page text; the paid demos were not opened or inspected in full. These are patterns to learn from, not designs to copy: no template code, text or assets are reused.
+
+## What premium directory templates do
+
+- **Explore page = filters + results + status.** A filter panel (category, custom-field filters), a "Showing X out of Y results" line, a visible Reset Filters, and "Load more" instead of endless dumps.
+- **View switching.** List / grid (and map) toggles; one template family ("Compact") is a dense list view that fits the most entries on screen, another ("Modern") groups curated homepage sections by category.
+- **Card anatomy with quick actions.** Each card has a category link, key facts and quick actions: Quick view, Bookmark, Add to comparison. A "Compare items (n)" tray appears once something is selected.
+- **Listing detail with tabs/blocks, related listings and breadcrumbs.** Structured sections instead of one long wall of text.
+- **Dark-first "glassy" look** (Directify "Stellar") and **bold gradient-friendly layouts with strong category art** ("Aurora") for premium brands.
+- **Filters that really work, CMS-style consistent entries,** and clean category structure that can grow.
+
+## 2026 design guidance worth applying
+
+- **Type leads.** Large, confident headlines; readable body: 16px or larger, line-height about 1.5 or more, line length roughly 50-75 characters.
+- **One accent colour on near-black.** Keeps a dark design coherent; grey text on near-black often fails contrast, so keep body text pale and give it weight; thin type looks thinner on dark.
+- **Bento only where tiles mean something.** Cell size should signal importance; do not split a long explanation into cards; keep DOM order equal to reading order so Tab order and screen readers match what people see; test down to 320px width.
+- **Calm, purposeful motion.** Feedback on buttons and panels is good; scroll-jacking, long entrance animations, carousels and custom cursors cost conversions and speed. Respect reduced-motion settings.
+- **Dark mode is a choice, not a costume.** Check contrast; sites that read a lot should keep reading areas calm.
+- **Accessible by default.** Visible focus states, tap targets, keyboard reachability for anything revealed on hover.
+
+## Constraints from CLAUDE.md that shape the redesign
+
+- Unranked directory: no stars, scores, "top pick" badges or leaderboards, even though many templates have star ratings and promoted/featured slots.
+- No invented facts or "verified" badges; keep the unverified status labels.
+- Keep: `#casino-directory-30` and other anchor ids, the single-file Tailwind-CDN + vanilla-JS approach, the 60-entry catalog, the 18+ notices and helpline links.

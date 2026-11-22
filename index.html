@@ -163,6 +163,39 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #333854;
     }
+
+    /* Readability: 16px minimum body copy, comfortable line length */
+    p.text-xs:not(.font-mono), p.text-sm:not(.font-mono), li, tbody td,
+    .hygiene-check + div > span.text-xs, #glossary-archive .border-l > div {
+      font-size: 1rem; line-height: 1.65;
+    }
+    .max-w-3xl > p, .max-w-2xl > p, #overview p.max-w-2xl, .plain-english p { max-width: 70ch; }
+    /* Keep titles larger than the 16px body copy under them */
+    #directory-grid h3, .glossary-item strong, .hygiene-check + div > span.text-sm { font-size: 1.125rem; line-height: 1.4; }
+    /* Hero stat tiles: small labels/captions, not body copy */
+    #overview .grid-cols-2 p:not(.text-2xl) { font-size: 0.8125rem; line-height: 1.4; max-width: none; }
+
+    /* Tap targets */
+    .arch-filter-btn, .dir-filter-btn, .chart-btn, .reg-btn, .view-toggle-btn,
+    .open-platform-btn, .expand-cat-btn, #casino-reset-btn, #casino-cohort-select { min-height: 44px; }
+
+    /* Compact list view for the directory */
+    #casino-directory-grid.is-compact .dir-cards { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+    #casino-directory-grid.is-compact .dir-card { padding: 1rem 1.25rem; gap: 0.5rem; }
+    #casino-directory-grid.is-compact .dir-card-summary { display: none; }
+    @media (min-width: 768px) {
+      #casino-directory-grid.is-compact .dir-card-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* Respect reduced-motion settings */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal-up { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -310,7 +343,7 @@
               <p class="text-[11px] text-slate-400 mt-1">Flags loss-chasing patterns</p>
             </div>
           </div>
-          <p class="text-[11px] font-mono text-slate-400">Figures are unsourced estimates and have not been verified.</p>
+          <p class="text-xs font-mono text-slate-400">Figures are unsourced estimates and have not been verified.</p>
 
         </div>
       </div>
@@ -322,7 +355,7 @@
     <div class="glass-card rounded-3xl p-6 sm:p-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
         <div>
-          <p class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400 mb-1.5">Permanent Knowledge Architecture</p>
+          <p class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300 mb-1.5">Permanent Knowledge Architecture</p>
           <h2 class="text-2xl sm:text-3xl font-bold text-white">10 Core Pillars of Modern &amp; Future iGaming</h2>
         </div>
         <!-- Category Filter Pills -->
@@ -336,53 +369,53 @@
 
       <div id="directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 pt-6">
         <a href="#hub-01-regulation" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-cyan-400">01 // LEGALITY</span>
+          <span class="text-xs font-mono text-cyan-300">01 // LEGALITY</span>
           <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Regulation &amp; Legality Tracker</h3>
           <p class="text-xs text-slate-400 mt-1">Country-by-country licenses &amp; rules</p>
         </a>
         <a href="#hub-02-provably-fair" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-violet-400">02 // FAIRNESS</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-violet-200">Provably Fair Explained</h3>
+          <span class="text-xs font-mono text-cyan-300">02 // FAIRNESS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Provably Fair Explained</h3>
           <p class="text-xs text-slate-400 mt-1">Seed hashes &amp; live roll verifier</p>
         </a>
         <a href="#hub-03-payments" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-emerald-400">03 // PAYMENTS</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-emerald-200">Blockchain &amp; Payment Rails</h3>
+          <span class="text-xs font-mono text-cyan-300">03 // PAYMENTS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Blockchain &amp; Payment Rails</h3>
           <p class="text-xs text-slate-400 mt-1">Stablecoins vs. L2 vs. bank cards</p>
         </a>
         <a href="#hub-04-smart-contracts" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-sky-400">04 // ON-CHAIN</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-sky-200">Smart Contract Casinos</h3>
+          <span class="text-xs font-mono text-cyan-300">04 // ON-CHAIN</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Smart Contract Casinos</h3>
           <p class="text-xs text-slate-400 mt-1">Liquidity pools, code &amp; key risks</p>
         </a>
         <a href="#hub-05-responsible" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-emerald-400">05 // PROTECTION</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-emerald-200">Responsible Gambling</h3>
+          <span class="text-xs font-mono text-cyan-300">05 // PROTECTION</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Responsible Gambling</h3>
           <p class="text-xs text-slate-400 mt-1">Limits, self-exclusion &amp; helplines</p>
         </a>
         <a href="#hub-06-security" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-amber-400">06 // HYGIENE</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-amber-200">Security &amp; Wallet Hygiene</h3>
+          <span class="text-xs font-mono text-cyan-300">06 // HYGIENE</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Security &amp; Wallet Hygiene</h3>
           <p class="text-xs text-slate-400 mt-1">Custody risks &amp; drainer defense</p>
         </a>
         <a href="#hub-07-scams" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-rose-400">07 // RED FLAGS</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-rose-200">Scam &amp; Fraud Library</h3>
+          <span class="text-xs font-mono text-cyan-300">07 // RED FLAGS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Scam &amp; Fraud Library</h3>
           <p class="text-xs text-slate-400 mt-1">Fake licenses &amp; withdrawal traps</p>
         </a>
         <a href="#hub-08-ai" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-fuchsia-400">08 // AI &amp; UX</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-fuchsia-200">AI &amp; Personalization</h3>
+          <span class="text-xs font-mono text-cyan-300">08 // AI &amp; UX</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">AI &amp; Personalization</h3>
           <p class="text-xs text-slate-400 mt-1">Odds modeling &amp; harm detection</p>
         </a>
         <a href="#hub-09-market-data" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-cyan-400">09 // METRICS</span>
+          <span class="text-xs font-mono text-cyan-300">09 // METRICS</span>
           <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Market Data &amp; Trends</h3>
           <p class="text-xs text-slate-400 mt-1">2024–2030 GGR &amp; adoption charts</p>
         </a>
         <a href="#glossary-archive" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
-          <span class="text-xs font-mono text-violet-400">10 // ARCHIVE</span>
-          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-violet-200">Glossary &amp; History</h3>
+          <span class="text-xs font-mono text-cyan-300">10 // ARCHIVE</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Glossary &amp; History</h3>
           <p class="text-xs text-slate-400 mt-1">Terms, timeline &amp; annual report</p>
         </a>
       </div>
@@ -397,7 +430,7 @@
     <div class="reveal-up space-y-4">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
         <div class="max-w-3xl">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400">Technical Field Guide // 60 Entries Across Clear Categories</span>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Technical Field Guide // 60 Entries Across Clear Categories</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Web3 &amp; DeFi Casino Directory &amp; Architecture Review</h2>
           <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
             An architectural comparison of the original 30 platforms and 30 additional DeFi/Web3 &amp; crypto casino entries—grouped into distinct, unranked categories covering tokenomics, instant payout rails, sportsbook hybrids, large game catalogs, and specialized VIP/feature editions.
@@ -408,17 +441,11 @@
         </span>
       </div>
 
-      <div class="plain-english rounded-2xl p-4">
-        <p class="text-sm text-slate-200">
-          <strong class="text-cyan-300 font-mono uppercase text-xs mr-2">Unranked Neutrality Notice:</strong>
-          Unranked Technical &amp; Architectural Directory — Platforms and feature editions are organized into descriptive categories for neutral educational comparison, not ranked, scored, or ordered by quality. Where an entry in the second batch focuses on a specific feature of a platform already in the first set (#23–#30), that relationship is explicitly labeled.
-        </p>
-      </div>
-
-      <div class="plain-english rounded-2xl p-4 space-y-2">
-        <p class="text-sm text-slate-200"><strong class="text-cyan-300 font-mono uppercase text-xs mr-2">What this directory is:</strong> A plain-English description of each platform's custody model, licensing, verification (KYC) and payments, grouped by category. <strong class="text-white">What it is not:</strong> a ranking, a recommendation, a safety rating, or confirmation that a platform is legal where you live.</p>
-        <p class="text-sm text-slate-200"><strong class="text-amber-300 font-mono uppercase text-xs mr-2">Status: unverified.</strong> The licence, KYC and feature details below were written without cited sources and have no "last checked" date yet. Treat every entry as unverified and confirm it on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit".</p>
-        <p class="text-sm text-slate-200"><strong class="text-emerald-300 font-mono uppercase text-xs mr-2">Links &amp; money:</strong> This directory contains no affiliate links and no links to casino sites. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
+      <div class="plain-english rounded-2xl p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+        <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">Unranked neutrality notice</strong>Platforms and feature editions are organized into descriptive categories for neutral educational comparison, not ranked, scored, or ordered by quality. Where an entry in the second batch focuses on a specific feature of a platform already in the first set (#23–#30), that relationship is explicitly labeled.</p>
+        <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">What this directory is</strong>A plain-English description of each platform's custody model, licensing, verification (KYC) and payments, grouped by category. <strong class="text-white">What it is not:</strong> a ranking, a recommendation, a safety rating, or confirmation that a platform is legal where you live.</p>
+        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: unverified</strong>The licence, KYC and feature details below were written without cited sources and have no "last checked" date yet. Treat every entry as unverified and confirm it on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit".</p>
+        <p class="text-sm text-slate-200"><strong class="block text-emerald-300 font-mono uppercase text-xs mb-1">Links &amp; money · 18+ only</strong>This directory contains no affiliate links and no links to casino sites. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
       </div>
     </div>
 
@@ -472,35 +499,40 @@
     <!-- Search, Cohort & Unranked Category Filter Controls -->
     <div class="lg:sticky lg:top-24 z-30">
     <div class="glass-card rounded-3xl p-4 sm:p-5 space-y-3 shadow-2xl shadow-black/50">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      <div class="flex flex-col gap-3">
         <!-- Search Input -->
-        <div class="relative flex-1 max-w-md">
-          <input id="casino-search-input" type="text" placeholder="Search 60 entries by name, chain, token, license, or feature..." class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-xs sm:text-sm font-mono text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400" />
+        <div class="relative w-full min-w-0">
+          <label for="casino-search-input" class="sr-only">Search the directory</label>
+          <input id="casino-search-input" type="search" autocomplete="off" placeholder="Search by name, chain, token or license" class="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-base font-sans text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400" />
         </div>
 
         <!-- Batch / Cohort Filter + Counter + Reset -->
-        <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+        <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono sm:justify-between">
           <select id="casino-cohort-select" aria-label="Filter by Directory Batch" class="px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-slate-200 focus:outline-none focus:border-cyan-400">
             <option value="all">Batch: All 60 Entries</option>
             <option value="batch-1">Batch 1: Initial 30 Platforms</option>
             <option value="batch-2">Batch 2: Additional 30 Entries (#1–#30)</option>
           </select>
-          <span id="casino-count-label" class="text-cyan-300">Showing 60 of 60 Entries (Unranked Categories)</span>
+          <span id="casino-count-label" role="status" aria-live="polite" class="text-cyan-300">Showing 60 of 60 Entries (Unranked Categories)</span>
           <button id="casino-reset-btn" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all">
             Reset Filters
           </button>
+          <div class="inline-flex" role="group" aria-label="Card layout">
+            <button type="button" data-view="grid" aria-pressed="true" class="view-toggle-btn px-3 py-1.5 rounded-l-xl border border-white/10 bg-cyan-500/20 text-cyan-200 transition-all">Cards</button>
+            <button type="button" data-view="compact" aria-pressed="false" class="view-toggle-btn px-3 py-1.5 rounded-r-xl border border-l-0 border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 transition-all">Compact list</button>
+          </div>
         </div>
       </div>
 
       <!-- Unranked Category Filter Pills -->
       <div class="pill-row flex gap-2 overflow-x-auto sm:flex-wrap text-xs font-mono pt-1 pb-1">
-        <button data-arch-filter="all" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All Categories (60)</button>
-        <button data-arch-filter="tokenomics-yield" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tokenomics, Yield &amp; Buyback Models</button>
-        <button data-arch-filter="lightning-instant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Lightning &amp; Instant Payout Specialists</button>
-        <button data-arch-filter="sportsbook-hybrid" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Sportsbook &amp; Hybrid Betting Platforms</button>
-        <button data-arch-filter="game-libraries" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">High-Volume &amp; Multi-Provider Game Libraries</button>
-        <button data-arch-filter="vip-feature-editions" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">VIP, Promotions &amp; Feature-Specific Editions</button>
-        <button data-arch-filter="non-custodial-web3" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Non-Custodial &amp; Direct Web3 Wallets</button>
+        <button type="button" aria-pressed="true" data-arch-filter="all" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All Categories (60)</button>
+        <button type="button" aria-pressed="false" data-arch-filter="tokenomics-yield" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tokenomics, Yield &amp; Buyback Models</button>
+        <button type="button" aria-pressed="false" data-arch-filter="lightning-instant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Lightning &amp; Instant Payout Specialists</button>
+        <button type="button" aria-pressed="false" data-arch-filter="sportsbook-hybrid" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Sportsbook &amp; Hybrid Betting Platforms</button>
+        <button type="button" aria-pressed="false" data-arch-filter="game-libraries" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">High-Volume &amp; Multi-Provider Game Libraries</button>
+        <button type="button" aria-pressed="false" data-arch-filter="vip-feature-editions" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">VIP, Promotions &amp; Feature-Specific Editions</button>
+        <button type="button" aria-pressed="false" data-arch-filter="non-custodial-web3" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Non-Custodial &amp; Direct Web3 Wallets</button>
       </div>
     </div>
 
@@ -518,7 +550,7 @@
   <section id="hub-02-provably-fair" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div id="interactive-labs" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 space-y-8 border border-white/15">
       <div class="max-w-3xl">
-        <span class="text-xs font-mono uppercase tracking-[0.2em] text-violet-400">Pillar 02 // Cryptographic Trust</span>
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 02 // Cryptographic Trust</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Provably Fair Technology Explained</h2>
         <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
           In traditional online casinos, you have to trust that the company’s server didn’t rig the spin. <strong>Provably Fair</strong> uses cryptographic hashing (like a sealed envelope) so neither the casino nor the player can change the outcome after a bet is placed.
@@ -613,7 +645,7 @@
     <!-- PILLAR 03: Blockchain & Payment Infrastructure -->
     <div id="hub-03-payments" class="reveal-up space-y-6">
       <div class="max-w-3xl">
-        <span class="text-xs font-mono uppercase tracking-[0.2em] text-emerald-400">Pillar 03 // Settlement &amp; Liquidity Rails</span>
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 03 // Settlement &amp; Liquidity Rails</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Blockchain &amp; Payment Infrastructure</h2>
         <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
           Why do next-generation platforms use digital payment rails? Traditional bank cards and wires rely on multi-day clearinghouses and high chargeback fees, whereas <strong>Layer-2 stablecoin rails</strong> settle in seconds for fractions of a cent.
@@ -685,7 +717,7 @@
       <!-- Architecture Explainer (7 cols) -->
       <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
         <div class="space-y-3">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-sky-400">Pillar 04 // Decentralized Architecture</span>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 04 // Decentralized Architecture</span>
           <h2 class="text-2xl sm:text-3xl font-bold text-white">Smart Contract &amp; On-Chain Casinos</h2>
           <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
             In a <strong>non-custodial smart contract casino</strong>, you never deposit money into a company’s bank account. Instead, your wallet interacts directly with open-source code holding a shared liquidity pool.
@@ -748,7 +780,7 @@
     <div id="hub-05-responsible" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 border border-emerald-400/20 space-y-6">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div class="max-w-3xl">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-emerald-400">Pillar 05 // Trust &amp; Player Wellbeing</span>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 05 // Trust &amp; Player Wellbeing</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Responsible Gambling &amp; Player Protection</h2>
           <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
             Fast blockchain payouts and 24/7 global access can accelerate impulsive betting. Furthermore, <strong>pseudonymous crypto wallets complicate cross-site self-exclusion</strong>—meaning players must combine platform safeguards with personal wallet-level controls.
@@ -786,7 +818,7 @@
     <!-- PILLAR 06: Security & Wallet Hygiene -->
     <div id="hub-06-security" class="reveal-up space-y-6">
       <div class="max-w-3xl">
-        <span class="text-xs font-mono uppercase tracking-[0.2em] text-amber-400">Pillar 06 // Self-Custody Defense</span>
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 06 // Self-Custody Defense</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Security &amp; Wallet Hygiene Checklist</h2>
         <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
           In Web3 gaming, <strong>you are your own bank</strong>. Most player losses outside the games themselves come from phishing links and malicious token approvals rather than blockchain hacks. Click items below to track your safety setup:
@@ -877,7 +909,7 @@
     <!-- PILLAR 07: Scam & Fraud Pattern Library -->
     <div id="hub-07-scams" class="reveal-up space-y-6">
       <div class="max-w-3xl">
-        <span class="text-xs font-mono uppercase tracking-[0.2em] text-rose-400">Pillar 07 // Threat Intelligence</span>
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 07 // Threat Intelligence</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Scam &amp; Fraud Pattern Library</h2>
         <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
           Fraudulent operators recycle the exact same playbooks under new brand names. Learn the four most common recurring traps before depositing a single dollar.
@@ -956,7 +988,7 @@
     <!-- PILLAR 08: AI, Personalization & the Gambling Experience -->
     <div id="hub-08-ai" class="reveal-up space-y-6">
       <div class="max-w-3xl">
-        <span class="text-xs font-mono uppercase tracking-[0.2em] text-fuchsia-400">Pillar 08 // Forward-Looking UX</span>
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 08 // Forward-Looking UX</span>
         <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">AI, Personalization &amp; the Gambling Experience</h2>
         <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
           Artificial intelligence is reshaping both sides of the screen—creating faster, hyper-personalized interfaces while introducing new ethical questions around behavioral targeting versus player protection.
@@ -1002,7 +1034,7 @@
     <div id="hub-09-market-data" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 border border-white/15 space-y-6">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-white/10 pb-6">
         <div class="max-w-2xl">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400">Pillar 09 // Quantitative Benchmark</span>
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 09 // Quantitative Benchmark</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Market Data &amp; Industry Trends (2024–2030)</h2>
           <p class="text-slate-300 mt-2 text-sm leading-relaxed">
             Toggle between metrics below to inspect how global online Gross Gaming Revenue (GGR), crypto-enabled volume, and stablecoin settlement share are projected to evolve.
@@ -1056,7 +1088,7 @@
   <!-- ===================================================================== -->
   <section id="glossary-archive" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
     <div class="max-w-3xl">
-      <span class="text-xs font-mono uppercase tracking-[0.2em] text-violet-400">Pillar 10 // Reference &amp; Flagship Archive</span>
+      <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 10 // Reference &amp; Flagship Archive</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Glossary, History &amp; "State of the Industry" Archive</h2>
       <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
         New to Web3 gaming or iGaming metrics? Search plain-English definitions, trace the industry’s evolution since 2012, or read our flagship annual briefing.
@@ -1174,7 +1206,7 @@
   <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (30 PLATFORMS)     -->
   <!-- ===================================================================== -->
   <!-- Platform Deep-Dive Review Modal (Accessible Message Box) -->
-  <div id="platform-review-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+  <div id="platform-review-modal" role="dialog" aria-modal="true" aria-labelledby="modal-platform-name" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-5 max-h-[90vh] overflow-y-auto">
       <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
         <div>
@@ -1184,7 +1216,7 @@
           </div>
           <h3 id="modal-platform-name" class="text-2xl font-bold text-white mt-2">Platform Name</h3>
         </div>
-        <button id="close-platform-modal-btn" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono shrink-0">
+        <button id="close-platform-modal-btn" type="button" aria-label="Close details" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono shrink-0">
           ESC / CLOSE
         </button>
       </div>
@@ -1226,18 +1258,24 @@
           <p id="modal-tradeoffs" class="text-xs sm:text-sm text-slate-200 leading-relaxed">—</p>
         </div>
       </div>
+
+      <div class="pt-3 border-t border-white/10 space-y-3">
+        <span class="text-xs font-mono text-slate-400 uppercase">More in this category (unranked, catalog order)</span>
+        <div id="modal-related" class="flex flex-wrap gap-2"></div>
+      </div>
+      <p class="text-xs font-mono text-emerald-300">18+ only. Gambling involves risk of loss. <a href="#hub-05-responsible" data-close-modal class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
     </div>
   </div>
 
   <!-- Executive Report Modal (Accessible Message Box) -->
-  <div id="report-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-4">
+  <div id="report-modal" role="dialog" aria-modal="true" aria-labelledby="report-modal-title" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-4 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-white/10 pb-3">
         <div>
           <span class="text-xs font-mono text-cyan-300">2026 FLAGSHIP BRIEFING</span>
-          <h3 class="text-xl font-bold text-white">Executive Summary: 5 Defining Shifts</h3>
+          <h3 id="report-modal-title" class="text-xl font-bold text-white">Executive Summary: 5 Defining Shifts</h3>
         </div>
-        <button id="close-report-modal-btn" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono">
+        <button id="close-report-modal-btn" type="button" aria-label="Close summary" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono">
           ESC / CLOSE
         </button>
       </div>
@@ -1257,7 +1295,7 @@
       <div class="space-y-2">
         <div class="flex items-center gap-2.5">
           <span class="font-bold tracking-wider text-sm text-white">AETHER<span class="text-cyan-400">//09</span></span>
-          <span class="text-xs font-mono text-slate-500">• INDEPENDENT EDUCATIONAL RESEARCH HUB</span>
+          <span class="text-xs font-mono text-slate-400">• INDEPENDENT EDUCATIONAL RESEARCH HUB</span>
         </div>
         <p class="text-xs text-slate-400 max-w-xl leading-relaxed">
           Informational &amp; educational resource only—not legal, financial, or gambling advice. Always verify local laws in your jurisdiction and play responsibly.
@@ -1289,6 +1327,7 @@
   <!-- Interactive Scripts: 3D Prism, Real SHA-256 Verifier, Filters, Market Data & Glossary -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       /* -----------------------------------------------------------
        * 1. Mobile Navigation & Report Modal
        * --------------------------------------------------------- */
@@ -1323,14 +1362,25 @@
         toTop.classList.toggle('hidden', !show);
         toTop.classList.toggle('flex', show);
       }, { passive: true });
-      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
 
+      let lastFocusedEl = null;
+      function closeModal(modal) {
+        if (modal.classList.contains('hidden')) return;
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus();
+        lastFocusedEl = null;
+      }
       const reportModal = document.getElementById('report-modal');
-      document.getElementById('open-report-modal-btn').addEventListener('click', () => reportModal.classList.remove('hidden'));
-      document.getElementById('close-report-modal-btn').addEventListener('click', () => reportModal.classList.add('hidden'));
-      reportModal.addEventListener('click', (e) => {
-        if (e.target === reportModal) reportModal.classList.add('hidden');
+      document.getElementById('open-report-modal-btn').addEventListener('click', () => {
+        lastFocusedEl = document.activeElement;
+        reportModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('close-report-modal-btn').focus();
       });
+      document.getElementById('close-report-modal-btn').addEventListener('click', () => closeModal(reportModal));
+      reportModal.addEventListener('click', (e) => { if (e.target === reportModal) closeModal(reportModal); });
 
       /* -----------------------------------------------------------
        * 1B. Unranked 60-Entry Web3 & DeFi Casino Directory
@@ -2276,6 +2326,11 @@
       const archFilterBtns = document.querySelectorAll('.arch-filter-btn');
       const platformModal = document.getElementById('platform-review-modal');
       let activeArchFilter = 'all';
+      const expandedCats = new Set();
+      const CARDS_PER_CATEGORY = 6;
+
+      const modalRelated = document.getElementById('modal-related');
+      const closePlatformBtn = document.getElementById('close-platform-modal-btn');
 
       function openPlatformModal(platform) {
         document.getElementById('modal-arch-badge').textContent = `${platform.archLabel} • ${platform.batchLabel}`;
@@ -2287,12 +2342,26 @@
         document.getElementById('modal-review-body').textContent = platform.summary;
         document.getElementById('modal-strengths').textContent = platform.strengths;
         document.getElementById('modal-tradeoffs').textContent = platform.tradeoffs;
+        const related = web3CasinosCatalog.filter(p => p.archKey === platform.archKey && p.id !== platform.id);
+        modalRelated.innerHTML = related.length
+          ? related.map(p => `<button type="button" data-related-id="${p.id}" class="related-entry-btn min-h-[44px] px-3 py-2 rounded-xl text-sm text-left bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition-all">${p.name}</button>`).join('')
+          : '<p class="text-sm text-slate-400">No other entries in this category.</p>';
+        if (!lastFocusedEl) lastFocusedEl = document.activeElement;
         platformModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        platformModal.querySelector('.overflow-y-auto').scrollTop = 0;
+        closePlatformBtn.focus();
       }
 
-      document.getElementById('close-platform-modal-btn').addEventListener('click', () => platformModal.classList.add('hidden'));
+      modalRelated.addEventListener('click', (e) => {
+        const btn = e.target.closest('.related-entry-btn');
+        if (!btn) return;
+        const found = web3CasinosCatalog.find(p => p.id === btn.dataset.relatedId);
+        if (found) openPlatformModal(found);
+      });
+      closePlatformBtn.addEventListener('click', () => closeModal(platformModal));
       platformModal.addEventListener('click', (e) => {
-        if (e.target === platformModal) platformModal.classList.add('hidden');
+        if (e.target === platformModal || e.target.closest('[data-close-modal]')) closeModal(platformModal);
       });
 
       function renderCasinoDirectory() {
@@ -2313,9 +2382,14 @@
           casinoGrid.innerHTML = `
             <div class="glass-card rounded-3xl p-8 text-center space-y-2">
               <p class="text-base font-bold text-white">No matching entries found</p>
-              <p class="text-xs text-slate-400">Try clearing your search term or resetting the category and batch filters.</p>
+              <p class="text-sm text-slate-300">Try clearing your search term or resetting the category and batch filters.</p>
+              <button type="button" class="empty-reset-btn mt-2 min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all">Reset filters</button>
             </div>
           `;
+          casinoGrid.querySelector('.empty-reset-btn').addEventListener('click', () => {
+            document.getElementById('casino-reset-btn').click();
+            casinoSearchInput.focus();
+          });
           return;
         }
 
@@ -2323,55 +2397,53 @@
           ? Object.keys(categoryMeta)
           : [activeArchFilter];
 
+        let shownCount = 0;
         const sectionsHtml = categoriesToRender
           .map(catKey => {
             const itemsInCat = filtered.filter(entry => entry.archKey === catKey);
             if (itemsInCat.length === 0) return '';
             const meta = categoryMeta[catKey];
 
-            const cardsHtml = itemsInCat.map(item => `
-              <article class="glass-card rounded-3xl p-6 flex flex-col justify-between space-y-4">
-                <div class="space-y-3">
-                  <div class="flex items-start justify-between gap-2">
-                    <h4 class="text-lg font-bold text-white leading-snug">${item.name}</h4>
-                    <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 shrink-0">
-                      ${item.batchLabel}
-                    </span>
-                  </div>
+            const showAll = expandedCats.has(catKey) || activeArchFilter !== 'all' || query !== '';
+            const visibleItems = showAll ? itemsInCat : itemsInCat.slice(0, CARDS_PER_CATEGORY);
+            const hiddenCount = itemsInCat.length - visibleItems.length;
+            shownCount += visibleItems.length;
 
-                  <div class="space-y-1 text-xs font-mono text-slate-400">
-                    <div>Custody: <span class="text-slate-200">${item.custody}</span></div>
-                    <div>Oversight: <span class="text-slate-200">${item.license}</span></div>
-                    <div class="text-amber-300">Status: Unverified · no check date recorded</div>
-                  </div>
-
-                  <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    ${item.summary}
-                  </p>
+            const cardsHtml = visibleItems.map(item => `
+              <article class="glass-card dir-card rounded-3xl p-5 sm:p-6 flex flex-col gap-4">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-white/[0.06] text-slate-200 border border-white/15">${item.batchLabel}</span>
                 </div>
-
-                <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-                  <span class="text-[11px] font-mono text-slate-400 truncate">${item.kyc}</span>
-                  <button data-platform-id="${item.id}" class="open-platform-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all shrink-0">
-                    Architecture Review
+                <h4 class="text-lg sm:text-xl font-bold text-white leading-snug">${item.name}</h4>
+                <dl class="dir-card-facts grid grid-cols-1 gap-2">
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">Custody</dt><dd class="text-base text-slate-100">${item.custody}</dd></div>
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">Oversight</dt><dd class="text-base text-slate-100">${item.license}</dd></div>
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">KYC</dt><dd class="text-base text-slate-100">${item.kyc}</dd></div>
+                </dl>
+                <p class="dir-card-summary text-sm text-slate-300 leading-relaxed">${item.summary}</p>
+                <p class="text-xs font-mono text-amber-300">Status: Unverified · no check date recorded</p>
+                <div class="mt-auto pt-3 border-t border-white/10">
+                  <button type="button" data-platform-id="${item.id}" aria-label="View details: ${item.name}" class="open-platform-btn w-full px-4 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all">
+                    View details
                   </button>
                 </div>
               </article>
             `).join('');
 
             return `
-              <div class="space-y-4">
+              <div class="space-y-4" data-cat-section="${catKey}">
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/10 pb-3">
                   <div>
-                    <span class="text-[11px] font-mono uppercase tracking-widest text-violet-300">UNRANKED CATEGORY</span>
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyan-300">UNRANKED CATEGORY</span>
                     <h3 class="text-xl sm:text-2xl font-bold text-white mt-0.5">${meta.title}</h3>
                     <p class="text-xs sm:text-sm text-slate-400 mt-1">${meta.subtitle}</p>
                   </div>
-                  <span class="text-xs font-mono text-slate-400 shrink-0">${itemsInCat.length} ${itemsInCat.length === 1 ? 'Entry' : 'Entries'}</span>
+                  <span class="text-xs font-mono text-slate-400 shrink-0">${hiddenCount > 0 ? `${visibleItems.length} of ${itemsInCat.length} shown` : `${itemsInCat.length} ${itemsInCat.length === 1 ? 'Entry' : 'Entries'}`}</span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="dir-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   ${cardsHtml}
                 </div>
+                ${hiddenCount > 0 ? `<div class="flex justify-center"><button type="button" data-expand-cat="${catKey}" class="expand-cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-slate-100 transition-all">Show all ${itemsInCat.length} in ${meta.title}</button></div>` : ''}
               </div>
             `;
           })
@@ -2379,12 +2451,28 @@
           .join('');
 
         casinoGrid.innerHTML = sectionsHtml;
+        if (shownCount < filtered.length) {
+          casinoCountLabel.textContent = `Showing ${shownCount} of ${filtered.length} Entries (Unranked)`;
+        }
 
         // Bind modal openers + spotlight effect on newly rendered cards
         casinoGrid.querySelectorAll('.open-platform-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             const found = web3CasinosCatalog.find(p => p.id === btn.dataset.platformId);
             if (found) openPlatformModal(found);
+          });
+        });
+
+        casinoGrid.querySelectorAll('.expand-cat-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const key = btn.dataset.expandCat;
+            expandedCats.add(key);
+            renderCasinoDirectory();
+            const next = casinoGrid.querySelector(`[data-cat-section="${key}"] .dir-card:nth-child(${CARDS_PER_CATEGORY + 1}) .open-platform-btn`);
+            if (next) {
+              next.focus({ preventScroll: true });
+              next.closest('.dir-card').scrollIntoView({ block: 'center', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            }
           });
         });
 
@@ -2397,33 +2485,52 @@
         });
       }
 
-      archFilterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          activeArchFilter = btn.dataset.archFilter;
-          archFilterBtns.forEach(b => b.className = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all');
-          btn.className = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all';
-          renderCasinoDirectory();
+      const ARCH_ON = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all';
+      const ARCH_OFF = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all';
+      function setArchFilter(key) {
+        activeArchFilter = key;
+        archFilterBtns.forEach(b => {
+          const on = b.dataset.archFilter === key;
+          b.className = on ? ARCH_ON : ARCH_OFF;
+          b.setAttribute('aria-pressed', String(on));
         });
-      });
+      }
+      archFilterBtns.forEach(btn => btn.addEventListener('click', () => { setArchFilter(btn.dataset.archFilter); renderCasinoDirectory(); }));
+
+      const viewBtns = document.querySelectorAll('.view-toggle-btn');
+      function setView(view) {
+        casinoGrid.classList.toggle('is-compact', view === 'compact');
+        viewBtns.forEach(b => {
+          const on = b.dataset.view === view;
+          b.setAttribute('aria-pressed', String(on));
+          b.classList.toggle('bg-cyan-500/20', on);
+          b.classList.toggle('text-cyan-200', on);
+          b.classList.toggle('bg-white/5', !on);
+          b.classList.toggle('text-slate-300', !on);
+        });
+      }
+      viewBtns.forEach(btn => btn.addEventListener('click', () => setView(btn.dataset.view)));
 
       casinoSearchInput.addEventListener('input', renderCasinoDirectory);
       casinoCohortSelect.addEventListener('change', renderCasinoDirectory);
       document.getElementById('casino-reset-btn').addEventListener('click', () => {
         casinoSearchInput.value = '';
         casinoCohortSelect.value = 'all';
-        activeArchFilter = 'all';
-        archFilterBtns.forEach((b, idx) => {
-          b.className = idx === 0
-            ? 'arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all'
-            : 'arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all';
-        });
+        expandedCats.clear();
+        setArchFilter('all');
         renderCasinoDirectory();
       });
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          platformModal.classList.add('hidden');
-          reportModal.classList.add('hidden');
+        if (e.key === 'Escape') { closeModal(platformModal); closeModal(reportModal); }
+        if (e.key === 'Tab') {
+          const openModal = [platformModal, reportModal].find(m => !m.classList.contains('hidden'));
+          if (!openModal) return;
+          const f = [...openModal.querySelectorAll('button, a[href], input, select, [tabindex]:not([tabindex="-1"])')];
+          if (!f.length) return;
+          const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
         }
       });
 
@@ -2508,7 +2615,7 @@
       function drawHeroPrism() {
         if (is3DActive) {
           ctx.clearRect(0, 0, width, height);
-          if (!isDragging) {
+          if (!isDragging && !prefersReducedMotion) {
             rotX += 0.003;
             rotY += 0.0055;
           }
