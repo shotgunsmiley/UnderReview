@@ -35,6 +35,28 @@
       --mouse-y: 50%;
     }
 
+    html { scroll-padding-top: 6.5rem; }
+
+    .nav-link { position: relative; padding: 0.25rem 0; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      border-radius: 2px; background: #22D3EE; transform: scaleX(0); transition: transform 0.25s ease;
+    }
+    .nav-link.is-active { color: #fff; }
+    .nav-link.is-active::after { transform: scaleX(1); }
+
+    .arch-filter-btn { flex-shrink: 0; white-space: nowrap; }
+    .pill-row { scrollbar-width: none; }
+    .pill-row::-webkit-scrollbar { display: none; }
+
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+      outline: 2px solid #22D3EE; outline-offset: 2px;
+    }
+
     body {
       background-color: #050507;
       color: #F4F4F6;
@@ -175,19 +197,19 @@
 
       <!-- Navigation & Directory Sections -->
       <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#overview" class="hover:text-white transition-colors">Overview</a>
-        <a href="#hub-directory" class="hover:text-white transition-colors">10 Permanent Hubs</a>
-        <a href="#casino-directory-30" class="hover:text-cyan-300 transition-colors text-cyan-200 font-semibold">Directory (60)</a>
-        <a href="#interactive-labs" class="hover:text-white transition-colors">Interactive Labs</a>
-        <a href="#glossary-archive" class="hover:text-white transition-colors">Glossary &amp; Timeline</a>
+        <a href="#overview" class="nav-link hover:text-white transition-colors">Overview</a>
+        <a href="#hub-directory" class="nav-link hover:text-white transition-colors">Guides</a>
+        <a href="#casino-directory-30" class="nav-link hover:text-white transition-colors">Directory</a>
+        <a href="#interactive-labs" class="nav-link hover:text-white transition-colors">Labs</a>
+        <a href="#glossary-archive" class="nav-link hover:text-white transition-colors">Glossary</a>
       </div>
 
       <!-- Actions -->
       <div class="flex items-center gap-3">
-        <a href="#casino-directory-30" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-500/20">
-          Explore Directory (60)
+        <a href="#casino-directory-30" class="hidden sm:inline-flex px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-500/20">
+          Browse Directory
         </a>
-        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:bg-white/5">
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:bg-white/5">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -197,16 +219,16 @@
 
     <!-- Mobile Dropdown -->
     <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 liquid-glass rounded-2xl p-4 flex flex-col gap-2 text-sm font-medium text-slate-200">
-      <a href="#overview" class="py-2 px-3 rounded-lg hover:bg-white/5">Overview</a>
-      <a href="#hub-directory" class="py-2 px-3 rounded-lg hover:bg-white/5">10 Permanent Hubs</a>
-      <a href="#casino-directory-30" class="py-2 px-3 rounded-lg bg-cyan-500/10 text-cyan-200">Directory (60) — Unranked</a>
-      <a href="#interactive-labs" class="py-2 px-3 rounded-lg hover:bg-white/5">Interactive Labs</a>
-      <a href="#glossary-archive" class="py-2 px-3 rounded-lg hover:bg-white/5">Glossary &amp; Timeline</a>
+      <a href="#overview" class="py-3 px-3 rounded-lg hover:bg-white/5">Overview</a>
+      <a href="#hub-directory" class="py-3 px-3 rounded-lg hover:bg-white/5">Guides</a>
+      <a href="#casino-directory-30" class="py-3 px-3 rounded-lg bg-cyan-500/10 text-cyan-200 font-semibold">Directory</a>
+      <a href="#interactive-labs" class="py-3 px-3 rounded-lg hover:bg-white/5">Labs</a>
+      <a href="#glossary-archive" class="py-3 px-3 rounded-lg hover:bg-white/5">Glossary</a>
     </div>
   </header>
 
   <!-- 2. Accessible Editorial Hero Section with Interactive 3D Canvas -->
-  <section id="overview" class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <section id="overview" class="relative min-h-[80vh] flex items-center justify-center pt-28 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
     <!-- Interactive 3D Refracting Prism Canvas -->
     <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing"></canvas>
     <div class="absolute inset-0 bg-gradient-to-b from-[#050507]/55 via-[#050507]/30 to-[#050507] pointer-events-none z-0"></div>
@@ -288,9 +310,6 @@
             </div>
           </div>
 
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Tip: Drag anywhere on the dark background to rotate the 3D glass prism, or jump directly to any of the 10 research hubs below.
-          </p>
         </div>
       </div>
     </div>
@@ -371,7 +390,7 @@
   <!-- ===================================================================== -->
   <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (60 ENTRIES)       -->
   <!-- ===================================================================== -->
-  <section id="casino-directory-30" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+  <section id="casino-directory-30" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
     <!-- Section Header + Unranked Disclosure -->
     <div class="reveal-up space-y-4">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
@@ -396,16 +415,17 @@
     </div>
 
     <!-- Key Considerations for Web3 Casinos Banner -->
-    <div class="reveal-up glass-card rounded-3xl p-6 sm:p-8 border border-amber-400/20 space-y-5">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+    <details class="reveal-up glass-card rounded-3xl border border-amber-400/20">
+      <summary class="cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 sm:p-6">
         <div>
           <span class="text-xs font-mono uppercase tracking-wider text-amber-300">Due-Diligence Framework</span>
           <h3 class="text-xl font-bold text-white mt-0.5">Key Considerations for Web3 Casinos</h3>
         </div>
-        <span class="text-xs font-mono text-slate-400">3 Core Architecture Dimensions</span>
-      </div>
+        <span class="text-xs font-mono text-slate-400 flex items-center gap-2">Tap to expand · 3 dimensions
+          <svg class="chev w-4 h-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+      </summary>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 px-5 sm:px-6 pb-6 border-t border-white/10 pt-5">
         <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-xs font-mono text-cyan-300 uppercase">01 // Custody Models</span>
@@ -439,11 +459,12 @@
           </p>
         </div>
       </div>
-    </div>
+    </details>
 
     <!-- Search, Cohort & Unranked Category Filter Controls -->
-    <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div class="lg:sticky lg:top-24 z-30">
+    <div class="glass-card rounded-3xl p-4 sm:p-5 space-y-3 shadow-2xl shadow-black/50">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         <!-- Search Input -->
         <div class="relative flex-1 max-w-md">
           <input id="casino-search-input" type="text" placeholder="Search 60 entries by name, chain, token, license, or feature..." class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-xs sm:text-sm font-mono text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400" />
@@ -464,7 +485,7 @@
       </div>
 
       <!-- Unranked Category Filter Pills -->
-      <div class="flex flex-wrap gap-2 text-xs font-mono pt-1">
+      <div class="pill-row flex gap-2 overflow-x-auto sm:flex-wrap text-xs font-mono pt-1 pb-1">
         <button data-arch-filter="all" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All Categories (60)</button>
         <button data-arch-filter="tokenomics-yield" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tokenomics, Yield &amp; Buyback Models</button>
         <button data-arch-filter="lightning-instant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Lightning &amp; Instant Payout Specialists</button>
@@ -473,6 +494,8 @@
         <button data-arch-filter="vip-feature-editions" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">VIP, Promotions &amp; Feature-Specific Editions</button>
         <button data-arch-filter="non-custodial-web3" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Non-Custodial &amp; Direct Web3 Wallets</button>
       </div>
+    </div>
+
     </div>
 
     <!-- Grouped Unranked Categories & Platform Cards Container -->
@@ -484,7 +507,7 @@
   <!-- ===================================================================== -->
   <!-- PILLAR 02: PROVABLY FAIR TECHNOLOGY EXPLAINED + LIVE LAB              -->
   <!-- ===================================================================== -->
-  <section id="hub-02-provably-fair" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <section id="hub-02-provably-fair" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div id="interactive-labs" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 space-y-8 border border-white/15">
       <div class="max-w-3xl">
         <span class="text-xs font-mono uppercase tracking-[0.2em] text-violet-400">Pillar 02 // Cryptographic Trust</span>
@@ -577,7 +600,7 @@
   <!-- ===================================================================== -->
   <!-- PILLAR 03 & PILLAR 04: PAYMENTS INFRASTRUCTURE & SMART CONTRACTS      -->
   <!-- ===================================================================== -->
-  <section class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
 
     <!-- PILLAR 03: Blockchain & Payment Infrastructure -->
     <div id="hub-03-payments" class="reveal-up space-y-6">
@@ -711,7 +734,7 @@
   <!-- ===================================================================== -->
   <!-- PILLAR 05, 06 & 07: TRUST, PLAYER PROTECTION & SCAM DEFENSE           -->
   <!-- ===================================================================== -->
-  <section class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
 
     <!-- PILLAR 05: Responsible Gambling & Player Protection -->
     <div id="hub-05-responsible" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 border border-emerald-400/20 space-y-6">
@@ -920,7 +943,7 @@
   <!-- ===================================================================== -->
   <!-- PILLAR 08 & PILLAR 09: AI PERSONALIZATION & MARKET DATA TRENDS        -->
   <!-- ===================================================================== -->
-  <section class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
 
     <!-- PILLAR 08: AI, Personalization & the Gambling Experience -->
     <div id="hub-08-ai" class="reveal-up space-y-6">
@@ -1022,7 +1045,7 @@
   <!-- ===================================================================== -->
   <!-- PILLAR 10: GLOSSARY, HISTORICAL TIMELINE & STATE OF INDUSTRY ARCHIVE  -->
   <!-- ===================================================================== -->
-  <section id="glossary-archive" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+  <section id="glossary-archive" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
     <div class="max-w-3xl">
       <span class="text-xs font-mono uppercase tracking-[0.2em] text-violet-400">Pillar 10 // Reference &amp; Flagship Archive</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Glossary, History &amp; "State of the Industry" Archive</h2>
@@ -1141,110 +1164,6 @@
   <!-- ===================================================================== -->
   <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (30 PLATFORMS)     -->
   <!-- ===================================================================== -->
-  <section id="casino-directory-30" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
-    <!-- Section Header + Unranked Disclosure -->
-    <div class="reveal-up space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-        <div class="max-w-3xl">
-          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-400">Technical Field Guide // 30 Platforms Cataloged</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Web3 &amp; DeFi Casino Directory &amp; Architecture Review</h2>
-          <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
-            An architectural comparison of 30 notable Web3, crypto-native, and sandbox-regulated gaming platforms—examining how each handles custody, licensing, payment rails, and KYC triggers.
-          </p>
-        </div>
-        <span class="px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-slate-200 text-xs font-mono self-start">
-          NEUTRAL CATALOG • ALPHABETICAL ORDER
-        </span>
-      </div>
-
-      <div class="plain-english rounded-2xl p-4">
-        <p class="text-sm text-slate-200">
-          <strong class="text-cyan-300 font-mono uppercase text-xs mr-2">Unranked Notice:</strong>
-          Unranked Technical &amp; Architectural Directory — Presented in neutral catalog order for educational comparison, not endorsement or ranking. No platform receives a score, star rating, or placement rank.
-        </p>
-      </div>
-    </div>
-
-    <!-- Key Considerations for Web3 Casinos Banner -->
-    <div class="reveal-up glass-card rounded-3xl p-6 sm:p-8 border border-amber-400/20 space-y-5">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
-        <div>
-          <span class="text-xs font-mono uppercase tracking-wider text-amber-300">Due-Diligence Framework</span>
-          <h3 class="text-xl font-bold text-white mt-0.5">Key Considerations for Web3 Casinos</h3>
-        </div>
-        <span class="text-xs font-mono text-slate-400">3 Core Architecture Dimensions</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-cyan-300 uppercase">01 // Custody Models</span>
-            <span class="text-[11px] font-mono text-slate-400">Who Holds Keys?</span>
-          </div>
-          <h4 class="text-base font-bold text-white">Non-Custodial vs. Platform Wallets</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <strong>"Non-custodial"</strong> protocols (such as Dexsport) keep funds in your personal Web3 wallet until a smart contract executes the wager. Most other platforms use <strong>custodial account balances</strong> where you deposit into a platform-controlled wallet before playing.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-violet-300 uppercase">02 // Licensing &amp; Oversight</span>
-            <span class="text-[11px] font-mono text-slate-400">Player Recourse</span>
-          </div>
-          <h4 class="text-base font-bold text-white">Offshore Regimes vs. Tier-1 Sandboxes</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Most Web3 casinos operate under <strong>Curaçao or Anjouan</strong> licenses—crypto-friendly jurisdictions that offer lighter regulatory oversight and dispute recourse than Tier-1 regulators like the <strong>Malta Gaming Authority (MGA)</strong> or UKGC.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-emerald-300 uppercase">03 // Verification (KYC)</span>
-            <span class="text-[11px] font-mono text-slate-400">Privacy vs. AML</span>
-          </div>
-          <h4 class="text-base font-bold text-white">Soft Thresholds &amp; Risk Triggers</h4>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Even when platforms advertise <strong>no-KYC or minimal-KYC</strong> onboarding for routine play, terms of service almost universally allow identity and source-of-funds checks upon large withdrawals or automated AML risk flags.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Search & Architectural Filter Controls -->
-    <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <!-- Search Input -->
-        <div class="relative flex-1 max-w-md">
-          <input id="casino-search-input" type="text" placeholder="Search 30 platforms by name, chain, token, or feature..." class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-xs sm:text-sm font-mono text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400" />
-        </div>
-
-        <!-- Results Counter + Reset -->
-        <div class="flex items-center gap-3 text-xs font-mono">
-          <span id="casino-count-label" class="text-cyan-300">Showing 30 of 30 Platforms (A–Z)</span>
-          <button id="casino-reset-btn" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all">
-            Reset Filters
-          </button>
-        </div>
-      </div>
-
-      <!-- Architectural Model Filter Pills -->
-      <div class="flex flex-wrap gap-2 text-xs font-mono pt-1">
-        <button data-arch-filter="all" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All 30 Platforms</button>
-        <button data-arch-filter="non-custodial-web3" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Non-Custodial / Web3 Wallet</button>
-        <button data-arch-filter="tokenized" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tokenized / Ecosystem Token</button>
-        <button data-arch-filter="lightning-instant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Lightning / Instant Rails</button>
-        <button data-arch-filter="established" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tier-1 / Established Incumbent</button>
-        <button data-arch-filter="2026-entrant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">2026 New Entrants</button>
-      </div>
-    </div>
-
-    <!-- 30 Unranked Platform Cards Grid (Rendered Dynamically in Neutral Alphabetical Order) -->
-    <div id="casino-directory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Populated by JS with all 30 unranked platform reviews -->
-    </div>
-  </section>
-
   <!-- Platform Deep-Dive Review Modal (Accessible Message Box) -->
   <div id="platform-review-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-5 max-h-[90vh] overflow-y-auto">
@@ -1335,15 +1254,26 @@
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-5 text-xs font-mono text-slate-400">
-        <a href="#hub-01-regulation" class="hover:text-cyan-300 transition-colors">01 REGULATION</a>
-        <a href="#hub-02-provably-fair" class="hover:text-cyan-300 transition-colors">02 FAIRNESS</a>
-        <a href="#hub-03-payments" class="hover:text-cyan-300 transition-colors">03 PAYMENTS</a>
-        <a href="#hub-05-responsible" class="hover:text-cyan-300 transition-colors">05 SAFETY</a>
-        <a href="#glossary-archive" class="hover:text-cyan-300 transition-colors">10 GLOSSARY</a>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-2 text-xs font-mono text-slate-400">
+        <a href="#hub-01-regulation" class="hover:text-cyan-300 transition-colors">01 Regulation</a>
+        <a href="#hub-02-provably-fair" class="hover:text-cyan-300 transition-colors">02 Fairness</a>
+        <a href="#hub-03-payments" class="hover:text-cyan-300 transition-colors">03 Payments</a>
+        <a href="#hub-04-smart-contracts" class="hover:text-cyan-300 transition-colors">04 Smart Contracts</a>
+        <a href="#hub-05-responsible" class="hover:text-cyan-300 transition-colors">05 Safety</a>
+        <a href="#hub-06-security" class="hover:text-cyan-300 transition-colors">06 Security</a>
+        <a href="#hub-07-scams" class="hover:text-cyan-300 transition-colors">07 Scams</a>
+        <a href="#hub-08-ai" class="hover:text-cyan-300 transition-colors">08 AI</a>
+        <a href="#hub-09-market-data" class="hover:text-cyan-300 transition-colors">09 Market Data</a>
+        <a href="#glossary-archive" class="hover:text-cyan-300 transition-colors">10 Glossary</a>
+        <a href="#casino-directory-30" class="hover:text-cyan-300 transition-colors">Directory</a>
+        <a href="#overview" class="hover:text-cyan-300 transition-colors">↑ Back to top</a>
       </div>
     </div>
   </footer>
+
+  <button id="back-to-top" aria-label="Back to top" class="hidden fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full liquid-glass text-cyan-300 hover:text-white items-center justify-center transition-all">
+    <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
 
   <!-- Interactive Scripts: 3D Prism, Real SHA-256 Verifier, Filters, Market Data & Glossary -->
   <script>
@@ -1353,10 +1283,36 @@
        * --------------------------------------------------------- */
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      const setMenu = (open) => {
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      };
+      mobileMenuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) setMenu(false);
       });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+      /* Scroll-spy: highlight the nav link for the section in view */
+      const spyLinks = document.querySelectorAll('.nav-link');
+      const spyTargets = [...spyLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          spyLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id));
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      spyTargets.forEach(t => spy.observe(t));
+
+      /* Back-to-top */
+      const toTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        const show = window.scrollY > 900;
+        toTop.classList.toggle('hidden', !show);
+        toTop.classList.toggle('flex', show);
+      }, { passive: true });
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
       const reportModal = document.getElementById('report-modal');
       document.getElementById('open-report-modal-btn').addEventListener('click', () => reportModal.classList.remove('hidden'));
