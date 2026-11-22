@@ -47,14 +47,13 @@ at. No aggregate scores, stars or rankings.
 ## 3. References & Anti-References
 
 **Aspirational (match these):**
-- Wirecutter — review structure, facts-first layout, methodology page
-  (generic structural reference)
-- DefiLlama — clean data density (generic structural reference)
 - **Bitcoin.com** (list page + "How We Rate") — PRIMARY domain reference.
   URL as recorded in `review-site-notes.md`: `bitcoin.com/gambling/casino/`.
   **UNVERIFIED:** the fetch failed on 2026-11-22 (DNS; host not reachable from
   the research session), so the URL is not confirmed live, the "How We Rate"
   URL is unknown, and the features below are second-hand from the notes.
+  URL verified by user: [I will paste the confirmed URL and any correction to
+  the copy/must-not-copy notes in my next message.]
   - Copy (structure only): disclosure box first (18+, how money works, link to
     policy); last-updated / published dates; "On This Page" contents list;
     method page with register check, re-check rule, corrections route and
@@ -62,14 +61,10 @@ at. No aggregate scores, stars or rankings.
   - Do not copy: scores and sub-scores; "Top picks" / ranked table /
     "Best for"; Visit Site buttons; named author / fact-checker bylines
     (none exist here).
-- **Crypto Casino Scan** — SECONDARY domain reference. **UNVERIFIED:** the
-  notes record no URL and a web search found no site by this name on
-  2026-11-22. URL to be supplied by the human.
-  - Copy (structure only, per the notes): "unknown" shown as a value; a
-    "site updated" date; an "evidence record" of facts, unknowns and
-    conflicts.
-  - Do not copy: any ranking; affiliate-link patterns (none exist here).
-- Dropped: CryptoCasinoRank (ranking-based).
+- Wirecutter — editorial review structure, facts-first layout, methodology
+  page, no aggregate scores. Secondary structural reference.
+- DefiLlama — data density, factual tables, no decorative styling. Third
+  reference.
 
 **Anti-references (explicitly avoid):**
 - Generic casino affiliate sites: neon gradients, spinning banners,
@@ -184,12 +179,16 @@ Phase 1 approved, Phase 2 not yet started.
    the casino's site says so.
 10. **Hosting and URLs (Q4).** `/review/{casino}/index.html`, plain HTML + CSS
     custom properties, no build step, no analytics in v1 (Lighthouse locally).
-11. **Section 3 references (Q1).** Bitcoin.com (primary) and Crypto Casino Scan
-    (secondary). CryptoCasinoRank dropped (ranking-based). Wirecutter and
-    DefiLlama stay as generic structural references.
+11. **Section 3 references (Q1).** Bitcoin.com primary, Wirecutter secondary,
+    DefiLlama third. See entries 13 to 15.
 12. **`#report-modal` ("5 Defining Shifts") cut in Phase 2** (decision to cut,
     not defer-and-keep): unsourced, undated, no 18+ line, no fit to a
     Section 2 type.
+13. **Crypto Casino Scan:** dropped — no verifiable URL; not findable by web
+    search.
+14. **CryptoCasinoRank:** dropped — ranking-based; referencing it invites
+    reintroducing ranked tables.
+15. **Bitcoin.com:** pending user verification of URL and page structure.
 
 **Content backlog for Phase 6 (human-gated; coder acts only on approved items)**
 - Rewrite the methodology "Checked" definition to register-only.
