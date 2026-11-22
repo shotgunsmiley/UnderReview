@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHER // 09 — The Future of Online Casinos: Research &amp; Knowledge Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            void: '#050507',
+            obsidian: '#0B0C12',
+            prism: '#7C3AED',
+            cyber: '#06B6D4',
+            emeraldNeon: '#10B981',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
+
+    html { scroll-padding-top: 6.5rem; }
+
+    .nav-link { position: relative; padding: 0.25rem 0; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+      border-radius: 2px; background: #22D3EE; transform: scaleX(0); transition: transform 0.25s ease;
+    }
+    .nav-link.is-active { color: #fff; }
+    .nav-link.is-active::after { transform: scaleX(1); }
+
+    .arch-filter-btn { flex-shrink: 0; white-space: nowrap; }
+    .pill-row { scrollbar-width: none; }
+    .pill-row::-webkit-scrollbar { display: none; }
+
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+      outline: 2px solid #22D3EE; outline-offset: 2px;
+    }
+
+    body {
+      background-color: #050507;
+      color: #F4F4F6;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+
+    /* Liquid Glass Navigation & Containers */
+    .liquid-glass {
+      background: rgba(13, 14, 22, 0.72);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(19, 21, 32, 0.78), rgba(10, 11, 17, 0.9));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        420px circle at var(--card-x, 50%) var(--card-y, 50%),
+        rgba(56, 189, 248, 0.42),
+        rgba(168, 85, 247, 0.22) 40%,
+        transparent 75%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Plain-English Callout Box */
+    .plain-english {
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.1), rgba(124, 58, 237, 0.06));
+      border-left: 3px solid #22D3EE;
+    }
+
+    /* Editorial Gradient Typography */
+    .editorial-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #7DD3FC 78%, #C084FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Scroll Reveal Motion */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Subtle Grid Overlay */
+    .bg-grid-pattern {
+      background-size: 48px 48px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050507;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2233;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #333854;
+    }
+
+    /* Readability: 16px minimum body copy, comfortable line length */
+    p.text-xs:not(.font-mono), p.text-sm:not(.font-mono), li, tbody td,
+    .hygiene-check + div > span.text-xs, #glossary-archive .border-l > div {
+      font-size: 1rem; line-height: 1.65;
+    }
+    .max-w-3xl > p, .max-w-2xl > p, #overview p.max-w-2xl, .plain-english p { max-width: 70ch; }
+    /* Keep titles larger than the 16px body copy under them */
+    #directory-grid h3, .glossary-item strong, .hygiene-check + div > span.text-sm { font-size: 1.125rem; line-height: 1.4; }
+    /* Hero stat tiles: small labels/captions, not body copy */
+    #overview .grid-cols-2 p:not(.text-2xl) { font-size: 0.8125rem; line-height: 1.4; max-width: none; }
+
+    /* Tap targets */
+    .arch-filter-btn, .dir-filter-btn, .chart-btn, .reg-btn, .view-toggle-btn,
+    .open-platform-btn, .expand-cat-btn, #casino-reset-btn, #casino-cohort-select { min-height: 44px; }
+
+    /* Compact list view for the directory */
+    #casino-directory-grid.is-compact .dir-cards { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+    #casino-directory-grid.is-compact .dir-card { padding: 1rem 1.25rem; gap: 0.5rem; }
+    #casino-directory-grid.is-compact .dir-card-summary { display: none; }
+    @media (min-width: 768px) {
+      #casino-directory-grid.is-compact .dir-card-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* Respect reduced-motion settings */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal-up { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- Ambient Background Radial Orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-[34rem] h-[34rem] rounded-full bg-violet-600/12 blur-[130px]"></div>
+    <div class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] rounded-full bg-cyan-500/10 blur-[130px]"></div>
+    <div class="absolute bottom-0 left-1/3 w-[28rem] h-[28rem] rounded-full bg-emerald-500/08 blur-[140px]"></div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-70"></div>
+  </div>
+
+  <!-- 1. Sticky Liquid-Glass Navigation Bar -->
+  <header class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 lg:px-8">
+    <nav class="max-w-7xl mx-auto liquid-glass rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#overview" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 p-[1px] shadow-lg shadow-violet-500/20">
+          <div class="w-full h-full bg-[#090A10] rounded-[11px] flex items-center justify-center">
+            <svg class="w-4 h-4 text-cyan-300 group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+              <line x1="12" y1="22" x2="12" y2="15.5"></line>
+              <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold tracking-wider text-sm text-white">AETHER<span class="text-cyan-400">//09</span></span>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 hidden sm:inline">iGaming Research &amp; Knowledge Hub</span>
+        </div>
+      </a>
+
+      <!-- Navigation & Directory Sections -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#overview" class="nav-link hover:text-white transition-colors">Overview</a>
+        <a href="#hub-directory" class="nav-link hover:text-white transition-colors">Guides</a>
+        <a href="#casino-directory-30" class="nav-link hover:text-white transition-colors">Directory</a>
+        <a href="#interactive-labs" class="nav-link hover:text-white transition-colors">Labs</a>
+        <a href="#glossary-archive" class="nav-link hover:text-white transition-colors">Glossary</a>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <a href="#casino-directory-30" class="hidden sm:inline-flex px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-500/20">
+          Browse Directory
+        </a>
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:bg-white/5">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto mt-2 liquid-glass rounded-2xl p-4 flex flex-col gap-2 text-sm font-medium text-slate-200">
+      <a href="#overview" class="py-3 px-3 rounded-lg hover:bg-white/5">Overview</a>
+      <a href="#hub-directory" class="py-3 px-3 rounded-lg hover:bg-white/5">Guides</a>
+      <a href="#casino-directory-30" class="py-3 px-3 rounded-lg bg-cyan-500/10 text-cyan-200 font-semibold">Directory</a>
+      <a href="#interactive-labs" class="py-3 px-3 rounded-lg hover:bg-white/5">Labs</a>
+      <a href="#glossary-archive" class="py-3 px-3 rounded-lg hover:bg-white/5">Glossary</a>
+    </div>
+  </header>
+
+  <!-- 2. Accessible Editorial Hero Section with Interactive 3D Canvas -->
+  <section id="overview" class="relative min-h-[80vh] flex items-center justify-center pt-28 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- Interactive 3D Refracting Prism Canvas -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#050507]/55 via-[#050507]/30 to-[#050507] pointer-events-none z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pointer-events-none">
+      <!-- Left Editorial Column -->
+      <div class="lg:col-span-7 space-y-6 pointer-events-auto">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full liquid-glass text-xs font-mono text-cyan-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>2026 INDEPENDENT RESEARCH EDITION • 10 PERMANENT GUIDES</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] editorial-gradient">
+          How Online Casinos Are Evolving—Explained Simply.
+        </h1>
+
+        <p class="max-w-2xl text-base sm:text-lg text-slate-200 leading-relaxed">
+          Online gambling is shifting from opaque websites with slow bank withdrawals to <strong class="text-white font-semibold">regulated, mathematically verifiable, and AI-assisted platforms</strong>. Explore our 10 permanent research pillars covering global laws, provably fair math, stablecoin rails, and player safety.
+        </p>
+
+        <!-- Plain-English Quick Callout -->
+        <div class="plain-english rounded-2xl p-4 max-w-2xl">
+          <p class="text-xs font-mono uppercase tracking-wider text-cyan-300 mb-1">In Plain English</p>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            Instead of blindly trusting a website to play fair and pay out days later, next-generation platforms use <strong>public cryptographic receipts</strong> to prove game outcomes and <strong>blockchain payment rails</strong> to settle withdrawals in seconds—under tightening global licensing rules.
+          </p>
+        </div>
+        <p class="text-xs font-mono text-emerald-300">18+ only • Gambling involves risk of loss • <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
+
+        <!-- CTAs + 3D Canvas Toggle -->
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a href="#hub-directory" class="px-6 py-3.5 rounded-2xl font-semibold text-sm text-slate-950 bg-white hover:bg-cyan-100 transition-all shadow-xl shadow-white/10 flex items-center gap-2">
+            <span>Browse All 10 Knowledge Pillars</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <a href="#hub-02-provably-fair" class="px-5 py-3.5 rounded-2xl font-semibold text-sm text-white liquid-glass hover:bg-white/10 transition-all">
+            Try Live Fairness Verifier
+          </a>
+          <button id="toggle-3d-btn" class="px-4 py-3.5 rounded-2xl font-mono text-xs text-slate-300 liquid-glass hover:text-white transition-all">
+            3D Prism: ON
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Plain-English Quick Stats Card -->
+      <div class="lg:col-span-5 pointer-events-auto">
+        <div class="glass-card rounded-3xl p-6 sm:p-7 space-y-5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <div>
+              <p class="text-xs font-mono uppercase tracking-wider text-slate-400">2026 Industry Snapshot</p>
+              <h2 class="text-lg font-bold text-white mt-0.5">What’s Actually Changing?</h2>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-xs font-mono">
+              UNVERIFIED ESTIMATES
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3.5">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <p class="text-xs text-slate-400">Stablecoin Share of Crypto Bets</p>
+              <p class="text-2xl font-bold font-mono text-cyan-300 mt-1">68%</p>
+              <p class="text-[11px] text-slate-400 mt-1">USDC &amp; USDT avoid price swings</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <p class="text-xs text-slate-400">Layer-2 Payout Finality</p>
+              <p class="text-2xl font-bold font-mono text-emerald-300 mt-1">&lt; 2 sec</p>
+              <p class="text-[11px] text-slate-400 mt-1">Vs. 1–5 days via bank wire</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <p class="text-xs text-slate-400">Global Online GGR (2026E)</p>
+              <p class="text-2xl font-bold font-mono text-violet-300 mt-1">$114B</p>
+              <p class="text-[11px] text-slate-400 mt-1">Regulated &amp; digital markets</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <p class="text-xs text-slate-400">AI Risk Detection</p>
+              <p class="text-2xl font-bold font-mono text-amber-300 mt-1">Real-Time</p>
+              <p class="text-[11px] text-slate-400 mt-1">Flags loss-chasing patterns</p>
+            </div>
+          </div>
+          <p class="text-xs font-mono text-slate-400">Figures are unsourced estimates and have not been verified.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Master Navigation Directory for All 10 Permanent Pillars -->
+  <section id="hub-directory" class="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="glass-card rounded-3xl p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
+        <div>
+          <p class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300 mb-1.5">Permanent Knowledge Architecture</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">10 Core Pillars of Modern &amp; Future iGaming</h2>
+        </div>
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <button data-dir-filter="all" class="dir-filter-btn px-3 py-1.5 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All 10 Hubs</button>
+          <button data-dir-filter="law-safety" class="dir-filter-btn px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Law &amp; Player Safety</button>
+          <button data-dir-filter="tech-infra" class="dir-filter-btn px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tech &amp; Payments</button>
+          <button data-dir-filter="data-future" class="dir-filter-btn px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">AI, Data &amp; Archive</button>
+        </div>
+      </div>
+
+      <div id="directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 pt-6">
+        <a href="#hub-01-regulation" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">01 // LEGALITY</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Regulation &amp; Legality Tracker</h3>
+          <p class="text-xs text-slate-400 mt-1">Country-by-country licenses &amp; rules</p>
+        </a>
+        <a href="#hub-02-provably-fair" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">02 // FAIRNESS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Provably Fair Explained</h3>
+          <p class="text-xs text-slate-400 mt-1">Seed hashes &amp; live roll verifier</p>
+        </a>
+        <a href="#hub-03-payments" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">03 // PAYMENTS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Blockchain &amp; Payment Rails</h3>
+          <p class="text-xs text-slate-400 mt-1">Stablecoins vs. L2 vs. bank cards</p>
+        </a>
+        <a href="#hub-04-smart-contracts" data-cat="tech-infra" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">04 // ON-CHAIN</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Smart Contract Casinos</h3>
+          <p class="text-xs text-slate-400 mt-1">Liquidity pools, code &amp; key risks</p>
+        </a>
+        <a href="#hub-05-responsible" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">05 // PROTECTION</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Responsible Gambling</h3>
+          <p class="text-xs text-slate-400 mt-1">Limits, self-exclusion &amp; helplines</p>
+        </a>
+        <a href="#hub-06-security" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">06 // HYGIENE</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Security &amp; Wallet Hygiene</h3>
+          <p class="text-xs text-slate-400 mt-1">Custody risks &amp; drainer defense</p>
+        </a>
+        <a href="#hub-07-scams" data-cat="law-safety" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">07 // RED FLAGS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Scam &amp; Fraud Library</h3>
+          <p class="text-xs text-slate-400 mt-1">Fake licenses &amp; withdrawal traps</p>
+        </a>
+        <a href="#hub-08-ai" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">08 // AI &amp; UX</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">AI &amp; Personalization</h3>
+          <p class="text-xs text-slate-400 mt-1">Odds modeling &amp; harm detection</p>
+        </a>
+        <a href="#hub-09-market-data" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">09 // METRICS</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Market Data &amp; Trends</h3>
+          <p class="text-xs text-slate-400 mt-1">2024–2030 GGR &amp; adoption charts</p>
+        </a>
+        <a href="#glossary-archive" data-cat="data-future" class="dir-item p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all group">
+          <span class="text-xs font-mono text-cyan-300">10 // ARCHIVE</span>
+          <h3 class="text-sm font-bold text-white mt-1 group-hover:text-cyan-200">Glossary &amp; History</h3>
+          <p class="text-xs text-slate-400 mt-1">Terms, timeline &amp; annual report</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (60 ENTRIES)       -->
+  <!-- ===================================================================== -->
+  <section id="casino-directory-30" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+    <!-- Section Header + Unranked Disclosure -->
+    <div class="reveal-up space-y-4">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+        <div class="max-w-3xl">
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Technical Field Guide // 60 Entries Across Clear Categories</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Web3 &amp; DeFi Casino Directory &amp; Architecture Review</h2>
+          <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+            An architectural comparison of the original 30 platforms and 30 additional DeFi/Web3 &amp; crypto casino entries—grouped into distinct, unranked categories covering tokenomics, instant payout rails, sportsbook hybrids, large game catalogs, and specialized VIP/feature editions.
+          </p>
+        </div>
+        <span class="px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-slate-200 text-xs font-mono self-start">
+          UNRANKED DIRECTORY • NO SCORES OR PLACEMENTS
+        </span>
+      </div>
+
+      <div class="plain-english rounded-2xl p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+        <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">Unranked neutrality notice</strong>Platforms and feature editions are organized into descriptive categories for neutral educational comparison, not ranked, scored, or ordered by quality. Where an entry in the second batch focuses on a specific feature of a platform already in the first set (#23–#30), that relationship is explicitly labeled.</p>
+        <p class="text-sm text-slate-200"><strong class="block text-cyan-300 font-mono uppercase text-xs mb-1">What this directory is</strong>A plain-English description of each platform's custody model, licensing, verification (KYC) and payments, grouped by category. <strong class="text-white">What it is not:</strong> a ranking, a recommendation, a safety rating, or confirmation that a platform is legal where you live.</p>
+        <p class="text-sm text-slate-200"><strong class="block text-amber-300 font-mono uppercase text-xs mb-1">Status: unverified</strong>The licence, KYC and feature details below were written without cited sources and have no "last checked" date yet. Treat every entry as unverified and confirm it on the operator's own site and the regulator's public register before depositing. If a detail is not stated, that does not mean "none" or "no limit".</p>
+        <p class="text-sm text-slate-200"><strong class="block text-emerald-300 font-mono uppercase text-xs mb-1">Links &amp; money · 18+ only</strong>This directory contains no affiliate links and no links to casino sites. If affiliate links are ever added, each one will be labelled "Affiliate link" next to it and will not change the order or wording of entries. 18+ only. <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling &amp; free helplines</a>.</p>
+      </div>
+    </div>
+
+    <!-- Key Considerations for Web3 Casinos Banner -->
+    <details class="reveal-up glass-card rounded-3xl border border-amber-400/20">
+      <summary class="cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-5 sm:p-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-amber-300">Due-Diligence Framework</span>
+          <h3 class="text-xl font-bold text-white mt-0.5">Key Considerations for Web3 Casinos</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 flex items-center gap-2">Tap to expand · 3 dimensions
+          <svg class="chev w-4 h-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+      </summary>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 px-5 sm:px-6 pb-6 border-t border-white/10 pt-5">
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-cyan-300 uppercase">01 // Custody Models</span>
+            <span class="text-[11px] font-mono text-slate-400">Who Holds Keys?</span>
+          </div>
+          <h4 class="text-base font-bold text-white">Non-Custodial vs. Platform Wallets</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <strong>"Non-custodial"</strong> protocols (such as Dexsport) keep funds in your personal Web3 wallet until a smart contract executes the wager. Most other platforms use <strong>custodial account balances</strong> where you deposit into a platform-controlled wallet before playing.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-violet-300 uppercase">02 // Licensing &amp; Oversight</span>
+            <span class="text-[11px] font-mono text-slate-400">Player Recourse</span>
+          </div>
+          <h4 class="text-base font-bold text-white">Offshore Regimes vs. Tier-1 Sandboxes</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Most Web3 casinos operate under <strong>Curaçao or Anjouan</strong> licenses—crypto-friendly jurisdictions that offer lighter regulatory oversight and dispute recourse than Tier-1 regulators like the <strong>Malta Gaming Authority (MGA)</strong> or UKGC.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-emerald-300 uppercase">03 // Verification (KYC)</span>
+            <span class="text-[11px] font-mono text-slate-400">Privacy vs. AML</span>
+          </div>
+          <h4 class="text-base font-bold text-white">Soft Thresholds &amp; Risk Triggers</h4>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Even when platforms advertise <strong>no-KYC or minimal-KYC</strong> onboarding for routine play, terms of service almost universally allow identity and source-of-funds checks upon large withdrawals or automated AML risk flags.
+          </p>
+        </div>
+      </div>
+    </details>
+
+    <!-- Search, Cohort & Unranked Category Filter Controls -->
+    <div class="lg:sticky lg:top-24 z-30">
+    <div class="glass-card rounded-3xl p-4 sm:p-5 space-y-3 shadow-2xl shadow-black/50">
+      <div class="flex flex-col gap-3">
+        <!-- Search Input -->
+        <div class="relative w-full min-w-0">
+          <label for="casino-search-input" class="sr-only">Search the directory</label>
+          <input id="casino-search-input" type="search" autocomplete="off" placeholder="Search by name, chain, token or license" class="w-full min-h-[44px] px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-base font-sans text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400" />
+        </div>
+
+        <!-- Batch / Cohort Filter + Counter + Reset -->
+        <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono sm:justify-between">
+          <select id="casino-cohort-select" aria-label="Filter by Directory Batch" class="px-3 py-2 rounded-xl bg-black/60 border border-white/15 text-slate-200 focus:outline-none focus:border-cyan-400">
+            <option value="all">Batch: All 60 Entries</option>
+            <option value="batch-1">Batch 1: Initial 30 Platforms</option>
+            <option value="batch-2">Batch 2: Additional 30 Entries (#1–#30)</option>
+          </select>
+          <span id="casino-count-label" role="status" aria-live="polite" class="text-cyan-300">Showing 60 of 60 Entries (Unranked Categories)</span>
+          <button id="casino-reset-btn" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all">
+            Reset Filters
+          </button>
+          <div class="inline-flex" role="group" aria-label="Card layout">
+            <button type="button" data-view="grid" aria-pressed="true" class="view-toggle-btn px-3 py-1.5 rounded-l-xl border border-white/10 bg-cyan-500/20 text-cyan-200 transition-all">Cards</button>
+            <button type="button" data-view="compact" aria-pressed="false" class="view-toggle-btn px-3 py-1.5 rounded-r-xl border border-l-0 border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 transition-all">Compact list</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unranked Category Filter Pills -->
+      <div class="pill-row flex gap-2 overflow-x-auto sm:flex-wrap text-xs font-mono pt-1 pb-1">
+        <button type="button" aria-pressed="true" data-arch-filter="all" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all">All Categories (60)</button>
+        <button type="button" aria-pressed="false" data-arch-filter="tokenomics-yield" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Tokenomics, Yield &amp; Buyback Models</button>
+        <button type="button" aria-pressed="false" data-arch-filter="lightning-instant" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Lightning &amp; Instant Payout Specialists</button>
+        <button type="button" aria-pressed="false" data-arch-filter="sportsbook-hybrid" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Sportsbook &amp; Hybrid Betting Platforms</button>
+        <button type="button" aria-pressed="false" data-arch-filter="game-libraries" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">High-Volume &amp; Multi-Provider Game Libraries</button>
+        <button type="button" aria-pressed="false" data-arch-filter="vip-feature-editions" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">VIP, Promotions &amp; Feature-Specific Editions</button>
+        <button type="button" aria-pressed="false" data-arch-filter="non-custodial-web3" class="arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all">Non-Custodial &amp; Direct Web3 Wallets</button>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- Grouped Unranked Categories & Platform Cards Container -->
+    <div id="casino-directory-grid" class="space-y-10">
+      <!-- Populated dynamically by JS across unranked categories -->
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PILLAR 02: PROVABLY FAIR TECHNOLOGY EXPLAINED + LIVE LAB              -->
+  <!-- ===================================================================== -->
+  <section id="hub-02-provably-fair" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div id="interactive-labs" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 space-y-8 border border-white/15">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 02 // Cryptographic Trust</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Provably Fair Technology Explained</h2>
+        <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+          In traditional online casinos, you have to trust that the company’s server didn’t rig the spin. <strong>Provably Fair</strong> uses cryptographic hashing (like a sealed envelope) so neither the casino nor the player can change the outcome after a bet is placed.
+        </p>
+      </div>
+
+      <!-- 3-Step Plain-English Visual Breakdown -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-mono font-bold text-sm flex items-center justify-center">1</div>
+          <h3 class="text-base font-bold text-white">Server Seed Hash Locked</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Before you bet, the casino picks a secret random number (<em>Server Seed</em>) and shows you its scrambled fingerprint (<em>SHA-256 Hash</em>). Like putting the answer inside a locked glass box before the game starts.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-violet-500/20 border border-violet-400/40 text-violet-300 font-mono font-bold text-sm flex items-center justify-center">2</div>
+          <h3 class="text-base font-bold text-white">Your Player Seed Added</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Your browser adds your own random text (<em>Client Seed</em>) plus your bet counter (<em>Nonce</em>). Because the casino couldn’t predict your seed when it locked Step 1, it cannot pre-rig the result.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-mono font-bold text-sm flex items-center justify-center">3</div>
+          <h3 class="text-base font-bold text-white">Outcome Revealed &amp; Verified</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            After the round, the casino reveals the unscrambled Server Seed. Any independent tool (including your browser right below) can re-run the SHA-256 math to confirm it matches Step 1’s fingerprint.
+          </p>
+        </div>
+      </div>
+
+      <!-- Live Interactive "Verify a Roll" Simulator (Real Web Crypto SHA-256) -->
+      <div class="p-6 rounded-3xl bg-[#07080E] border border-violet-400/25 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div>
+            <span class="text-xs font-mono text-violet-300 uppercase">Interactive Lab // Real Browser SHA-256</span>
+            <h3 class="text-lg font-bold text-white">Test &amp; Verify a Provably Fair Roll Yourself</h3>
+          </div>
+          <button id="rotate-server-seed-btn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all">
+            Generate New Server Seed
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-end">
+          <div class="lg:col-span-5 space-y-1.5">
+            <label for="client-seed-input" class="block text-xs font-mono text-slate-400">YOUR CLIENT SEED (EDITABLE)</label>
+            <input id="client-seed-input" type="text" value="player-lucky-777" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-sm font-mono text-cyan-200 focus:outline-none focus:border-cyan-400" />
+          </div>
+
+          <div class="lg:col-span-3 space-y-1.5">
+            <label for="nonce-input" class="block text-xs font-mono text-slate-400">BET NONCE (#)</label>
+            <input id="nonce-input" type="number" min="1" value="1" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-sm font-mono text-white focus:outline-none focus:border-cyan-400" />
+          </div>
+
+          <div class="lg:col-span-4 flex gap-2">
+            <button id="roll-verify-btn" class="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-300 to-violet-300 hover:brightness-110 active:scale-95 transition-all">
+              Roll &amp; Compute SHA-256
+            </button>
+          </div>
+        </div>
+
+        <!-- Cryptographic Receipt Output -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pt-2">
+          <div class="md:col-span-8 p-4 rounded-2xl bg-black/50 border border-white/10 font-mono text-xs space-y-2 overflow-x-auto">
+            <div>
+              <span class="text-slate-400">1. Committed Server Hash:</span>
+              <div id="pf-server-hash" class="text-slate-200 break-all mt-0.5">computing...</div>
+            </div>
+            <div>
+              <span class="text-slate-400">2. Combined Roll HMAC/SHA-256:</span>
+              <div id="pf-combined-hash" class="text-cyan-300 break-all mt-0.5">computing...</div>
+            </div>
+          </div>
+
+          <div class="md:col-span-4 p-4 rounded-2xl bg-gradient-to-br from-violet-950/60 to-cyan-950/50 border border-cyan-400/25 flex flex-col justify-between">
+            <span class="text-xs font-mono text-slate-300">VERIFIED DICE ROLL (0.00 – 99.99)</span>
+            <div id="pf-roll-result" class="text-4xl font-extrabold font-mono text-white my-2">54.82</div>
+            <div class="text-xs font-mono text-emerald-300">✓ Hash Commitment Matched</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PILLAR 03 & PILLAR 04: PAYMENTS INFRASTRUCTURE & SMART CONTRACTS      -->
+  <!-- ===================================================================== -->
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+
+    <!-- PILLAR 03: Blockchain & Payment Infrastructure -->
+    <div id="hub-03-payments" class="reveal-up space-y-6">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 03 // Settlement &amp; Liquidity Rails</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Blockchain &amp; Payment Infrastructure</h2>
+        <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+          Why do next-generation platforms use digital payment rails? Traditional bank cards and wires rely on multi-day clearinghouses and high chargeback fees, whereas <strong>Layer-2 stablecoin rails</strong> settle in seconds for fractions of a cent.
+        </p>
+      </div>
+
+      <!-- Side-by-Side Payment Rail Comparison Table -->
+      <div class="glass-card rounded-3xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 bg-white/[0.03] text-xs font-mono uppercase text-slate-300">
+                <th class="py-4 px-5">Payment Rail</th>
+                <th class="py-4 px-5">Settlement Speed</th>
+                <th class="py-4 px-5">Typical Fee</th>
+                <th class="py-4 px-5">Price Volatility</th>
+                <th class="py-4 px-5">Plain-English Verdict</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10 text-sm">
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-4 px-5 font-semibold text-white">
+                  Stablecoins on Layer-2
+                  <span class="block text-xs font-mono text-emerald-300 font-normal">USDC / USDT via Arbitrum, Base, Polygon</span>
+                </td>
+                <td class="py-4 px-5 font-mono text-emerald-300">1 – 3 seconds</td>
+                <td class="py-4 px-5 font-mono text-slate-200">&lt; $0.01</td>
+                <td class="py-4 px-5"><span class="px-2.5 py-1 rounded-full text-xs bg-emerald-500/15 text-emerald-300">Pegged 1:1 USD</span></td>
+                <td class="py-4 px-5 text-slate-300">Best balance of instant payouts, near-zero fees, and zero price fluctuation.</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-4 px-5 font-semibold text-white">
+                  High-Throughput Layer-1
+                  <span class="block text-xs font-mono text-cyan-300 font-normal">Solana (SOL / USDC-SPL)</span>
+                </td>
+                <td class="py-4 px-5 font-mono text-cyan-300">~400 milliseconds</td>
+                <td class="py-4 px-5 font-mono text-slate-200">&lt; $0.002</td>
+                <td class="py-4 px-5"><span class="px-2.5 py-1 rounded-full text-xs bg-cyan-500/15 text-cyan-300">Low (if USDC)</span></td>
+                <td class="py-4 px-5 text-slate-300">Enables real-time micro-betting and sub-second on-chain game loops.</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-4 px-5 font-semibold text-white">
+                  Volatile Native Coins
+                  <span class="block text-xs font-mono text-amber-300 font-normal">BTC, ETH Mainnet</span>
+                </td>
+                <td class="py-4 px-5 font-mono text-amber-300">10 – 45 minutes</td>
+                <td class="py-4 px-5 font-mono text-slate-200">$1.50 – $15.00</td>
+                <td class="py-4 px-5"><span class="px-2.5 py-1 rounded-full text-xs bg-amber-500/15 text-amber-300">High Market Risk</span></td>
+                <td class="py-4 px-5 text-slate-300">Your bankroll value can rise or drop 10% overnight unrelated to your bets.</td>
+              </tr>
+              <tr class="hover:bg-white/[0.02]">
+                <td class="py-4 px-5 font-semibold text-white">
+                  Traditional Bank Cards &amp; Wires
+                  <span class="block text-xs font-mono text-slate-400 font-normal">Visa, Mastercard, SWIFT / ACH</span>
+                </td>
+                <td class="py-4 px-5 font-mono text-slate-300">1 – 5 business days</td>
+                <td class="py-4 px-5 font-mono text-slate-200">2.5% – 5% processor</td>
+                <td class="py-4 px-5"><span class="px-2.5 py-1 rounded-full text-xs bg-white/10 text-slate-300">Fiat Currency</span></td>
+                <td class="py-4 px-5 text-slate-300">Strong consumer dispute protections, but slow withdrawals and frequent gambling blocks.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 04: Smart Contract & On-Chain Casinos -->
+    <div id="hub-04-smart-contracts" class="reveal-up grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <!-- Architecture Explainer (7 cols) -->
+      <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+        <div class="space-y-3">
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 04 // Decentralized Architecture</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Smart Contract &amp; On-Chain Casinos</h2>
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            In a <strong>non-custodial smart contract casino</strong>, you never deposit money into a company’s bank account. Instead, your wallet interacts directly with open-source code holding a shared liquidity pool.
+          </p>
+        </div>
+
+        <!-- Visual Flow Diagram -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="p-4 rounded-2xl bg-sky-500/10 border border-sky-400/25">
+            <p class="text-xs font-mono text-sky-300">STEP A // WALLET</p>
+            <p class="text-sm font-bold text-white mt-1">Direct Bet Signature</p>
+            <p class="text-xs text-slate-300 mt-1">Funds stay in your wallet until the exact second a wager executes.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-violet-500/10 border border-violet-400/25">
+            <p class="text-xs font-mono text-violet-300">STEP B // CONTRACT</p>
+            <p class="text-sm font-bold text-white mt-1">Liquidity Pool Escrow</p>
+            <p class="text-xs text-slate-300 mt-1">Community-funded bankroll guarantees solvency visibly on-chain.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-400/25">
+            <p class="text-xs font-mono text-emerald-300">STEP C // PAYOUT</p>
+            <p class="text-sm font-bold text-white mt-1">Atomic Settlement</p>
+            <p class="text-xs text-slate-300 mt-1">Winning payouts transfer automatically in the same block—no manual approval.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Honest Key Risks Box (5 cols) -->
+      <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 border border-amber-400/25 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono">
+            CRITICAL RISK AUDIT
+          </span>
+          <span class="text-xs font-mono text-slate-400">Read Before Using</span>
+        </div>
+        <h3 class="text-xl font-bold text-white">3 Key Risks of On-Chain Casinos</h3>
+        <ul class="space-y-3.5 text-sm text-slate-300">
+          <li class="p-3 rounded-xl bg-black/40 border border-white/5">
+            <strong class="text-amber-300 block font-semibold">1. Smart Contract Exploits</strong>
+            If the underlying code has an unaudited bug, hackers can drain the shared liquidity pool—and blockchain transactions cannot be reversed.
+          </li>
+          <li class="p-3 rounded-xl bg-black/40 border border-white/5">
+            <strong class="text-amber-300 block font-semibold">2. Randomness &amp; Oracle Manipulation</strong>
+            Poorly designed contracts that rely on block timestamps instead of verifiable randomness (VRF) can be gamed by validators or bots.
+          </li>
+          <li class="p-3 rounded-xl bg-black/40 border border-white/5">
+            <strong class="text-amber-300 block font-semibold">3. Liquidity Provider Drawdowns</strong>
+            Users who stake funds to "be the house" face real financial loss during whale winning streaks or token price drops.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PILLAR 05, 06 & 07: TRUST, PLAYER PROTECTION & SCAM DEFENSE           -->
+  <!-- ===================================================================== -->
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+
+    <!-- PILLAR 05: Responsible Gambling & Player Protection -->
+    <div id="hub-05-responsible" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 border border-emerald-400/20 space-y-6">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/10 pb-6">
+        <div class="max-w-3xl">
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 05 // Trust &amp; Player Wellbeing</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Responsible Gambling &amp; Player Protection</h2>
+          <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+            Fast blockchain payouts and 24/7 global access can accelerate impulsive betting. Furthermore, <strong>pseudonymous crypto wallets complicate cross-site self-exclusion</strong>—meaning players must combine platform safeguards with personal wallet-level controls.
+          </p>
+        </div>
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-mono self-start">
+          18+ / 21+ ONLY • PLAY SAFELY
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <h3 class="text-base font-bold text-white">On-Chain &amp; Account Limits</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Modern platforms and smart-contract wallets allow hard-coded <strong>daily deposit caps, loss limits, and time-lock cooling-off periods</strong> that cannot be overridden mid-session.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
+          <h3 class="text-base font-bold text-white">The Pseudonymity Gap</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            National registers like GAMSTOP block all licensed UK sites using your legal ID, whereas a self-excluded crypto user could spin up a new wallet address elsewhere. Zero-knowledge identity credentials are being developed to close this gap without exposing personal data.
+          </p>
+        </div>
+        <div class="p-5 rounded-2xl bg-emerald-950/35 border border-emerald-400/25 space-y-3">
+          <h3 class="text-base font-bold text-emerald-200">Free, Confidential Support Helplines</h3>
+          <ul class="space-y-2 text-xs text-slate-200">
+            <li>• <strong>US National Helpline:</strong> Call or text <span class="font-mono text-emerald-300">1-800-GAMBLER</span> (<a href="https://www.ncpgambling.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">ncpgambling.org</a>)</li>
+            <li>• <strong>UK &amp; International:</strong> <a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">GamCare.org.uk</a> &amp; <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">BeGambleAware.org</a></li>
+            <li>• <strong>Blocking Software:</strong> <a href="https://gamban.com/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Gamban</a> (blocks gambling sites &amp; apps across devices)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 06: Security & Wallet Hygiene -->
+    <div id="hub-06-security" class="reveal-up space-y-6">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 06 // Self-Custody Defense</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Security &amp; Wallet Hygiene Checklist</h2>
+        <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+          In Web3 gaming, <strong>you are your own bank</strong>. Most player losses outside the games themselves come from phishing links and malicious token approvals rather than blockchain hacks. Click items below to track your safety setup:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Interactive Safety Checklist (7 cols) -->
+        <div class="lg:col-span-7 glass-card rounded-3xl p-6 space-y-3">
+          <div class="flex items-center justify-between pb-2">
+            <span class="text-xs font-mono text-amber-300 uppercase">Interactive Hygiene Checklist</span>
+            <span id="hygiene-score" class="text-xs font-mono text-slate-300">0 / 5 Completed</span>
+          </div>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 cursor-pointer transition-all">
+            <input type="checkbox" class="hygiene-check mt-1 accent-cyan-400 w-4 h-4" />
+            <div>
+              <span class="text-sm font-semibold text-white block">Use a Dedicated "Burner" Gaming Wallet</span>
+              <span class="text-xs text-slate-400">Never connect your main long-term hardware vault directly to any gaming dApp. Keep only your session bankroll in a separate hot wallet.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 cursor-pointer transition-all">
+            <input type="checkbox" class="hygiene-check mt-1 accent-cyan-400 w-4 h-4" />
+            <div>
+              <span class="text-sm font-semibold text-white block">Cap &amp; Revoke Token Spending Approvals</span>
+              <span class="text-xs text-slate-400">Avoid signing "Unlimited USDC Approval" prompts. Periodically revoke stale permissions using tools like Revoke.cash.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 cursor-pointer transition-all">
+            <input type="checkbox" class="hygiene-check mt-1 accent-cyan-400 w-4 h-4" />
+            <div>
+              <span class="text-sm font-semibold text-white block">Bookmark Official Domains (Stop Search-Ad Phishing)</span>
+              <span class="text-xs text-slate-400">Scammers buy lookalike sponsored ads on search engines that host wallet-drainer clones. Always verify the exact URL.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 cursor-pointer transition-all">
+            <input type="checkbox" class="hygiene-check mt-1 accent-cyan-400 w-4 h-4" />
+            <div>
+              <span class="text-sm font-semibold text-white block">Verify Network &amp; Withdrawal Address Before Sending</span>
+              <span class="text-xs text-slate-400">Confirm both sender and receiver are on the exact same chain (e.g., Arbitrum USDC vs. Ethereum Mainnet) and send a small test amount first.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 cursor-pointer transition-all">
+            <input type="checkbox" class="hygiene-check mt-1 accent-cyan-400 w-4 h-4" />
+            <div>
+              <span class="text-sm font-semibold text-white block">Enable Hardware Passkeys / App-Based 2FA</span>
+              <span class="text-xs text-slate-400">For custodial accounts, use authenticator apps or FIDO2 passkeys instead of SMS 2FA to prevent SIM-swap account takeovers.</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Custodial vs Self-Custody Comparison (5 cols) -->
+        <div class="lg:col-span-5 glass-card rounded-3xl p-6 flex flex-col justify-between space-y-5">
+          <div>
+            <span class="text-xs font-mono text-cyan-300 uppercase">Custody Trade-Offs</span>
+            <h3 class="text-xl font-bold text-white mt-1">Custodial vs. Self-Custody</h3>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+              <div class="flex justify-between font-bold text-white mb-1">
+                <span>Custodial Account (Email/Login)</span>
+                <span class="text-xs font-mono text-amber-300">PLATFORM HOLDS KEYS</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Easy password recovery and familiar UX, but the operator can freeze withdrawals, delay KYC reviews, or become insolvent.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-black/40 border border-cyan-400/20">
+              <div class="flex justify-between font-bold text-white mb-1">
+                <span>Self-Custody Wallet (MetaMask / Passkey)</span>
+                <span class="text-xs font-mono text-cyan-300">YOU HOLD KEYS</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                No company can freeze your unbet funds, and payouts settle directly to your address—but if you lose your recovery phrase or sign a malicious contract, there is no helpdesk undo button.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 07: Scam & Fraud Pattern Library -->
+    <div id="hub-07-scams" class="reveal-up space-y-6">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 07 // Threat Intelligence</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Scam &amp; Fraud Pattern Library</h2>
+        <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+          Fraudulent operators recycle the exact same playbooks under new brand names. Learn the four most common recurring traps before depositing a single dollar.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Pattern 1 -->
+        <div class="glass-card rounded-3xl p-6 space-y-3 border border-rose-500/20">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-300 text-xs font-mono">TYPOLOGY 01</span>
+            <span class="text-xs font-mono text-slate-400">REGULATORY SPOOFING</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Fake Footer License Seals</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <strong class="text-white">How It Works:</strong> Scam sites paste static PNG images of Curaçao, MGA, or UKGC badges in their footer without an active validator link.
+          </p>
+          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-400/20 text-xs text-emerald-200">
+            <strong>How to Spot It:</strong> Click the seal. Genuine licenses open an official regulator certificate page matching the exact domain name.
+          </div>
+        </div>
+
+        <!-- Pattern 2 -->
+        <div class="glass-card rounded-3xl p-6 space-y-3 border border-rose-500/20">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-300 text-xs font-mono">TYPOLOGY 02</span>
+            <span class="text-xs font-mono text-slate-400">SELECTIVE KYC</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Withdrawal-Trap KYC &amp; "Tax" Fees</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <strong class="text-white">How It Works:</strong> A site lets you deposit and "win" huge balances effortlessly, then demands an upfront "verification deposit" or "unlock tax" before releasing funds.
+          </p>
+          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-400/20 text-xs text-emerald-200">
+            <strong>How to Spot It:</strong> Legitimate casinos <em>never</em> require you to deposit extra money to withdraw your winnings.
+          </div>
+        </div>
+
+        <!-- Pattern 3 -->
+        <div class="glass-card rounded-3xl p-6 space-y-3 border border-rose-500/20">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-300 text-xs font-mono">TYPOLOGY 03</span>
+            <span class="text-xs font-mono text-slate-400">PONZI TOKENOMICS</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">"Guaranteed Yield / AI Arbitrage" Betting Pools</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <strong class="text-white">How It Works:</strong> Promoters claim an "AI sports-betting bot" generates 1%–3% guaranteed daily returns if you stake tokens into their house pool.
+          </p>
+          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-400/20 text-xs text-emerald-200">
+            <strong>How to Spot It:</strong> No betting algorithm eliminates variance. Fixed daily yields are paid from new deposits until the pool collapses.
+          </div>
+        </div>
+
+        <!-- Pattern 4 -->
+        <div class="glass-card rounded-3xl p-6 space-y-3 border border-rose-500/20">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-lg bg-rose-500/15 text-rose-300 text-xs font-mono">TYPOLOGY 04</span>
+            <span class="text-xs font-mono text-slate-400">MALICIOUS SIGNATURES</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">Fake Airdrop &amp; "Free Spin" Wallet Drainers</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <strong class="text-white">How It Works:</strong> Social media replies offer "free VIP bonus chips" that prompt your wallet to sign an opaque <code>Permit2</code> or <code>setApprovalForAll</code> transaction.
+          </p>
+          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-400/20 text-xs text-emerald-200">
+            <strong>How to Spot It:</strong> Claiming a legitimate bonus never requires granting token-transfer permissions on your existing wallet balances.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PILLAR 08 & PILLAR 09: AI PERSONALIZATION & MARKET DATA TRENDS        -->
+  <!-- ===================================================================== -->
+  <section class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-16">
+
+    <!-- PILLAR 08: AI, Personalization & the Gambling Experience -->
+    <div id="hub-08-ai" class="reveal-up space-y-6">
+      <div class="max-w-3xl">
+        <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 08 // Forward-Looking UX</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">AI, Personalization &amp; the Gambling Experience</h2>
+        <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+          Artificial intelligence is reshaping both sides of the screen—creating faster, hyper-personalized interfaces while introducing new ethical questions around behavioral targeting versus player protection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-card rounded-3xl p-6 space-y-3">
+          <span class="text-xs font-mono text-fuchsia-300">01 // REAL-TIME PRICING</span>
+          <h3 class="text-lg font-bold text-white">Dynamic Micro-Odds</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Machine-learning models process live sports telemetry in milliseconds to price play-by-play micro-markets (e.g., next pitch or next corner kick) without human traders.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 space-y-3">
+          <span class="text-xs font-mono text-cyan-300">02 // CONVERSATIONAL UX</span>
+          <h3 class="text-lg font-bold text-white">Multilingual AI Concierges</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Natural-language assistants explain complex bonus wagering rules, verify transaction hashes, and localize live dealer commentary across 40+ languages instantly.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 space-y-3">
+          <span class="text-xs font-mono text-emerald-300">03 // EARLY INTERVENTION</span>
+          <h3 class="text-lg font-bold text-white">Harm-Detection Models</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Regulated platforms deploy behavioral AI to spot early warning signs—like rapid late-night deposit escalation or erratic bet sizing—triggering automated cooling-off nudges.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 space-y-3">
+          <span class="text-xs font-mono text-amber-300">04 // ETHICAL BOUNDARY</span>
+          <h3 class="text-lg font-bold text-white">Predatory Retention Guardrails</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Regulators increasingly ban "churn-prediction bonuses" that send targeted free-bet offers to players showing signs of financial distress.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 09: Market Data & Industry Trends (Interactive Chart) -->
+    <div id="hub-09-market-data" class="reveal-up glass-card rounded-[2rem] p-6 sm:p-10 border border-white/15 space-y-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-white/10 pb-6">
+        <div class="max-w-2xl">
+          <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 09 // Quantitative Benchmark</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Market Data &amp; Industry Trends (2024–2030)</h2>
+          <p class="text-slate-300 mt-2 text-sm leading-relaxed">
+            Toggle between metrics below to inspect how global online Gross Gaming Revenue (GGR), crypto-enabled volume, and stablecoin settlement share are projected to evolve.
+          </p>
+          <p class="text-xs font-mono text-amber-300 mt-2">Unverified: these figures are unsourced estimates and projections, not measured data.</p>
+        </div>
+
+        <!-- Metric Toggle Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <button data-chart="ggr" class="chart-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200">Global Online GGR ($B)</button>
+          <button data-chart="crypto" class="chart-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10">Crypto-Enabled GGR ($B)</button>
+          <button data-chart="stablecoin" class="chart-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10">Stablecoin Volume Share (%)</button>
+        </div>
+      </div>
+
+      <!-- Interactive Bar Visualization -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 p-6 rounded-3xl bg-[#07080E] border border-white/10">
+          <div class="flex items-center justify-between mb-6">
+            <span id="chart-title" class="text-sm font-bold text-white">Global Online Gambling GGR (USD Billions)</span>
+            <span id="chart-cagr" class="text-xs font-mono text-emerald-300">CAGR: +11.4% (2024–2030E)</span>
+          </div>
+
+          <!-- 7-Year Bar Chart Container -->
+          <div id="chart-bars" class="grid grid-cols-7 gap-2 sm:gap-4 items-end h-52 pt-6 border-b border-white/10">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Key Trend Takeaways (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <span class="text-xs font-mono text-cyan-300">TREND 01 // STABLECOIN DOMINANCE</span>
+            <p class="text-sm text-slate-200 mt-1 leading-relaxed">
+              USDT and USDC have overtaken Bitcoin as the primary wagering currency due to zero price volatility and cheap Layer-2 transfers.
+            </p>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <span class="text-xs font-mono text-violet-300">TREND 02 // REGULATED CONSOLIDATION</span>
+            <p class="text-sm text-slate-200 mt-1 leading-relaxed">
+              Newly regulated markets across North America, Latin America (Brazil), and Europe are capturing market share from unlicensed offshore domains.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PILLAR 10: GLOSSARY, HISTORICAL TIMELINE & STATE OF INDUSTRY ARCHIVE  -->
+  <!-- ===================================================================== -->
+  <section id="glossary-archive" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+    <div class="max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-[0.2em] text-cyan-300">Pillar 10 // Reference &amp; Flagship Archive</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Glossary, History &amp; "State of the Industry" Archive</h2>
+      <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">
+        New to Web3 gaming or iGaming metrics? Search plain-English definitions, trace the industry’s evolution since 2012, or read our flagship annual briefing.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Left: Searchable Plain-English Glossary (6 cols) -->
+      <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <h3 class="text-xl font-bold text-white">Plain-English Glossary</h3>
+          <input id="glossary-search" type="text" placeholder="Search terms (e.g., GGR, Nonce, KYC)..." class="px-3.5 py-2 rounded-xl bg-black/60 border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
+        </div>
+
+        <div id="glossary-list" class="space-y-3 max-h-[26rem] overflow-y-auto pr-1">
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">GGR (Gross Gaming Revenue)</strong>
+              <span class="text-[10px] font-mono text-slate-400">INDUSTRY METRIC</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Total money wagered by players minus total winnings paid back out—before operator taxes or marketing costs.</p>
+          </div>
+
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">SHA-256 Hash</strong>
+              <span class="text-[10px] font-mono text-slate-400">CRYPTOGRAPHY</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">A one-way digital fingerprint. Changing even a single letter in the original secret seed completely alters the resulting 64-character hash.</p>
+          </div>
+
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">Nonce</strong>
+              <span class="text-[10px] font-mono text-slate-400">PROVABLY FAIR</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">"Number used once." A counter that increases by +1 with every bet you place so the same seed pair generates a fresh outcome each round.</p>
+          </div>
+
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">Liquidity Pool (On-Chain Bankroll)</strong>
+              <span class="text-[10px] font-mono text-slate-400">DEFI / SMART CONTRACTS</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">A smart contract vault where users deposit stablecoins to act as the house bankroll, earning a share of house edge while bearing variance risk.</p>
+          </div>
+
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">KYC / AML &amp; Zero-Knowledge KYC</strong>
+              <span class="text-[10px] font-mono text-slate-400">COMPLIANCE</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">Know Your Customer &amp; Anti-Money Laundering checks. ZK-KYC lets a user prove they are over 18 and in an approved country without handing over passport scans to every casino.</p>
+          </div>
+
+          <div class="glossary-item p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="flex justify-between items-center">
+              <strong class="text-sm font-bold text-cyan-300">RTP (Return to Player)</strong>
+              <span class="text-[10px] font-mono text-slate-400">GAME MATH</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">The theoretical percentage of all wagered money a game pays back over millions of rounds (e.g., 99% RTP = 1% house edge).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Historical Timeline + Flagship Report Card (6 cols) -->
+      <div class="lg:col-span-6 flex flex-col justify-between gap-6">
+        <!-- Timeline -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <h3 class="text-xl font-bold text-white">Evolution Timeline: 2012 – 2030</h3>
+          <div class="relative border-l border-white/15 ml-3 space-y-4 text-xs sm:text-sm">
+            <div class="relative pl-6">
+              <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+              <strong class="text-cyan-300 font-mono">2012 — Satoshi Dice:</strong> Pioneered on-chain Bitcoin wagering and introduced early hash-based provably fair verification.
+            </div>
+            <div class="relative pl-6">
+              <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-violet-400"></span>
+              <strong class="text-violet-300 font-mono">2017–2020 — Ethereum Smart Contracts:</strong> Non-custodial smart-contract casinos and automated bankroll pools emerge, though slowed by high gas fees.
+            </div>
+            <div class="relative pl-6">
+              <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+              <strong class="text-amber-300 font-mono">2024 — Curaçao LOK &amp; Global Crackdowns:</strong> Offshore master-licensing ends; stablecoins surpass BTC as the dominant crypto gaming rail.
+            </div>
+            <div class="relative pl-6">
+              <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+              <strong class="text-emerald-300 font-mono">2026–2030 — ZK-Rollups, ZK-KYC &amp; AI Guardrails:</strong> Sub-second Layer-2 settlement, privacy-preserving compliance proofs, and real-time AI harm prevention become industry standards.
+            </div>
+          </div>
+        </div>
+
+        <!-- Flagship Report Card -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-cyan-400/25 bg-gradient-to-br from-cyan-950/35 via-[#0B0C12] to-violet-950/35 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-200 text-xs font-mono">
+              FLAGSHIP REPORT • 2026 EDITION
+            </span>
+            <span class="text-xs font-mono text-slate-400">UPDATE DATE NOT RECORDED</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">State of the On-Chain &amp; Regulated iGaming Industry</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Executive briefing summarizing global licensing shifts, stablecoin payment volumes, provably fair adoption and AI player-protection trends. Unsourced; not yet verified.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <button id="open-report-modal-btn" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-950 bg-white hover:bg-cyan-100 transition-all">
+              Read Executive Summary
+            </button>
+            <span class="text-xs font-mono text-slate-400">• Free Open Research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- WEB3 & DEFI CASINO DIRECTORY & ARCHITECTURE REVIEW (30 PLATFORMS)     -->
+  <!-- ===================================================================== -->
+  <!-- Platform Deep-Dive Review Modal (Accessible Message Box) -->
+  <div id="platform-review-modal" role="dialog" aria-modal="true" aria-labelledby="modal-platform-name" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-5 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="modal-arch-badge" class="px-2.5 py-1 rounded-lg bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 text-[11px] font-mono">CATEGORY</span>
+            <span class="text-[11px] font-mono text-slate-400">UNRANKED ARCHITECTURAL REVIEW</span>
+          </div>
+          <h3 id="modal-platform-name" class="text-2xl font-bold text-white mt-2">Platform Name</h3>
+        </div>
+        <button id="close-platform-modal-btn" type="button" aria-label="Close details" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono shrink-0">
+          ESC / CLOSE
+        </button>
+      </div>
+
+      <!-- Technical Spec Matrix -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <span class="font-mono text-slate-400 block">CUSTODY MODEL</span>
+          <strong id="modal-custody" class="text-white text-sm mt-1 block">—</strong>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <span class="font-mono text-slate-400 block">LICENSING / OVERSIGHT</span>
+          <strong id="modal-license" class="text-white text-sm mt-1 block">—</strong>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-black/50 border border-white/10">
+          <span class="font-mono text-slate-400 block">KYC / VERIFICATION</span>
+          <strong id="modal-kyc" class="text-white text-sm mt-1 block">—</strong>
+        </div>
+      </div>
+      <p class="text-xs font-mono text-amber-300">STATUS: UNVERIFIED • No source or "last checked" date recorded for this entry. Confirm licence and KYC terms on the operator's site and the regulator's public register.</p>
+
+      <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+        <span class="text-xs font-mono text-cyan-300 uppercase">Payment &amp; Tech Stack</span>
+        <p id="modal-tech-stack" class="text-sm text-slate-200">—</p>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-xs font-mono text-slate-400 uppercase">Plain-English Architectural Overview</span>
+        <p id="modal-review-body" class="text-sm text-slate-300 leading-relaxed">—</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+        <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-400/20 space-y-1.5">
+          <span class="text-xs font-mono text-emerald-300 uppercase">Architectural Strengths</span>
+          <p id="modal-strengths" class="text-xs sm:text-sm text-slate-200 leading-relaxed">—</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-amber-950/30 border border-amber-400/20 space-y-1.5">
+          <span class="text-xs font-mono text-amber-300 uppercase">Trade-Offs &amp; Watchouts</span>
+          <p id="modal-tradeoffs" class="text-xs sm:text-sm text-slate-200 leading-relaxed">—</p>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-white/10 space-y-3">
+        <span class="text-xs font-mono text-slate-400 uppercase">More in this category (unranked, catalog order)</span>
+        <div id="modal-related" class="flex flex-wrap gap-2"></div>
+      </div>
+      <p class="text-xs font-mono text-emerald-300">18+ only. Gambling involves risk of loss. <a href="#hub-05-responsible" data-close-modal class="underline hover:text-white">Safer gambling &amp; free helplines</a></p>
+    </div>
+  </div>
+
+  <!-- Executive Report Modal (Accessible Message Box) -->
+  <div id="report-modal" role="dialog" aria-modal="true" aria-labelledby="report-modal-title" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-white/20 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <div>
+          <span class="text-xs font-mono text-cyan-300">2026 FLAGSHIP BRIEFING</span>
+          <h3 id="report-modal-title" class="text-xl font-bold text-white">Executive Summary: 5 Defining Shifts</h3>
+        </div>
+        <button id="close-report-modal-btn" type="button" aria-label="Close summary" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-mono">
+          ESC / CLOSE
+        </button>
+      </div>
+      <ol class="space-y-3 text-sm text-slate-300 list-decimal list-inside leading-relaxed">
+        <li><strong class="text-white">Regulatory Convergence:</strong> Gray-market offshore loopholes are closing as hubs like Curaçao and the UAE adopt formal AML and consumer-dispute oversight.</li>
+        <li><strong class="text-white">Stablecoins Over Speculation:</strong> An unsourced estimate (unverified) suggests nearly 7 in 10 crypto wagers now use USD-pegged stablecoins on sub-second Layer-2 networks rather than volatile coins.</li>
+        <li><strong class="text-white">Verifiable Math as Baseline:</strong> Cryptographic SHA-256 and VRF fairness receipts are moving from niche crypto dice sites into mainstream digital gaming.</li>
+        <li><strong class="text-white">Privacy-Preserving Compliance:</strong> Zero-knowledge proofs allow players to prove age and regional eligibility without exposing sensitive identity documents to data breaches.</li>
+        <li><strong class="text-white">AI-Assisted Safeguards:</strong> Real-time behavioral detection and hard-coded smart-contract limits are becoming mandatory trust signals for regulators and players alike.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Clean Dark-Mode Footer -->
+  <footer class="relative z-10 border-t border-white/10 bg-[#040407]/90 backdrop-blur-xl py-12 px-4 sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2.5">
+          <span class="font-bold tracking-wider text-sm text-white">AETHER<span class="text-cyan-400">//09</span></span>
+          <span class="text-xs font-mono text-slate-400">• INDEPENDENT EDUCATIONAL RESEARCH HUB</span>
+        </div>
+        <p class="text-xs text-slate-400 max-w-xl leading-relaxed">
+          Informational &amp; educational resource only—not legal, financial, or gambling advice. Always verify local laws in your jurisdiction and play responsibly.
+        </p>
+        <p class="text-xs font-mono text-emerald-300 max-w-xl leading-relaxed">18+ only (21+ where local law requires). Gambling involves risk of loss. Free, confidential help: <a href="https://www.ncpgambling.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">1-800-GAMBLER (US)</a> · <a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">GamCare</a> · <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">BeGambleAware</a> · <a href="#hub-05-responsible" class="underline hover:text-white">Safer gambling guide</a></p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-2 text-xs font-mono text-slate-400">
+        <a href="#hub-01-regulation" class="hover:text-cyan-300 transition-colors">01 Regulation</a>
+        <a href="#hub-02-provably-fair" class="hover:text-cyan-300 transition-colors">02 Fairness</a>
+        <a href="#hub-03-payments" class="hover:text-cyan-300 transition-colors">03 Payments</a>
+        <a href="#hub-04-smart-contracts" class="hover:text-cyan-300 transition-colors">04 Smart Contracts</a>
+        <a href="#hub-05-responsible" class="hover:text-cyan-300 transition-colors">05 Safety</a>
+        <a href="#hub-06-security" class="hover:text-cyan-300 transition-colors">06 Security</a>
+        <a href="#hub-07-scams" class="hover:text-cyan-300 transition-colors">07 Scams</a>
+        <a href="#hub-08-ai" class="hover:text-cyan-300 transition-colors">08 AI</a>
+        <a href="#hub-09-market-data" class="hover:text-cyan-300 transition-colors">09 Market Data</a>
+        <a href="#glossary-archive" class="hover:text-cyan-300 transition-colors">10 Glossary</a>
+        <a href="#casino-directory-30" class="hover:text-cyan-300 transition-colors">Directory</a>
+        <a href="#overview" class="hover:text-cyan-300 transition-colors">↑ Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top" class="hidden fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full liquid-glass text-cyan-300 hover:text-white items-center justify-center transition-all">
+    <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Interactive Scripts: 3D Prism, Real SHA-256 Verifier, Filters, Market Data & Glossary -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      /* -----------------------------------------------------------
+       * 1. Mobile Navigation & Report Modal
+       * --------------------------------------------------------- */
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const setMenu = (open) => {
+        mobileMenu.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      };
+      mobileMenuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+      mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) setMenu(false);
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+      /* Scroll-spy: highlight the nav link for the section in view */
+      const spyLinks = document.querySelectorAll('.nav-link');
+      const spyTargets = [...spyLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          spyLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id));
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      spyTargets.forEach(t => spy.observe(t));
+
+      /* Back-to-top */
+      const toTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        const show = window.scrollY > 900;
+        toTop.classList.toggle('hidden', !show);
+        toTop.classList.toggle('flex', show);
+      }, { passive: true });
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' }));
+
+      let lastFocusedEl = null;
+      function closeModal(modal) {
+        if (modal.classList.contains('hidden')) return;
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        if (lastFocusedEl && document.body.contains(lastFocusedEl)) lastFocusedEl.focus();
+        lastFocusedEl = null;
+      }
+      const reportModal = document.getElementById('report-modal');
+      document.getElementById('open-report-modal-btn').addEventListener('click', () => {
+        lastFocusedEl = document.activeElement;
+        reportModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('close-report-modal-btn').focus();
+      });
+      document.getElementById('close-report-modal-btn').addEventListener('click', () => closeModal(reportModal));
+      reportModal.addEventListener('click', (e) => { if (e.target === reportModal) closeModal(reportModal); });
+
+      /* -----------------------------------------------------------
+       * 1B. Unranked 60-Entry Web3 & DeFi Casino Directory
+       *     Organized into clear, unranked categories (no rankings/scores)
+       * --------------------------------------------------------- */
+      const categoryMeta = {
+        'tokenomics-yield': {
+          title: 'Tokenomics, Yield & Buyback Models',
+          subtitle: 'Platforms using native tokens, staking, profit-sharing, rakeback tokens, or public buyback-and-burn mechanics.'
+        },
+        'lightning-instant': {
+          title: 'Lightning & Instant Payout Specialists',
+          subtitle: 'Platforms prioritizing Bitcoin Lightning Network channels, low-fee high-throughput chains, and rapid crypto withdrawals.'
+        },
+        'sportsbook-hybrid': {
+          title: 'Sportsbook & Hybrid Betting Platforms',
+          subtitle: 'Platforms pairing casino games with sportsbooks, live betting, esports odds, or crypto poker rooms.'
+        },
+        'game-libraries': {
+          title: 'High-Volume & Multi-Provider Game Libraries',
+          subtitle: 'Platforms known for large slot and table catalogs, multi-provider aggregation, or accessible demo/entry play.'
+        },
+        'vip-feature-editions': {
+          title: 'VIP, Promotions & Feature-Specific Editions',
+          subtitle: 'Platforms and specialized feature entries covering loyalty tier-matching, promotions, no-turnover rules, risk-based KYC, and regional/2026 launches.'
+        },
+        'non-custodial-web3': {
+          title: 'Non-Custodial & Direct Web3 Wallets',
+          subtitle: 'Platforms emphasizing direct Web3 wallet connections, smart-contract escrow, or public on-chain betting ledgers.'
+        }
+      };
+
+      const web3CasinosCatalog = [
+        /* ---------------- BATCH 1: ORIGINAL 30 PLATFORMS ---------------- */
+        {
+          id: 'b1-dexsport',
+          name: 'Dexsport',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'non-custodial-web3',
+          archLabel: 'Non-Custodial & Direct Web3 Wallets',
+          custody: 'True Non-Custodial (Smart Contract Escrow)',
+          license: 'Decentralized Web3 Protocol (CertiK Audited)',
+          kyc: 'No Account / Direct Web3 Wallet Execution',
+          techStack: 'CertiK-Audited Smart Contracts, Public On-Chain Betting Ledger, EVM & Web3 Wallets',
+          summary: 'Non-custodial Web3 betting and gaming protocol featuring CertiK smart contract audits and a public on-chain betting ledger.',
+          strengths: 'Users retain control of unbet funds until a wager executes, with transparent public ledger verification.',
+          tradeoffs: 'Requires Web3 wallet management and smart-contract interaction comfort.'
+        },
+        {
+          id: 'b1-bcgame',
+          name: 'BC.Game',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Multi-Chain Platform Wallet',
+          license: 'Anjouan / Curaçao Offshore Framework',
+          kyc: 'Soft Threshold / AML Risk Triggers',
+          techStack: 'Native $BC Token, Broad Multi-Crypto Support, In-House Provably Fair Originals',
+          summary: 'Known for a large game catalog and wide cryptocurrency support alongside its native $BC token.',
+          strengths: 'Broad token coverage and ecosystem token mechanics.',
+          tradeoffs: 'Custodial platform balances and offshore licensing oversight.'
+        },
+        {
+          id: 'b1-stake',
+          name: 'Stake',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Vault & Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Authority (+ Local Regulated Arms)',
+          kyc: 'Mandatory KYC Verification Tiers',
+          techStack: 'Proprietary "Stake Originals", Provably Fair Verification, Multi-Crypto Cashier',
+          summary: 'Major crypto-native incumbent featuring proprietary "Stake Originals" and built-in provably fair verification.',
+          strengths: 'Established originals suite and accessible seed-hash verification tools.',
+          tradeoffs: 'Enforces multi-tier KYC and regional restrictions.'
+        },
+        {
+          id: 'b1-rollbit',
+          name: 'Rollbit',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Trading & Casino Account',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Tiered / AML Risk Verification',
+          techStack: 'Public Token Buybacks, Crypto Futures Trading Desk, Casino & Sports Suite',
+          summary: 'Pairs casino games with a crypto futures trading desk and executes public token buybacks.',
+          strengths: 'Combines gaming and derivatives trading with visible token buyback mechanics.',
+          tradeoffs: 'Futures leverage carries high volatility and liquidation risk.'
+        },
+        {
+          id: 'b1-shuffle',
+          name: 'Shuffle',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Multi-Chain Platform Wallet',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Tiered / Risk-Based KYC',
+          techStack: 'Native SHFL Token, Weekly Public Token Burns, Originals & Sportsbook',
+          summary: 'Features its native SHFL token and conducts weekly public token burns tied to platform activity.',
+          strengths: 'Scheduled public SHFL token burn disclosures and modern interface.',
+          tradeoffs: 'Custodial balances and token market exposure.'
+        },
+        {
+          id: 'b1-cloudbet',
+          name: 'Cloudbet',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao License (Since 2013)',
+          kyc: 'Tiered AML / High-Limit Verification',
+          techStack: 'BTC, ETH, Stablecoins, Sportsbook & Casino Lobby',
+          summary: 'Long-operating crypto casino and sportsbook holding a Curaçao license since 2013.',
+          strengths: 'Multi-year operating history and established sportsbook/casino rails.',
+          tradeoffs: 'Custodial wallet model and AML checks on larger volume.'
+        },
+        {
+          id: 'b1-coincasino',
+          name: 'CoinCasino',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'non-custodial-web3',
+          archLabel: 'Non-Custodial & Direct Web3 Wallets',
+          custody: 'Multi-Wallet Connection + Platform Cashier',
+          license: 'Offshore Crypto Licensing',
+          kyc: 'Minimal KYC for Standard Users',
+          techStack: 'Multi-Wallet Support, Low-Friction Crypto Deposits & Withdrawals',
+          summary: 'Focuses on anonymous play with minimal KYC for standard users and multi-wallet support.',
+          strengths: 'Flexible wallet connections and streamlined onboarding for standard play.',
+          tradeoffs: 'Large withdrawals or compliance triggers can still require KYC.'
+        },
+        {
+          id: 'b1-betpanda',
+          name: 'BetPanda',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Lightning-Enabled Wallet',
+          license: 'Offshore Crypto Registration',
+          kyc: 'Low KYC Requirements',
+          techStack: 'Bitcoin Lightning Network, BTC & Crypto Cashier, Streamlined UI',
+          summary: 'Noted for simplicity, Bitcoin Lightning Network support, and low KYC requirements.',
+          strengths: 'Fast Lightning BTC routing and uncluttered interface.',
+          tradeoffs: 'Offshore oversight and potential KYC on flagged activity.'
+        },
+        {
+          id: 'b1-megadice',
+          name: 'Mega Dice',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Account + NFT Rewards',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Low-Friction Standard Play',
+          techStack: 'Sportsbook, Large Casino Library, NFT-Based VIP Rewards',
+          summary: 'Combines a sportsbook with a broad game library and NFT-based VIP rewards.',
+          strengths: 'NFT VIP perks alongside unified sports and casino access.',
+          tradeoffs: 'NFT perk values and custodial balance rules apply.'
+        },
+        {
+          id: 'b1-thunderpick',
+          name: 'Thunderpick',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Crypto Wallet Cashier',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Risk-Based / Withdrawal Threshold KYC',
+          techStack: 'Esports Betting Markets, Casino Section, Crypto Wallet Support',
+          summary: 'Primarily known for esports betting while including a casino section and crypto wallet support.',
+          strengths: 'Dedicated esports focus combined with crypto deposits.',
+          tradeoffs: 'Niche esports emphasis and custodial account structure.'
+        },
+        {
+          id: 'b1-1win',
+          name: '1win',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'non-custodial-web3',
+          archLabel: 'Non-Custodial & Direct Web3 Wallets',
+          custody: 'Direct Wallet Registration + Platform Balance',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Risk-Based / Withdrawal Triggers',
+          techStack: 'MetaMask & Trust Wallet Registration, EVM Chains & TRON (2026 Update)',
+          summary: 'Added direct wallet registration via MetaMask and Trust Wallet for EVM chains and TRON in 2026.',
+          strengths: 'Direct wallet sign-up across EVM networks and TRON.',
+          tradeoffs: 'Funds play inside a platform balance after wallet onboarding.'
+        },
+        {
+          id: 'b1-betfury',
+          name: 'BetFury',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Account + Token Staking',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: 'Native BFG Token, Staking & Holder Rewards, Casino Games',
+          summary: 'Features a native BFG token model with staking and reward distributions for holders.',
+          strengths: 'Built-in staking and BFG holder reward mechanics.',
+          tradeoffs: 'Reward yields depend on activity and BFG token valuation.'
+        },
+        {
+          id: 'b1-rainbet',
+          name: 'Rainbet',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'non-custodial-web3',
+          archLabel: 'Non-Custodial & Direct Web3 Wallets',
+          custody: 'Multi-Chain Wallet Routing + Social Login',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Risk-Based Verification',
+          techStack: 'Ethereum & Solana Wallet Routes, Social Logins, Crypto Games',
+          summary: 'Supports multi-chain wallet routes including Ethereum and Solana alongside social logins.',
+          strengths: 'Dual ETH/SOL wallet routing plus easy social login options.',
+          tradeoffs: 'Social logins require strong account security and 2FA.'
+        },
+        {
+          id: 'b1-roobet',
+          name: 'Roobet',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Authority',
+          kyc: 'Tiered KYC & Geo-Fencing',
+          techStack: 'Large Slots Library, In-House Crash & Mines Originals',
+          summary: 'Offers a broad slots catalog and in-house originals including Crash and Mines.',
+          strengths: 'Recognizable in-house originals and wide slot selection.',
+          tradeoffs: 'Geo-restrictions and tiered KYC policies apply.'
+        },
+        {
+          id: 'b1-gamdom',
+          name: 'Gamdom',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Risk-Based / High-Volume KYC',
+          techStack: 'In-House Crash & Roulette Variants, Sportsbook, Crypto Cashier',
+          summary: 'Built around in-house crash and roulette variants alongside a sportsbook.',
+          strengths: 'Established crash/roulette originals paired with sports betting.',
+          tradeoffs: 'Custodial wallet model and AML compliance triggers.'
+        },
+        {
+          id: 'b1-duelbits',
+          name: 'Duelbits',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Tiered / Risk-Based Verification',
+          techStack: 'Provably Fair Mines, Crash & Dice, Slots, Sportsbook',
+          summary: 'Offers provably fair originals (Mines, Crash, Dice) alongside slots and sports.',
+          strengths: 'Verifiable in-house originals plus sports and slots in one account.',
+          tradeoffs: 'Offshore oversight and custodial balance handling.'
+        },
+        {
+          id: 'b1-bitstarz',
+          name: 'BitStarz',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Crypto-Fiat Hybrid Wallet',
+          license: 'Curaçao Gaming Authority (Since 2014)',
+          kyc: 'Threshold & Fiat-Rail KYC',
+          techStack: 'Large Slot Library, Originals Section, Crypto & Fiat Support',
+          summary: 'Long-running operator (since 2014) combining a large slot library with an originals section.',
+          strengths: 'Long operating history and established multi-game catalog.',
+          tradeoffs: 'KYC applies on fiat rails or threshold triggers.'
+        },
+        {
+          id: 'b1-wildio',
+          name: 'Wild.io',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Crypto Wallet + Telegram Integration',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'No-KYC Approach for Standard Play',
+          techStack: 'Telegram Integration, Fast Crypto Play, Casino Lobby',
+          summary: 'Known for Telegram integration and a no-KYC approach for standard play.',
+          strengths: 'Telegram-friendly workflow and low-friction standard onboarding.',
+          tradeoffs: 'Large withdrawals or risk flags can still prompt verification.'
+        },
+        {
+          id: 'b1-vave',
+          name: 'Vave',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Risk-Based KYC',
+          techStack: 'Provably Fair Originals, Casino & Sportsbook, Crypto Rails',
+          summary: 'Provides provably fair originals and sports/casino markets with risk-based KYC.',
+          strengths: 'Combines verifiable originals with risk-calibrated onboarding.',
+          tradeoffs: 'Risk flags or large cashouts can require identity checks.'
+        },
+        {
+          id: 'b1-mbit',
+          name: 'mBit Casino',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Authority',
+          kyc: 'Soft Threshold for KYC',
+          techStack: 'Per-Title RTP Display, Crypto Games, Soft-Threshold KYC',
+          summary: 'Displays RTP per title and uses a soft threshold for KYC verification.',
+          strengths: 'Transparent per-title RTP visibility and soft KYC threshold.',
+          tradeoffs: 'Crossing threshold limits triggers verification requirements.'
+        },
+        {
+          id: 'b1-coinpoker',
+          name: 'CoinPoker',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Poker & Casino Cashier',
+          license: 'Anjouan License',
+          kyc: 'Low-Friction Crypto Onboarding',
+          techStack: 'Crypto Poker Room, Casino Section, Anjouan Licensing',
+          summary: 'Primarily a poker room with an integrated casino section under an Anjouan license.',
+          strengths: 'Distinctive poker-first model with Anjouan licensing.',
+          tradeoffs: 'Lighter regulatory oversight than Tier-1 jurisdictions.'
+        },
+        {
+          id: 'b1-duel',
+          name: 'Duel',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Crypto-Native Account',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '"Duel Originals", High Stated Return-to-Player (RTP) Rates',
+          summary: 'Newer platform offering "Duel Originals" with stated high return-to-player rates.',
+          strengths: 'Focus on high stated RTP rates across proprietary originals.',
+          tradeoffs: 'Newer operating track record; verify rules and terms carefully.'
+        },
+        {
+          id: 'b1-vbet',
+          name: 'Vbet',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Regulated Segregated Operator Account',
+          license: 'Malta Gaming Authority (MGA Sandbox)',
+          kyc: 'Full Tier-1 Regulated KYC/AML',
+          techStack: 'MGA Crypto Deposit Sandbox, Regulated Gaming Rails',
+          summary: 'One of the rare Malta-licensed operators approved to accept crypto deposits under a sandbox.',
+          strengths: 'MGA sandbox approval and formal European regulatory framework.',
+          tradeoffs: 'Strict compliance and mandatory KYC requirements.'
+        },
+        {
+          id: 'b1-betplay',
+          name: 'Betplay.io',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Lightning-Enabled Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Minimal KYC Standard Play',
+          techStack: 'Bitcoin Lightning Network, Near-Instant Deposits & Withdrawals',
+          summary: 'Focuses on Bitcoin Lightning Network for near-instant deposits and withdrawals.',
+          strengths: 'Near-instant BTC Lightning settlement for fast deposits and cashouts.',
+          tradeoffs: 'Offshore regulatory structure and custodial balances.'
+        },
+        {
+          id: 'b1-casinocrypto',
+          name: 'CasinoCrypto',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Multi-Asset Crypto Cashier',
+          license: 'Offshore Crypto Framework (Launched 2026)',
+          kyc: 'Risk-Based Verification',
+          techStack: '16+ Cryptocurrencies, 2026 Launch Cohort',
+          summary: 'Newer entrant launched in 2026 supporting over 16 cryptocurrencies.',
+          strengths: 'Supports 16+ cryptocurrencies from launch.',
+          tradeoffs: 'Limited multi-year operating history as a 2026 launch.'
+        },
+        {
+          id: 'b1-luckyrollers',
+          name: 'Lucky Rollers',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Multi-Chain Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Low-Friction Onboarding / AML Triggers',
+          techStack: '14 Cryptocurrencies including SOL and TON',
+          summary: 'Supports 14 cryptocurrencies including Solana (SOL) and TON.',
+          strengths: 'Includes fast modern chains like SOL and TON among 14 supported assets.',
+          tradeoffs: 'Offshore licensing and custodial account balances.'
+        },
+        {
+          id: 'b1-bovada',
+          name: 'Bovada',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Sportsbook & Casino Account',
+          license: 'Offshore Legacy Sportsbook Framework',
+          kyc: 'Account / Payout Verification',
+          techStack: 'BTC, ETH, Stablecoins, Low Minimums',
+          summary: 'Accepts BTC, ETH, and stablecoins with relatively low deposit minimums.',
+          strengths: 'Low crypto entry minimums and established sports/casino lineup.',
+          tradeoffs: 'Custodial account model without on-chain smart contract control.'
+        },
+        {
+          id: 'b1-jackpotter',
+          name: 'Jackpotter',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Crypto Cashier',
+          license: 'Offshore Crypto Framework (2026 Cycle)',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '2026 New Platform Launch, Crypto Gaming Lobby',
+          summary: 'Identified as a newly launched platform in the 2026 cycle.',
+          strengths: 'Fresh 2026 platform entry with modern crypto focus.',
+          tradeoffs: 'Early track record; verify terms and test small withdrawals first.'
+        },
+        {
+          id: 'b1-thrill',
+          name: 'Thrill',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore Crypto Framework (2026 Cycle)',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '2026 Industry Report Entrant, Crypto Gaming Suite',
+          summary: 'Another new entrant noted in 2026 industry reports.',
+          strengths: 'Part of the 2026 wave of crypto gaming entrants.',
+          tradeoffs: 'Limited historical track record compared to legacy operators.'
+        },
+        {
+          id: 'b1-cryptorino',
+          name: 'Cryptorino',
+          batch: 'batch-1',
+          batchLabel: 'Initial 30 Set',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Offshore Crypto Framework (2026)',
+          kyc: 'Minimal KYC Standard Play / AML Triggers',
+          techStack: 'Broad Game Variety, Bonus Offers, 2026 CryptoNews Coverage',
+          summary: 'Listed among top platforms by CryptoNews in 2026 for its game variety and bonuses.',
+          strengths: 'Wide selection of games and promotional bonus structure.',
+          tradeoffs: 'Check bonus wagering terms and offshore licensing rules.'
+        },
+
+        /* ---------------- BATCH 2: ADDITIONAL 30 ENTRIES (#1–#30) ---------------- */
+        {
+          id: 'b2-01-qzino',
+          name: 'Qzino (Entry #1)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#1)',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Account + QZI Token Mechanics',
+          license: 'Offshore Crypto Framework (Launched 2026)',
+          kyc: 'Risk-Based / Standard Terms',
+          techStack: 'Native QZI Token (Profit-Sharing, Staking, Cashback), 10,000+ Games',
+          summary: 'Launched in 2026 with a native QZI token featuring profit-sharing, staking, and cashback alongside 10,000+ games.',
+          strengths: 'Large 10,000+ game library paired with multi-angled QZI staking, profit-sharing, and cashback.',
+          tradeoffs: 'Token-linked rewards carry price and platform-volume sensitivity; newer 2026 track record.'
+        },
+        {
+          id: 'b2-02-cryptocasino',
+          name: 'CryptoCasino.com (Entry #2)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#2)',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial Instant-Payout Cashier + $CASINO Token',
+          license: 'Offshore Crypto Framework (SharpLink-Backed)',
+          kyc: 'Optional KYC (Subject to Risk/AML Terms)',
+          techStack: 'SharpLink Backing, $CASINO Buyback-and-Burn, Instant Blockchain Payouts',
+          summary: 'Backed by SharpLink with a $CASINO buyback-and-burn mechanism, instant blockchain payouts, and optional KYC.',
+          strengths: 'Deflationary buyback-and-burn token model, fast payouts, and optional KYC for standard flows.',
+          tradeoffs: 'Optional KYC can still shift to mandatory if risk or withdrawal thresholds trigger.'
+        },
+        {
+          id: 'b2-03-maxxed',
+          name: 'Maxxed (Entry #3)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#3)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Multi-Crypto Account',
+          license: 'Anjouan License (Launched Oct 2026)',
+          kyc: 'Standard Anjouan / Risk-Based KYC',
+          techStack: 'Anjouan Licensing, 5,000+ Games, 15+ Provably Fair Originals',
+          summary: 'Launched in October 2026 under an Anjouan license with 5,000+ games and 15+ Provably Fair originals.',
+          strengths: 'Combines a 5,000+ title catalog with 15+ provably fair originals and clear Anjouan licensing.',
+          tradeoffs: 'Late-2026 launch with Anjouan oversight rather than Tier-1 European licensing.'
+        },
+        {
+          id: 'b2-04-jackcom',
+          name: 'Jack.com (Entry #4)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#4)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore / Industry-Assessed Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: 'Crypto Gaming & Betting Suite (July 2026 Muddy River Sports Coverage)',
+          summary: 'Featured among top platforms in Muddy River Sports’ July 2026 assessment.',
+          strengths: 'Highlighted in mid-2026 independent sports/gaming coverage.',
+          tradeoffs: 'Review platform terms, jurisdiction eligibility, and withdrawal rules directly.'
+        },
+        {
+          id: 'b2-05-betsio',
+          name: 'Bets.io (Entry #5)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#5)',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Instant-Withdrawal Crypto Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Risk-Based / Threshold KYC',
+          techStack: 'Instant Crypto Withdrawals, Multi-Coin Cashier, Casino & Sports',
+          summary: 'Appears repeatedly across multiple 2026 rankings with instant crypto withdrawals as a core feature.',
+          strengths: 'Consistent emphasis on fast, near-instant crypto withdrawal processing.',
+          tradeoffs: 'Custodial wallet balances and offshore regulatory oversight.'
+        },
+        {
+          id: 'b2-06-luckyrebel',
+          name: 'Lucky Rebel (Entry #6)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#6)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Platform Account',
+          license: 'USA-Only Operating Scope (March 2026 Assessment)',
+          kyc: 'Account / Payout Verification',
+          techStack: 'USA-Focused Gaming Lobby, Crypto & Account Cashier',
+          summary: 'Rated positively in a March 2026 assessment and noted specifically as a USA-only operator.',
+          strengths: 'Tailored specifically to USA-only players with strong March 2026 review coverage.',
+          tradeoffs: 'Restricted to eligible US jurisdictions; check state/local rules carefully.'
+        },
+        {
+          id: 'b2-07-betwhale',
+          name: 'BetWhale (Entry #7)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#7)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Sportsbook & Casino Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Account / Payout Verification',
+          techStack: 'Sportsbook & Casino Lobby, Crypto & Card Cashier (Mar–Jul 2026 Reviews)',
+          summary: 'Featured across multiple independent reviews between March and July 2026.',
+          strengths: 'Sustained independent review visibility across spring and summer 2026.',
+          tradeoffs: 'Custodial account model; review payout conditions and terms before depositing.'
+        },
+        {
+          id: 'b2-08-fortunejack',
+          name: 'FortuneJack (Entry #8)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#8)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Oversight (Early BTC Pioneer)',
+          kyc: 'Tiered / Risk-Based Verification',
+          techStack: '1,600+ Games, Comprehensive Sportsbook, BTC & Altcoin Rails',
+          summary: 'Early pioneer in Bitcoin gambling offering 1,600+ games and a comprehensive sportsbook.',
+          strengths: 'Long-standing Bitcoin gaming heritage combined with sportsbook and 1,600+ games.',
+          tradeoffs: 'Custodial wallet structure and standard AML/KYC policies.'
+        },
+        {
+          id: 'b2-09-coinkings',
+          name: 'CoinKings (Entry #9)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#9)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Offshore Gaming Framework (Founded Late 2023)',
+          kyc: 'Risk-Based / Threshold KYC',
+          techStack: '9,408+ Casino Games, Multi-Crypto Cashier',
+          summary: 'Founded in late 2023 and offering 9,408+ casino games across a large multi-provider lobby.',
+          strengths: 'Very large 9,408+ game catalog established since late 2023.',
+          tradeoffs: 'Custodial balances and offshore regulatory framework.'
+        },
+        {
+          id: 'b2-10-metaspins',
+          name: 'Metaspins Casino (Entry #10)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#10)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore Crypto Framework (Launched 2022)',
+          kyc: 'Risk-Based / AML Triggers',
+          techStack: 'Web3/Crypto Casino UX, Slots, Live & Provably Fair Games (Since 2022)',
+          summary: 'Launched in 2022 to blend traditional casino games with crypto-native features.',
+          strengths: 'Blends familiar casino titles with crypto payment mechanics since 2022.',
+          tradeoffs: 'Custodial account control and offshore licensing rules.'
+        },
+        {
+          id: 'b2-11-empireio',
+          name: 'Empire.io (Entry #11)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#11)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Crypto Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Risk-Based / Threshold KYC',
+          techStack: 'Up to 1 BTC Welcome Offer, 7-Tier Loyalty Program, Casino & Betting',
+          summary: 'Offers a welcome bonus up to 1 BTC and a 7-tier loyalty progression program alongside betting.',
+          strengths: 'Structured 7-tier loyalty progression and high-cap BTC welcome structure.',
+          tradeoffs: 'Bonus wagering requirements and custodial wallet mechanics.'
+        },
+        {
+          id: 'b2-12-jackbit',
+          name: 'Jackbit Casino (Entry #12)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#12)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Offshore Gaming Framework (Launched 2022)',
+          kyc: 'Risk-Based / Threshold KYC',
+          techStack: '5,500+ Games, 60+ Software Providers, Crypto Cashier',
+          summary: 'Launched in 2022 with 5,500+ games and integrations from 60+ software providers.',
+          strengths: 'Wide diversity across 60+ providers and 5,500+ games since 2022.',
+          tradeoffs: 'Provider availability can vary by region; custodial wallet model.'
+        },
+        {
+          id: 'b2-13-luckyblock',
+          name: 'Lucky Block (Entry #13)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#13)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Risk-Based / AML Triggers',
+          techStack: '2,600+ Slot Games, Crypto Brand Heritage',
+          summary: 'Backed by an established crypto brand and offering 2,600+ slot games.',
+          strengths: 'Recognizable crypto brand tie-in and 2,600+ slot titles.',
+          tradeoffs: 'Custodial account balances and offshore licensing oversight.'
+        },
+        {
+          id: 'b2-14-betamericano',
+          name: 'BetAmericano (Entry #14)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#14)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '4,500+ Casino Games, 10 Supported Cryptocurrencies',
+          summary: 'Offers 4,500+ casino games and supports 10 cryptocurrencies.',
+          strengths: '4,500+ games with 10-coin deposit and withdrawal support.',
+          tradeoffs: 'Custodial cashier and offshore regulatory oversight.'
+        },
+        {
+          id: 'b2-15-betride',
+          name: 'Betride (Entry #15)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#15)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Casino & Sportsbook Account',
+          license: 'Offshore Gaming Framework (Launched 2024)',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '3,000+ Games, Integrated Sportsbook (Launched 2024)',
+          summary: 'Launched in 2024 with 3,000+ casino games and an integrated sportsbook.',
+          strengths: 'Combines 3,000+ casino games with a sportsbook under one login.',
+          tradeoffs: 'Relatively recent 2024 launch with custodial account handling.'
+        },
+        {
+          id: 'b2-16-7bit',
+          name: '7Bit Casino (Entry #16)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#16)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Crypto-Friendly Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Standard / Threshold KYC',
+          techStack: '3,200-Game Library, Multi-Level VIP Program',
+          summary: 'Features a 3,200-game library paired with a structured VIP program.',
+          strengths: '3,200-game catalog and multi-tier VIP rewards.',
+          tradeoffs: 'Custodial balance model and standard VIP/bonus terms.'
+        },
+        {
+          id: 'b2-17-2up',
+          name: '2UP (Entry #17)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#17)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: 'Casino Suite, Comprehensive Sportsbook, Live Betting',
+          summary: 'Pairs a casino lobby with a comprehensive sportsbook and live in-play betting.',
+          strengths: 'Unified live sports betting and casino experience.',
+          tradeoffs: 'Custodial wallet model and offshore licensing.'
+        },
+        {
+          id: 'b2-18-winna',
+          name: 'Winna (Entry #18)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#18)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Crypto Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: '6,100+ Games, Multi-Market Betting Platform',
+          summary: 'Offers 6,100+ games alongside a broader multi-market betting platform.',
+          strengths: 'Large 6,100+ game library combined with sports/betting markets.',
+          tradeoffs: 'Custodial account structure and offshore oversight.'
+        },
+        {
+          id: 'b2-19-cocobet',
+          name: 'Cocobet (Entry #19)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#19)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Crypto-Friendly Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Standard Risk-Based KYC',
+          techStack: 'Crypto-Friendly Casino & Sportsbook Suite',
+          summary: 'Crypto-friendly casino and sportsbook offering both table/slot games and sports markets.',
+          strengths: 'Dual casino and sportsbook access with crypto-friendly payments.',
+          tradeoffs: 'Custodial balances and offshore licensing oversight.'
+        },
+        {
+          id: 'b2-20-betpandaio',
+          name: 'BetPanda.io (Entry #20)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#20)',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Instant-Payout Crypto Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'No-KYC Standard Play (AML Triggers Apply)',
+          techStack: 'Instant Withdrawals, No-KYC Standard Flow, 100% Bonus up to 1 BTC',
+          summary: 'Highlighted for instant withdrawals, no-KYC onboarding, and a 100% welcome bonus up to 1 BTC.',
+          strengths: 'Rapid withdrawals and low-friction no-KYC standard onboarding.',
+          tradeoffs: 'Welcome bonus terms apply, and AML rules can trigger checks on unusual activity.'
+        },
+        {
+          id: 'b2-21-mbit-mrs',
+          name: 'mBit Casino (Entry #21 — Instant Crypto Focus)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#21)',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Instant-Crypto Wallet',
+          license: 'Curaçao Gaming Authority',
+          kyc: 'Soft-Threshold KYC',
+          techStack: 'Instant Crypto Withdrawals, Muddy River Sports Assessment Highlight',
+          summary: 'Highlighted in Muddy River Sports’ assessment with instant crypto withdrawals as a standout feature.',
+          strengths: 'Fast crypto cashout execution and established multi-crypto support.',
+          tradeoffs: 'Soft KYC thresholds and offshore regulatory oversight.'
+        },
+        {
+          id: 'b2-22-betplay-8k',
+          name: 'Betplay.io (Entry #22 — 8,000+ Games & Lightning)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#22)',
+          archKey: 'lightning-instant',
+          archLabel: 'Lightning & Instant Payout Specialists',
+          custody: 'Custodial Lightning-Native Wallet',
+          license: 'Offshore Crypto Framework',
+          kyc: 'Minimal KYC Standard Play',
+          techStack: 'Bitcoin Lightning Network, 8,000+ Games, Near-Instant BTC Transfers',
+          summary: 'Lightning-native platform with 8,000+ games focused on near-instant BTC transactions.',
+          strengths: 'Combines an 8,000+ game catalog with fast Bitcoin Lightning settlement.',
+          tradeoffs: 'Custodial wallet balances and offshore licensing oversight.'
+        },
+        {
+          id: 'b2-23-bcgame-bcd',
+          name: 'BC.Game — BCD Token Focus (Entry #23)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#23 • Feature Focus)',
+          archKey: 'tokenomics-yield',
+          archLabel: 'Tokenomics, Yield & Buyback Models',
+          custody: 'Custodial BCD Loyalty & Rakeback Ledger',
+          license: 'Anjouan / Curaçao Offshore Framework',
+          kyc: 'Soft Threshold / AML Risk Triggers',
+          techStack: 'BCD Loyalty & Rakeback Unlock Mechanism (Distinct DeFi Feature of BC.Game)',
+          summary: 'Feature-specific entry on BC.Game (also in Initial 30), spotlighting its BCD token loyalty and rakeback unlock system.',
+          strengths: 'Dedicated BCD loyalty and rakeback mechanics rewarding ongoing play.',
+          tradeoffs: 'BCD unlock mechanics tie into wagering volume; same platform custody/licensing profile as BC.Game.'
+        },
+        {
+          id: 'b2-24-wildio-vip',
+          name: 'Wild.io — VIP Match Focus (Entry #24)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#24 • Feature Focus)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial VIP Account',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'No-KYC Standard Play / AML Triggers',
+          techStack: 'VIP Tier-Matching Program (Matching Status from Other Casinos)',
+          summary: 'Feature-specific entry on Wild.io (also in Initial 30), focusing on VIP tier-matching from other casinos.',
+          strengths: 'Lets qualifying players bring existing VIP status across rather than starting from zero.',
+          tradeoffs: 'VIP tier matching is subject to review/eligibility terms and platform custody.'
+        },
+        {
+          id: 'b2-25-duckyluck',
+          name: 'DuckyLuck Casino (Entry #25)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#25)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial Casino Account',
+          license: 'Offshore Gaming Framework',
+          kyc: 'Account / Payout Verification',
+          techStack: 'BTC & Crypto Cashier, Slots & Casino Lobby (2026 BTC Rankings)',
+          summary: 'Featured in 2026 Bitcoin casino rankings with a slots-forward lobby and crypto payment options.',
+          strengths: 'Recognized in 2026 Bitcoin casino listings with accessible crypto deposit support.',
+          tradeoffs: 'Custodial account structure and offshore licensing rules.'
+        },
+        {
+          id: 'b2-26-stockity',
+          name: 'Stockity (Entry #26)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#26)',
+          archKey: 'game-libraries',
+          archLabel: 'High-Volume & Multi-Provider Game Libraries',
+          custody: 'Custodial / Demo-Enabled Platform',
+          license: 'Offshore / Platform Terms',
+          kyc: 'Standard Account / Risk Terms',
+          techStack: 'Demo Mode Practice Access, 2026 Casino Rankings',
+          summary: 'Noted in 2026 casino rankings and highlights a built-in demo mode.',
+          strengths: 'Demo mode lets users test interface mechanics before committing real funds.',
+          tradeoffs: 'Demo simulations do not reflect real-money variance or payout conditions.'
+        },
+        {
+          id: 'b2-27-roobet-promos',
+          name: 'Roobet — Promotions Focus (Entry #27)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#27 • Feature Focus)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Authority',
+          kyc: 'Tiered KYC & Geo-Fencing',
+          techStack: 'Long-Term Promotions & Cashback System (Bonus-Hunter Feature Focus)',
+          summary: 'Feature-specific entry on Roobet (also in Initial 30), focusing on its long-term promotions and cashback structure.',
+          strengths: 'Ongoing promotional calendar and cashback mechanics aimed at active players.',
+          tradeoffs: 'Promotional terms and regional eligibility rules apply; custodial balances.'
+        },
+        {
+          id: 'b2-28-cloudbet-turnover',
+          name: 'Cloudbet — No Turnover Focus (Entry #28)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#28 • Feature Focus)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao License (Since 2013)',
+          kyc: 'Tiered AML / High-Limit Verification',
+          techStack: 'Zero Deposit Turnover Requirement (No Deposit Wagering Rollover)',
+          summary: 'Feature-specific entry on Cloudbet (also in Initial 30), highlighting its no deposit turnover requirement that removes mandatory rollover on deposits.',
+          strengths: 'Eliminates mandatory deposit turnover requirements so deposited funds are not locked behind rollover rules.',
+          tradeoffs: 'Promotional bonuses may still have separate terms, and standard AML/KYC checks still apply.'
+        },
+        {
+          id: 'b2-29-vave-kyc',
+          name: 'Vave — Risk-Based KYC Focus (Entry #29)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#29 • Feature Focus)',
+          archKey: 'vip-feature-editions',
+          archLabel: 'VIP, Promotions & Feature-Specific Editions',
+          custody: 'Custodial Multi-Crypto Wallet',
+          license: 'Curaçao Gaming Oversight',
+          kyc: 'Tiered Risk-Based KYC Model',
+          techStack: 'Risk-Calibrated Verification Tiers Across User Activity Profiles',
+          summary: 'Feature-specific entry on Vave (also in Initial 30), focusing on its risk-based KYC model across different user tiers.',
+          strengths: 'Adjusts verification intensity based on risk profile rather than a single rigid gate for all users.',
+          tradeoffs: 'Higher-risk flags or larger withdrawals can still trigger full verification.'
+        },
+        {
+          id: 'b2-30-coinpoker-anjouan',
+          name: 'CoinPoker — Anjouan License & Hybrid Focus (Entry #30)',
+          batch: 'batch-2',
+          batchLabel: 'Additional 30 (#30 • Feature Focus)',
+          archKey: 'sportsbook-hybrid',
+          archLabel: 'Sportsbook & Hybrid Betting Platforms',
+          custody: 'Custodial Poker & Casino Cashier',
+          license: 'Anjouan License',
+          kyc: 'Low-Friction Crypto Onboarding',
+          techStack: 'Anjouan License Status + Crypto Poker & Casino Hybrid Architecture',
+          summary: 'Feature-specific entry on CoinPoker (also in Initial 30), spotlighting its Anjouan license and hybrid crypto poker + casino model.',
+          strengths: 'Clear Anjouan license status paired with a hybrid poker-and-casino architecture.',
+          tradeoffs: 'Anjouan oversight is lighter than Tier-1 licensing; custodial account model.'
+        }
+      ];
+
+      const casinoGrid = document.getElementById('casino-directory-grid');
+      const casinoSearchInput = document.getElementById('casino-search-input');
+      const casinoCohortSelect = document.getElementById('casino-cohort-select');
+      const casinoCountLabel = document.getElementById('casino-count-label');
+      const archFilterBtns = document.querySelectorAll('.arch-filter-btn');
+      const platformModal = document.getElementById('platform-review-modal');
+      let activeArchFilter = 'all';
+      const expandedCats = new Set();
+      const CARDS_PER_CATEGORY = 6;
+
+      const modalRelated = document.getElementById('modal-related');
+      const closePlatformBtn = document.getElementById('close-platform-modal-btn');
+
+      function openPlatformModal(platform) {
+        document.getElementById('modal-arch-badge').textContent = `${platform.archLabel} • ${platform.batchLabel}`;
+        document.getElementById('modal-platform-name').textContent = platform.name;
+        document.getElementById('modal-custody').textContent = platform.custody;
+        document.getElementById('modal-license').textContent = platform.license;
+        document.getElementById('modal-kyc').textContent = platform.kyc;
+        document.getElementById('modal-tech-stack').textContent = platform.techStack;
+        document.getElementById('modal-review-body').textContent = platform.summary;
+        document.getElementById('modal-strengths').textContent = platform.strengths;
+        document.getElementById('modal-tradeoffs').textContent = platform.tradeoffs;
+        const related = web3CasinosCatalog.filter(p => p.archKey === platform.archKey && p.id !== platform.id);
+        modalRelated.innerHTML = related.length
+          ? related.map(p => `<button type="button" data-related-id="${p.id}" class="related-entry-btn min-h-[44px] px-3 py-2 rounded-xl text-sm text-left bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition-all">${p.name}</button>`).join('')
+          : '<p class="text-sm text-slate-400">No other entries in this category.</p>';
+        if (!lastFocusedEl) lastFocusedEl = document.activeElement;
+        platformModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        platformModal.querySelector('.overflow-y-auto').scrollTop = 0;
+        closePlatformBtn.focus();
+      }
+
+      modalRelated.addEventListener('click', (e) => {
+        const btn = e.target.closest('.related-entry-btn');
+        if (!btn) return;
+        const found = web3CasinosCatalog.find(p => p.id === btn.dataset.relatedId);
+        if (found) openPlatformModal(found);
+      });
+      closePlatformBtn.addEventListener('click', () => closeModal(platformModal));
+      platformModal.addEventListener('click', (e) => {
+        if (e.target === platformModal || e.target.closest('[data-close-modal]')) closeModal(platformModal);
+      });
+
+      function renderCasinoDirectory() {
+        const query = casinoSearchInput.value.toLowerCase().trim();
+        const selectedBatch = casinoCohortSelect.value;
+
+        const filtered = web3CasinosCatalog.filter(item => {
+          const matchesCategory = activeArchFilter === 'all' || item.archKey === activeArchFilter;
+          const matchesBatch = selectedBatch === 'all' || item.batch === selectedBatch;
+          const haystack = `${item.name} ${item.batchLabel} ${item.archLabel} ${item.custody} ${item.license} ${item.kyc} ${item.techStack} ${item.summary}`.toLowerCase();
+          const matchesQuery = !query || haystack.includes(query);
+          return matchesCategory && matchesBatch && matchesQuery;
+        });
+
+        casinoCountLabel.textContent = `Showing ${filtered.length} of ${web3CasinosCatalog.length} Entries (Unranked)`;
+
+        if (filtered.length === 0) {
+          casinoGrid.innerHTML = `
+            <div class="glass-card rounded-3xl p-8 text-center space-y-2">
+              <p class="text-base font-bold text-white">No matching entries found</p>
+              <p class="text-sm text-slate-300">Try clearing your search term or resetting the category and batch filters.</p>
+              <button type="button" class="empty-reset-btn mt-2 min-h-[44px] px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all">Reset filters</button>
+            </div>
+          `;
+          casinoGrid.querySelector('.empty-reset-btn').addEventListener('click', () => {
+            document.getElementById('casino-reset-btn').click();
+            casinoSearchInput.focus();
+          });
+          return;
+        }
+
+        const categoriesToRender = activeArchFilter === 'all'
+          ? Object.keys(categoryMeta)
+          : [activeArchFilter];
+
+        let shownCount = 0;
+        const sectionsHtml = categoriesToRender
+          .map(catKey => {
+            const itemsInCat = filtered.filter(entry => entry.archKey === catKey);
+            if (itemsInCat.length === 0) return '';
+            const meta = categoryMeta[catKey];
+
+            const showAll = expandedCats.has(catKey) || activeArchFilter !== 'all' || query !== '';
+            const visibleItems = showAll ? itemsInCat : itemsInCat.slice(0, CARDS_PER_CATEGORY);
+            const hiddenCount = itemsInCat.length - visibleItems.length;
+            shownCount += visibleItems.length;
+
+            const cardsHtml = visibleItems.map(item => `
+              <article class="glass-card dir-card rounded-3xl p-5 sm:p-6 flex flex-col gap-4">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-white/[0.06] text-slate-200 border border-white/15">${item.batchLabel}</span>
+                </div>
+                <h4 class="text-lg sm:text-xl font-bold text-white leading-snug">${item.name}</h4>
+                <dl class="dir-card-facts grid grid-cols-1 gap-2">
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">Custody</dt><dd class="text-base text-slate-100">${item.custody}</dd></div>
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">Oversight</dt><dd class="text-base text-slate-100">${item.license}</dd></div>
+                  <div><dt class="text-xs font-mono uppercase tracking-wider text-slate-400">KYC</dt><dd class="text-base text-slate-100">${item.kyc}</dd></div>
+                </dl>
+                <p class="dir-card-summary text-sm text-slate-300 leading-relaxed">${item.summary}</p>
+                <p class="text-xs font-mono text-amber-300">Status: Unverified · no check date recorded</p>
+                <div class="mt-auto pt-3 border-t border-white/10">
+                  <button type="button" data-platform-id="${item.id}" aria-label="View details: ${item.name}" class="open-platform-btn w-full px-4 py-2.5 rounded-xl text-sm font-semibold bg-white/10 hover:bg-cyan-500/20 hover:text-cyan-200 text-white border border-white/15 transition-all">
+                    View details
+                  </button>
+                </div>
+              </article>
+            `).join('');
+
+            return `
+              <div class="space-y-4" data-cat-section="${catKey}">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/10 pb-3">
+                  <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyan-300">UNRANKED CATEGORY</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mt-0.5">${meta.title}</h3>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">${meta.subtitle}</p>
+                  </div>
+                  <span class="text-xs font-mono text-slate-400 shrink-0">${hiddenCount > 0 ? `${visibleItems.length} of ${itemsInCat.length} shown` : `${itemsInCat.length} ${itemsInCat.length === 1 ? 'Entry' : 'Entries'}`}</span>
+                </div>
+                <div class="dir-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  ${cardsHtml}
+                </div>
+                ${hiddenCount > 0 ? `<div class="flex justify-center"><button type="button" data-expand-cat="${catKey}" class="expand-cat-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-white/5 hover:bg-white/10 border border-white/15 text-slate-100 transition-all">Show all ${itemsInCat.length} in ${meta.title}</button></div>` : ''}
+              </div>
+            `;
+          })
+          .filter(Boolean)
+          .join('');
+
+        casinoGrid.innerHTML = sectionsHtml;
+        if (shownCount < filtered.length) {
+          casinoCountLabel.textContent = `Showing ${shownCount} of ${filtered.length} Entries (Unranked)`;
+        }
+
+        // Bind modal openers + spotlight effect on newly rendered cards
+        casinoGrid.querySelectorAll('.open-platform-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const found = web3CasinosCatalog.find(p => p.id === btn.dataset.platformId);
+            if (found) openPlatformModal(found);
+          });
+        });
+
+        casinoGrid.querySelectorAll('.expand-cat-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const key = btn.dataset.expandCat;
+            expandedCats.add(key);
+            renderCasinoDirectory();
+            const next = casinoGrid.querySelector(`[data-cat-section="${key}"] .dir-card:nth-child(${CARDS_PER_CATEGORY + 1}) .open-platform-btn`);
+            if (next) {
+              next.focus({ preventScroll: true });
+              next.closest('.dir-card').scrollIntoView({ block: 'center', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            }
+          });
+        });
+
+        casinoGrid.querySelectorAll('.glass-card').forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--card-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--card-y', `${e.clientY - rect.top}px`);
+          });
+        });
+      }
+
+      const ARCH_ON = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all';
+      const ARCH_OFF = 'arch-filter-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all';
+      function setArchFilter(key) {
+        activeArchFilter = key;
+        archFilterBtns.forEach(b => {
+          const on = b.dataset.archFilter === key;
+          b.className = on ? ARCH_ON : ARCH_OFF;
+          b.setAttribute('aria-pressed', String(on));
+        });
+      }
+      archFilterBtns.forEach(btn => btn.addEventListener('click', () => { setArchFilter(btn.dataset.archFilter); renderCasinoDirectory(); }));
+
+      const viewBtns = document.querySelectorAll('.view-toggle-btn');
+      function setView(view) {
+        casinoGrid.classList.toggle('is-compact', view === 'compact');
+        viewBtns.forEach(b => {
+          const on = b.dataset.view === view;
+          b.setAttribute('aria-pressed', String(on));
+          b.classList.toggle('bg-cyan-500/20', on);
+          b.classList.toggle('text-cyan-200', on);
+          b.classList.toggle('bg-white/5', !on);
+          b.classList.toggle('text-slate-300', !on);
+        });
+      }
+      viewBtns.forEach(btn => btn.addEventListener('click', () => setView(btn.dataset.view)));
+
+      casinoSearchInput.addEventListener('input', renderCasinoDirectory);
+      casinoCohortSelect.addEventListener('change', renderCasinoDirectory);
+      document.getElementById('casino-reset-btn').addEventListener('click', () => {
+        casinoSearchInput.value = '';
+        casinoCohortSelect.value = 'all';
+        expandedCats.clear();
+        setArchFilter('all');
+        renderCasinoDirectory();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { closeModal(platformModal); closeModal(reportModal); }
+        if (e.key === 'Tab') {
+          const openModal = [platformModal, reportModal].find(m => !m.classList.contains('hidden'));
+          if (!openModal) return;
+          const f = [...openModal.querySelectorAll('button, a[href], input, select, [tabindex]:not([tabindex="-1"])')];
+          if (!f.length) return;
+          const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      renderCasinoDirectory();
+
+      /* -----------------------------------------------------------
+       * 2. Mouse-Tracking Spotlight Glow on Glass Cards
+       * --------------------------------------------------------- */
+      document.querySelectorAll('.glass-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--card-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--card-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 3. Scroll Reveal Intersection Observer
+       * --------------------------------------------------------- */
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+      /* -----------------------------------------------------------
+       * 4. Hero Interactive 3D Refracting Prism Canvas + Toggle
+       * --------------------------------------------------------- */
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const toggle3dBtn = document.getElementById('toggle-3d-btn');
+      let is3DActive = true;
+      let width = 0;
+      let height = 0;
+      let rotX = 0.45;
+      let rotY = 0.65;
+      let isDragging = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      toggle3dBtn.addEventListener('click', () => {
+        is3DActive = !is3DActive;
+        toggle3dBtn.textContent = is3DActive ? '3D Prism: ON' : '3D Prism: PAUSED';
+      });
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      canvas.addEventListener('mousedown', (e) => { isDragging = true; lastX = e.clientX; lastY = e.clientY; });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        rotY += (e.clientX - lastX) * 0.007;
+        rotX += (e.clientY - lastY) * 0.007;
+        lastX = e.clientX;
+        lastY = e.clientY;
+      });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      function project3D(x, y, z, cx, cy, fov) {
+        const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+        const y1 = y * cosX - z * sinX;
+        const z1 = y * sinX + z * cosX;
+        const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+        const x2 = x * cosY + z1 * sinY;
+        const z2 = -x * sinY + z1 * cosY;
+        const scale = fov / (fov + z2 + 360);
+        return { x: cx + x2 * scale, y: cy + y1 * scale, scale };
+      }
+
+      function drawHeroPrism() {
+        if (is3DActive) {
+          ctx.clearRect(0, 0, width, height);
+          if (!isDragging && !prefersReducedMotion) {
+            rotX += 0.003;
+            rotY += 0.0055;
+          }
+          const cx = width < 1024 ? width * 0.5 : width * 0.62;
+          const cy = height * 0.48;
+          const s = Math.min(width, height) * 0.17;
+          const c = s * 0.46;
+
+          const verts = [
+            [-s,-s,-s],[s,-s,-s],[s,s,-s],[-s,s,-s],
+            [-s,-s,s],[s,-s,s],[s,s,s],[-s,s,s],
+            [-c,-c,-c],[c,-c,-c],[c,c,-c],[-c,c,-c],
+            [-c,-c,c],[c,-c,c],[c,c,c],[-c,c,c]
+          ];
+          const edges = [
+            [0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7],
+            [8,9],[9,10],[10,11],[11,8],[12,13],[13,14],[14,15],[15,12],[8,12],[9,13],[10,14],[11,15],
+            [0,8],[1,9],[2,10],[3,11],[4,12],[5,13],[6,14],[7,15]
+          ];
+          const proj = verts.map(v => project3D(v[0], v[1], v[2], cx, cy, 520));
+          edges.forEach(([i, j]) => {
+            const p1 = proj[i], p2 = proj[j];
+            const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+            grad.addColorStop(0, 'rgba(56, 189, 248, 0.45)');
+            grad.addColorStop(0.5, 'rgba(192, 132, 252, 0.35)');
+            grad.addColorStop(1, 'rgba(52, 211, 153, 0.4)');
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.25;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          });
+        }
+        requestAnimationFrame(drawHeroPrism);
+      }
+      requestAnimationFrame(drawHeroPrism);
+
+      /* -----------------------------------------------------------
+       * 5. Directory Filter (All 10 Permanent Hubs)
+       * --------------------------------------------------------- */
+      const dirBtns = document.querySelectorAll('.dir-filter-btn');
+      const dirItems = document.querySelectorAll('.dir-item');
+      dirBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.dirFilter;
+          dirBtns.forEach(b => b.className = 'dir-filter-btn px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all');
+          btn.className = 'dir-filter-btn px-3 py-1.5 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200 transition-all';
+          dirItems.forEach(item => {
+            item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'block' : 'none';
+          });
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 6. Pillar 01: Regulation & Legality Tracker Filter
+       * --------------------------------------------------------- */
+      const regBtns = document.querySelectorAll('.reg-btn');
+      const regCards = document.querySelectorAll('.reg-card');
+      regBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.regFilter;
+          regBtns.forEach(b => b.className = 'reg-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10');
+          btn.className = 'reg-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200';
+          regCards.forEach(card => {
+            card.style.display = (filter === 'all' || card.dataset.regType === filter) ? 'block' : 'none';
+          });
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 7. Pillar 02: Real Browser Web Crypto SHA-256 Roll Verifier
+       * --------------------------------------------------------- */
+      let activeServerSeed = 'aether-secret-server-seed-' + Math.random().toString(36).substring(2, 12);
+      const clientSeedInput = document.getElementById('client-seed-input');
+      const nonceInput = document.getElementById('nonce-input');
+      const serverHashEl = document.getElementById('pf-server-hash');
+      const combinedHashEl = document.getElementById('pf-combined-hash');
+      const rollResultEl = document.getElementById('pf-roll-result');
+
+      async function sha256Hex(message) {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      async function computeProvablyFairRoll(incrementNonce = false) {
+        if (incrementNonce) {
+          nonceInput.value = (parseInt(nonceInput.value || '1', 10) + 1);
+        }
+        const clientSeed = clientSeedInput.value.trim() || 'default-seed';
+        const nonce = nonceInput.value || '1';
+
+        const serverHash = await sha256Hex(activeServerSeed);
+        const combinedHash = await sha256Hex(`${activeServerSeed}:${clientSeed}:${nonce}`);
+
+        // Convert first 8 hex characters into a deterministic 0.00 - 99.99 roll
+        const intVal = parseInt(combinedHash.substring(0, 8), 16);
+        const roll = ((intVal % 10000) / 100).toFixed(2);
+
+        serverHashEl.textContent = serverHash;
+        combinedHashEl.textContent = combinedHash;
+        rollResultEl.textContent = roll;
+      }
+
+      document.getElementById('rotate-server-seed-btn').addEventListener('click', () => {
+        activeServerSeed = 'aether-secret-server-seed-' + Math.random().toString(36).substring(2, 12);
+        computeProvablyFairRoll(false);
+      });
+      document.getElementById('roll-verify-btn').addEventListener('click', () => computeProvablyFairRoll(true));
+      clientSeedInput.addEventListener('input', () => computeProvablyFairRoll(false));
+      nonceInput.addEventListener('input', () => computeProvablyFairRoll(false));
+      computeProvablyFairRoll(false);
+
+      /* -----------------------------------------------------------
+       * 8. Pillar 06: Interactive Security Hygiene Checklist
+       * --------------------------------------------------------- */
+      const hygieneChecks = document.querySelectorAll('.hygiene-check');
+      const hygieneScore = document.getElementById('hygiene-score');
+      hygieneChecks.forEach(box => {
+        box.addEventListener('change', () => {
+          const checkedCount = Array.from(hygieneChecks).filter(c => c.checked).length;
+          hygieneScore.textContent = `${checkedCount} / ${hygieneChecks.length} Completed`;
+          hygieneScore.className = checkedCount === hygieneChecks.length
+            ? 'text-xs font-mono text-emerald-300 font-semibold'
+            : 'text-xs font-mono text-slate-300';
+        });
+      });
+
+      /* -----------------------------------------------------------
+       * 9. Pillar 09: Interactive Market Data Bar Chart (2024–2030)
+       * --------------------------------------------------------- */
+      const chartDatasets = {
+        ggr: {
+          title: 'Global Online Gambling GGR (USD Billions)',
+          cagr: 'CAGR: +11.4% (2024–2030E)',
+          unit: '$',
+          suffix: 'B',
+          color: 'from-cyan-400 to-violet-500',
+          points: [
+            { year: '2024', val: 92, pct: 52 },
+            { year: '2025', val: 103, pct: 58 },
+            { year: '2026E', val: 114, pct: 65 },
+            { year: '2027E', val: 127, pct: 72 },
+            { year: '2028E', val: 141, pct: 80 },
+            { year: '2029E', val: 157, pct: 89 },
+            { year: '2030E', val: 175, pct: 98 }
+          ]
+        },
+        crypto: {
+          title: 'Crypto & Web3-Enabled Gross Gaming Revenue (USD Billions)',
+          cagr: 'CAGR: +18.2% (2024–2030E)',
+          unit: '$',
+          suffix: 'B',
+          color: 'from-violet-400 to-fuchsia-500',
+          points: [
+            { year: '2024', val: 8.4, pct: 36 },
+            { year: '2025', val: 10.2, pct: 44 },
+            { year: '2026E', val: 12.5, pct: 54 },
+            { year: '2027E', val: 14.9, pct: 64 },
+            { year: '2028E', val: 17.6, pct: 76 },
+            { year: '2029E', val: 20.4, pct: 88 },
+            { year: '2030E', val: 23.2, pct: 98 }
+          ]
+        },
+        stablecoin: {
+          title: 'Stablecoin Share of Total Crypto Wagering Volume (%)',
+          cagr: 'SHIFT FROM BTC TO USDC/USDT',
+          unit: '',
+          suffix: '%',
+          color: 'from-emerald-400 to-cyan-400',
+          points: [
+            { year: '2024', val: 52, pct: 52 },
+            { year: '2025', val: 61, pct: 61 },
+            { year: '2026E', val: 68, pct: 68 },
+            { year: '2027E', val: 74, pct: 74 },
+            { year: '2028E', val: 79, pct: 79 },
+            { year: '2029E', val: 83, pct: 83 },
+            { year: '2030E', val: 86, pct: 86 }
+          ]
+        }
+      };
+
+      const chartBarsContainer = document.getElementById('chart-bars');
+      const chartTitle = document.getElementById('chart-title');
+      const chartCagr = document.getElementById('chart-cagr');
+      const chartBtns = document.querySelectorAll('.chart-btn');
+
+      function renderChart(key) {
+        const ds = chartDatasets[key];
+        chartTitle.textContent = ds.title;
+        chartCagr.textContent = ds.cagr;
+        chartBarsContainer.innerHTML = ds.points.map(pt => `
+          <div class="flex flex-col items-center justify-end h-full gap-2">
+            <span class="text-[11px] font-mono text-white font-semibold">${ds.unit}${pt.val}${ds.suffix}</span>
+            <div class="w-full max-w-[3rem] rounded-t-xl bg-gradient-to-t ${ds.color} transition-all duration-500" style="height: ${pt.pct}%"></div>
+            <span class="text-[11px] font-mono text-slate-400 pt-1">${pt.year}</span>
+          </div>
+        `).join('');
+      }
+
+      chartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          chartBtns.forEach(b => b.className = 'chart-btn px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10');
+          btn.className = 'chart-btn px-3.5 py-2 rounded-xl bg-cyan-500/20 border border-cyan-400/50 text-cyan-200';
+          renderChart(btn.dataset.chart);
+        });
+      });
+      renderChart('ggr');
+
+      /* -----------------------------------------------------------
+       * 10. Pillar 10: Live Searchable Plain-English Glossary
+       * --------------------------------------------------------- */
+      const glossarySearch = document.getElementById('glossary-search');
+      const glossaryItems = document.querySelectorAll('.glossary-item');
+      glossarySearch.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        glossaryItems.forEach(item => {
+          item.style.display = item.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
