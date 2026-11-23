@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../styles.css">
+<title>Guides</title>
+</head>
+<body>
+<a class="skip-link button-secondary" href="#main">Skip to main content</a>
+<header id="top" class="site-header">
+<div class="wrap">
+<a class="brand link-standalone" href="../">AETHER//09</a>
+<a class="menu-toggle button-secondary no-js" href="#footer-nav">Menu</a>
+<button type="button" class="menu-toggle button-secondary js-only" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav id="site-nav" class="site-nav" aria-label="Main">
+<ul>
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/" aria-current="page">Guides</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<section class="disclosure" aria-label="Disclosure">
+<div class="wrap">
+<p>18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing. <a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></p>
+</div>
+</section>
+<main id="main">
+<div class="wrap">
+<div class="prose">
+<h1>Guides</h1>
+<p>General background for reading a review. Not advice, and not specific to any one casino.</p>
+<nav aria-labelledby="otp-h">
+<h2 class="heading-compact" id="otp-h">On this page</h2>
+<ul>
+<li><a class="link-standalone" href="#before-you-read">Before you read a review</a></li>
+<li><a class="link-standalone" href="#provably-fair">Provably fair explained</a></li>
+<li><a class="link-standalone" href="#smart-contracts">Smart-contract casinos</a></li>
+<li><a class="link-standalone" href="#wallet-security">Wallet security</a></li>
+<li><a class="link-standalone" href="#scam-patterns">Scam patterns</a></li>
+</ul>
+</nav>
+
+<h2 id="before-you-read">Before you read a review</h2>
+<h3>Who holds the keys?</h3>
+<p>"Non-custodial" protocols keep funds in your personal Web3 wallet until a smart contract executes the wager. A custodial platform uses account balances: you deposit into a platform-controlled wallet before playing.</p>
+<h3>Licensing and oversight</h3>
+<p>See the methodology answer: <a href="../methodology/#common-questions">How do I check a casino's licence on a regulator's register?</a></p>
+<h3>Verification (KYC)</h3>
+<p>Even when platforms advertise no-KYC or minimal-KYC onboarding for routine play, terms of service may allow identity and source-of-funds checks upon large withdrawals or automated AML risk flags. See <a href="../glossary/#kyc-aml">KYC / AML</a> in the glossary.</p>
+
+<h2 id="provably-fair">Provably fair explained</h2>
+<p>In traditional online casinos, you have to trust that the company's server didn't rig the spin. Provably fair uses cryptographic hashing (like a sealed envelope) so neither the casino nor the player can change the outcome after a bet is placed.</p>
+<ol>
+<li>Server seed hash locked. Before you bet, the casino picks a secret random number (server seed) and shows you its scrambled fingerprint (<a href="../glossary/#sha-256">SHA-256</a> hash). Like putting the answer inside a locked glass box before the game starts.</li>
+<li>Your player seed added. Your browser adds your own random text (client seed) plus your bet counter (<a href="../glossary/#nonce">nonce</a>). Because the casino couldn't predict your seed when it locked step 1, it cannot pre-rig the result.</li>
+<li>Outcome revealed and verified. After the round, the casino reveals the unscrambled server seed. Any independent tool can re-run the SHA-256 math to confirm it matches step 1's fingerprint.</li>
+</ol>
+<p>See <a href="../glossary/#provably-fair">Provably fair</a> in the glossary, and <a href="../methodology/#common-questions">Common questions</a> for what it does and does not prove.</p>
+
+<h2 id="smart-contracts">Smart-contract casinos</h2>
+<p>In a non-custodial smart contract casino, you never deposit money into a company's bank account. Instead, your wallet interacts directly with code.</p>
+<h3>Direct bet signature</h3>
+<p>Funds stay in your wallet until the exact second a wager executes.</p>
+<h3>Three key risks of on-chain casinos</h3>
+<ol>
+<li>Smart contract exploits. If the underlying code has an unaudited bug, hackers can drain the shared liquidity pool—and blockchain transactions cannot be reversed. See <a href="../glossary/#liquidity-pool">Liquidity Pool</a>.</li>
+<li>Randomness and oracle manipulation. Poorly designed contracts that rely on block timestamps instead of verifiable randomness (VRF) can be gamed by validators or bots.</li>
+<li>Liquidity provider drawdowns. Users who stake funds to "be the house" face real financial loss during whale winning streaks or token price drops.</li>
+</ol>
+
+<h2 id="wallet-security">Wallet security</h2>
+<p>In Web3 gaming, you are your own bank.</p>
+<ul>
+<li>Use a dedicated "burner" gaming wallet. Never connect your main long-term hardware vault directly to any gaming dApp. Keep only your session bankroll in a separate hot wallet.</li>
+<li>Cap and revoke token spending approvals. Avoid signing "Unlimited USDC Approval" prompts. Periodically revoke stale permissions.</li>
+<li>Bookmark official domains (stop search-ad phishing). Scammers buy lookalike sponsored ads on search engines that host wallet-drainer clones. Always verify the exact URL.</li>
+<li>Verify network and withdrawal address before sending. Confirm both sender and receiver are on the exact same chain (e.g., Arbitrum USDC vs. Ethereum Mainnet) and send a small test amount first.</li>
+<li>Enable hardware passkeys or app-based 2FA. For custodial accounts, use authenticator apps or FIDO2 passkeys instead of SMS 2FA to prevent SIM-swap account takeovers.</li>
+</ul>
+<h3>Custodial or self-custody</h3>
+<ul>
+<li>Custodial account (email/login): the platform holds the keys. The operator can freeze withdrawals, delay KYC reviews, or become insolvent.</li>
+<li>Self-custody wallet: you hold the keys. If you lose your recovery phrase or sign a malicious contract, there is no helpdesk undo button.</li>
+</ul>
+
+<h2 id="scam-patterns">Scam patterns</h2>
+<p>Fraudulent operators recycle the same playbooks under new brand names. Learn four recurring patterns to watch for before depositing a single dollar.</p>
+<h3>1. Fake footer licence seals</h3>
+<p>How it works: scam sites paste static PNG images of Curaçao, MGA, or UKGC badges in their footer without an active validator link.</p>
+<p>How to check: see <a href="../methodology/#common-questions">How do I check a casino's licence on a regulator's register?</a></p>
+<h3>2. Withdrawal-trap KYC and "tax" fees</h3>
+<p>How it works: a site lets you deposit and "win" huge balances effortlessly, then demands an upfront "verification deposit" or "unlock tax" before releasing funds.</p>
+<p>How to spot it: be wary of any request to deposit extra money before a withdrawal.</p>
+<h3>3. "Guaranteed yield / AI arbitrage" betting pools</h3>
+<p>How it works: promoters claim an "AI sports-betting bot" generates guaranteed daily returns if you stake tokens into their house pool.</p>
+<p>How to spot it: no betting algorithm eliminates variance.</p>
+<h3>4. Fake airdrop and "free spin" wallet drainers</h3>
+<p>How it works: social media replies offer "free bonus chips" that prompt your wallet to sign an opaque Permit2 or setApprovalForAll transaction.</p>
+<p>How to spot it: be wary of any prompt to sign a token-transfer permission to claim a bonus.</p>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap stack-1">
+<p>Informational &amp; educational resource only—not legal, financial, or gambling advice. Always verify local laws in your jurisdiction and play responsibly.</p>
+<p>18+ only (21+ where local law requires). Gambling involves risk of loss. Free, confidential help:</p>
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="https://www.ncpgambling.org/" rel="noopener noreferrer">1-800-GAMBLER (US)</a></li>
+<li><a class="link-standalone" href="https://www.gamcare.org.uk/" rel="noopener noreferrer">GamCare</a></li>
+<li><a class="link-standalone" href="https://www.begambleaware.org/" rel="noopener noreferrer">BeGambleAware</a></li>
+<li><a class="link-standalone" href="../disclosure/#safer-gambling">Safer gambling guide</a></li>
+</ul>
+<nav id="footer-nav" aria-label="Footer">
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/">Guides</a></li>
+<li><a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></li>
+</ul>
+</nav>
+<p><a class="link-standalone" href="#top">Back to top</a></p>
+</div>
+</footer>
+<script src="../site.js" defer></script>
+</body>
+</html>

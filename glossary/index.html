@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../styles.css">
+<title>Glossary</title>
+</head>
+<body>
+<a class="skip-link button-secondary" href="#main">Skip to main content</a>
+<header id="top" class="site-header">
+<div class="wrap">
+<a class="brand link-standalone" href="../">AETHER//09</a>
+<a class="menu-toggle button-secondary no-js" href="#footer-nav">Menu</a>
+<button type="button" class="menu-toggle button-secondary js-only" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav id="site-nav" class="site-nav" aria-label="Main">
+<ul>
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/" aria-current="page">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/">Guides</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<section class="disclosure" aria-label="Disclosure">
+<div class="wrap">
+<p>18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing. <a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></p>
+</div>
+</section>
+<main id="main">
+<div class="wrap">
+<div class="prose">
+<h1>Glossary</h1>
+<div class="controls js-only">
+<label class="control-label" for="glossary-search">Search terms</label>
+<input class="control-text" type="search" id="glossary-search" autocomplete="off">
+<p id="glossary-status" role="status"></p>
+</div>
+<div class="page-stack" id="glossary-terms">
+<section class="stack-1" data-term>
+<h2 id="ggr">GGR (Gross Gaming Revenue)</h2>
+<p>Total money wagered by players minus total winnings paid back out—before operator taxes or marketing costs.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="house-edge">House edge</h2>
+<p>The theoretical percentage of all wagered money a game keeps over millions of rounds. It is what is left after <a href="#rtp">RTP</a>: a game with 99% RTP has a 1% house edge. A <a href="#provably-fair">provably fair</a> check does not prove the house edge.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="kyc-aml">KYC / AML &amp; Zero-Knowledge KYC</h2>
+<p>Know Your Customer &amp; Anti-Money Laundering checks. ZK-KYC lets a user prove they are over 18 and in an approved country without handing over passport scans to every casino.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="liquidity-pool">Liquidity Pool (On-Chain Bankroll)</h2>
+<p>A smart contract vault where users deposit stablecoins to act as the house bankroll, earning a share of house edge while bearing variance risk.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="nonce">Nonce</h2>
+<p>"Number used once." A counter that increases by +1 with every bet you place so the same seed pair generates a fresh outcome each round.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="provably-fair">Provably fair</h2>
+<p>The casino commits to a secret server seed by publishing its hash before you bet. Afterwards it reveals the seed, so you can recompute the result from the server seed, your client seed and the <a href="#nonce">nonce</a>. That shows the result was not changed after the bet. It does not prove the house edge, the licence, or that you will be paid.</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="rtp">RTP (Return to Player)</h2>
+<p>The theoretical percentage of all wagered money a game pays back over millions of rounds (e.g., 99% RTP = 1% house edge).</p>
+</section>
+<section class="stack-1" data-term>
+<h2 id="sha-256">SHA-256 Hash</h2>
+<p>A one-way digital fingerprint. Changing even a single letter in the original secret seed completely alters the resulting 64-character hash.</p>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap stack-1">
+<p>Informational &amp; educational resource only—not legal, financial, or gambling advice. Always verify local laws in your jurisdiction and play responsibly.</p>
+<p>18+ only (21+ where local law requires). Gambling involves risk of loss. Free, confidential help:</p>
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="https://www.ncpgambling.org/" rel="noopener noreferrer">1-800-GAMBLER (US)</a></li>
+<li><a class="link-standalone" href="https://www.gamcare.org.uk/" rel="noopener noreferrer">GamCare</a></li>
+<li><a class="link-standalone" href="https://www.begambleaware.org/" rel="noopener noreferrer">BeGambleAware</a></li>
+<li><a class="link-standalone" href="../disclosure/#safer-gambling">Safer gambling guide</a></li>
+</ul>
+<nav id="footer-nav" aria-label="Footer">
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/">Guides</a></li>
+<li><a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></li>
+</ul>
+</nav>
+<p><a class="link-standalone" href="#top">Back to top</a></p>
+</div>
+</footer>
+<script>
+(function () {
+  var input = document.getElementById('glossary-search');
+  var status = document.getElementById('glossary-status');
+  var items = document.querySelectorAll('[data-term]');
+  if (!input || !status) return;
+  input.addEventListener('input', function () {
+    var q = input.value.trim();
+    var n = 0;
+    Array.prototype.forEach.call(items, function (el) {
+      var match = !q || el.textContent.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+      el.hidden = !match;
+      if (match) n++;
+    });
+    status.textContent = n ? '' : "No term matches '" + q + "'";
+  });
+})();
+</script>
+<script src="../site.js" defer></script>
+</body>
+</html>
