@@ -1209,7 +1209,16 @@ EXEMPT | both  | --color-raised / --color-surface / --color-banner-bg against --
 
 ---
 
-## 8. Open questions (need the human)
+## 8. Open questions
+
+**Resolved 2026-11-23.** The human delegated these to the main session's best judgment when moving to Phase 4. The proposals below are accepted as written, with these notes:
+- H1: "Skip to main content" accepted.
+- H2: the control labels accepted as proposed. No placeholder copy.
+- H3: accepted as proposed. The Home empty state shows only the count, "Showing 0 of {total}", with Reset available. No new sentence is invented.
+- H4: accepted. The Field status group lines are listings of field names, so they are exempt from the sub-label rule. Every value shown anywhere still carries its sub-label.
+- H5: accepted: "Disclosure", "Footer", "Breadcrumb", "Compare {name}".
+
+The original wording follows for the record.
 
 - **H1. Skip-link copy.** The IA has no copy for it. Proposed: "Skip to main content". It needs approval before Phase 6.
 - **H2. Visible label copy for the controls.** The IA names the controls but not their labels. Proposed:
@@ -1224,7 +1233,9 @@ EXEMPT | both  | --color-raised / --color-surface / --color-banner-bg against --
 - **H4. Sub-label exception.** Confirm that the Field status group lines (§2.2 and §2.3) are exempt from the "sub-label always renders" rule, because they are listings of field names, not values.
 - **H5. ARIA label strings.** Approve "Disclosure", "Footer", "Breadcrumb" and "Compare {name}". The IA has no copy for them.
 
-## 9. Conflicts (open)
+## 9. Conflicts
+
+**Resolved 2026-11-23 (delegated judgment).** C1: the `tokens.css` and `styles.css` split is accepted, because it makes the hex scan enforceable; brief §4 allows a `styles.css` file. C2: accepted as a starting point. Phase 4 proves or changes the breakpoints and the sticky Compare header.
 
 - **C1. File names.** Brief §4 names "`styles.css` or a `<style>` block". This spec splits the CSS into `tokens.css`, which holds every token and is the only file allowed to contain hex, and `styles.css`, which holds the components. That split makes the hex scan enforceable. The human should confirm the two-file split, or say which name to use.
 - **C2. Architect judgments.** The 40em and 64em breakpoints and the sticky Compare `thead` are architect choices that Phase 4 may change.
