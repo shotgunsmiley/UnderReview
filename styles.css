@@ -65,6 +65,7 @@ a:hover { text-decoration-thickness: var(--underline-thickness-hover); }
   display: inline-flex;
   align-items: center;
   min-block-size: var(--tap-min);
+  min-inline-size: var(--tap-min);
 }
 
 /* ---------- Buttons ---------- */
