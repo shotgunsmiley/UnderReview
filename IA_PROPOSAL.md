@@ -1,6 +1,6 @@
 # Phase 2 — IA Proposal (revised)
 
-**Status: Approved by the human, 2026-11-23. Follow-ups O8, O9 and O10 (Section 10) are open and do not block Phase 3.**
+**Status: Approved by the human, 2026-11-23. Final edge-case resolutions applied (O8–O10, guide claim cuts, glossary note). One follow-up (O11, Section 10) is open and does not block Phase 3.**
 
 ---
 
@@ -27,9 +27,9 @@
 | D17 | No scores, stars, ranks, "best for" labels, featured slots or ad slots. No Editorial note in v1. |
 | D18 | The 50% rule is published on `/methodology/` as a trust signal, in wording that matches how the rule actually works (5.4 and O9). "Sortable" means the Home sort plus the opt-in column sort on Compare, with alphabetical as the default (Section 8). |
 | D19 | The glossary adds "provably fair" and "house edge". The template holds 8 terms. Writing the definitions is a Phase 6 content addition (Section 9). |
-| D20 | Unsourced guide content is cut: the Pillar 03 table, the Pillar 04 "guarantees solvency" wording, the Dexsport non-custodial claim in Key Considerations, and all Pillar 05 text except the helpline information. |
-| D21 | Vbet's `custody` value ("…no custody wording found…") is a not-found note. Its badge is Unknown and its sub-label is "Unknown (not found)". |
-| D22 | Catalog edit approved: the whole "(Entry #N …)" parenthetical and every "— … Focus" phrase are stripped from public names. The entry number may stay as a hidden data attribute if JS needs it. "Catalog batch" is not shown publicly. |
+| D20 | Unsourced guide content is cut: the Pillar 03 table, the Pillar 04 "guarantees solvency" wording, the Dexsport non-custodial claim in Key Considerations, and all Pillar 05 text except the helpline information. Other unsourced claims in the carried-over guide text are cut or reworded under the rules in 5.5. |
+| D21 | Vbet's `custody` value ("…no custody wording found…") is a not-found note. Its badge is Unknown and its sub-label is "Unknown (not found)". The word "Unverified" is stripped from its raw text, so the text stays factual and the badge does the work (O10). |
+| D22 | Catalog edit approved: the whole "(Entry #N …)" parenthetical and every "— … Focus" phrase are stripped from public names. The entry number may stay as a hidden data attribute if JS needs it. "Catalog batch" is not shown publicly. The 8 duplicate pages that share a brand name get a short descriptor on cards, the banner and Compare, and in the page title (4.5, O8). |
 
 ---
 
@@ -93,7 +93,9 @@ Derived from the catalog:
 
 **Banner, on the 9 duplicate pages only:**
 
-> "This entry covers a brand that also has a page here: {primary name}. Details may differ or conflict; see the {primary name} review too."
+> "This entry ({descriptor}) covers a brand that also has a page here: {primary name}. Details may differ or conflict; see the {primary name} review too."
+
+On #20, which has no descriptor, the text starts "This entry covers a brand…".
 
 It is followed by the link "Read the review: {primary name}". The banner is navigation, not a score, rank or preference.
 
@@ -183,7 +185,7 @@ The catalog text on these pages is shown as written.
   - Stated: "taken from the casino's own terms or help pages. The source is linked."
 - The Checked wording must become register-only (Section 9).
 
-**Vbet's custody field.** Its value reads "Unverified (no custody wording found in the terms read)". That is a not-found note, not a claim, so the human decided (O6) that its badge is **Unknown** with the sub-label **"Unknown (not found)"**. This is the one exception to the mapping in D2. The catalog text itself is not edited in Phase 2; because it begins "Unverified (", Interim rule: show the badge and the sub-label "Unknown (not found)" with the catalog value as written beneath them, and flag the text for the human to choose replacement wording before Phase 4 wireframes (O10; Section 9).
+**Vbet's custody field.** Its catalog value is a not-found note, not a claim, so its badge is **Unknown** with the sub-label **"Unknown (not found)"** (D21). This is the one exception to the mapping in D2. Phase 6 strips the word "Unverified" and the wrapping parentheses from the raw text, so it reads "No custody wording found in the terms read". The badge and sub-label do the status work and the text stays factual (O10, catalog edit approved by the human; Section 9).
 
 ### 4.2 Entry-level status line (live-site wording kept)
 
@@ -214,7 +216,28 @@ There are four templates: Home, Review, Compare and Text page. Every page shows 
 - The entry number may be kept as a hidden data attribute where JS needs it. It is not shown.
 - Slugs do not change (they come from the id, 2.2).
 - **Sort rule:** A–Z by display name, then by slug when two names are equal.
-- **Known side effect (O8):** 8 of the 9 duplicate pages end up with the same display name as their primary, and #20 differs only by ".io". See O8.
+- **Descriptors for duplicate pages (O8, approved).** 8 of the 9 duplicate pages end up with the same display name as their primary (#20 differs from its primary by ".io"). To tell them apart, each of the 8 gets a short descriptor, built from the focus phrase already in its catalog name. The descriptor appears:
+  - on Home cards, as "{name} · {descriptor}";
+  - in the duplicate banner (2.3);
+  - on Compare, in the column name, as "{name} · {descriptor}";
+  - in "Other entries in this category" links, in the same form;
+  - in the page `<title>` tag, in parentheses: "{name} ({descriptor})", so search engines do not index 8 identical titles.
+  - It does **not** appear in the page heading (H1), which stays the brand name only.
+  - Pages without a descriptor use "{name}" as the title.
+
+| Duplicate | Descriptor (catalog wording; figures removed) | Title tag |
+|---|---|---|
+| `betpandaio` | none (name already differs by ".io") | BetPanda.io |
+| `mbit-mrs` | instant crypto focus | mBit Casino (instant crypto focus) |
+| `betplay-8k` | games and Lightning | Betplay.io (games and Lightning) |
+| `bcgame-bcd` | BCD token focus | BC.Game (BCD token focus) |
+| `wildio-vip` | VIP match focus | Wild.io (VIP match focus) |
+| `roobet-promos` | promotions focus | Roobet (promotions focus) |
+| `cloudbet-turnover` | no turnover focus | Cloudbet (no turnover focus) |
+| `vave-kyc` | risk-based KYC focus | Vave (risk-based KYC focus) |
+| `coinpoker-anjouan` | Anjouan licence and hybrid focus | CoinPoker (Anjouan licence and hybrid focus) |
+
+The descriptor wording is taken from the catalog, with the unsourced "8,000+" figure dropped. Three descriptors repeat unsourced catalog claims: "no turnover" (Cloudbet), "Anjouan licence" (CoinPoker) and "games and Lightning" (Betplay.io). Phase 6 shows the final descriptor text to the human for confirmation (O11).
 
 ---
 
@@ -242,7 +265,7 @@ There are four templates: Home, Review, Compare and Text page. Every page shows 
 - Why A–Z by title: the order is visibly mechanical. The `categoryMeta` order and the catalog order are arbitrary and could read as priority.
 
 **Card contents**
-- The name as "Read the review: {name}".
+- The name as "Read the review: {name}", with the descriptor on the 8 duplicates ("{name} · {descriptor}", 4.5).
 - Category.
 - The promoted fields (today Licence, KYC, Custody), each with value and badge.
 - `summary`, with the catalog-notes label.
@@ -376,7 +399,7 @@ If the last group spills below the fold, the first groups and the methodology li
 3. Picker: "Add an entry" (A–Z, max 3) and "Back to the directory".
 4. Opt-in "Sort columns A–Z" and "Back to the order picked". Pick order is the default.
 5. Rows (field first, entries in pick order):
-   - Name (linked) with Remove.
+   - Name (linked, with the descriptor on the 8 duplicates, 4.5) with Remove.
    - Category, status line, Last verified.
    - Promoted fields with badges and sub-labels.
    - A collapsed "More fields": the other `REVIEW_FIELDS`, the 3 no-field dimensions as Unknown, and the 6(d) placeholder.
@@ -432,16 +455,36 @@ There is no "Who reviews", no policy log and no "counted on" date.
 **/guides/**
 - Banner, H1 and "On this page".
 - Sections:
-  - Before you read a review (Key Considerations, without the Dexsport non-custodial claim).
-  - Provably fair explained (Pillar 02).
-  - Payment rails (Pillar 03 intro only; the table is cut).
-  - Smart-contract casinos (Pillar 04, without the "guarantees solvency" wording).
-  - Wallet security (Pillar 06, as a plain list).
-  - Scam patterns (Pillar 07).
+  - Before you read a review (Key Considerations, reduced under 5.5).
+  - Provably fair explained (Pillar 02, reduced under 5.5).
+  - Payment rails (Pillar 03 intro only; the table is cut; the intro is flagged in O11).
+  - Smart-contract casinos (Pillar 04, reduced under 5.5).
+  - Wallet security (Pillar 06, as a plain list, reduced under 5.5).
+  - Scam patterns (Pillar 07, reduced under 5.5).
 - **The Pillar 03 table is cut** (D20). Its column header is "Plain-English Verdict", one of its cells is "Best balance…", and its speeds and fees are unsourced.
-- Phase 2 did not audit the rest of the carried-over guide text for other unsourced claims. Phase 6 carries it over as written; any further cuts are the human's call.
+- The carried-over text is reduced to facts under the rules in 5.5.
 - Carried figures get an "Unverified estimate" label.
 - Cut sections are left out of the page and of the jump list.
+
+### 5.5 Guide text carry-over rules (human decision: cut unsourced claims, keep facts)
+
+**Rule.** The carried-over text in Key Considerations and Pillars 02, 04, 06 and 07 keeps general explanations, advice and risk statements. It cuts specific numbers, named businesses, and absolutes or comparatives ("most", "almost universally", "never", "no company can"), because none has a source. Phase 6 applies these cuts word for word and does not add new factual claims. The scan was done on the text in `index.html`; Phase 2 does not edit it.
+
+| Section | Cut or reworded | Kept |
+|---|---|---|
+| Key Considerations, item 01 | Cut "Most other platforms use…". Keep only the definition of non-custodial versus custodial. | Definition |
+| Key Considerations, item 02 | Cut the whole body: "Most Web3 casinos operate under Curaçao or Anjouan licenses…lighter regulatory oversight…than…MGA or UKGC". Replace with a pointer to the FAQ answer on checking a licence on a register (existing text). | Heading, pointer |
+| Key Considerations, item 03 | Drop "almost universally allow"; say terms "may allow" identity and source-of-funds checks. | Hedged caution |
+| Pillar 02 | Cut "(including your browser right below)" in step 3, because the verifier is cut. Cut the interactive lab. | Three-step explanation |
+| Pillar 04 | Cut "open-source" and "shared liquidity pool" from the intro. Cut Step B ("guarantees solvency") and Step C ("in the same block—no manual approval"). Cut the label "CRITICAL RISK AUDIT". | Step A, the three risks |
+| Pillar 06 | Cut "Most player losses…come from phishing links…rather than blockchain hacks". Cut "Click items below to track your safety setup". Cut "Easy password recovery and familiar UX". Cut "No company can freeze your unbet funds, and payouts settle directly to your address". | Five checklist tips (as plain list), custodial risks, "no helpdesk undo button" |
+| Pillar 07 intro | Cut "exact same" and "most common". Say "four recurring patterns to watch for". | Four patterns |
+| Pillar 07, 01 | Cut "Genuine licenses open an official regulator certificate page matching the exact domain". Point to the FAQ answer on checking a licence on a register instead. | The fake-seal pattern |
+| Pillar 07, 02 | Cut "Legitimate casinos never require you to deposit extra money". Say "be wary of any request to deposit extra money before a withdrawal". | The pattern |
+| Pillar 07, 03 | Cut "1%–3%" and "Fixed daily yields are paid from new deposits until the pool collapses". | "Guaranteed daily returns" pattern; "No betting algorithm eliminates variance" |
+| Pillar 07, 04 | Cut "Claiming a legitimate bonus never requires…". Say "be wary of any prompt to sign a token-transfer permission to claim a bonus". | The pattern |
+
+Pillar 03's intro ("multi-day clearinghouses", "fractions of a cent") has the same kind of unsourced claim. It was outside the scan the human scoped, so it is flagged in O11, not cut.
 
 ---
 
@@ -522,7 +565,7 @@ No dimension is ever counted ("N of 5"). A blank value in a primary row still sh
 **a. Guides (approved).**
 - 02: text kept.
 - 03: intro kept, table cut.
-- 04: kept, without the "guarantees solvency" wording.
+- 04: kept, reduced under 5.5.
 - 06: kept as a plain list.
 - 07: kept.
 - 05: only the helpline information moves to `/disclosure/#safer-gambling`; the rest is cut.
@@ -580,10 +623,11 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 11. The modal and compare text "Not recorded yet" becomes "Last verified: not recorded yet" and "No sources recorded yet."
 12. 18+ links pointing to `#hub-05-responsible` go to `/disclosure/#safer-gambling`.
 
-13. Glossary: write definitions for "House edge" and "Provably fair" from existing site text (FAQ and Pillar 02 wording). Phase 6 content addition (D19).
+13. Glossary: write definitions for "House edge" and "Provably fair" from existing site text only (FAQ and Pillar 02 wording), with no new factual claims. Phase 6 content addition (D19). The human approves the final text before it ships.
 14. Catalog edit approved (D22): strip "(Entry #N)" and "— … Focus" from public names in `catalog.js` and the baked pages. The entry number may stay as a hidden data attribute. Needs the sync check in 7f.
-15. Vbet's `custody` text begins "Unverified (" but is shown with the badge Unknown and the sub-label "Unknown (not found)" (D21). Flag the text for a human decision on rewording.
-16. Remove the Pillar 03 table, the "guarantees solvency" wording, the Dexsport claim in Key Considerations, and all Pillar 05 text except the helpline information (D20).
+15. Vbet's `custody` text: strip "Unverified" and the wrapping parentheses so it reads "No custody wording found in the terms read" (D21, O10). The badge shows Unknown with the sub-label "Unknown (not found)". Catalog edit approved by the human; needs the sync check in 7f.
+16. Remove the Pillar 03 table, the "guarantees solvency" wording, the Dexsport claim in Key Considerations, and all Pillar 05 text except the helpline information (D20). Apply the further guide cuts in 5.5 word for word.
+17a. Page titles: append the descriptor in parentheses on the 8 duplicate pages (4.5, O8).
 17. Remove the "Catalog batch" line from every public view (D22).
 
 **CLAUDE.md (human-owned; listed only)**
@@ -594,12 +638,18 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 
 ## 10. Open items
 
-**Resolved by the human (2026-11-23):** O1 BetPanda pairing confirmed. O2 sortable confirmed. O3 50% rule published. O4 glossary terms added. O5 unsourced guide content cut. O6 Vbet custody is Unknown. O7 catalog names stripped, no "Catalog batch".
+**Resolved by the human (2026-11-23):**
+- O1 BetPanda pairing confirmed.
+- O2 sortable confirmed.
+- O3 and O9: the 50% rule is published with the "have some text" wording in 5.4.
+- O4 glossary terms added.
+- O5 unsourced guide content cut, and extended to other unsourced claims in Pillars 02, 04, 06 and 07 and Key Considerations (5.5).
+- O6 and O10: Vbet custody is Unknown; "Unverified" is stripped from its raw text (4.1).
+- O7 catalog names stripped, no "Catalog batch".
+- O8: descriptors on cards, banner and Compare, and in page titles (4.5).
 
-**Still open (follow-ups; they do not block Phase 3):**
-- **O8.** After the name strip, 8 of the 9 duplicate pages share a display name with their primary, and #20 differs only by ".io". Headings, "Read the review: {name}" links, the duplicate banner ("also has a page here: BC.Game" on a page titled "BC.Game"), and Compare would be ambiguous. The sort rule in 4.5 only breaks ties. Proposal for the human: keep a short plain descriptor for the 9 duplicates only (for example "BC.Game · BCD token focus") on their cards, banner and Compare names, but not in headings. Needs the human's decision before Phase 4 wireframes.
-- **O10.** Vbet's `custody` text begins "Unverified (" while its badge is Unknown, a visible mismatch. Choose replacement wording for that value (a catalog edit), or keep the interim rule in 4.1.
-- **O9.** Confirm the 50% rule wording in 5.4. The human's draft sentence said "sourced", but the rule counts entries that have text. The proposed wording says "some text for it" and adds that every value carries a badge. Using "sourced" would overstate what is true today.
+**Still open (does not block Phase 3):**
+- **O11.** (a) Pillar 03's intro carries unsourced claims ("multi-day clearinghouses", "fractions of a cent"). Cut it, which removes the "Payment rails" section from `/guides/`, or keep it? (b) Three duplicate descriptors repeat unsourced catalog claims ("no turnover", "Anjouan licence", "games and Lightning"). Confirm or replace the descriptor wording in Phase 6.
 
 ## 11. Coverage checklist
 
@@ -646,5 +696,7 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 17. After the editor re-check: Section 9 item 8 corrected to #20–#24 and #27–#30; "no field yet" replaced with plain wording in All fields; Vbet custody sub-label left to the human (O6); duplicate banner reworded to avoid reading as a preference; height table upper bound corrected; #20 pairing marked pending (O1); methodology 50% block marked pending O3.
 
 18. Human decisions O1–O7 applied (D18–D22): BetPanda pairing, sortable, published 50% rule (accurate wording, O9), glossary terms, unsourced guide content cut, Vbet custody Unknown, catalog names stripped and no "Catalog batch". New follow-ups O8 (duplicate display names) and O9 (50% wording).
+
+19. Final edge-case resolutions: Vbet custody text edit (O10), duplicate descriptors and title tags (O8), the 50% wording confirmed (O9), guide claim cuts in 5.5, and the glossary note. New follow-up O11.
 
 Phase 2 — IA Proposal (approved). Phase 3 (Design System) has not started.
