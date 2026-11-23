@@ -637,7 +637,7 @@ window.web3CasinosCatalog = [
     "license": "Offshore Crypto Framework (2026)",
     "kyc": "Minimal KYC Standard Play / AML Triggers",
     "techStack": "Broad Game Variety, Bonus Offers, 2026 CryptoNews Coverage",
-    "summary": "Listed among top platforms by CryptoNews in 2026 for its game variety and bonuses.",
+    "summary": "Described in a 2026 CryptoNews write-up as offering game variety and bonuses.",
     "strengths": "Wide selection of games and promotional bonus structure.",
     "tradeoffs": "Check bonus wagering terms and offshore licensing rules."
   },
@@ -705,7 +705,7 @@ window.web3CasinosCatalog = [
     "license": "Offshore / Industry-Assessed Framework",
     "kyc": "Standard Risk-Based KYC",
     "techStack": "Crypto Gaming & Betting Suite (July 2026 Muddy River Sports Coverage)",
-    "summary": "Featured among top platforms in Muddy River Sports’ July 2026 assessment.",
+    "summary": "Covered in Muddy River Sports’ July 2026 assessment.",
     "strengths": "Highlighted in mid-2026 independent sports/gaming coverage.",
     "tradeoffs": "Review platform terms, jurisdiction eligibility, and withdrawal rules directly."
   },
@@ -722,7 +722,7 @@ window.web3CasinosCatalog = [
     "license": "Offshore Crypto Framework",
     "kyc": "Risk-Based / Threshold KYC",
     "techStack": "Instant Crypto Withdrawals, Multi-Coin Cashier, Casino & Sports",
-    "summary": "Appears repeatedly across multiple 2026 rankings with instant crypto withdrawals as a core feature.",
+    "summary": "Mentioned repeatedly in 2026 casino write-ups, with instant crypto withdrawals as a core feature.",
     "strengths": "Consistent emphasis on fast, near-instant crypto withdrawal processing.",
     "tradeoffs": "Custodial wallet balances and offshore regulatory oversight."
   },
@@ -756,7 +756,7 @@ window.web3CasinosCatalog = [
     "license": "Offshore Gaming Framework",
     "kyc": "Account / Payout Verification",
     "techStack": "Sportsbook & Casino Lobby, Crypto & Card Cashier (Mar–Jul 2026 Reviews)",
-    "summary": "Featured across multiple independent reviews between March and July 2026.",
+    "summary": "Covered across multiple independent reviews between March and July 2026.",
     "strengths": "Sustained independent review visibility across spring and summer 2026.",
     "tradeoffs": "Custodial account model; review payout conditions and terms before depositing."
   },
@@ -1070,8 +1070,8 @@ window.web3CasinosCatalog = [
     "custody": "Custodial Casino Account",
     "license": "Offshore Gaming Framework",
     "kyc": "Account / Payout Verification",
-    "techStack": "BTC & Crypto Cashier, Slots & Casino Lobby (2026 BTC Rankings)",
-    "summary": "Featured in 2026 Bitcoin casino rankings with a slots-forward lobby and crypto payment options.",
+    "techStack": "BTC & Crypto Cashier, Slots & Casino Lobby",
+    "summary": "Covered in 2026 Bitcoin casino write-ups, with a slots-forward lobby and crypto payment options.",
     "strengths": "Recognized in 2026 Bitcoin casino listings with accessible crypto deposit support.",
     "tradeoffs": "Custodial account structure and offshore licensing rules."
   },
@@ -1087,8 +1087,8 @@ window.web3CasinosCatalog = [
     "custody": "Custodial / Demo-Enabled Platform",
     "license": "Offshore / Platform Terms",
     "kyc": "Standard Account / Risk Terms",
-    "techStack": "Demo Mode Practice Access, 2026 Casino Rankings",
-    "summary": "Noted in 2026 casino rankings and highlights a built-in demo mode.",
+    "techStack": "Demo Mode Practice Access",
+    "summary": "Noted in 2026 casino write-ups and highlights a built-in demo mode.",
     "strengths": "Demo mode lets users test interface mechanics before committing real funds.",
     "tradeoffs": "Demo simulations do not reflect real-money variance or payout conditions."
   },
