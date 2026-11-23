@@ -1,6 +1,6 @@
 # DESIGN SYSTEM (Phase 3)
 
-**Status:** Written 2026-11-23 under the Phase 3 gate decisions (Q1 to Q6 and C1 answered by the human). The editor's final check returned "approve with changes"; edits E1 to E6 are applied. Items H1 to H5 (§8) and C1 to C2 (§9) are still open for the human. Phase 4 (Wireframes) has not started.
+**Status:** Written 2026-11-23 under the Phase 3 gate decisions (Q1 to Q6 and C1 answered by the human). The editor's final check returned "approve with changes"; edits E1 to E6 are applied. Items H1 to H5 (§8) and C1 to C2 (§9) are still open for the human. Phase 4 (Wireframes) has not started. The Phase 4 amendments (section 11) were applied on 2026-11-23.
 
 **Files this spec defines:** `tokens.css` (§1.2) and `styles.css` (§2.1). Implement them verbatim in Phase 6.
 
@@ -225,7 +225,7 @@ The palette tokens are listed as two group rows; every value is in §1.2. Every 
 | `--color-link` | p-*-text | All text links | `a` |
 | `--color-accent` | p-*-accent | Primary-button fill and border only | `.button-primary` |
 | `--color-accent-text` | p-*-accent-text | Primary-button text only | `.button-primary` |
-| `--color-focus` | p-*-focus | Focus ring and `:target` ring only | `:focus-visible`, `.prose :target` |
+| `--color-focus` | p-*-focus | Focus ring and `:target` ring only | `:focus-visible`, `.prose :target`, the `:target:is(...)` rule |
 | `--color-banner-bg` | p-*-banner-bg | Disclosure banner only | `.disclosure` |
 | `--color-banner-text` | p-*-text | Disclosure banner only | `.disclosure` |
 | `--color-banner-border` | p-*-border-strong | Disclosure banner only | `.disclosure` |
@@ -264,12 +264,12 @@ The palette tokens are listed as two group rows; every value is in §1.2. Every 
 | `--border-1` | 1px | Decorative rules only | card, panel, table, header, footer, glance rows, licence sub-line |
 | `--border-2` | 2px | Buttons, controls, checkbox, banner, compare bar edge | as listed |
 | `--border-3` | 3px | Badge border and notice-box edge only | `.badge`, `.notice` |
-| `--focus-width` | 3px | Focus and `:target` ring | `:focus-visible`, `.prose :target` |
+| `--focus-width` | 3px | Focus and `:target` ring | `:focus-visible`, `.prose :target`, the `:target:is(...)` rule |
 | `--focus-offset` | 2px | Focus and `:target` ring | same |
 | `--checkbox-inset` | 0.25rem | Gap between the checkbox border and its checked fill only | `.control-checkbox` |
 | `--tap-min` | 2.75rem (44px) | Minimum size of every interactive target; header row height | buttons, `.link-standalone`, controls, checkbox label, `summary`, header row |
 | `--content-max` | 75rem | Maximum content width | `.wrap` |
-| `--measure` | 40rem | Prose line length only | `.prose` p, ul, ol, dl |
+| `--measure` | 40rem | Line length: prose, the Review page column and the controls block | `.prose` p, ul, ol, dl; `.page-intro > p`; `.page-review`; `.controls` |
 | `--card-min` | 18rem | Minimum card column width | `.card-grid` |
 
 **Allowed literals outside `tokens.css`.** Every value in a component rule is a `var()` or a keyword, with these exceptions only:
@@ -381,6 +381,10 @@ h4 {
   outline-offset: var(--focus-offset);
 }
 .prose :target {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+:target:is(section, details, h2, h3, h4, dt, dd, li) {
   outline: var(--focus-width) solid var(--color-focus);
   outline-offset: var(--focus-offset);
 }
@@ -550,8 +554,6 @@ details[open] > summary { background-color: var(--color-raised); }
 .data-table th { font-weight: var(--weight-semibold); }
 .data-table th[scope="rowgroup"] { background-color: var(--color-bg); }
 .data-table thead th {
-  position: sticky;
-  inset-block-start: 0;
   background-color: var(--color-raised);
 }
 
@@ -695,6 +697,54 @@ details[open] > summary { background-color: var(--color-raised); }
   clip-path: inset(100%);
 }
 
+/* ---------- Page layout and utilities (Phase 4 amendments AM-G1 to AM-G12) ---------- */
+main { padding-block: var(--space-2) var(--space-4); }
+main > * + * { margin-block-start: var(--space-2); }
+.page-stack > * + * { margin-block-start: var(--space-2); }
+.page-stack > * + section { margin-block-start: var(--space-4); }
+.page-stack > h1 + * { margin-block-start: 0; }
+.page-stack > .stack-tight { margin-block-start: var(--space-1); }
+.stack-1 > * + * { margin-block-start: var(--space-1); }
+.page-intro > p { max-inline-size: var(--measure); }
+.page-review { max-inline-size: var(--measure); }
+
+.controls { max-inline-size: var(--measure); }
+.controls > * + * { margin-block-start: var(--space-2); }
+.controls > .control-count + * { margin-block-start: var(--space-1); }
+.controls > .button-secondary { display: flex; inline-size: fit-content; }
+.control-count { min-block-size: var(--leading-base); }
+.control-text,
+.control-select { inline-size: 100%; }
+
+.heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-2);
+  row-gap: 0;
+}
+
+.entry-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+}
+
+.list-plain {
+  padding: 0;
+  list-style: none;
+}
+
+.compare-wide { display: none; }
+@media (min-width: 40em) {
+  .compare-stacked { display: none; }
+  .compare-wide { display: block; }
+}
+
+html:not(.js) .js-only { display: none; }
+html.js .no-js { display: none; }
+
 /* ---------- Guards ---------- */
 @media (forced-colors: active) {
   .control-checkbox { appearance: auto; }
@@ -814,7 +864,8 @@ details[open] > summary { background-color: var(--color-raised); }
   - columns are equal width (`table-layout: fixed`, no column widths set);
   - no column background, no column hover, no bold or larger value, no marker of any kind, no ordering by status;
   - the sort controls are `.button-secondary`.
-- **Sticky `thead`:** see §2.1 for the CSS. No ancestor may set `overflow`. The focus-obscured risk is in §5.
+- **No sticky `thead` (Phase 4 amendment AM-G5).** Column names scroll with the table, which avoids hiding focused cells under a tall sticky header (WCAG 2.4.11). No ancestor may set `overflow`.
+- **Two variants (AM-G4).** Both are built into the page from the same data and toggled by CSS: `.compare-stacked` below 40em (a table with no `thead`; each field `<tbody>` has a `th[scope=rowgroup][colspan=2]` label row, then one row per entry: `th[scope=row]` with the name, and a `td`) and `.compare-wide` at 40em and wider (the table described above). The inactive one is `display: none`. Id prefixes are `s-main`, `s-more`, `w-main`, `w-more`. Stacked cells carry `headers="s-main-f-{field} s-main-r-{slug}"` and each `th[scope=row]` has `id="s-main-r-{slug}"`.
 - **0 or 1 entries:** no table renders.
 - **No-JS:** no table. The IA no-JS text and link render as prose.
 
@@ -1173,7 +1224,7 @@ EXEMPT | both  | --color-raised / --color-surface / --color-banner-bg against --
 - **H1 below 40em.** 32px per line: 1 or 2 lines take 32 to 64px (IA estimate about 72px), and 3 lines take 96px (IA estimate up to about 104px).
 - **Status-row badge lines.** Only the first line of each group holds a badge, and that line grows to about 30px. The 56 unsourced pages have 2 groups, adding about 12px over the IA's 24px-per-line estimate.
 - **Net against the IA fold estimate:** about −11 (header) + 4 (banner) − 8 (2-line H1) + 12 (badge lines), which is roughly −3px on the 56 pages. This holds on paper only. The line counts depend on system font metrics, so Phase 4 must prove it at 320×568 and 375×667.
-- **Sticky compare `thead`.** With three long duplicate descriptors, the sticky header can grow tall and hide focused cells below it (WCAG 2.4.11, Focus Not Obscured). Phase 4 must prove this does not happen, or choose a fallback: either cap the thead height, or make it non-sticky below a breakpoint.
+- **Sticky compare `thead` (closed by AM-G5; kept for the record).** With three long duplicate descriptors, the sticky header can grow tall and hide focused cells below it (WCAG 2.4.11, Focus Not Obscured). Phase 4 must prove this does not happen, or choose a fallback: either cap the thead height, or make it non-sticky below a breakpoint.
 - **Compare bar position.** If Phase 4 makes the bar sticky at the bottom of the viewport, the same 2.4.11 risk applies to the cards under it.
 
 ---
@@ -1238,7 +1289,7 @@ The original wording follows for the record.
 **Resolved 2026-11-23 (delegated judgment).** C1: the `tokens.css` and `styles.css` split is accepted, because it makes the hex scan enforceable; brief §4 allows a `styles.css` file. C2: accepted as a starting point. Phase 4 proves or changes the breakpoints and the sticky Compare header.
 
 - **C1. File names.** Brief §4 names "`styles.css` or a `<style>` block". This spec splits the CSS into `tokens.css`, which holds every token and is the only file allowed to contain hex, and `styles.css`, which holds the components. That split makes the hex scan enforceable. The human should confirm the two-file split, or say which name to use.
-- **C2. Architect judgments.** The 40em and 64em breakpoints and the sticky Compare `thead` are architect choices that Phase 4 may change.
+- **C2. Architect judgments.** The 40em and 64em breakpoints were architect choices; Phase 4 kept them. The sticky Compare `thead` was removed (AM-G5).
 
 ---
 
@@ -1269,15 +1320,31 @@ The original wording follows for the record.
 18. **Button visited colour.** Added `:visited` rules for both button classes, because `a:visited` would otherwise override the accent-text colour on link-buttons.
 19. **Scan patterns.** Added `behavior: 'smooth'` (JavaScript smooth scrolling) to the code scan. The content scan now uses `recommend\w*` so that "recommendation" is caught too.
 
+
 ---
 
-**Phase:** Phase 3, Design System.
+## 11. Amendments from Phase 4 (applied 2026-11-23)
 
-**Approval needed before Phase 4 (Wireframes) can begin:**
-- the editor's final check of this document;
-- the human's approval of DESIGN_SYSTEM.md, with answers to H1 to H3 and C1.
+These come from `WIREFRAMES.md` section 11 and are applied to §2.1 above. AM-G1, G2, G4, G5, G7 and G8 were approved at the Phase 4 gate. AM-G3, G8b, G11, G12 and G13, and the `.controls`, `.control-count` and `.page-intro` rules in G1, were decided under the human's delegation. They have not had a separate editor review. The only literals added are `0`, `100%` and the `40em` media value.
 
-I made no file edits. The inputs I read are:
-- /tmp/claude-0/-home-user-web3-casino-reviews/d4f80b7d-848b-5119-af57-9f11521519dd/scratchpad/DESIGN_SYSTEM.proposal.md
-- /home/user/web3-casino-reviews/DESIGN_BRIEF.md
-- /home/user/web3-casino-reviews/IA_PROPOSAL.md
+| Amendment | Where in §2.1 | Markup rule |
+|---|---|---|
+| AM-G1 page-stack spacing | Page layout block | Review and text-adjacent pages use `.page-stack`; the Field status section and status lines carry `.stack-tight` where the wireframes say so; each label plus its control sits in `div.control-group` (Home search, Category, Sort; the Compare picker; the glossary search). |
+| AM-G2 heading-plus-link row | `.heading-row` | "Field status" and "Review methodology" share one row. |
+| AM-G3 list reset | `.list-plain` | Add `role="list"` to each such list. |
+| AM-G4 Compare variants | `.compare-wide`, `.compare-stacked` rule | See §2.6. |
+| AM-G5 non-sticky thead | `.data-table thead th` | None. |
+| AM-G7 JS-present hook | `html:not(.js) .js-only`, `html.js .no-js` | Add `<script>document.documentElement.classList.add('js');</script>` in `<head>` before the stylesheets. On Home and Compare load `<script src="/data/catalog.js" onerror="document.documentElement.classList.remove('js')"></script>`, so a failed data load restores the baked no-JS view. |
+| AM-G8 control width | form-control width rule | None. |
+| AM-G8b controls cap | `.controls` | The Home and Compare controls block is `div.controls`. |
+| AM-G11 Review column | `.page-review` | Add `page-review` to the Review page's `.page-stack` only. |
+| AM-G12 entry row | `.entry-row` | Each stacked Compare entry-list `li` holds one `div.entry-row`: name link, then Remove. |
+| AM-G13 `:target` ring | `:target:is(...)` | Anchors that should ring land on `section`, `details`, `h2`–`h4`, `dt`, `dd` or `li`. `main#main` and `div#casino-directory-30` are excluded on purpose. |
+
+Token index changes: `--measure` now also scopes the Review column and the controls block (see §1.3). No new tokens and no new colours, so the contrast table is unchanged.
+
+---
+
+**Phase:** Phase 3, Design System (amended in Phase 4).
+
+**Status:** The Phase 3 gate decisions are applied, and the editor's final check returned "approve with changes" (edits applied). The Phase 4 amendments above were applied on 2026-11-23.
