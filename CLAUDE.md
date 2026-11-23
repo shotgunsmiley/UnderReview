@@ -6,7 +6,7 @@ AETHER//09: an independent, **unranked** research site for web3 / crypto casinos
 
 ## Non-negotiable rules (in priority order)
 
-1. **No scores, stars, rankings, "top", "best", "featured", "recommended" in anything we write.** Verification status replaces ratings: Checked / Stated / Unverified / Unknown. The only allowed hits are the two exact negation sentences on `/methodology/` (VISUAL_DESIGN.md decision 14).
+1. **No scores, stars, rankings, "top", "best", "featured", "recommended" in anything we write.** Verification status replaces ratings: Checked / Stated / Unverified / Unknown. The only allowed hits are the two exact negation sentences on `/methodology/` (VISUAL_DESIGN.md decision 14). **Owner-approved exception:** `/audit/` is an opinion piece with the author's own scores out of 10, labelled as opinion on the page and mentioned on `/methodology/`; scores stay out of the directory, catalog, Home, Compare and review pages.
 2. **Never invent facts.** Licences, bonuses, custody, KYC, dates, authors, schedules, contact routes, funding: only what a source you actually read says. Missing = `Unknown`. Do not "fix" catalog text, counts or links on your own; catalog accuracy is the owner's decision. Report discrepancies instead.
 3. **Status meaning:** Checked = confirmed on an official regulator register page. Stated = taken from the casino's own pages. Unverified = written without a recorded source. Unknown = no data, or looked and did not find it (never means "none").
 4. **18+ and money disclosure on every page**, above the fold: banner text `18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing.` + link to `/disclosure/`; footer keeps the 18+ line and helplines (1-800-GAMBLER, GamCare, BeGambleAware). New pages include both from the start.
@@ -20,6 +20,7 @@ index.html              Home / directory (JS builds cards from data/catalog.js; 
 compare/index.html      Compare 2 or 3 entries, ?casinos=slug,slug, unranked, order picked
 review/{slug}/index.html  60 baked review pages (no JS needed). slug = catalog id without b1-/b2-NN-
 methodology/ glossary/ guides/ disclosure/   Text pages (disclosure has #safer-gambling)
+audit/                  Opinion piece (owner-supplied article, author's scores, sources not checked by this site)
 data/catalog.js         window.web3CasinosCatalog: ALL catalog data
 tokens.css styles.css   Design tokens and components. Only CSS files.
 site.js                 Menu toggle only
