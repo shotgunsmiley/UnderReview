@@ -11,7 +11,7 @@ AETHER//09: an independent, **unranked** research site for web3 / crypto casinos
 3. **Status meaning:** Checked = confirmed on an official regulator register page. Stated = taken from the casino's own pages. Unverified = written without a recorded source. Unknown = no data, or looked and did not find it (never means "none").
 4. **18+ and money disclosure on every page**, above the fold: banner text `18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing.` + link to `/disclosure/`; footer keeps the 18+ line and helplines (1-800-GAMBLER, GamCare, BeGambleAware). New pages include both from the start.
 5. **Affiliate links:** none exist. If one is ever added: label it as an affiliate link next to the link, `rel="sponsored noopener noreferrer"`, update the banner, disclosure page and methodology, and never let it affect order or wording. No ad slots.
-6. **No casino UI** (slot motion, chips, dice, gold, neon) and none of the retired look (dark/purple/glass/gradient). Editorial layer only.
+6. **No casino UI** (slot motion, chips, dice, gold, neon) and none of the retired look (dark/purple/glass/gradient). Editorial layer only. Simple motion is allowed only as described under Design system rules.
 
 ## Structure (what actually exists)
 
@@ -38,6 +38,7 @@ Pages use **relative paths** (`../../styles.css`) and directory URLs (`review/st
 - 16px body, visible focus, 44px targets, reduced motion, works at 320px, no horizontal scroll.
 - Badge states are never dimmed or hidden to make a page look better; the yellow volume is the true state of the data.
 - JS is limited to: the `js` class hook in `<head>`, `site.js`, Home/Compare inline scripts, glossary search. No libraries, no continuous animation.
+- **Motion ideas from motionsites.dev are allowed (owner-approved), if simple.** Take the idea, not the code: its prompts are paid and its usual output breaks the rules. Allowed: one-shot CSS transitions (about 120ms) on hover and focus for existing classes (buttons, links, cards), and one-time fade or slide-in on page load. Add them as motion tokens in `tokens.css` (e.g. `--motion-fast`, `--motion-ease`), with no literal durations in `styles.css`. Colours come only from existing tokens, so everything stays in the current dark/light scheme. Every effect must be disabled by the existing `prefers-reduced-motion` block, must not hide or dim badges, and must not move layout (no CLS). Still banned: loops, parallax, scroll-jacking, gradients, glow, glass, video, libraries, new JS, and anything that reads as casino UI (rule 6). Anything beyond this list needs a written proposal.
 
 ## Catalog data
 
