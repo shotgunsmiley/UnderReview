@@ -45,7 +45,7 @@ The human approved every recommendation in the first draft's sections 6 and 10 (
 | Q16 | Review pages and `/disclosure/` have no `aria-current` item in the header nav. | 3 |
 | Q17 | ARIA strings: "Main" (header nav); "Remove {name}" (Remove buttons, whose visible text is "Remove"). | 3, 6 |
 | Q18 | The Compare Sources cell reads "{n} recorded, see the review". "see the review" is the link to `/review/{slug}/#sources`, with `aria-label` "see the review: {name}". The visible text stays IA-exact. | 6 |
-| Q19 | The brand text is "AETHER//09". | 3 |
+| Q19 | The brand text is "UnderReview.io". | 3 |
 | Q20 | Adopt the `html.js` hook (AM-G7), including the catalog.js failure rule in 11. | 3, 4, 6, 11 |
 | I9 | In All fields, "Withdrawal & turnover rules" links to the Withdrawals row inside All fields (`#field-withdrawals`). | 5 |
 | G8 | Approved: `inline-size: 100%` on `.control-text` and `.control-select` (AM-G8). | 4, 6, 11 |
@@ -110,7 +110,7 @@ The human approved every recommendation in the first draft's sections 6 and 10 (
   y
   0 [Skip to main content]  <- clipped until focused; when focused it is in flow at y0 and adds 44px
   0 +--------------------------------------+
-    |>AETHER//09                 [ Menu ] |  header row 44 (--tap-min)
+    |>UnderReview.io                 [ Menu ] |  header row 44 (--tap-min)
  44 +======================================+  1px --border-1
  45 |######################################|  2px --border-2
     | 18+ only. Gambling involves risk of  |  24   one <p>: text, then the link
@@ -123,7 +123,7 @@ The human approved every recommendation in the first draft's sections 6 and 10 (
     | footer (3.3)                         |
 
 Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow (not an overlay)
-  0 |>AETHER//09                 [ Menu ] |  <button aria-expanded="true">
+  0 |>UnderReview.io                 [ Menu ] |  <button aria-expanded="true">
  44 |>Directory                            |  44 each, 5 x 44 = 220
     |>Compare                              |  current page: aria-current="page",
     |>How we review                        |  3px underline (--nav-current-thickness)
@@ -141,7 +141,7 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 
 >= 64em (1024+, content max 75rem = 1200 including gutters, 1168 content)
 +------------------------------------------------------------------------------------------------+
-|>AETHER//09               >Directory  >Compare  >How we review  >Glossary  >Guides              |  44
+|>UnderReview.io               >Directory  >Compare  >How we review  >Glossary  >Guides              |  44
 +================================================================================================+  1
 |################################################################################################|
 | 18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing.  |
@@ -156,7 +156,7 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 - It is the first tab stop. When focused it is in flow and pushes the page down by 44px. That happens only on keyboard focus and does not affect the fold or CLS.
 
 **F2. Header** (IA 3, DS 2.9)
-- Markup: `header#top.site-header > .wrap`, containing `a.brand.link-standalone` "AETHER//09" (Q19) and the Menu control.
+- Markup: `header#top.site-header > .wrap`, containing `a.brand.link-standalone` "UnderReview.io" (Q19) and the Menu control.
 - Menu is two baked elements toggled by AM-G7 (J). Because both are baked, no DOM swap happens and there is no layout shift:
   - `a.menu-toggle.button-secondary.no-js href="#footer-nav"` "Menu", shown when `html.js` is absent;
   - `button.menu-toggle.button-secondary.js-only aria-expanded="false" aria-controls="site-nav"` "Menu", shown when `html.js` is present. It is the same size as the link.
@@ -228,7 +228,7 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 
 ```
 320px, JS ON (html.js set)                     y
-  0 |>AETHER//09                 [ Menu ] |  header 45
+  0 |>UnderReview.io                 [ Menu ] |  header 45
  45 |######################################|
     | 18+ only. Gambling involves risk of  |
     | loss. No affiliate relationships     |
