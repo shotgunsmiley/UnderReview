@@ -105,8 +105,8 @@ anti-references.
 - **Typography:** **two families only.** Sans for UI/body (Inter or system
   stack) + Mono for data (JetBrains Mono or system mono: hashes, addresses,
   dates, audit links). No third family. No serif in v1.
-- **Color:** neutral base + one accent reserved for CTAs/status only.
-  Data viz gets its own palette.
+- **Color:** neutral base. One accent reserved for CTAs only; status has its
+  own palette. Data viz gets its own palette.
 - **Spacing:** 8px base unit.
 - **Dark mode:** default (crypto audience), must pass WCAG AA contrast.
 - **Components to define:** review card, "At a Glance" facts panel, comparison
