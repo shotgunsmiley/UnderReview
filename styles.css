@@ -433,3 +433,8 @@ time.data { white-space: nowrap; }
 .card {
   transition: background-color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease);
 }
+.button-secondary:hover { background-color: var(--color-raised); }
+
+/* One-time page fade-in (opacity only, no layout shift); disabled by the reduced-motion guard above */
+@keyframes page-enter { from { opacity: 0; } to { opacity: 1; } }
+main { animation: page-enter var(--motion-enter) var(--motion-ease) both; }

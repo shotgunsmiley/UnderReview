@@ -3,6 +3,7 @@
   /* ===== MOTION ===== */
   --motion-fast: 120ms;
   --motion-ease: ease-out;
+  --motion-enter: 240ms;
 
   /* ===== PRIVATE PALETTE (referenced only by the semantic tokens in this file) ===== */
   /* dark */
