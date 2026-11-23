@@ -140,7 +140,7 @@ anti-references.
 - [x] **Phase 4 — Wireframes:** One low-fidelity annotated wireframe per
   template. WAIT FOR APPROVAL.
 - [x] **Phase 5 — Visual Design:** High-fidelity per template. WAIT FOR APPROVAL.
-- [ ] **Phase 6 — Build:** Implement each template as its own .html file
+- [x] **Phase 6 — Build:** Implement each template as its own .html file
   (separate .html files; reviews at `/review/{casino}/index.html`, served as
   `/review/{casino}/`, not hash routes; no build step). All colors, spacing, and type come from CSS custom properties
   defined in Phase 3. Apply only human-approved catalog/link corrections.

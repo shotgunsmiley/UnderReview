@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../styles.css">
+<title>Compare entries</title>
+</head>
+<body>
+<a class="skip-link button-secondary" href="#main">Skip to main content</a>
+<header id="top" class="site-header">
+<div class="wrap">
+<a class="brand link-standalone" href="../">AETHER//09</a>
+<a class="menu-toggle button-secondary no-js" href="#footer-nav">Menu</a>
+<button type="button" class="menu-toggle button-secondary js-only" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav id="site-nav" class="site-nav" aria-label="Main">
+<ul>
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/" aria-current="page">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/">Guides</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<section class="disclosure" aria-label="Disclosure">
+<div class="wrap">
+<p>18+ only. Gambling involves risk of loss. No affiliate relationships exist at time of writing. <a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></p>
+</div>
+</section>
+<main id="main">
+<div class="wrap page-stack">
+<h1 id="compare-h">Compare entries</h1>
+<div class="page-intro">
+<p>Entries are unranked, in the order you picked, with no winner; Unknown means we have no data or did not find it, not that the answer is 'none'.</p>
+<p><a class="link-standalone" href="../methodology/">How we review</a></p>
+</div>
+<div class="controls js-only">
+<div>
+<label class="control-label" for="add-entry">Add an entry</label>
+<select class="control-select" id="add-entry">
+<option value="">Choose an entry</option>
+</select>
+</div>
+<button type="button" class="button-secondary" id="add-btn">Add</button>
+<p role="status" id="compare-status"></p>
+<a class="button-secondary" href="../#casino-directory-30">Back to the directory</a>
+</div>
+<div class="no-js">
+<p>The comparison needs JavaScript. Each review page has the full facts without it.</p>
+<p><a class="link-standalone" href="../#casino-directory-30">Browse all reviews in the directory</a></p>
+</div>
+<div class="js-only page-stack" id="compare-out"></div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap stack-1">
+<p>Informational &amp; educational resource only—not legal, financial, or gambling advice. Always verify local laws in your jurisdiction and play responsibly.</p>
+<p>18+ only (21+ where local law requires). Gambling involves risk of loss. Free, confidential help:</p>
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="https://www.ncpgambling.org/" rel="noopener noreferrer">1-800-GAMBLER (US)</a></li>
+<li><a class="link-standalone" href="https://www.gamcare.org.uk/" rel="noopener noreferrer">GamCare</a></li>
+<li><a class="link-standalone" href="https://www.begambleaware.org/" rel="noopener noreferrer">BeGambleAware</a></li>
+<li><a class="link-standalone" href="../disclosure/#safer-gambling">Safer gambling guide</a></li>
+</ul>
+<nav id="footer-nav" aria-label="Footer">
+<ul class="list-plain" role="list">
+<li><a class="link-standalone" href="../">Directory</a></li>
+<li><a class="link-standalone" href="../compare/">Compare</a></li>
+<li><a class="link-standalone" href="../methodology/">How we review</a></li>
+<li><a class="link-standalone" href="../glossary/">Glossary</a></li>
+<li><a class="link-standalone" href="../guides/">Guides</a></li>
+<li><a class="link-standalone" href="../disclosure/">Disclosure &amp; safer gambling</a></li>
+</ul>
+</nav>
+<p><a class="link-standalone" href="#top">Back to top</a></p>
+</div>
+</footer>
+<script src="../data/catalog.js"></script>
+<script>
+(function () {
+  var C = window.web3CasinosCatalog;
+  if (!C || !C.length) { return; }
+  var UNK = 'Unknown (not yet checked)';
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+  function disp(x) { return x.descriptor ? x.name + ' · ' + x.descriptor : x.name; }
+  function cmp(a, b) { var x = disp(a).toLowerCase(), y = disp(b).toLowerCase(); if (x < y) { return -1; } if (x > y) { return 1; } return a.slug < b.slug ? -1 : (a.slug > b.slug ? 1 : 0); }
+  function has(a, k) { return Object.prototype.toString.call(a) === '[object Array]' && a.indexOf(k) !== -1; }
+  function val(x, k) { var v = x[k]; return (typeof v === 'string' && v.replace(/\s+/g, '') !== '') ? v : ''; }
+  function status(x, k) {
+    if (!val(x, k)) { return 'unknown'; }
+    if (k === 'custody' && x.custodyNotFound) { return 'unknown'; }
+    if (has(x.checked, k)) { return 'checked'; }
+    if (has(x.stated, k)) { return 'stated'; }
+    return 'unverified';
+  }
+  var BADGE = { checked: 'Checked', stated: 'Stated', unverified: 'Unverified', unknown: 'Unknown' };
+  function badge(s) { return '<span class="badge" data-status="' + s + '">' + BADGE[s] + '</span>'; }
+  function sub(x, k, s) {
+    if (s === 'checked') { return "On the regulator's register · see Sources"; }
+    if (s === 'stated') { return "From the casino's own page · see Sources"; }
+    if (s === 'unverified') { return 'Claim · no source recorded'; }
+    return (k === 'custody' && x.custodyNotFound && val(x, k)) ? 'Unknown (not found)' : UNK;
+  }
+  function nSources(x) { return Object.prototype.toString.call(x.sources) === '[object Array]' ? x.sources.length : 0; }
+  function statusLine(x) {
+    if (x.lastVerified && nSources(x)) {
+      return (x.checked && x.checked.length) ? 'Partly checked · last verified ' + x.lastVerified : 'Casino-stated only · sources read ' + x.lastVerified;
+    }
+    return 'Unverified · no check date recorded';
+  }
+  function lastVerifiedHtml(x) {
+    return x.lastVerified ? '<time class="data" datetime="' + esc(x.lastVerified) + '">' + esc(x.lastVerified) + '</time>' : 'not recorded yet';
+  }
+  var bySlug = {};
+  C.forEach(function (x) { bySlug[x.slug] = x; });
+  var sorted = C.slice().sort(cmp);
+
+  var MAX = 3;
+  var ids = [];
+  var sortedView = false;
+  var out = document.getElementById('compare-out');
+  var pick = document.getElementById('add-entry');
+  var addBtn = document.getElementById('add-btn');
+  var statusEl = document.getElementById('compare-status');
+
+  var MAIN = [['category', 'Category'], ['status', 'Status line'], ['lastverified', 'Last verified'], ['license', 'Licence'], ['custody', 'Custody'], ['kyc', 'KYC'], ['sources', 'Sources']];
+  var MORE = [['operator', 'Operator'], ['licenseNumber', 'Licence no.'], ['coins', 'Coins'], ['withdrawals', 'Withdrawals'], ['bonusTerms', 'Bonus terms'], ['restrictedCountries', 'Restricted countries'], ['rgTools', 'Safer-gambling tools'], ['support', 'Support'], ['provablyfair', 'Provably fair'], ['audit', 'Audit link'], ['wtime', 'Withdrawal time']];
+  var NODATA = { provablyfair: 1, audit: 1, wtime: 1 };
+
+  function cell(x, k) {
+    if (k === 'category') { return esc(x.archLabel); }
+    if (k === 'status') { return esc(statusLine(x)); }
+    if (k === 'lastverified') { return lastVerifiedHtml(x); }
+    if (k === 'sources') {
+      var n = nSources(x);
+      return n ? n + ' recorded, <a href="../review/' + esc(x.slug) + '/#sources" aria-label="see the review: ' + esc(disp(x)) + '">see the review</a>' : 'No sources recorded yet.';
+    }
+    if (NODATA[k]) { return badge('unknown') + ' <span class="badge-sublabel">' + UNK + '</span>'; }
+    var s = status(x, k), v = val(x, k);
+    var t = v ? (k === 'licenseNumber' ? '<span class="data">' + esc(v) + '</span>' : esc(v)) + ' ' : '';
+    return t + badge(s) + ' <span class="badge-sublabel">' + esc(sub(x, k, s)) + '</span>';
+  }
+
+  function order() { return sortedView ? ids.map(function (s) { return bySlug[s]; }).sort(cmp) : ids.map(function (s) { return bySlug[s]; }); }
+  function entryRow(x) {
+    return '<div class="entry-row"><a class="link-standalone" href="../review/' + esc(x.slug) + '/">' + esc(disp(x)) + '</a> <button type="button" class="button-secondary" data-remove="' + esc(x.slug) + '" aria-label="Remove ' + esc(disp(x)) + '">Remove</button></div>';
+  }
+
+  function stackedTable(items, p, fields) {
+    var body = fields.map(function (f, fi) {
+      var rows = items.map(function (x) {
+        return '<tr><th scope="row"' + (fi === 0 ? ' id="' + p + '-r-' + esc(x.slug) + '"' : '') + '>' + esc(disp(x)) + '</th><td headers="' + p + '-f-' + f[0] + ' ' + p + '-r-' + esc(x.slug) + '">' + cell(x, f[0]) + '</td></tr>';
+      }).join('');
+      return '<tbody><tr><th scope="rowgroup" colspan="2" id="' + p + '-f-' + f[0] + '">' + f[1] + '</th></tr>' + rows + '</tbody>';
+    }).join('');
+    return body;
+  }
+  function wideTable(items, p, fields) {
+    var thead = '<thead><tr>' + items.map(function (x) { return '<th scope="col" id="' + p + '-e-' + esc(x.slug) + '">' + entryRow(x) + '</th>'; }).join('') + '</tr></thead>';
+    var body = fields.map(function (f) {
+      return '<tbody><tr><th scope="rowgroup" colspan="' + items.length + '" id="' + p + '-f-' + f[0] + '">' + f[1] + '</th></tr><tr>' +
+        items.map(function (x) { return '<td headers="' + p + '-f-' + f[0] + ' ' + p + '-e-' + esc(x.slug) + '">' + cell(x, f[0]) + '</td>'; }).join('') + '</tr></tbody>';
+    }).join('');
+    return thead + body;
+  }
+  function moreOpen(sel) { var d = out.querySelector(sel + ' details'); return d && d.open ? ' open' : ''; }
+
+  function render(focus) {
+    var items = order();
+    var so = moreOpen('.compare-stacked'), wo = moreOpen('.compare-wide');
+    // picker options
+    var opts = '<option value="">Choose an entry</option>' + sorted.filter(function (x) { return ids.indexOf(x.slug) === -1; })
+      .map(function (x) { return '<option value="' + esc(x.slug) + '">' + esc(disp(x)) + '</option>'; }).join('');
+    pick.innerHTML = opts;
+    var html = '';
+    if (items.length < 2) {
+      html = '<p>Pick at least 2 entries to compare, up to 3.</p>';
+      if (items.length === 1) { html += '<ul class="list-plain" role="list"><li>' + entryRow(items[0]) + '</li></ul>'; }
+    } else {
+      var note = '<p>Not yet sourced. A way to send sources or corrections has not been set up yet.</p>';
+      html = '<div class="compare-stacked page-stack">' +
+        '<button type="button" class="button-secondary" data-sort="1">' + (sortedView ? 'Back to the order picked' : 'Sort entries A–Z') + '</button>' +
+        '<p id="s-entries-label">Entries, in the order ' + (sortedView ? 'A–Z' : 'picked') + '</p>' +
+        '<ul class="list-plain" role="list" aria-labelledby="s-entries-label">' + items.map(function (x) { return '<li>' + entryRow(x) + '</li>'; }).join('') + '</ul>' +
+        '<table class="data-table" aria-labelledby="compare-h">' + stackedTable(items, 's-main', MAIN) + '</table>' +
+        '<details class="stack-1"' + so + '><summary id="s-more-h">More fields</summary><table class="data-table" aria-labelledby="s-more-h">' + stackedTable(items, 's-more', MORE) + '</table>' + note + '</details>' +
+        '</div>' +
+        '<div class="compare-wide page-stack">' +
+        '<button type="button" class="button-secondary" data-sort="1">' + (sortedView ? 'Back to the order picked' : 'Sort columns A–Z') + '</button>' +
+        '<table class="data-table" aria-labelledby="compare-h">' + wideTable(items, 'w-main', MAIN) + '</table>' +
+        '<details class="stack-1"' + wo + '><summary id="w-more-h">More fields</summary><table class="data-table" aria-labelledby="w-more-h">' + wideTable(items, 'w-more', MORE) + '</table>' + note + '</details>' +
+        '</div>';
+    }
+    out.innerHTML = html;
+    try {
+      history.replaceState(null, '', ids.length ? location.pathname + '?casinos=' + ids.join(',') : location.pathname);
+    } catch (err) { /* ignore */ }
+    if (focus) { doFocus(focus); }
+  }
+  function visible() {
+    var c = out.querySelectorAll('.compare-stacked, .compare-wide');
+    for (var i = 0; i < c.length; i++) { if (c[i].getClientRects().length > 0) { return c[i]; } }
+    return out;
+  }
+  function doFocus(f) {
+    var t = null;
+    if (f.kind === 'remove') { t = visible().querySelectorAll('button[data-remove]')[f.index] || null; }
+    else if (f.kind === 'sort') { t = visible().querySelector('button[data-sort]'); }
+    (t || pick).focus();
+  }
+
+  addBtn.addEventListener('click', function () {
+    if (ids.length >= MAX) { statusEl.textContent = 'You can compare up to 3. Remove one first.'; return; }
+    var v = pick.value;
+    if (!v || !bySlug[v]) { statusEl.textContent = 'Choose an entry first.'; return; }
+    ids.push(v);
+    statusEl.textContent = 'Added ' + disp(bySlug[v]) + '. ' + ids.length + ' of ' + MAX + ' entries.';
+    render({ kind: 'select' });
+  });
+  out.addEventListener('click', function (ev) {
+    var t = ev.target;
+    while (t && t !== out && !(t.getAttribute && (t.getAttribute('data-remove') || t.getAttribute('data-sort')))) { t = t.parentNode; }
+    if (!t || t === out) { return; }
+    var slug = t.getAttribute('data-remove');
+    if (slug) {
+      var shown = order().map(function (x) { return x.slug; });
+      var idx = shown.indexOf(slug);
+      var i = ids.indexOf(slug);
+      if (i === -1) { return; }
+      ids.splice(i, 1);
+      statusEl.textContent = 'Removed ' + disp(bySlug[slug]) + '. ' + ids.length + ' of ' + MAX + ' entries.';
+      render(idx < ids.length ? { kind: 'remove', index: idx } : { kind: 'select' });
+    } else {
+      sortedView = !sortedView;
+      statusEl.textContent = sortedView ? 'Entries sorted A–Z.' : 'Entries in the order picked.';
+      render({ kind: 'sort' });
+    }
+  });
+
+  // initial state from ?casinos=
+  var m = /[?&]casinos=([^&]*)/.exec(location.search);
+  var notes = [];
+  if (m) {
+    var raw = '';
+    try { raw = decodeURIComponent(m[1].replace(/\+/g, ' ')); } catch (err) { raw = m[1]; }
+    var seen = {}, valid = [];
+    raw.split(',').forEach(function (s) {
+      s = s.replace(/^\s+|\s+$/g, '');
+      if (!s || seen[s]) { return; }
+      seen[s] = 1;
+      if (bySlug[s]) { valid.push(s); } else { notes.push('Entry not found: ' + s); }
+    });
+    if (valid.length > MAX) { notes.push('Only the first 3 entries are shown.'); valid = valid.slice(0, MAX); }
+    ids = valid;
+  }
+  statusEl.textContent = notes.join(' ');
+  render();
+})();
+</script>
+<script src="../site.js" defer></script>
+</body>
+</html>
