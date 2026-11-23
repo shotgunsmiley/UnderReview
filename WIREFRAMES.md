@@ -786,9 +786,9 @@ The common 360px Android width already fails side by side, and 375 passes by 2â€
     | +----------------------------------+ |  table.data-table aria-labelledby=H1
     | | Category                         | |  th rowgroup colspan=2
     | |----------------+-----------------| |
-    | | Stake          | Large game     | |  th scope=row | td (128 content each)
+    | | Stake          | Large game      | |  th scope=row | td (128 content each)
     | |                | libraries       | |
-    | | Rollbit        | Token-based    | |
+    | | Rollbit        | Token-based     | |
     | |                | platforms       | |
     | | mBit Casino Â·  | {archLabel}     | |
     | | instant crypto |                 | |
