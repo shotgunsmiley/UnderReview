@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shotgunsmiley.github.io/UnderReview/sitemap.xml
