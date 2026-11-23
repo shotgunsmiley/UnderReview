@@ -50,11 +50,18 @@ The human approved every recommendation in the first draft's sections 6 and 10 (
 | I9 | In All fields, "Withdrawal & turnover rules" links to the Withdrawals row inside All fields (`#field-withdrawals`). | 5 |
 | G8 | Approved: `inline-size: 100%` on `.control-text` and `.control-select` (AM-G8). | 4, 6, 11 |
 | G9 | Approved: At a Glance stays stacked at all widths. There is no 3-column grid at 40em, so DS §5's provisional note is superseded and no CSS is added. | 5 |
+| G3 | Decided under the human's delegation ("use your best judgment", 2026-11-23): approve the list reset `.list-plain` with `role="list"` (AM-G3). One rule, no visual choice, and it makes the Home static list, Compare entry list, Sources and Other entries consistent. | 11 |
+| G8b | Decided under delegation: approve the controls cap `max-inline-size: var(--measure)` (AM-G8b). A full-width search box across 1168px is hard to use, and 640px matches the existing line length. | 11 |
+| G11 | Decided under delegation: cap the review page column at `--measure` (AM-G11). Without it, long catalog values such as Stake's withdrawals text run to about 150 characters per line at 64em. The column is left-aligned inside `.wrap`, with no centring and no side panel (Phase 5 may decide what the empty space beside it does). Home and Compare stay full width. It has no effect below about 672px, so no fold arithmetic changes. | 5, 11 |
+| Entry row | Decided under delegation: the stacked Compare entry list uses a small `.entry-row` flex row (AM-G12): the name link, then the Remove button, on one line when they fit, wrapping under a long name. No right alignment. The earlier drawing with Remove right-aligned is replaced. | 6, 11 |
+| `:target` ring | Decided under delegation: extend the `:target` ring beyond `.prose` to the elements that anchors land on (AM-G13), and deliberately not to `main` or the Home directory wrapper, so arriving from a skip link or an old `/#casino-directory-30` link does not outline a whole page region. | 5, 11 |
+| Print | Decided under delegation: no print styles in v1. Printing uses the screen styles. Revisit after launch. | 2 |
+| Anchor | Decided under delegation: the old anchor `#casino-directory-30` goes on a `div` that wraps the directory (controls, compare bar, jump list, groups and cards, or the static list), not on the H1. IA 2.4 says "the Home directory section keeps the id". Landing there shows the controls and the list straight away, which is what "Back to the directory" links need, and the H1 stays a plain heading. It is a `div`, not a `section`, because it has no heading of its own. | 4 |
 
 **Choices made in this revision under the editor's instructions (recorded, not new human decisions)**
 - **Sort label (editor fix 7).** Both Compare variants are rendered through CSS (AM-G4), so each variant carries its own sort button. At 40em and wider the label is the IA-exact "Sort columns A–Z". Below 40em the label is "Sort entries A–Z" (J, new copy). Both toggle to the IA-exact "Back to the order picked". This adds one new string and keeps the IA label wherever columns exist. The alternative, one "Sort A–Z" label at all widths, would also add one string and would change IA wording, so it was not chosen.
 - **Banner flow (editor note 16).** The banner text and its link share one inline flow inside one `<p>`. The result is 88px at 40em and 64px at 64em. A separate link block would take 112px at 40em. See 3.2 F3.
-- **No print styles in v1 (J, editor note 20).** There are no `@media print` rules. Printing uses the screen styles. This is listed for confirmation in section 14.
+- **No print styles in v1 (J, editor note 20).** There are no `@media print` rules. Printing uses the screen styles. Decided under delegation (section 1, Print).
 - **Long catalog values (editor fix 13).** Catalog values are shown in full, with no truncation and no line clamping. Catalog text is editorial truth, and DS forbids the literal a clamp would need anyway. See 8.8.
 
 ---
@@ -230,7 +237,7 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 181 |######################################|  banner 136
     |                                      |  main padding 16
 197 | Casino directory                     |  H1 32 (1 line: 16 chars x 13.3 = 213 of 288);
-    |                                      |  id="casino-directory-30" on the H1 (J)
+    |                                      |  plain h1; the old anchor is on the directory wrapper (4.2 H2)
 229 | An unranked directory, grouped by    |  .page-intro, gap 0 after H1
     | category and listed A–Z. It is not a |  intro 7 x 24 = 168 (Q2; 8 lines = 192)
     | recommendation, safety rating or     |
@@ -336,9 +343,10 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 
 **H2. H1 and intro** (IA block 3; static)
 - H1 "Casino directory" (Q1). The intro is the Q2 draft. No count appears anywhere in it (IA).
-- Markup: `h1#casino-directory-30`. The old anchor must keep landing (IA 2.4); placing it on the H1 is (J). Then `div.page-intro` holding the intro `<p>` and a second `<p>` with `a.link-standalone` "How we review" to `/methodology/`. Both have 0 gap (AM-G1), and the intro `<p>` is limited to `--measure`.
+- Markup: a plain `h1`. Then `div.page-intro` holding the intro `<p>` and a second `<p>` with `a.link-standalone` "How we review" to `/methodology/`. Both have 0 gap (AM-G1), and the intro `<p>` is limited to `--measure`.
 - Fold budget: see 8.6. The robust result is that the banner, the H1 and the intro start are above the fold. The link ends at 441–465 depending on 7 or 8 intro lines.
 - Heading: h1. JS has no effect on this block.
+- Directory wrapper: `div#casino-directory-30` wraps everything between the intro and the footer (controls, compare bar, jump list, category groups and cards, or the baked static list). It is a `div` because it has no heading of its own, and it receives no `:target` ring (AM-G13). Old `/#casino-directory-30` links and "Back to the directory" land there.
 
 **H3. Controls** (IA block 4; data from catalog.js; JS only)
 - Components (labels per DS H2, accepted):
@@ -652,7 +660,7 @@ All fields open:
 ```
 
 ```
->= 64em review (single column in .wrap; drawing compressed; line-length container = G11, open)
+>= 64em review (single column in .wrap; drawing compressed; review column capped at `--measure`, AM-G11)
 +------------------------------------------------------------------------------------------------+
 | header / banner 64                                                                              |
 | Stake                                                                     H1 31.25/40           |
@@ -747,7 +755,7 @@ The common 360px Android width already fails side by side, and 375 passes by 2�
 - Stacked header association (editor): each stacked `td` carries `headers="s-main-f-{field} s-main-r-{slug}"`, and each `th[scope=row]` has `id="s-main-r-{slug}"` (`s-more-` inside More fields). `scope=rowgroup` alone is poorly supported by screen readers, so the field name must reach them through `headers`.
 - The "Entries, in the order picked" text is a visible `<p id>` and the `ul` has `aria-labelledby` pointing to it.
 - The row label "Status line" and the unsourced Last verified cell text "not recorded yet" are (J) (IA §9 item 11 reads "Last verified: not recorded yet"); see section 14 item 5b.
-- Remove sits inline after the name link. The drawing's right alignment is not specified by Phase 3; Phase 5 decides alignment (section 14 item 7b).
+- Remove sits inline after the name link in `div.entry-row` (AM-G12); a long name wraps and Remove drops under it. There is no right alignment.
 - Cost: below 40em the values for one field sit stacked, not side by side, and the entry name repeats in each field group.
 - Residual risk (J): if the viewport crosses 40em while focus is on a control inside the variant being hidden (for example when zooming), that control is hidden. Phase 7 tests where the next Tab goes. No resize listener is added.
 
@@ -776,10 +784,10 @@ The common 360px Android width already fails side by side, and 375 passes by 2�
     | [ Sort entries A–Z ]                 |  (J) toggles to "Back to the order picked";
     |                                      |  hidden with fewer than 2 entries (J)
     | Entries, in the order picked         |  Q10d
-    | >Stake                    [ Remove ] |  aria-label "Remove Stake" (Q17)
-    | >Rollbit                  [ Remove ] |
-    | >mBit Casino · instant crypto focus  |  (prov. O11b)
-    |   [ Remove ]                         |
+    | >Stake  [ Remove ]                   |  .entry-row (AM-G12); aria-label "Remove Stake" (Q17)
+    | >Rollbit  [ Remove ]                 |
+    | >mBit Casino · instant crypto        |  (prov. O11b); a long name wraps
+    |   focus  [ Remove ]                  |
     | +----------------------------------+ |  table.data-table aria-labelledby=H1
     | | Category                         | |  th rowgroup colspan=2
     | |----------------+-----------------| |
@@ -1183,11 +1191,11 @@ Consequences that Phase 5 must design for:
 
 **Phase 3 gaps**
 - **G1 (spacing rules approved; controls and count rules to confirm), G2, G4, G5, G7, G8:** amendments in section 11.
-- **G3.** No list-reset utility. Proposed as an amendment in section 11; it needs approval, because it was not among the first draft's recommendations.
+- **G3.** No list-reset utility. Decided under delegation: AM-G3 in section 11.
 - **G6.** Compare bar: none needed (static).
 - **G9.** At a Glance stays stacked: no CSS.
 - **G10.** No disabled checkbox state: handled by behaviour (refuse plus message).
-- **G11.** No line-length container for review pages on desktop. Still open and optional: at 64em, long values such as Stake's withdrawals text run to about 150 characters per line.
+- **G11.** No line-length container for review pages on desktop. Decided under delegation: AM-G11 in section 11. Without it, long values such as Stake's withdrawals text run to about 150 characters per line at 64em.
 - **G12.** No rule for long catalog values. Decided in 8.8: show in full; no CSS needed.
 
 ---
@@ -1294,7 +1302,7 @@ Effect:
 ```
 Effect: "Field status" and "Review methodology" share a 44px row. If they do not fit, they wrap to 28 + 44 = 72px.
 
-**AM-G3. List reset (proposed; needs approval, not covered by "accept all")**
+**AM-G3. List reset** (decided under delegation; section 1)
 ```css
 .list-plain {
   padding: 0;
@@ -1353,11 +1361,40 @@ Effect:
 ```
 Effect: the search inputs and selects fill their container at every width (288px at 320).
 
-**AM-G8b (optional, J; needs approval).** Cap the controls block on wide screens:
+**AM-G8b. Controls cap** (decided under delegation; section 1). Cap the controls block on wide screens:
 ```css
 .controls { max-inline-size: var(--measure); }
 ```
 Effect: Home and Compare controls stop at 640px instead of 1168px at 64em and wider. Without it, a full-width search box spans the desktop container.
+
+**AM-G11. Review column** (decided under delegation; section 1)
+```css
+.page-review { max-inline-size: var(--measure); }
+```
+Markup: add `page-review` to the Review page's `.page-stack` element only.
+Effect: on Review pages the content column stops at 640px, so long values stay near 75 characters per line instead of about 150. It is left-aligned inside `.wrap`. Below about 672px it changes nothing, so every fold figure in 8.1 stays as written. The `--measure` token's scope widens from "prose line length only" to "prose and review-page column line length". Header, banner and footer stay full width.
+
+**AM-G12. Entry row** (decided under delegation; section 1)
+```css
+.entry-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+}
+```
+Markup: each `li` of the stacked Compare entry list holds one `div.entry-row` with the name link and the Remove button.
+Effect: "Stake  [ Remove ]" sits on one line (44px). A long name such as "mBit Casino · instant crypto focus" wraps, and Remove drops beneath it. There is no right alignment; Phase 5 may restyle the row without changing its structure.
+
+**AM-G13. `:target` ring beyond `.prose`** (decided under delegation; section 1)
+```css
+:target:is(section, details, h2, h3, h4, dt, dd, li) {
+  outline: var(--focus-width) solid var(--color-focus);
+  outline-offset: var(--focus-offset);
+}
+```
+Markup rule: anchors that should ring land on one of those elements: `section#sources`, `details#all-fields`, and the Withdrawals row as `dt#field-withdrawals`. `main#main` and `div#casino-directory-30` are deliberately excluded, so a skip link or an old directory link does not outline a whole region. `.prose :target` from DS stays as it is.
+Effect: Review and Home anchors get the same ring as the glossary anchors. The `outline: none` and `outline: 0` scans do not match this rule.
 
 ---
 
@@ -1412,15 +1449,16 @@ No featured slot, promoted slot, "best for", badge count or all-green summary ap
 **Data**
 6. **O11(b).** All duplicate descriptor text is provisional. It appears on cards, the static list, the banner, Compare, Other entries, page titles and, under Q13, the review CTA. Three descriptors repeat unsourced catalog claims and are not used as examples in this document.
 
-**Layout options not covered by "accept all"**
-7. AM-G3 list reset (section 11).
-7b. Name-plus-Remove row layout for the stacked Compare entry list: no Phase 3 component exists; Phase 5 decides alignment.
-7c. `:target` ring: DS `.prose :target` covers text pages only, so Review anchors (`#field-withdrawals`, `#sources`, `#all-fields`) and Home anchors get no ring; Phase 5 may extend the rule.
-8. AM-G8b controls cap (section 11).
-9. G11 desktop line-length container for review pages (8.9).
-10. No print styles in v1 (J; for confirmation).
-11. The `id="casino-directory-30"` placement on the Home H1 (J).
+**Layout options (decided under the human's delegation, 2026-11-23; recorded in section 1 and section 11)**
+7. AM-G3 list reset: approved.
+7b. Name-plus-Remove row for the stacked Compare entry list: approved as AM-G12 (`.entry-row`).
+7c. `:target` ring beyond `.prose`: approved as AM-G13, with `main` and the Home directory wrapper excluded.
+8. AM-G8b controls cap: approved.
+9. G11 review column: approved as AM-G11.
+10. No print styles in v1: decided.
+11. The old anchor `#casino-directory-30`: on a `div` wrapping the directory, not on the H1.
 
+**Still open:** only the (J) copy items 1–5b above, and O11(b).
 ---
 
 ## 15. What is judgment vs source
@@ -1479,9 +1517,11 @@ The widths and heights are estimates, not measurements. Phase 7 must measure wit
 **Phase:** Phase 4, Wireframes.
 
 **Approval needed before Phase 5 (Visual Design) can begin:**
-- the editor's re-check of this revised document (done: approve with changes, edits applied);
-- the human's confirmation that the Phase 3 amendments in section 11 are applied to DESIGN_SYSTEM.md as written: G1 (spacing rules approved; the controls and count rules to confirm), G2, G4, G5, G7 and G8 (approved). Confirmation is also needed that G9 adds no CSS;
-- the human's decision on the items not covered by "accept all": G3, G8b, G11, no print styles, and the H1 anchor placement (section 14, items 7–11);
-- the (J) copy in section 14, items 1–5, and O11(b), can be approved in Phase 5/6. They do not block Phase 5 from starting.
+- the editor's re-check of this document (done: approve with changes, edits applied);
+- the amendments in section 11 (AM-G1 to AM-G13) applied to DESIGN_SYSTEM.md as written. G1, G2, G4, G5, G7 and G8 were approved at the Phase 4 gate. The `.controls`, `.control-count` and `.page-intro` rules in G1, and AM-G3, AM-G8b, AM-G11, AM-G12 and AM-G13, were decided under the human's delegation (2026-11-23) and have not had a separate editor review. This application step has not been done;
+- the (J) copy in section 14, items 1–5b, and O11(b), can be approved in Phase 5/6. They do not block Phase 5 from starting.
 
 No Phase 5 work (colour, typography, hi-fi) has been done. No Phase 3 tokens or components were changed beyond the listed amendments, and DESIGN_SYSTEM.md itself has not yet been amended with them.
+
+**Update, after the human delegated the remaining open items (2026-11-23)**
+22. Decided G3, G8b, G11, no print styles, the old-anchor placement, the stacked Compare entry row and the `:target` ring. New amendments AM-G11, AM-G12 and AM-G13 added to section 11; the Home wireframe no longer puts `id="casino-directory-30"` on the H1; the stacked Compare entry-list drawing now shows Remove inline.
