@@ -4,6 +4,8 @@
   --motion-fast: 120ms;
   --motion-ease: ease-out;
   --motion-enter: 240ms;
+  --motion-slide: 0.5rem;
+  --motion-stagger: 60ms;
 
   /* ===== PRIVATE PALETTE (referenced only by the semantic tokens in this file) ===== */
   /* dark */
