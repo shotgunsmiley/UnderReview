@@ -268,18 +268,14 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
     | [[ Go to comparison ]]  [ Clear ]    |  2+8+24+16+44+8 = 102
 927 +--------------------------------------+
 943 | nav[aria-label=Categories]           |  jump list, A–Z by title, 6 links
-    |>High-Volume & Multi-Provider Game    |  (2 lines, 48)
-    | Libraries                            |
-    |>Lightning & Instant Payout           |  (281px: 1 line on paper, 2 if wider)
-    | Specialists                          |
-    |>Wallet-connect platforms  |
-    |>Sports betting and casino|
-    |>Token-based platforms   |
-    |>VIP, Promotions & Feature-Specific   |
-    | Editions                             |
+    |>Large game libraries                 |  (1 line each)
+    |>Lightning and fast payouts           |
+    |>Wallet-connect platforms             |
+    |>Sports betting and casino            |
+    |>Token-based platforms                |
+    |>Promotions and special features      |
     |                                      |  32 (section)
-    | High-Volume & Multi-Provider Game    |  h2 id="game-libraries" (Q15), .stack-1
-    | Libraries                            |
+    | Large game libraries                 |  h2 id="game-libraries" (Q15), .stack-1
     | {categoryMeta subtitle}              |  .text-muted
     | +----------------------------------+ |  ul.card-grid, 1 column; cards in 4.3
     | | card                             | |
@@ -327,8 +323,8 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 ```
 229 intro ... / 397 >How we review / 441 +16
 457 | nav[aria-label=Categories] (6 links) |  controls and compare bar hidden (.js-only)
-    | High-Volume & Multi-Provider Game    |  h2 + subtitle (baked)
-    | Libraries / {subtitle}               |
+    | Large game libraries                 |  h2 + subtitle (baked)
+    | {subtitle}                           |
     | >{name}                              |  ul.list-plain (AM-G3), one .link-standalone
     | >{name}                              |  per line, A–Z by name, then slug
     | >mBit Casino · instant crypto focus  |  duplicates carry the descriptor (Q11)
@@ -394,8 +390,8 @@ Values are shown in full, with no truncation or clamping (8.8). The drawings use
 (a) Sourced: Stake (index.html 1636–1660)     (b) Unsourced: Rollbit (index.html 1663–1675)
 +------------------------------------+         +------------------------------------+
 |>Read the review: Stake             | h3 44   |>Read the review: Rollbit           |
-| High-Volume & Multi-Provider Game  | muted   | Token-based platforms |
-| Libraries                          |         | Licence                            |
+| Large game libraries               | muted   | Token-based platforms              |
+|                                    |         | Licence                            |
 | Licence                            | dt      | Curaçao Gaming Oversight           |
 | Curaçao Gaming Authority (register | dd      | [Unverified]                       |
 | status: Assessment in progress)    |         | Custody                            |
@@ -790,12 +786,10 @@ The common 360px Android width already fails side by side, and 375 passes by 2�
     | +----------------------------------+ |  table.data-table aria-labelledby=H1
     | | Category                         | |  th rowgroup colspan=2
     | |----------------+-----------------| |
-    | | Stake          | High-Volume &   | |  th scope=row | td (128 content each)
-    | |                | Multi-Provider  | |
-    | |                | Game Libraries  | |
-    | | Rollbit        | Tokenomics,     | |
-    | |                | Yield & Buyback | |
-    | |                | Models          | |
+    | | Stake          | Large game     | |  th scope=row | td (128 content each)
+    | |                | libraries       | |
+    | | Rollbit        | Token-based    | |
+    | |                | platforms       | |
     | | mBit Casino ·  | {archLabel}     | |
     | | instant crypto |                 | |
     | | focus          |                 | |
