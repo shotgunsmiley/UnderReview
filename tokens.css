@@ -23,6 +23,7 @@
   --p-dark-accent:            #f2f3f5;
   --p-dark-accent-text:       #0f1115;
   --p-dark-focus:             #ffffff;
+  --p-dark-kicker:            #e8946a;
   --p-dark-banner-bg:         #1a1e24;
   --p-dark-checked-text:      #8ee6a8;
   --p-dark-checked-bg:        #10291a;
@@ -37,17 +38,18 @@
   --p-dark-unknown-bg:        #22262d;
   --p-dark-unknown-border:    #7d8590;
   /* light */
-  --p-light-bg:                #ffffff;
-  --p-light-surface:           #f6f7f8;
-  --p-light-raised:            #eceef1;
-  --p-light-border:            #d5d9de;
+  --p-light-bg:                #fbf9f5;
+  --p-light-surface:           #ffffff;
+  --p-light-raised:            #efebe3;
+  --p-light-border:            #e3ddd2;
   --p-light-border-strong:     #646b75;
-  --p-light-text:              #111317;
-  --p-light-text-muted:        #4a515b;
+  --p-light-text:              #17181c;
+  --p-light-text-muted:        #4b4f58;
   --p-light-accent:            #111317;
   --p-light-accent-text:       #ffffff;
   --p-light-focus:             #000000;
-  --p-light-banner-bg:         #eef0f2;
+  --p-light-kicker:            #a8481c;
+  --p-light-banner-bg:         #f3efe7;
   --p-light-checked-text:      #14532d;
   --p-light-checked-bg:        #e6f4ea;
   --p-light-checked-border:    #2f855a;
@@ -74,6 +76,7 @@
   --color-accent:                   var(--p-dark-accent);
   --color-accent-text:              var(--p-dark-accent-text);
   --color-focus:                    var(--p-dark-focus);
+  --color-kicker:                   var(--p-dark-kicker);
   --color-banner-bg:                var(--p-dark-banner-bg);
   --color-banner-text:              var(--p-dark-text);
   --color-banner-border:            var(--p-dark-border-strong);
@@ -92,6 +95,7 @@
 
   /* ===== TYPE ===== */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: Iowan Old Style, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   --text-badge: 0.8rem;
   --text-base:  1rem;
@@ -107,6 +111,7 @@
   --weight-regular:  400;
   --weight-semibold: 600;
   --tracking-tight: -0.01em;
+  --tracking-kicker: 0.12em;
   --tracking-badge: 0.02em;
   --underline-offset:          0.2em;
   --underline-thickness:       1px;
@@ -157,6 +162,7 @@
     --color-accent:                   var(--p-light-accent);
     --color-accent-text:              var(--p-light-accent-text);
     --color-focus:                    var(--p-light-focus);
+    --color-kicker:                   var(--p-light-kicker);
     --color-banner-bg:                var(--p-light-banner-bg);
     --color-banner-text:              var(--p-light-text);
     --color-banner-border:            var(--p-light-border-strong);

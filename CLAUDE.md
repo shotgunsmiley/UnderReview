@@ -35,7 +35,7 @@ Pages use **relative paths** (`../../styles.css`) and directory URLs (`review/st
 ## Design system rules
 
 - Only existing tokens and classes. No hex, no inline `style`, no `<style>`, no new classes or tokens without a written proposal the owner approves (the Phase 3 amendments are the precedent: exact CSS, no literals).
-- Dark default, OS-light fallback. Two system font families. Accent colour only on "Go to comparison" and "Compare {name} with other entries".
+- Dark default; the OS-light theme is the warm "paper" palette (owner-approved option B in `DESIGN_INSPIRATION.md`). Two system font families: serif for text and headings, sans for UI labels, nav, tables, badges, controls and `.data`. Accent colour (`--color-accent`) only on "Go to comparison" and "Compare {name} with other entries"; the separate kicker colour (`--color-kicker`, rust) only on uppercase `.heading-compact` labels. Hairline rule above each `main h2`.
 - 16px body, visible focus, 44px targets, reduced motion, works at 320px, no horizontal scroll.
 - Badge states are never dimmed or hidden to make a page look better; the yellow volume is the true state of the data.
 - JS is limited to: the `js` class hook in `<head>`, `site.js`, Home/Compare inline scripts, glossary search. No libraries. Animation is allowed (see the animation rule below), CSS only.

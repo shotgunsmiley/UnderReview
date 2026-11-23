@@ -8,20 +8,20 @@ body {
   margin: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font: var(--weight-regular) var(--text-base)/var(--leading-base) var(--font-sans);
+  font: var(--weight-regular) var(--text-base)/var(--leading-base) var(--font-serif);
 }
 h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
 h1 {
-  font: var(--weight-semibold) var(--text-h1)/var(--leading-h1) var(--font-sans);
+  font: var(--weight-semibold) var(--text-h1)/var(--leading-h1) var(--font-serif);
   letter-spacing: var(--tracking-tight);
 }
 h2 {
-  font: var(--weight-semibold) var(--text-xl)/var(--leading-xl) var(--font-sans);
+  font: var(--weight-semibold) var(--text-xl)/var(--leading-xl) var(--font-serif);
   letter-spacing: var(--tracking-tight);
 }
 h3,
 .heading-compact {
-  font: var(--weight-semibold) var(--text-lg)/var(--leading-lg) var(--font-sans);
+  font: var(--weight-semibold) var(--text-lg)/var(--leading-lg) var(--font-serif);
   letter-spacing: normal;
 }
 h4 {
@@ -34,7 +34,7 @@ h4 {
 }
 .text-muted { color: var(--color-text-muted); }
 .data {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   overflow-wrap: anywhere;
 }
 
@@ -936,3 +936,8 @@ body::after {
 /* Card hover: picked-up card, lift and slight tilt (transform only, no layout shift) */
 .card:hover,
 .card:focus-within { transform: translateY(calc(var(--motion-slide) * -0.5)) rotate(calc(var(--motion-tilt) * -1)); }
+
+/* Paper theme (owner-approved, DESIGN_INSPIRATION.md option B): serif text, sans labels, hairline section rules, uppercase kickers */
+.site-header, .disclosure, .site-footer, .breadcrumb, .data-table, summary, dt, .badge-sublabel, .controls, .compare-bar { font-family: var(--font-sans); }
+main h2:not(.heading-compact) { padding-block-start: var(--space-2); border-block-start: var(--border-1) solid var(--color-border); }
+.heading-compact { font-family: var(--font-sans); text-transform: uppercase; letter-spacing: var(--tracking-kicker); color: var(--color-kicker); }

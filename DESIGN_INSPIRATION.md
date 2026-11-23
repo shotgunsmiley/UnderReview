@@ -1,8 +1,8 @@
 # Design inspiration: "The Glass Vault and the Company Safe"
 
-Status: **proposal, nothing applied.** Source: the owner-supplied article (live at `/audit/`). Site name: UnderReview.io.
+Status: **option B approved and applied** (paper light theme, serif text, hairline rules, uppercase kickers, rust kicker colour on `.heading-compact` only; dark stays default; call-out tints, gradient and score circles not adopted). Source: the owner-supplied article (live at `/audit/`). Site name: UnderReview.io.
 
-The article has a warm, editorial, print-like look. This file lists what could carry over to the whole site, and what each item would need. No CSS has changed.
+The article has a warm, editorial, print-like look. This file lists what could carry over to the whole site, and what each item would need. 
 
 ## What the article does
 
