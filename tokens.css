@@ -1,5 +1,9 @@
 /* tokens.css: the ONLY file that may contain hex values. */
 :root {
+  /* ===== MOTION ===== */
+  --motion-fast: 120ms;
+  --motion-ease: ease-out;
+
   /* ===== PRIVATE PALETTE (referenced only by the semantic tokens in this file) ===== */
   /* dark */
   --p-dark-bg:                #0f1115;
