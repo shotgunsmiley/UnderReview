@@ -865,8 +865,7 @@ the link ends at 369 and the picker select at 461, all above 580.
 | |                                |                                | crypto focus (prov. O11b) | |
 | |                                |                                | [ Remove ]                | |
 | | Category (colspan 3)                                                                       | |
-| | High-Volume & Multi-Provider   | Tokenomics, Yield & Buyback    | {archLabel}               | |
-| | Game Libraries                 | Models                         |                           | |
+| | Large game libraries           | Token-based platforms          | {archLabel}               | |
 | | Licence                                                                                    | |
 | | Curaçao Gaming Authority       | Curaçao Gaming Oversight       | {value} [Unverified]      | |
 | | (register status: Assessment   | [Unverified] Claim · no source | Claim · no source         | |
