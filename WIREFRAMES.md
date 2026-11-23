@@ -272,9 +272,9 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
     | Libraries                            |
     |>Lightning & Instant Payout           |  (281px: 1 line on paper, 2 if wider)
     | Specialists                          |
-    |>Non-Custodial & Direct Web3 Wallets  |
-    |>Sportsbook & Hybrid Betting Platforms|
-    |>Tokenomics, Yield & Buyback Models   |
+    |>Wallet-connect platforms  |
+    |>Sports betting and casino|
+    |>Token-based platforms   |
     |>VIP, Promotions & Feature-Specific   |
     | Editions                             |
     |                                      |  32 (section)
@@ -315,7 +315,7 @@ Menu open (JS on, below 64em): .site-nav.is-open is a second header row, in flow
 | 0 of 3 selected   [[ Go to comparison ]]  [ Clear ]                       (compare bar, 62)     |
 +------------------------------------------------------------------------------------------------+
 | Categories: >High-Volume…  >Lightning…  >Non-Custodial…  >Sportsbook…  >Tokenomics…  >VIP…      |
-| High-Volume & Multi-Provider Game Libraries                                                     |
+| Large game libraries                                                     |
 | {subtitle}                                                                                      |
 | +--------------------------+  +--------------------------+  +--------------------------+        |
 | | card (multi-line values; | | card                     |  | card                     |        |
@@ -394,7 +394,7 @@ Values are shown in full, with no truncation or clamping (8.8). The drawings use
 (a) Sourced: Stake (index.html 1636–1660)     (b) Unsourced: Rollbit (index.html 1663–1675)
 +------------------------------------+         +------------------------------------+
 |>Read the review: Stake             | h3 44   |>Read the review: Rollbit           |
-| High-Volume & Multi-Provider Game  | muted   | Tokenomics, Yield & Buyback Models |
+| High-Volume & Multi-Provider Game  | muted   | Token-based platforms |
 | Libraries                          |         | Licence                            |
 | Licence                            | dt      | Curaçao Gaming Oversight           |
 | Curaçao Gaming Authority (register | dd      | [Unverified]                       |
@@ -515,8 +515,7 @@ are unsourced too and share this top stack.
     | | Not yet sourced: Provably fair · | |  .text-muted
     | | Audit link · Withdrawal time     | |  (no "{n} more" line: nothing sourced)
     | +----------------------------------+ |
-    |>Directory › >Tokenomics, Yield &     |  nav.breadcrumb (16 above)
-    | Buyback Models                       |
+    |>Directory › >Token-based platforms   |  nav.breadcrumb (16 above)
     | ▸ All fields                         |  <details id="all-fields">, summary 44
     |                                      |  32
     | Sources                              |  h2 id="sources", section.stack-1
