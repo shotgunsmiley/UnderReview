@@ -9,7 +9,7 @@
   --motion-tilt: 1deg;
   --pixel-opacity: 0.15;
   --pixel: 0.25rem;
-  --motion-blink: 1600ms;
+  --motion-blink: 2400ms;
 
   /* ===== PRIVATE PALETTE (referenced only by the semantic tokens in this file) ===== */
   /* dark */
