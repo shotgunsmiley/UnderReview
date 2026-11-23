@@ -460,7 +460,7 @@ body::after {
   z-index: -1;
   pointer-events: none;
   color: var(--color-border-strong);
-  opacity: 0.35;
+  opacity: var(--pixel-opacity);
   animation:
     pixel-blink calc(var(--motion-blink) * 2) steps(1, end) infinite,
     pixel-drift calc(var(--motion-blink) * 2) steps(4, end) infinite;
@@ -929,7 +929,7 @@ body::after {
 }
 /* Dealt-card fall: suits and dice drop 4 pixels in steps while visible, then reset while hidden */
 @keyframes pixel-drift { 0% { transform: translateY(0); } 50%, 100% { transform: translateY(calc(var(--pixel) * 4)); } }
-@keyframes pixel-blink { 0% { opacity: 0.35; } 50% { opacity: 0; } }
+@keyframes pixel-blink { 0% { opacity: var(--pixel-opacity); } 50% { opacity: 0; } }
 
 /* Card hover: picked-up card, lift and slight tilt (transform only, no layout shift) */
 .card:hover,
