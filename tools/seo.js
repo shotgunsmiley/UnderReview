@@ -140,9 +140,15 @@ for (const p of pages) {
   const file = path.join(root, p.file);
   let html = fs.readFileSync(file, 'utf8');
   html = html.replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->\n/, '');
-  const matches = html.match(/<title>[^<]*<\/title>\n/g) || [];
-  if (matches.length !== 1) throw new Error('expected one <title> line in ' + p.file);
-  html = html.replace(/<title>[^<]*<\/title>\n/, () => seoBlock(p));
+  // First run: replace the plain <title> line. Re-runs: the block (which holds the title) was just
+  // removed, so insert it after the styles.css link instead.
+  if (/<title>[^<]*<\/title>\n/.test(html)) {
+    html = html.replace(/<title>[^<]*<\/title>\n/, () => seoBlock(p));
+  } else {
+    const anchor = /(<link rel="stylesheet" href="[^"]*styles\.css">\n)/;
+    if (!anchor.test(html)) throw new Error('no insertion point in ' + p.file);
+    html = html.replace(anchor, (m) => m + seoBlock(p));
+  }
   fs.writeFileSync(file, html);
 }
 
