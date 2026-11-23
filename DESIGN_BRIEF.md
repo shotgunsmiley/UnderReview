@@ -133,11 +133,11 @@ anti-references.
   current pages. Output: page list + content type map. Report catalog and link
   discrepancies (counts, missing anchors such as `#hub-01-regulation`); do not
   fix them.
-- [ ] **Phase 2 — IA Proposal:** Sitemap, nav, page templates. Output: written
+- [x] **Phase 2 — IA Proposal:** Sitemap, nav, page templates. Output: written
   spec. WAIT FOR APPROVAL.
-- [ ] **Phase 3 — Design System:** Tokens, components, type scale. Output: style
+- [x] **Phase 3 — Design System:** Tokens, components, type scale. Output: style
   guide + CSS custom properties. WAIT FOR APPROVAL.
-- [ ] **Phase 4 — Wireframes:** One low-fidelity annotated wireframe per
+- [x] **Phase 4 — Wireframes:** One low-fidelity annotated wireframe per
   template. WAIT FOR APPROVAL.
 - [ ] **Phase 5 — Visual Design:** High-fidelity per template. WAIT FOR APPROVAL.
 - [ ] **Phase 6 — Build:** Implement each template as its own .html file
@@ -193,7 +193,7 @@ Follow the phases. When in doubt, re-read this file.
 
 ## 9. Decisions Log
 
-Phase 1 approved, Phase 2 not yet started.
+Phases 1 to 4 approved (2026-11-23). Phase 5 (Visual Design) not yet started. Deliverables: `IA_PROPOSAL.md`, `DESIGN_SYSTEM.md` (with the Phase 4 amendments applied), `WIREFRAMES.md`.
 
 **Resolved**
 1. **Affiliate / ads:** no to both. Non-affiliate at launch, no ad slots.
