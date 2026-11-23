@@ -2,7 +2,7 @@
 
 ## What this is
 
-UnderReview: an independent, **unranked** research site for web3 / crypto casinos. 60 catalog entries, 4 page templates, plain-English guides. Static HTML + CSS, no build step, no backend, no analytics, no ads, no affiliate links. Redesign (Phases 1 to 6) is done; remaining work is Phase 7 QA and content decisions.
+UnderReview: an independent, **unranked** research site for web3 / crypto casinos. 57 catalog entries (one per brand), 4 page templates, plain-English guides. Static HTML + CSS, no build step, no backend, no analytics, no ads, no affiliate links. Redesign (Phases 1 to 6) is done; remaining work is Phase 7 QA and content decisions.
 
 ## Non-negotiable rules (in priority order)
 
@@ -18,7 +18,7 @@ UnderReview: an independent, **unranked** research site for web3 / crypto casino
 ```
 index.html              Home / directory (JS builds cards from data/catalog.js; static list baked for no-JS)
 compare/index.html      Compare 2 or 3 entries, ?casinos=slug,slug, unranked, order picked
-review/{slug}/index.html  60 baked review pages (no JS needed). slug = catalog id without b1-/b2-NN-
+review/{slug}/index.html  57 baked review pages (no JS needed). slug = catalog id without b1-/b2-NN-
 methodology/ glossary/ guides/ disclosure/   Text pages (disclosure has #safer-gambling)
 audit/                  Opinion piece (owner-supplied article, author's scores, sources not checked by this site)
 data/catalog.js         window.web3CasinosCatalog: ALL catalog data
@@ -45,7 +45,7 @@ Pages use **relative paths** (`../../styles.css`) and directory URLs (`review/st
 
 Each entry in `data/catalog.js` has: `id, slug, name` (public name, no "Entry #N"), `entryNo` (hidden), `batch, batchLabel, archKey, archLabel, custody, license, kyc, techStack, summary, strengths, tradeoffs`; optional `descriptor`/`primary` (9 duplicate-brand entries), `custodyNotFound`; and, only for entries checked against sources actually read: `operator, licenseNumber, coins, withdrawals, bonusTerms, restrictedCountries, rgTools, support, checked[], stated[], sources[{label,url}], lastVerified`. Only a regulator register page makes a field `checked`; casino pages are `stated`. Source labels carry the snapshot date. Valid `archKey`: `tokenomics-yield, lightning-instant, sportsbook-hybrid, game-libraries, vip-feature-editions, non-custodial-web3`.
 
-Four entries are sourced (Stake, BC.Game, Cloudbet, Vbet, read 2026-11-22). Everything else is unsourced and shows Unverified/Unknown. Known open items for the owner: three duplicate descriptors (O11b), unsourced catalog summaries that mention third-party rankings, Vbet `techStack` "Unverified (...)" text, sister entries that may contradict checked ones, Stake and Cloudbet showing "Assessment in progress" on the Curaçao register at read time.
+Four entries are sourced (Stake, BC.Game, Cloudbet, Vbet, read 2026-11-22). Everything else is unsourced and shows Unverified/Unknown. Known open items for the owner: unsourced catalog summaries that mention third-party rankings, Vbet `techStack` "Unverified (...)" text, sister entries that may contradict checked ones, Stake and Cloudbet showing "Assessment in progress" on the Curaçao register at read time.
 
 ## Changing the catalog = sync check (no build step, nothing automated)
 
