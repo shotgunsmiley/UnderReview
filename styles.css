@@ -431,7 +431,7 @@ time.data { white-space: nowrap; }
 .button-secondary,
 .link-standalone,
 .card {
-  transition: background-color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease);
+  transition: background-color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease);
 }
 .button-secondary:hover { background-color: var(--color-raised); }
 
@@ -461,7 +461,9 @@ body::after {
   pointer-events: none;
   color: var(--color-border-strong);
   opacity: 0.35;
-  animation: pixel-blink calc(var(--motion-blink) * 2) steps(1, end) infinite;
+  animation:
+    pixel-blink calc(var(--motion-blink) * 2) steps(1, end) infinite,
+    pixel-drift calc(var(--motion-blink) * 2) steps(4, end) infinite;
 }
 body::before {
   box-shadow:
@@ -699,7 +701,7 @@ body::before {
     calc(42vw + var(--pixel) * 4) calc(22vh + var(--pixel) * 6);
 }
 body::after {
-  animation-delay: var(--motion-blink);
+  animation-delay: calc(var(--motion-blink) * -1), calc(var(--motion-blink) * -1);
   box-shadow:
     calc(30vw + var(--pixel) * 3) calc(10vh + var(--pixel) * 0),
     calc(30vw + var(--pixel) * 2) calc(10vh + var(--pixel) * 1),
@@ -925,4 +927,10 @@ body::after {
     calc(84vw + var(--pixel) * 5) calc(50vh + var(--pixel) * 6),
     calc(84vw + var(--pixel) * 6) calc(50vh + var(--pixel) * 6);
 }
+/* Dealt-card fall: suits and dice drop 4 pixels in steps while visible, then reset while hidden */
+@keyframes pixel-drift { 0% { transform: translateY(0); } 50%, 100% { transform: translateY(calc(var(--pixel) * 4)); } }
 @keyframes pixel-blink { 0% { opacity: 0.35; } 50% { opacity: 0; } }
+
+/* Card hover: picked-up card, lift and slight tilt (transform only, no layout shift) */
+.card:hover,
+.card:focus-within { transform: translateY(calc(var(--motion-slide) * -0.5)) rotate(calc(var(--motion-tilt) * -1)); }
