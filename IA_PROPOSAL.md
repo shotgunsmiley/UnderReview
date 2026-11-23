@@ -1,6 +1,6 @@
 # Phase 2 — IA Proposal (revised)
 
-**Status: Approved by the human, 2026-11-23. Final edge-case resolutions applied (O8–O10, guide claim cuts, glossary note). One follow-up (O11, Section 10) is open and does not block Phase 3.**
+**Status: Approved by the human, 2026-11-23. Final edge-case resolutions applied (O8–O10, guide claim cuts, glossary note). O11(a) resolved (Pillar 03 cut). One follow-up, O11(b) (duplicate descriptor wording, Section 10), is open and does not block Phase 3.**
 
 ---
 
@@ -27,7 +27,7 @@
 | D17 | No scores, stars, ranks, "best for" labels, featured slots or ad slots. No Editorial note in v1. |
 | D18 | The 50% rule is published on `/methodology/` as a trust signal, in wording that matches how the rule actually works (5.4 and O9). "Sortable" means the Home sort plus the opt-in column sort on Compare, with alphabetical as the default (Section 8). |
 | D19 | The glossary adds "provably fair" and "house edge". The template holds 8 terms. Writing the definitions is a Phase 6 content addition (Section 9). |
-| D20 | Unsourced guide content is cut: the Pillar 03 table, the Pillar 04 "guarantees solvency" wording, the Dexsport non-custodial claim in Key Considerations, and all Pillar 05 text except the helpline information. Other unsourced claims in the carried-over guide text are cut or reworded under the rules in 5.5. |
+| D20 | Unsourced guide content is cut: Pillar 03 entirely (its table and its intro, O11a), the Pillar 04 "guarantees solvency" wording, the Dexsport non-custodial claim in Key Considerations, and all Pillar 05 text except the helpline information. Other unsourced claims in the carried-over guide text are cut or reworded under the rules in 5.5. |
 | D21 | Vbet's `custody` value ("…no custody wording found…") is a not-found note. Its badge is Unknown and its sub-label is "Unknown (not found)". The word "Unverified" is stripped from its raw text, so the text stays factual and the badge does the work (O10). |
 | D22 | Catalog edit approved: the whole "(Entry #N …)" parenthetical and every "— … Focus" phrase are stripped from public names. The entry number may stay as a hidden data attribute if JS needs it. "Catalog batch" is not shown publicly. The 8 duplicate pages that share a brand name get a short descriptor on cards, the banner and Compare, and in the page title (4.5, O8). |
 
@@ -59,7 +59,7 @@ That is 66 HTML pages: 6 site pages plus 60 reviews. There is no `/about/` (no o
 | `/methodology/` | Text | Can I trust what you show me? | Current `#how-we-review` and `#faq` text |
 | `/glossary/` | Text + search | What does this term mean before I act? | The 6 current terms plus 2 new ones (D19) |
 | `/disclosure/` | Text | What's the catch, and am I playing safely? | "Links & money" text, Pillar 05 helpline information only (D20) |
-| `/guides/` | Text | Background reading for the review decision (not a Section 2 type) | Pillars 02, 03 (intro), 04, 06, 07, Key Considerations |
+| `/guides/` | Text | Background reading for the review decision (not a Section 2 type) | Pillars 02, 04, 06, 07, Key Considerations |
 
 ### 2.2 Slug rule
 
@@ -119,7 +119,7 @@ The catalog text on these pages is shown as written.
 | `#hub-directory` grid and its pills | Cut. Replaced by the `/guides/` "On this page" list. |
 | Batch filter and badge, 6-per-category cap, Cards/Compact toggle | Cut |
 | Floating back-to-top button | Cut. A footer "Back to top" link replaces it. |
-| Pillar 03 comparison table | Cut (D20) |
+| Pillar 03 (Blockchain & Payment Infrastructure): intro and comparison table | Cut entirely (D20, O11a). No "Payment rails" section on `/guides/`. |
 | Pillar 04 "guarantees solvency" wording | Cut (D20) |
 | Key Considerations claim naming Dexsport as non-custodial | Cut (D20) |
 | Pillar 05 text other than the helpline information | Cut (D20) |
@@ -237,7 +237,7 @@ There are four templates: Home, Review, Compare and Text page. Every page shows 
 | `vave-kyc` | risk-based KYC focus | Vave (risk-based KYC focus) |
 | `coinpoker-anjouan` | Anjouan licence and hybrid focus | CoinPoker (Anjouan licence and hybrid focus) |
 
-The descriptor wording is taken from the catalog, with the unsourced "8,000+" figure dropped. Three descriptors repeat unsourced catalog claims: "no turnover" (Cloudbet), "Anjouan licence" (CoinPoker) and "games and Lightning" (Betplay.io). Phase 6 shows the final descriptor text to the human for confirmation (O11).
+The descriptor wording is taken from the catalog, with the unsourced "8,000+" figure dropped. Three descriptors repeat unsourced catalog claims: "no turnover" (Cloudbet), "Anjouan licence" (CoinPoker) and "games and Lightning" (Betplay.io). Phase 6 shows the final descriptor text to the human for confirmation (O11b).
 
 ---
 
@@ -457,11 +457,10 @@ There is no "Who reviews", no policy log and no "counted on" date.
 - Sections:
   - Before you read a review (Key Considerations, reduced under 5.5).
   - Provably fair explained (Pillar 02, reduced under 5.5).
-  - Payment rails (Pillar 03 intro only; the table is cut; the intro is flagged in O11).
   - Smart-contract casinos (Pillar 04, reduced under 5.5).
   - Wallet security (Pillar 06, as a plain list, reduced under 5.5).
   - Scam patterns (Pillar 07, reduced under 5.5).
-- **The Pillar 03 table is cut** (D20). Its column header is "Plain-English Verdict", one of its cells is "Best balance…", and its speeds and fees are unsourced.
+- **Pillar 03 is cut entirely** (D20, O11a). Its table has a "Plain-English Verdict" column header and a "Best balance…" cell, and its speeds and fees are unsourced. Its intro ("multi-day clearinghouses", "high chargeback fees", "settle in seconds for fractions of a cent") is made only of unsourced claims, so nothing factual remains to keep.
 - The carried-over text is reduced to facts under the rules in 5.5.
 - Carried figures get an "Unverified estimate" label.
 - Cut sections are left out of the page and of the jump list.
@@ -484,7 +483,7 @@ There is no "Who reviews", no policy log and no "counted on" date.
 | Pillar 07, 03 | Cut "1%–3%" and "Fixed daily yields are paid from new deposits until the pool collapses". | "Guaranteed daily returns" pattern; "No betting algorithm eliminates variance" |
 | Pillar 07, 04 | Cut "Claiming a legitimate bonus never requires…". Say "be wary of any prompt to sign a token-transfer permission to claim a bonus". | The pattern |
 
-Pillar 03's intro ("multi-day clearinghouses", "fractions of a cent") has the same kind of unsourced claim. It was outside the scan the human scoped, so it is flagged in O11, not cut.
+**Pillar 03 (O11a, resolved).** The same rule was applied to Pillar 03's intro. Every claim in it is unsourced ("multi-day clearinghouses", "high chargeback fees", "settle in seconds for fractions of a cent"), and nothing factual remains once they are cut. Pillar 03 is therefore cut from `/guides/` entirely, with no replacement text.
 
 ---
 
@@ -564,7 +563,7 @@ No dimension is ever counted ("N of 5"). A blank value in a primary row still sh
 
 **a. Guides (approved).**
 - 02: text kept.
-- 03: intro kept, table cut.
+- 03: cut entirely (intro and table, O11a).
 - 04: kept, reduced under 5.5.
 - 06: kept as a plain list.
 - 07: kept.
@@ -626,7 +625,7 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 13. Glossary: write definitions for "House edge" and "Provably fair" from existing site text only (FAQ and Pillar 02 wording), with no new factual claims. Phase 6 content addition (D19). The human approves the final text before it ships.
 14. Catalog edit approved (D22): strip "(Entry #N)" and "— … Focus" from public names in `catalog.js` and the baked pages. The entry number may stay as a hidden data attribute. Needs the sync check in 7f.
 15. Vbet's `custody` text: strip "Unverified" and the wrapping parentheses so it reads "No custody wording found in the terms read" (D21, O10). The badge shows Unknown with the sub-label "Unknown (not found)". Catalog edit approved by the human; needs the sync check in 7f.
-16. Remove the Pillar 03 table, the "guarantees solvency" wording, the Dexsport claim in Key Considerations, and all Pillar 05 text except the helpline information (D20). Apply the further guide cuts in 5.5 word for word.
+16. Remove Pillar 03 entirely (its intro and its table, including the "Pillar 03 // Settlement & Liquidity Rails" heading block), the "guarantees solvency" wording, the Dexsport claim in Key Considerations, and all Pillar 05 text except the helpline information (D20). Apply the further guide cuts in 5.5 word for word.
 17a. Page titles: append the descriptor in parentheses on the 8 duplicate pages (4.5, O8).
 17. Remove the "Catalog batch" line from every public view (D22).
 
@@ -647,9 +646,10 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 - O6 and O10: Vbet custody is Unknown; "Unverified" is stripped from its raw text (4.1).
 - O7 catalog names stripped, no "Catalog batch".
 - O8: descriptors on cards, banner and Compare, and in page titles (4.5).
+- O11(a): Pillar 03's intro had only unsourced claims, so Pillar 03 is cut from `/guides/` entirely (5.5).
 
 **Still open (does not block Phase 3):**
-- **O11.** (a) Pillar 03's intro carries unsourced claims ("multi-day clearinghouses", "fractions of a cent"). Cut it, which removes the "Payment rails" section from `/guides/`, or keep it? (b) Three duplicate descriptors repeat unsourced catalog claims ("no turnover", "Anjouan licence", "games and Lightning"). Confirm or replace the descriptor wording in Phase 6.
+- **O11(b).** Three duplicate descriptors repeat unsourced catalog claims ("no turnover", "Anjouan licence", "games and Lightning"). Confirm or replace the descriptor wording in Phase 6.
 
 ## 11. Coverage checklist
 
@@ -698,5 +698,7 @@ These are listed only; no file is edited. The brief's Section 2 definitions stay
 18. Human decisions O1–O7 applied (D18–D22): BetPanda pairing, sortable, published 50% rule (accurate wording, O9), glossary terms, unsourced guide content cut, Vbet custody Unknown, catalog names stripped and no "Catalog batch". New follow-ups O8 (duplicate display names) and O9 (50% wording).
 
 19. Final edge-case resolutions: Vbet custody text edit (O10), duplicate descriptors and title tags (O8), the 50% wording confirmed (O9), guide claim cuts in 5.5, and the glossary note. New follow-up O11.
+
+20. O11(a) resolved: the 5.5 cut rules were applied to Pillar 03. Nothing factual remained, so Pillar 03 is cut from `/guides/` entirely and the "Payment rails" section is gone. O11(b) (duplicate descriptor wording) stays open for Phase 6.
 
 Phase 2 — IA Proposal (approved). Phase 3 (Design System) has not started.
