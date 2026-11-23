@@ -35,7 +35,7 @@
 <div class="wrap page-stack">
 <h1>Casino directory</h1>
 <div class="page-intro">
-<p>An unranked directory, grouped by category and listed A–Z. It is not a recommendation, safety rating or legality check. Most details were written without a recorded source. Sources links are plain reference links, not affiliate links.</p>
+<p>Unranked, grouped by category, listed A–Z. Not a recommendation, safety rating or legality check. Most details have no recorded source. Source links are plain references, not affiliate links.</p>
 <p><a class="link-standalone" href="methodology/">How we review</a></p>
 </div>
 </div>
@@ -220,7 +220,7 @@
 (function () {
   var C = window.web3CasinosCatalog;
   if (!C || !C.length) { return; }
-  var UNK = 'Unknown (not yet checked)';
+  var UNK = 'Unknown';
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
   function disp(x) { return x.descriptor ? x.name + ' · ' + x.descriptor : x.name; }
   function cmp(a, b) { var x = disp(a).toLowerCase(), y = disp(b).toLowerCase(); if (x < y) { return -1; } if (x > y) { return 1; } return a.slug < b.slug ? -1 : (a.slug > b.slug ? 1 : 0); }
@@ -244,9 +244,9 @@
   function nSources(x) { return Object.prototype.toString.call(x.sources) === '[object Array]' ? x.sources.length : 0; }
   function statusLine(x) {
     if (x.lastVerified && nSources(x)) {
-      return (x.checked && x.checked.length) ? 'Partly checked · last verified ' + x.lastVerified : 'Casino-stated only · sources read ' + x.lastVerified;
+      return (x.checked && x.checked.length) ? 'Partly checked' : 'Casino-stated only';
     }
-    return 'Unverified · no check date recorded';
+    return 'Unverified';
   }
   function lastVerifiedHtml(x) {
     return x.lastVerified ? '<time class="data" datetime="' + esc(x.lastVerified) + '">' + esc(x.lastVerified) + '</time>' : 'not recorded yet';
@@ -273,13 +273,13 @@
     var d = disp(x);
     var fields = [['license', 'Licence'], ['custody', 'Custody'], ['kyc', 'KYC']].map(function (f) {
       var s = status(x, f[0]);
-      return '<div class="glance-field"><dt>' + f[1] + '</dt><dd>' + esc(val(x, f[0]) || UNK) + ' ' + badge(s) + '</dd></div>';
+      return '<div class="glance-field"><dt>' + f[1] + '</dt><dd>' + (val(x, f[0]) ? esc(val(x, f[0])) + ' ' : '') + badge(s) + '</dd></div>';
     }).join('');
     return '<li><article class="card">' +
       '<h3><a class="link-standalone" href="review/' + esc(x.slug) + '/">Read the review: ' + esc(d) + '</a></h3>' +
       '<p class="text-muted">' + esc(x.archLabel) + '</p>' +
       '<dl>' + fields + '</dl>' +
-      '<p class="text-muted">Catalog notes · Unverified: written without a recorded source.</p>' +
+      '<p class="text-muted">Unverified: no recorded source.</p>' +
       '<p>' + esc(x.summary || '') + '</p>' +
       '<p class="text-muted">' + esc(statusLine(x)) + '</p>' +
       '<p>Last verified: ' + lastVerifiedHtml(x) + '</p>' +
