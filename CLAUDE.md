@@ -2,7 +2,7 @@
 
 ## What this is
 
-UnderReview.io: an independent, **unranked** research site for web3 / crypto casinos. 60 catalog entries, 4 page templates, plain-English guides. Static HTML + CSS, no build step, no backend, no analytics, no ads, no affiliate links. Redesign (Phases 1 to 6) is done; remaining work is Phase 7 QA and content decisions.
+UnderReview: an independent, **unranked** research site for web3 / crypto casinos. 60 catalog entries, 4 page templates, plain-English guides. Static HTML + CSS, no build step, no backend, no analytics, no ads, no affiliate links. Redesign (Phases 1 to 6) is done; remaining work is Phase 7 QA and content decisions.
 
 ## Non-negotiable rules (in priority order)
 
